@@ -3,4 +3,75 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="background">#FFFFFF</color>
+    <color name="button_black_disabled">#AAAAAA</color>
+
+    <color name="section_divider_color">#dadce5</color>
+    <color name="bottom_sheet_handle_color">#dadce5</color>
+    <color name="sleep_button_asleep">#7313bd</color>
+    <color name="sleep_button_awake">@color/white</color>
+    <color name="control_instruction_text">#FFFFFF</color>
+    <color name="control_background">#160424</color>
+    <color name="control_text">#160424</color>
+    <color name="brightness_icon_disabled">#564961</color>
+    <color name="brightness_icon_enabled">#FFFFFF</color>
+    <color name="error_message_bg">#d46363</color>
+    <color name="confirmation_message_bg">#79c99c</color>
+    <color name="disabled_gray">#999999</color>
+    <color name="image_item_background">#f5f6f8</color>
+    <color name="add_item_tint">#a1a4b3</color>
+    <color name="splash_bg">#7313bd</color>
+    <color name="text_light_gray">#a1a4b2</color>
+    <color name="text_hint">#dadce5</color>
+    <color name="text_dark">#270c3f</color>
+    <color name="edittext_highlight">#EEEEEE</color>
+    <color name="device_option_image_bg">#EDEDED</color>
+    <color name="swipe_to_delete_background">#d46363</color>
+    <color name="button_black_bg">#160424</color>
+    <color name="favorite_tint">#d46363</color>
+    <color name="image_placeholder_bg">#f5f6f8</color>
+    <color name="setup_splash_screen_bg">#dff1fd</color>
+    <color name="darkening_overlay">#4d000000</color>
+    <color name="whitening_overlay">#9dffffff</color>
+    <color name="badge_background_color">#f5f6f8</color>
+
+    <!-- region text colors -->
+    <color name="text_color_title">#160424</color>
+    <color name="text_color_body">#0f1d2b</color>
+    <color name="edit_text_color">#160424</color>
+    <color name="active_tab_title_text_color">#160424</color>
+    <color name="inactive_tab_title_text_color">#a1a4b3</color>
+    <color name="toolbar_menu_title_color">#160424</color>
+
+    <color name="neutral_50">#a1a3b3</color>
+    <color name="brand">#7313bd</color>
+    <color name="success">#5acc98</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="neutral_20">#dadce6</color>
+    <color name="neutral_10">#f5f6f8</color>
+    <color name="neutral_70">#646478</color>
+    <color name="neutral_80">#0f1d2b</color>
+    <color name="neutral_90">#160423</color>
+    <color name="active">#edb45d</color>
+    <color name="danger">#d46363</color>
+    <color name="pastel_yellow">#fff9dd</color>
+    <color name="pastel_green">#e0fbf1</color>
+    <color name="pastel_pink">#ffebeb</color>
+    <color name="pastel_purple">#eae8fe</color>
+    <color name="pastel_blue">#dff3ff</color>
+    <color name="warning_red">#db4437</color>
+    <color name="pastel_pink_tranparent">#19ff0000</color>
+    <color name="toolbar_background">#ffffff</color>
+    <color name="progress_default">#000000</color>
+    <color name="button_text_color">#ffffff</color>
+    <color name="button_disable_color">#999999</color>
+    <color name="button_gray">#ced1dd</color>
+    <color name="button_gray_text_color">#160424</color>
+    <color name="material_seekbar_bg_dark">#2c1c3a</color>
+    <color name="material_seekbar_bg_light">#FFF</color>
+    <color name="remove_canvas_button_color">#d9dce7</color>
+    <color name="badge_drawable_color">#7313bd</color>
+    <color name="material_light_gray_color">#a1a4b3</color>
 </resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="square_image_spacing">20dp</dimen>
+    <dimen name="frame_margin_vertical_top_bottom">13dp</dimen>
+    <dimen name="frame_margin_horizontal_top_bottom">28dp</dimen>
+    <dimen name="frame_margin_vertical_sides">28dp</dimen>
+    <dimen name="frame_margin_horizontal_sides">13dp</dimen>
+    <dimen name="cropview_padding">20dp</dimen>
+    <dimen name="crop_border_stroke_width">1dp</dimen>
+    <dimen name="crop_corner_stroke_width">3dp</dimen>
+    <dimen name="crop_corner_extension">0dp</dimen>
+    <dimen name="crop_border_corner_length">17dp</dimen>
+    <dimen name="horizontal_tile_height_small">126dp</dimen>
+    <dimen name="horizontal_tile_height_large">168dp</dimen>
+    <dimen name="meural_standard_padding">20dp</dimen>
+    <dimen name="settings_switch_description_text_right_margin">20dp</dimen>
+    <dimen name="swipe_button_width">78dp</dimen>
+    <dimen name="option_item_cell_height">52dp</dimen>
+    <dimen name="artwork_item_padding_left">20dp</dimen>
+    <dimen name="artwork_item_peek_width">30dp</dimen>
+
+    <!-- region Activity dimensions -->
+    <dimen name="component_padding">30dp</dimen>
+    <dimen name="activity_vertical_margin">20dp</dimen>
+    <dimen name="activity_horizontal_margin">20dp</dimen>
+    <dimen name="preferences_item_padding">14dp</dimen>
+    <dimen name="right_arrow_padding">10dp</dimen>
+    <dimen name="menu_cell_height">52dp</dimen>
+    <dimen name="video_view_height">300dp</dimen>
+    <dimen name="check_box_text_padding">12dp</dimen>
+    <!-- endregion-->
+
+    <!-- region TextView Size-->
+    <dimen name="title_text_extra_extra_large">39sp</dimen>
+    <dimen name="title_text_extra_large">32sp</dimen>
+    <dimen name="title_text_large">27sp</dimen>
+    <dimen name="title_text_medium">22sp</dimen>
+    <dimen name="title_text_regular">19sp</dimen>
+    <dimen name="title_text_extra_small">16sp</dimen>
+    <dimen name="title_text_extra_extra_small">13sp</dimen>
+
+    <dimen name="body_text_large">19sp</dimen>
+    <dimen name="body_text_regular">16sp</dimen>
+    <dimen name="body_text_small">13sp</dimen>
+    <!-- endregion-->
+
+    <!-- region Toolbar Size-->
+    <dimen name="toolbar_title_size">16sp</dimen>
+    <dimen name="toolbar_menu_title_size">16sp</dimen>
+    <!-- endregion-->
+
+    <!-- region TabLayout Size-->
+    <dimen name="tab_title_size">16sp</dimen>
+    <dimen name="tab_bar_height">30dp</dimen>
+    <!-- endregion-->
+
+    <!-- region EditText Size -->
+    <dimen name="edit_text_height">48dp</dimen>
+    <dimen name="edit_text_regular">16sp</dimen>
+    <!-- endregion -->
+
+    <!-- region Button Size -->
+    <dimen name="button_text_regular">16sp</dimen>
+    <dimen name="button_height">46dp</dimen>
+    <dimen name="button_bottom_margin">52dp</dimen>
+    <dimen name="vertical_menu_cell_padding">14dp</dimen>
+    <!-- endregion -->
+
+    <!-- region BadgeText Size -->
+    <dimen name="badge_text_view_padding">5dp</dimen>
+    <!-- endregion -->
+</resources>

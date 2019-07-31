@@ -17,10 +17,7 @@ data class Image(
         @SerializedName("id") var id: Long = -1,
         @SerializedName("artistId") val artistId: Long?,
         @SerializedName("artistName") val artistName: String?,
-        @SerializedName("author") val author: String?,
-
-        @SerializedName("categoryIds") val categoryIds: List<Long>?,
-        @SerializedName("categoryNames") val categoryNames: List<String>?)
+        @SerializedName("author") val author: String?)
     : Parcelable {
 
 }

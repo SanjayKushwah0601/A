@@ -33,7 +33,7 @@
 
         <provider
                 android:name="androidx.core.content.FileProvider"
-                android:authorities="com.meural.Meural.fileprovider"
+                android:authorities="com.crop.fileprovider"
                 android:exported="false"
                 android:grantUriPermissions="true">
             <meta-data

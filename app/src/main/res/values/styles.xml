@@ -1,11 +1,415 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--</style>-->
+
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
+
+        <item name="android:editTextStyle">@style/AppTheme.Widget.EditText</item>
+        <item name="editTextStyle">@style/AppTheme.Widget.EditText</item>
+
+        <item name="android:buttonStyle">@style/AppTheme.Widget.Button.Gray</item>
+
+        <item name="spinnerStyle">@style/AppTheme.Widget.Spinner</item>
+        <item name="android:spinnerItemStyle">@style/AppTheme.Widget.SpinnerItem</item>
+
+        <item name="alertDialogTheme">@style/Material.AlertDialogTheme</item>
+        <item name="buttonBarButtonStyle">@style/Material.Button.Dialog</item>
+
+        <item name="toolbarStyle">@style/AppTheme.Widget.Toolbar</item>
+        <item name="homeAsUpIndicator">@drawable/ic_back_dark</item>
+        <item name="android:actionMenuTextColor">@color/toolbar_menu_title_color</item>
+        <item name="actionMenuTextAppearance">@style/Material.MenuItemTextAppearance</item>
     </style>
+
+    <style name="AppTheme" parent="BaseAppTheme" />
+
+    <style name="AppTheme.DarkSystemBars" parent="BaseAppTheme" />
+
+    <style name="AppTheme.Widget" />
+
+    <!-- Splash page theme (so it loads before the page itself -->
+
+    <style name="BaseSplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:fitsSystemWindows">false</item>
+        <item name="android:windowBackground">@drawable/splash_layers</item>
+    </style>
+
+    <style name="SplashTheme" parent="BaseSplashTheme" />
+
+    <!-- TextViews -->
+
+    <style name="AppTheme.Widget.TextView" parent="android:Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Bold" parent="AppTheme.Widget.TextView">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.Widget.CropMask" parent="android:Widget">
+        <item name="android:background">@color/black</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="AppTheme.Widget.EditText" parent="android:Widget.DeviceDefault.EditText">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/edittext_field</item>
+        <item name="android:padding">13dp</item>
+        <item name="android:textColorHighlight">@color/edittext_highlight</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Small" parent="AppTheme.Widget.TextView">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Serif" parent="android:Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/libre_baskerville</item>
+        <item name="android:textColor">@color/text_dark</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Serif.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Serif.MainTitle" parent="AppTheme.Widget.TextView.Serif">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Serif.Title" parent="AppTheme.Widget.TextView.Serif">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Serif.SectionTitle" parent="AppTheme.Widget.TextView.Serif.Title">
+        <item name="android:background">@drawable/underline</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Serif.SectionTitle.Clickable" parent="AppTheme.Widget.TextView.Serif.Title">
+        <item name="android:drawableRight">@drawable/ic_keyboard_arrow_right</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Serif.SectionTitle.Clickable.Underlined" parent="AppTheme.Widget.TextView.Serif.SectionTitle.Clickable">
+        <item name="android:background">@drawable/underline</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Title.SmallCaps" parent="AppTheme.Widget.TextView">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.Title.Large" parent="AppTheme.Widget.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.DialogTitle" parent="AppTheme.Widget.TextView">
+        <item name="fontFamily">@font/libre_baskerville</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.ToolbarTitle" parent="AppTheme.Widget.TextView">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- Buttons -->
+
+    <style name="AppTheme.LightRipple">
+        <item name="colorControlHighlight">#99FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.DarkRipple">
+        <item name="colorControlHighlight">#22000000</item>
+    </style>
+
+    <style name="AppTheme.Widget.Button" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/button_bg_black</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:theme">@style/AppTheme.LightRipple</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:layout_height">58dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppTheme.Widget.Button.White" parent="AppTheme.Widget.Button">
+        <item name="android:background">@drawable/button_bg_white</item>
+        <item name="android:textColor">#000000</item>
+        <item name="theme">@style/AppTheme.DarkRipple</item>
+    </style>
+
+    <style name="AppTheme.Widget.Button.Gray" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:background">#f5f6f8</item>
+        <item name="android:textColor">#160424</item>
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">16sp</item>
+
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:theme">@style/AppTheme.LightRipple</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppTheme.Widget.Button.White.NoOutline" parent="AppTheme.Widget.Button.White">
+        <item name="android:background">@drawable/button_bg_white_nostroke</item>
+    </style>
+
+
+    <style name="AppTheme.Widget.Button.Transparent" parent="AppTheme.Widget.Button.White">
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+    <!-- Spinners -->
+    <style name="AppTheme.Widget.Spinner" parent="Base.Widget.AppCompat.Spinner.Underlined">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+
+    <style name="AppTheme.Widget.SpinnerItem" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
+    <style name="AppTheme.Widget.Toolbar" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/AppTheme.Widget.TextView.ToolbarTitle</item>
+        <item name="actionButtonStyle">@style/AppTheme.Widget.ActionButton</item>
+    </style>
+
+    <style name="AppTheme.Widget.ActionButton" parent="@style/Widget.AppCompat.ActionButton">
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <style name="RatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_rating_stars</item>
+        <item name="android:minHeight">30dip</item>
+        <item name="android:scaleX">1.5</item>
+        <item name="android:scaleY">1.5</item>
+    </style>
+
+
+    <!-- region Text View Styles -->
+    <style name="TextView.Body" parent="android:Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/nunito_sans_regular</item>
+        <item name="android:textColor">@color/text_color_body</item>
+        <item name="android:textSize">@dimen/body_text_regular</item>
+    </style>
+
+    <style name="TextView.Body.Large" parent="TextView.Body">
+        <item name="android:textSize">@dimen/body_text_large</item>
+    </style>
+
+    <style name="TextView.Body.Small" parent="TextView.Body">
+        <item name="android:textSize">@dimen/body_text_small</item>
+    </style>
+
+    <style name="TextView.Body.Bold" parent="TextView.Body">
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+    </style>
+
+    <style name="TextView.Body.Large.Bold">
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+    </style>
+
+    <style name="TextView.Body.Small.Bold">
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+    </style>
+
+    <style name="TextView.Body.Gray" parent="TextView.Body">
+        <item name="android:textColor">@color/material_light_gray_color</item>
+    </style>
+
+    <style name="TextView.Body.Small.Gray" parent="TextView.Body.Small">
+        <item name="android:textColor">@color/material_light_gray_color</item>
+    </style>
+
+    <style name="TextView.Body.Small.Bold.Gray">
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textColor">@color/neutral_50</item>
+    </style>
+
+    <style name="TextView.Heading" parent="android:Widget.DeviceDefault.TextView">
+        <item name="android:fontFamily">@font/libre_baskerville_bold</item>
+        <item name="android:textColor">@color/text_color_title</item>
+        <item name="android:textSize">@dimen/title_text_regular</item>
+    </style>
+
+    <style name="TextView.Heading.XXL" parent="TextView.Heading">
+        <item name="android:textSize">@dimen/title_text_extra_extra_large</item>
+    </style>
+
+    <style name="TextView.Heading.XL" parent="TextView.Heading">
+        <item name="android:textSize">@dimen/title_text_extra_large</item>
+    </style>
+
+    <style name="TextView.Heading.L" parent="TextView.Heading">
+        <item name="android:textSize">@dimen/title_text_large</item>
+    </style>
+
+    <style name="TextView.Heading.M" parent="TextView.Heading">
+        <item name="android:textSize">@dimen/title_text_medium</item>
+    </style>
+
+    <style name="TextView.Heading.XS" parent="TextView.Heading">
+        <item name="android:textSize">@dimen/title_text_extra_small</item>
+    </style>
+
+    <style name="TextView.Heading.XXS" parent="TextView.Heading">
+        <item name="android:textSize">@dimen/title_text_extra_extra_small</item>
+    </style>
+
+    <style name="TextView.Heading.XXS.Sans" parent="TextView.Heading">
+        <item name="android:fontFamily">@font/nunito_sans_regular</item>
+    </style>
+
+    <style name="TextView.Heading.M.Underline">
+        <item name="android:background">@drawable/underline</item>
+    </style>
+    <!-- endregion-->
+
+    <!--region TabLayout Style-->
+    <style name="Material.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/Material.TabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/active_tab_title_text_color</item>
+        <item name="android:layout_height">@dimen/tab_bar_height</item>
+    </style>
+
+    <style name="Material.TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textColor">@color/inactive_tab_title_text_color</item>
+        <item name="android:textSize">@dimen/tab_title_size</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Toolbar Style-->
+    <style name="ToolbarStyle" parent="@style/Base.TextAppearance.AppCompat.Title">
+        <item name="android:textSize">@dimen/toolbar_title_size</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+    </style>
+    <!-- endregion-->
+
+    <!-- region - EditText Styles-->
+    <style name="Material.EditText" parent="android:Widget.DeviceDefault.EditText">
+        <item name="android:layout_height">@dimen/edit_text_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/edit_text_regular</item>
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textColor">@color/edit_text_color</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:padding">13dp</item>
+        <item name="android:textColorHighlight">@color/edittext_highlight</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region - Button Styles-->
+    <style name="Material.Button" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">@dimen/button_text_regular</item>
+        <item name="android:background">@drawable/button_bg_square</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:theme">@style/AppTheme.LightRipple</item>
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Material.Button.White" parent="Material.Button">
+        <item name="android:textSize">@dimen/button_text_regular</item>
+        <item name="android:background">@drawable/button_bg_white_square</item>
+        <item name="android:textColor">@color/neutral_90</item>
+    </style>
+
+    <style name="Material.Button.Gray" parent="Material.Button">
+        <item name="android:background">@color/button_gray</item>
+        <item name="android:textColor">@color/button_gray_text_color</item>
+        <item name="android:theme">@style/AppTheme.LightRipple</item>
+    </style>
+
+    <style name="Material.Button.Transparent" parent="Material.Button">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/button_gray_text_color</item>
+        <item name="android:theme">@null</item>
+
+    </style>
+
+    <style name="Material.Button.Transparent.Bold" parent="Material.Button">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:theme">@null</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+    </style>
+
+    <style name="Material.Button.Dialog" parent="Base.Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@color/neutral_80</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_height">20dp</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region - Dialog Styles-->
+    <style name="Material.AlertDialogTheme" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="android:windowTitleStyle">@style/TextView.Heading.XS</item>
+        <item name="android:buttonBarStyle">@style/Widget.AppCompat.ButtonBar.AlertDialog</item>
+        <item name="buttonBarButtonStyle">@style/Widget.AppCompat.Button</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Material.Button.Dialog</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Material.Button.Dialog</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Material.Button.Dialog</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region - Widgets Styles -->
+    <style name="TextView.Body.SendToCanvas">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+    </style>
+
+    <style name="TextView.Body.Bold.FavouriteCount">
+        <item name="android:textColor">@color/neutral_90</item>
+    </style>
+    <!-- endregion -->
+
+    <!-- region Action Menu Style -->
+    <style name="Material.MenuItemTextAppearance" parent="Theme.AppCompat">
+        <item name="textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunito_sans_regular</item>
+        <item name="android:textSize">@dimen/toolbar_menu_title_size</item>
+    </style>
+    <!-- endregion -->
 
 </resources>
