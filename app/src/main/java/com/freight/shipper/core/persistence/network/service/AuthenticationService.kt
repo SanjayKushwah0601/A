@@ -23,7 +23,7 @@ interface AuthenticationService {
     ): Call<Token>
 
     @FormUrlEncoded
-    @POST("")
+    @POST("webservices")
     fun login(
         @Field("username") userName: String,
         @Field("password") password: String,

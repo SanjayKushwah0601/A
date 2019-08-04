@@ -29,7 +29,7 @@ import java.net.UnknownHostException
 import java.util.*
 
 
-class MeuralAPI(val retrofit: Retrofit) : MeuralAPIContract() {
+class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
 
     // region - Service init
     private val authService = retrofit.create(AuthenticationService::class.java)
@@ -106,7 +106,7 @@ class MeuralAPI(val retrofit: Retrofit) : MeuralAPIContract() {
     private suspend fun <T : Any> Call<T>.mappedApiResult(): APIResult<T> {
         val result = awaitResult()
         return when (result) {
-            is Result.Ok -> APIResult.Success(ApiResponse(result.value, null, null, null))
+            is Result.Ok -> APIResult.Success(ApiResponse(result.value, true, "", null, null, null))
             is Result.Error -> APIResult.Failure(errorFromHttpException(result.exception))
             is Result.Exception -> APIResult.Failure(errorFromAnyException(result.exception))
         }
@@ -115,10 +115,12 @@ class MeuralAPI(val retrofit: Retrofit) : MeuralAPIContract() {
     // region - Response Parsing
     private suspend fun <T : Any> Call<ApiResponse<T>>.apiResult(): APIResult<T> {
         val result = awaitResult()
-        return when (result) {
-            is Result.Ok -> APIResult.Success(result.value)
-            is Result.Error -> APIResult.Failure(errorFromHttpException(result.exception))
-            is Result.Exception -> APIResult.Failure(errorFromAnyException(result.exception))
+        return when  {
+            result is Result.Ok && result.value.isSuccessful() -> APIResult.Success(result.value)
+            result is Result.Ok && !result.value.isSuccessful() -> APIResult.Failure(APIError(mapOf(), APIErrorType.FalseAPIResponse, 0, Throwable(result.value.getMessage()), result.value.getMessage()))
+            result is Result.Error -> APIResult.Failure(errorFromHttpException(result.exception))
+            result is Result.Exception -> APIResult.Failure(errorFromAnyException(result.exception))
+            else -> APIResult.Failure(errorFromHttpException(HttpException(null)))
         }
     }
     // endregion

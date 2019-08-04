@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 sealed class MeuralResponse<T> {
     abstract fun isSuccessful(): Boolean
+    abstract fun getMessage(): String
 }
 
 /**
@@ -23,20 +24,30 @@ sealed class MeuralResponse<T> {
  */
 
 open class ApiResponse<T>(
-        @SerializedName("data")
-        var data: T,
+    @SerializedName("responseData")
+    var data: T,
 
-        @SerializedName("isPaginated")
-        private var isPaginated: Boolean?,
+    @SerializedName("responseCode")
+    private var isSuccess: Boolean = false,
 
-        @SerializedName("isLast")
-        private var isLast: Boolean?,
+    @SerializedName("responseMsg")
+    private var message: String = "",
 
-        @SerializedName("count")
-        var itemCount: Int? = 0
+    @SerializedName("isPaginated")
+    private var isPaginated: Boolean?,
+
+    @SerializedName("isLast")
+    private var isLast: Boolean?,
+
+    @SerializedName("count")
+    var itemCount: Int? = 0
 ) : MeuralResponse<T>() {
     override fun isSuccessful(): Boolean {
-        return data != null
+        return isSuccess && data != null
+    }
+
+    override fun getMessage(): String {
+        return message
     }
 
     fun hasNextPage(): Boolean {
@@ -60,36 +71,40 @@ sealed class ErrorResponse<T> : MeuralResponse<T>() {
  * Error Response for when an error message from the API is expected
  */
 class ApiErrorResponse<T>(
-        @SerializedName("errors")
-        val errors: String? = null,
+    @SerializedName("errors")
+    val errors: String? = null,
 
-        @SerializedName("device")
-        val deviceErrors: String? = null,
+    @SerializedName("device")
+    val deviceErrors: String? = null,
 
-        @SerializedName("error")
-        val error: String? = null,
+    @SerializedName("error")
+    val error: String? = null,
 
-        @SerializedName("message")
-        val message: String? = null,
+    @SerializedName("responseMsg")
+    val message1: String = "",
 
-        @SerializedName("detail")
-        var errorDetail: String? = null,
+    @SerializedName("detail")
+    var errorDetail: String? = null,
 
-        @SerializedName("username")
-        var usernameErrors: String? = null,
+    @SerializedName("username")
+    var usernameErrors: String? = null,
 
-        @SerializedName("email")
-        var emailErrors: String? = null,
+    @SerializedName("email")
+    var emailErrors: String? = null,
 
-        @SerializedName("password1")
-        var passwordErrors: String? = null,
+    @SerializedName("password1")
+    var passwordErrors: String? = null,
 
-        @SerializedName("item")
-        var itemErrors: String? = null,
+    @SerializedName("item")
+    var itemErrors: String? = null,
 
-        @SerializedName("subscription")
-        var subscriptionErrors: String? = null
+    @SerializedName("subscription")
+    var subscriptionErrors: String? = null
 ) : ErrorResponse<T>() {
+    override fun getMessage(): String {
+        return message1
+    }
+
     fun getFirstNonNullErrorMessage(): String? {
         return deviceErrors ?: error ?: errors ?: errorDetail ?: usernameErrors
         ?: emailErrors ?: passwordErrors ?: itemErrors ?: subscriptionErrors
@@ -106,6 +121,10 @@ class ApiErrorResponse<T>(
  * as important as knowing in general that there was a network problem
  */
 class NetworkProblemResponse<T>(val cause: Throwable) : ErrorResponse<T>() {
+    override fun getMessage(): String {
+        return cause.message ?: ""
+    }
+
     override fun getException(): Exception {
         return cause as? Exception ?: NetworkProblemException()
     }
@@ -116,6 +135,10 @@ class NetworkProblemResponse<T>(val cause: Throwable) : ErrorResponse<T>() {
  * something other than a Network problem.
  */
 class ExceptionResponse<T>(val cause: Throwable) : ErrorResponse<T>() {
+    override fun getMessage(): String {
+        return cause.message ?: ""
+    }
+
     override fun getException(): Exception {
         return cause as? Exception ?: CallFailedException()
     }

@@ -4,9 +4,10 @@ package com.freight.shipper
 import android.app.Application
 import com.bumptech.glide.Glide
 import com.bumptech.glide.MemoryCategory
-import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.core.persistence.network.client.server.MeuralAPI
 import com.freight.shipper.core.persistence.network.client.server.MeuralAPIFactory
+import com.freight.shipper.core.persistence.preference.LoginManager
+import timber.log.Timber
 
 class FreightApplication : Application() {
 
@@ -31,10 +32,16 @@ class FreightApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Glide.get(this).setMemoryCategory(MemoryCategory.HIGH)
+        initLogging()
     }
     //endregion
 
     //region - Private functions
+    private fun initLogging() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
     //endregion
 
 }

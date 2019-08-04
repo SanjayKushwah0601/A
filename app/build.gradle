@@ -29,14 +29,14 @@ android {
         debug {
             minifyEnabled false
             debuggable true
-            buildConfigField "String", "SERVER_URL", '"http://wing.tracenvision.com/freight_app/webservice"'
+            buildConfigField "String", "SERVER_URL", '"http://wing.tracenvision.com/freight_app/"'
             buildConfigField "String", "FRONTEND_URL", '"https://demo.meural.com/"'
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "SERVER_URL", '"http://wing.tracenvision.com/freight_app/webservice"'
+            buildConfigField "String", "SERVER_URL", '"http://wing.tracenvision.com/freight_app/"'
             buildConfigField "String", "FRONTEND_URL", '"https://demo.meural.com/"'
         }
     }
