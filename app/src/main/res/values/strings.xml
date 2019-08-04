@@ -15,4 +15,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="submit">Submit</string>
     <string name="reset_password">Reset Password</string>
+    <string name="signup_as_a_company">Signup as a Company</string>
+    <string name="signup_as_an_individual">Signup as an Individual</string>
 </resources>

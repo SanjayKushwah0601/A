@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import com.freight.shipper.ui.authentication.login.LoginActivity
 import com.freight.shipper.ui.authentication.resetpassword.ResetPasswordActivity
-import com.freight.shipper.ui.authentication.signup.SignupActivity
+import com.freight.shipper.ui.authentication.signup.SignupLandingActivity
+import com.freight.shipper.ui.authentication.signup.company.CompanySignupActivity
+import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
 
 
 /**
@@ -17,9 +19,17 @@ fun Activity.startLoginActivity() {
 }
 
 fun Activity.navigateToSignupScreen() {
-    startActivity(Intent(this, SignupActivity::class.java))
+    startActivity(Intent(this, SignupLandingActivity::class.java))
 }
 
 fun Activity.navigateToResetPassword() {
     startActivity(Intent(this, ResetPasswordActivity::class.java))
+}
+
+fun Activity.navigateToIndividualSignup() {
+    startActivity(Intent(this, IndividualSignupActivity::class.java))
+}
+
+fun Activity.navigateToCompanySignup() {
+    startActivity(Intent(this, CompanySignupActivity::class.java))
 }
