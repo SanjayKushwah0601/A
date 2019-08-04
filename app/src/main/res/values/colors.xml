@@ -42,7 +42,7 @@
     <color name="edit_text_color">#160424</color>
     <color name="active_tab_title_text_color">#160424</color>
     <color name="inactive_tab_title_text_color">#a1a4b3</color>
-    <color name="toolbar_menu_title_color">#160424</color>
+    <color name="toolbar_menu_title_color">@color/colorAccent</color>
     <color name="toolbar_title_color">@color/colorAccent</color>
 
     <color name="neutral_50">#a1a3b3</color>

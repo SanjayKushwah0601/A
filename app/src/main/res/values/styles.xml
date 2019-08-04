@@ -29,7 +29,7 @@
         <item name="buttonBarButtonStyle">@style/Material.Button.Dialog</item>
 
         <item name="toolbarStyle">@style/AppTheme.Widget.Toolbar</item>
-        <item name="homeAsUpIndicator">@drawable/ic_back_dark</item>
+        <!--<item name="homeAsUpIndicator">@drawable/ic_back_dark</item>-->
         <item name="android:actionMenuTextColor">@color/toolbar_menu_title_color</item>
         <item name="actionMenuTextAppearance">@style/Material.MenuItemTextAppearance</item>
     </style>
@@ -133,6 +133,12 @@
     <style name="AppTheme.Widget.TextView.ToolbarTitle" parent="AppTheme.Widget.TextView">
         <item name="android:textSize">21sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="AppTheme.Widget.TextView.ToolbarSubTitle" parent="AppTheme.Widget.TextView.ToolbarTitle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:layout_gravity">center</item>
     </style>
 
