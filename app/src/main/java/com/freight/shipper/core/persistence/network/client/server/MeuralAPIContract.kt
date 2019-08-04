@@ -1,9 +1,9 @@
-package com.sanjay.networking.client.server
+package com.freight.shipper.core.persistence.network.client.server
 
-import com.sanjay.networking.response.model.Category
-import com.sanjay.networking.response.model.Login
-import com.sanjay.networking.response.model.Token
-import com.sanjay.networking.result.APIResult
+import com.freight.shipper.model.Category
+import com.freight.shipper.model.Login
+import com.freight.shipper.model.Token
+import com.freight.shipper.core.persistence.network.result.APIResult
 
 abstract class MeuralAPIContract {
 

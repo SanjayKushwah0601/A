@@ -1,8 +1,7 @@
-package com.sanjay.networking.persistence.converters
+package com.freight.shipper.core.persistence.db.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class CustomTypeConverters {
 

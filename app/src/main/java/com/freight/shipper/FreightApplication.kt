@@ -4,15 +4,17 @@ package com.freight.shipper
 import android.app.Application
 import com.bumptech.glide.Glide
 import com.bumptech.glide.MemoryCategory
-import com.sanjay.networking.NetworkingApplication
+import com.freight.shipper.core.persistence.preference.LoginManager
+import com.freight.shipper.core.persistence.network.client.server.MeuralAPI
+import com.freight.shipper.core.persistence.network.client.server.MeuralAPIFactory
 
 class FreightApplication : Application() {
 
     //region -Properties
-//    val loginManager: LoginManager by lazy { LoginManager(this) }
 //    val assetsManager: AssetsManager by lazy { AssetsManager(this) }
 //    val prefManager: PrefManager by lazy { PrefManager(this) }
-//    val meuralAPI: MeuralAPI by lazy { MeuralAPIFactory.standardClient(loginManager) }
+    val loginManager: LoginManager by lazy { LoginManager(this) }
+    val meuralAPI: MeuralAPI by lazy { MeuralAPIFactory.standardClient(loginManager) }
     //endregion
 
     init {
@@ -29,7 +31,6 @@ class FreightApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Glide.get(this).setMemoryCategory(MemoryCategory.HIGH)
-        NetworkingApplication.init(this)
     }
     //endregion
 

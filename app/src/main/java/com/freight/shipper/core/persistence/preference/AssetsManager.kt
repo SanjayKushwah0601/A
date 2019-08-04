@@ -1,4 +1,4 @@
-package com.sanjay.networking.persistence
+package com.freight.shipper.core.persistence.preference
 
 import android.content.Context
 

@@ -1,9 +1,10 @@
-package com.sanjay.networking.client.server
+package com.freight.shipper.core.persistence.network.client.server
 
-import com.sanjay.networking.BuildConfig
-import com.sanjay.networking.client.UniversalConverter
-import com.sanjay.networking.interceptors.AuthHeaderInterceptor
-import com.sanjay.networking.interceptors.MeuralHeaderInterceptor
+import com.freight.shipper.BuildConfig
+import com.freight.shipper.core.persistence.network.client.UniversalConverter
+import com.freight.shipper.core.persistence.network.interceptors.AuthHeaderInterceptor
+import com.freight.shipper.core.persistence.network.interceptors.MeuralHeaderInterceptor
+import com.freight.shipper.core.persistence.preference.LoginManager
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,8 +14,8 @@ import java.util.concurrent.TimeUnit
 
 
 object MeuralAPIFactory {
-    fun standardClient(token: String?): MeuralAPI {
-        val authInterceptor = AuthHeaderInterceptor(token)
+    fun standardClient(loginManager: LoginManager): MeuralAPI {
+        val authInterceptor = AuthHeaderInterceptor(loginManager)
         val headerInterceptor = MeuralHeaderInterceptor()
 
         val loggingInterceptor = HttpLoggingInterceptor()

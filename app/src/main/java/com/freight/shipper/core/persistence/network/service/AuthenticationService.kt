@@ -1,8 +1,8 @@
-package com.sanjay.networking.service
+package com.freight.shipper.core.persistence.network.service
 
-import com.sanjay.networking.response.ApiResponse
-import com.sanjay.networking.response.model.Login
-import com.sanjay.networking.response.model.Token
+import com.freight.shipper.core.persistence.network.response.ApiResponse
+import com.freight.shipper.model.Login
+import com.freight.shipper.model.Token
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

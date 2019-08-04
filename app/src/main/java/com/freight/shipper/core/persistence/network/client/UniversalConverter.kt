@@ -1,4 +1,4 @@
-package com.sanjay.networking.client
+package com.freight.shipper.core.persistence.network.client
 
 import com.google.gson.GsonBuilder
 import okhttp3.RequestBody

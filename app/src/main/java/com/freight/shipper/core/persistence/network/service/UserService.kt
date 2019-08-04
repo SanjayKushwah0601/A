@@ -1,10 +1,10 @@
-package com.sanjay.networking.service
+package com.freight.shipper.core.persistence.network.service
 
-import com.sanjay.networking.request.UserFeedback
-import com.sanjay.networking.response.ApiResponse
-import com.sanjay.networking.response.model.Category
-import com.sanjay.networking.response.model.Token
-import com.sanjay.networking.response.model.User
+import com.freight.shipper.core.persistence.network.request.UserFeedback
+import com.freight.shipper.core.persistence.network.response.ApiResponse
+import com.freight.shipper.model.Category
+import com.freight.shipper.model.Token
+import com.freight.shipper.model.User
 import retrofit2.Call
 import retrofit2.http.*
 

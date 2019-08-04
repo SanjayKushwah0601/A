@@ -1,11 +1,11 @@
-package com.sanjay.networking.response.model
+package com.freight.shipper.model
 
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
-import com.sanjay.networking.persistence.converters.CustomTypeConverters
+import com.freight.shipper.core.persistence.db.converters.CustomTypeConverters
 import kotlinx.android.parcel.Parcelize
 
 /**

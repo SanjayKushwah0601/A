@@ -115,8 +115,11 @@ dependencies {
     //Better-link-movement-method - Improved textview linking
     implementation 'me.saket:better-link-movement-method:2.2.0'
 
+    //Timber - Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
     //Meural Networking library
-    implementation project(path: ':networking')
+//    implementation project(path: ':networking')
 
     // Room
     implementation "androidx.room:room-ktx:$room_version"

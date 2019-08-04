@@ -1,21 +1,17 @@
-package com.sanjay.networking.persistence.converters
+package com.freight.shipper.core.persistence.db.converters
 
 import androidx.room.TypeConverter
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
-class CustomTypeConverters {
-
-    private val gson = Gson()
+class ImageTypeConverters {
 
     @TypeConverter
-    fun convertStringToList(databaseValue: String?): List<String>? {
+    fun convertStringToList(databaseValue: String?): List<String> {
         if (databaseValue == null) return listOf()
         return databaseValue.split(",")
     }
 
     @TypeConverter
-    fun convertStringListToObject(entityProperty: List<String>?): String? {
+    fun convertStringListToObject(entityProperty: List<String>?): String {
         if (entityProperty == null) return ""
         if (entityProperty.isEmpty()) return ""
         val builder = StringBuilder()
@@ -25,13 +21,13 @@ class CustomTypeConverters {
     }
 
     @TypeConverter
-    fun convertStringToLongList(databaseValue: String?): List<Long>? {
+    fun convertLongListToString(databaseValue: String?): List<Long> {
         if (databaseValue == null) return ArrayList()
         return databaseValue.split(",").mapNotNull { it.toLongOrNull() }
     }
 
     @TypeConverter
-    fun convertLongListToString(entityProperty: List<Long>?): String? {
+    fun convertLongListToObject(entityProperty: List<Long>?): String {
         if (entityProperty == null) return ""
         if (entityProperty.isEmpty()) return ""
         val builder = StringBuilder()

@@ -1,9 +1,9 @@
-package com.sanjay.networking.service
+package com.freight.shipper.core.persistence.network.service
 
-import com.sanjay.networking.constraint.Filter
-import com.sanjay.networking.constraint.Sort
-import com.sanjay.networking.response.ApiResponse
-import com.sanjay.networking.response.model.Category
+import com.freight.shipper.core.persistence.network.constraint.Filter
+import com.freight.shipper.core.persistence.network.constraint.Sort
+import com.freight.shipper.core.persistence.network.response.ApiResponse
+import com.freight.shipper.model.Category
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
