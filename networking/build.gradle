@@ -1,9 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
-
-
 
     defaultConfig {
         minSdkVersion 19
@@ -15,20 +16,86 @@ android {
 
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            debuggable true
+            buildConfigField "String", "SERVER_URL", '"http://wing.tracenvision.com/freight_app/webservice"'
+            buildConfigField "String", "FRONTEND_URL", '"https://demo.meural.com/"'
+        }
+
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVER_URL", '"http://wing.tracenvision.com/freight_app/webservice"'
+            buildConfigField "String", "FRONTEND_URL", '"https://demo.meural.com/"'
         }
     }
+}
 
+androidExtensions {
+    experimental = true
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    //Kotlin Coroutines for Retrofit
+    implementation 'ru.gildor.coroutines:kotlin-coroutines-retrofit:0.13.0-eap13'
+
+    //JUnit - Unit Testing
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'org.mockito:mockito-core:2.23.0'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0'
+    testImplementation 'io.mockk:mockk:1.9'
+
+    //Espresso - Integration Testing
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    //Compile any jar libraries in the "libs" folder
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //Android Support Libraries
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+
+    //OKHttp - Networking (low-level)
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    //Retrofit - Networking (high-level)
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+
+    //Retrofit GSON converter - JSON Serialization/Deserialization (Legacy)
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //Timber - Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Apache Commons - General Utility Classes
+    implementation 'org.apache.commons:commons-lang3:3.8'
+
+    // alternatively - just LiveData
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'
+
+    // alternately - if using Java8, use the following instead of compiler
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.0.0'
+
+    // optional - Test helpers for LiveData
+    testImplementation 'androidx.arch.core:core-testing:2.0.0'
+
+    // Room
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+}
+repositories {
+    mavenCentral()
 }

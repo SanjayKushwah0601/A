@@ -3,7 +3,7 @@ package com.freight.shipper.core.db
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.freight.shipper.CropApplication
+import com.freight.shipper.FreightApplication
 import com.freight.shipper.core.db.dao.ImageDao
 import com.freight.shipper.model.Image
 
@@ -17,7 +17,7 @@ abstract class RoomDb : RoomDatabase() {
     companion object {
         val instance: RoomDb by lazy {
             Room.databaseBuilder(
-                CropApplication.instance.applicationContext,
+                FreightApplication.instance.applicationContext,
                 RoomDb::class.java, "Crop.db"
             ).build()
         }

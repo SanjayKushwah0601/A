@@ -4,8 +4,9 @@ package com.freight.shipper
 import android.app.Application
 import com.bumptech.glide.Glide
 import com.bumptech.glide.MemoryCategory
+import com.sanjay.networking.NetworkingApplication
 
-class CropApplication : Application() {
+class FreightApplication : Application() {
 
     //region -Properties
 //    val loginManager: LoginManager by lazy { LoginManager(this) }
@@ -20,7 +21,7 @@ class CropApplication : Application() {
 
     //region -Companion function
     companion object {
-        lateinit var instance: CropApplication
+        lateinit var instance: FreightApplication
     }
     //endregion
 
@@ -28,6 +29,7 @@ class CropApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Glide.get(this).setMemoryCategory(MemoryCategory.HIGH)
+        NetworkingApplication.init(this)
     }
     //endregion
 

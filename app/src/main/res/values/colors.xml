@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#141414</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#F44336</color>
+    <color name="colorAccent">#FA5D52</color>
 
     <color name="background">#FFFFFF</color>
     <color name="button_black_disabled">#AAAAAA</color>
@@ -67,7 +67,7 @@
     <color name="toolbar_background">#ffffff</color>
     <color name="progress_default">#000000</color>
     <color name="button_text_color">#ffffff</color>
-    <color name="button_disable_color">#E9736B</color>
+    <color name="button_disable_color">#EB837D</color>
     <color name="button_gray">#ced1dd</color>
     <color name="button_gray_text_color">#160424</color>
     <color name="material_seekbar_bg_dark">#2c1c3a</color>
