@@ -3,9 +3,9 @@ package com.freight.shipper.core.persistence.preference
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import com.freight.shipper.model.User
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.freight.shipper.model.User
 
 class LoginManager(context: Context) {
     companion object {

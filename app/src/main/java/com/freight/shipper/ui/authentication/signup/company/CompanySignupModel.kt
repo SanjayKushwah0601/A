@@ -2,7 +2,7 @@ package com.freight.shipper.ui.authentication.signup.company
 
 import com.freight.shipper.core.persistence.network.client.server.MeuralAPIContract
 import com.freight.shipper.core.persistence.network.result.APIResult
-import com.freight.shipper.model.Login
+import com.freight.shipper.model.User
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 
 
@@ -12,7 +12,7 @@ import com.freight.shipper.ui.authentication.signup.CompanySignup
  */
 class CompanySignupModel(private val api: MeuralAPIContract) {
 
-    suspend fun companySignup(model: CompanySignup): APIResult<Login> {
+    suspend fun companySignup(model: CompanySignup): APIResult<User> {
         return api.signupAsCompany(model)
     }
 }

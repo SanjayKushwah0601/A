@@ -9,6 +9,7 @@ import com.freight.shipper.ui.authentication.signup.SignupLandingActivity
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupActivity
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwoActivity
 import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
+import com.freight.shipper.ui.dashboard.DashboardActivity
 
 
 /**
@@ -18,6 +19,10 @@ import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupA
 
 fun Activity.startLoginActivity() {
     startActivity(Intent(this, LoginActivity::class.java))
+}
+
+fun Activity.navigateToDashboard() {
+    startActivity(Intent(this, DashboardActivity::class.java))
 }
 
 fun Activity.navigateToSignupScreen() {

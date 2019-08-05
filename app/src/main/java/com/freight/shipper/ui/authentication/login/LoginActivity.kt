@@ -10,6 +10,7 @@ import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityLoginBinding
+import com.freight.shipper.extensions.navigateToDashboard
 import com.freight.shipper.extensions.navigateToResetPassword
 import com.freight.shipper.extensions.navigateToSignupScreen
 import com.freight.shipper.extensions.setupToolbar
@@ -20,9 +21,14 @@ class LoginActivity : BaseActivity() {
 
     // region - Private fields
     private val viewModel: LoginViewModel by lazy {
-        ViewModelProviders.of(this,
-            BaseViewModelFactory { LoginViewModel(LoginModel(FreightApplication.instance.meuralAPI)) })
-            .get(LoginViewModel::class.java)
+        ViewModelProviders.of(this, BaseViewModelFactory {
+            LoginViewModel(
+                LoginModel(
+                    FreightApplication.instance.meuralAPI,
+                    FreightApplication.instance.loginManager
+                )
+            )
+        }).get(LoginViewModel::class.java)
     }
     private lateinit var binding: ActivityLoginBinding
     // endregion
@@ -56,6 +62,9 @@ class LoginActivity : BaseActivity() {
         })
         viewModel.resetPasswordAction.observe(this, Observer {
             navigateToResetPassword()
+        })
+        viewModel.loginStatusAction.observe(this, Observer {
+            navigateToDashboard()
         })
         viewModel.errorAction.observe(this, Observer {
             Toast.makeText(this@LoginActivity, it, Toast.LENGTH_LONG).show()

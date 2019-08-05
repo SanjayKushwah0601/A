@@ -1,10 +1,8 @@
 package com.freight.shipper.core.persistence.network.service
 
-import android.os.Parcelable
 import com.freight.shipper.core.persistence.network.response.ApiResponse
-import com.freight.shipper.model.Login
+import com.freight.shipper.model.User
 import com.freight.shipper.model.Token
-import kotlinx.android.parcel.Parcelize
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -31,7 +29,7 @@ interface AuthenticationService {
         @Field("password") password: String,
         @Field("type") type: String = "shipper",
         @Field("param") param: String = "login"
-    ): Call<ApiResponse<Login>>
+    ): Call<ApiResponse<User>>
 
 //    param - customerRegister
 //first_name=Customer&last_name=Five&email=customerfive@test.com&
@@ -53,5 +51,5 @@ interface AuthenticationService {
         @Field("password") password: String,
         @Field("company_name") companyName: String,
         @Field("param") param: String = "customerRegister"
-    ): Call<ApiResponse<Login>>
+    ): Call<ApiResponse<User>>
 }

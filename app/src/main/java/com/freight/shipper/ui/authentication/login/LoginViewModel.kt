@@ -17,6 +17,7 @@ class LoginViewModel(
 
     val signupAction = ActionLiveData<Boolean>()
     val resetPasswordAction = ActionLiveData<Boolean>()
+    val loginStatusAction = ActionLiveData<Boolean>()
     val errorAction = ActionLiveData<String>()
     private var loginEmail: String? = null
     private var loginPassword: String? = null
@@ -40,11 +41,14 @@ class LoginViewModel(
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success -> {
-                        errorAction.sendAction("Login Success ${result.response.getMessage()}")
+                        errorAction.sendAction("User Success ${result.response.getMessage()}")
+                        model.saveLoginUser(result.response.data)
+                        model.saveToken(result.response.data.sessionToken)
+                        loginStatusAction.sendAction(true)
                         Timber.e("Success Sanjay: ${result.response}")
                     }
                     is APIResult.Failure -> {
-                        errorAction.sendAction(result.error?.message ?: "Login Failed")
+                        errorAction.sendAction(result.error?.message ?: "User Failed")
                         Timber.e("Failure Sanjay: ${result.error}")
                     }
                 }

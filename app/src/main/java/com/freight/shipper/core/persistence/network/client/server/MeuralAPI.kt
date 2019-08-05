@@ -8,7 +8,7 @@ import com.freight.shipper.core.persistence.network.service.AuthenticationServic
 import com.freight.shipper.core.persistence.network.service.CategoryService
 import com.freight.shipper.core.persistence.network.service.UserService
 import com.freight.shipper.model.Category
-import com.freight.shipper.model.Login
+import com.freight.shipper.model.User
 import com.freight.shipper.model.Token
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import com.google.gson.Gson
@@ -41,12 +41,12 @@ class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
     private val decoder = Gson()
 
     // region - Auth
-    override suspend fun login(email: String, password: String): APIResult<Login> {
+    override suspend fun login(email: String, password: String): APIResult<User> {
 //        return authService.authenticate(email, password).mappedApiResult()
         return authService.login(email, password).apiResult()
     }
 
-    override suspend fun signupAsCompany(model: CompanySignup): APIResult<Login> {
+    override suspend fun signupAsCompany(model: CompanySignup): APIResult<User> {
         return authService.signupAsCompany(
             model.firstName, model.lastName, model.email, model.phone,
             "${model.addressLine1} ${model.addressLine2}", model.country, model.state,
