@@ -2,28 +2,36 @@ package com.freight.shipper.ui.authentication.signup.company
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
+import com.freight.shipper.databinding.ActivityCompanySignupSecondBinding
 import com.freight.shipper.extensions.setupToolbar
+import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.android.synthetic.main.toolbar.*
 
 class CompanySignupFormTwoActivity : BaseActivity() {
 
     // region - Private properties
-    private lateinit var viewModel: CompanySignupViewModel
+    private val viewModel: CompanySignupViewModel by lazy {
+        ViewModelProviders.of(this,
+            BaseViewModelFactory { CompanySignupViewModel(CompanySignupModel(FreightApplication.instance.meuralAPI)) })
+            .get(CompanySignupViewModel::class.java)
+    }
+    private lateinit var binding: ActivityCompanySignupSecondBinding
     // endregion
 
     // region - Overridden function
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_company_signup_second)
-        val model = CompanySignupModel(FreightApplication.instance.meuralAPI)
-        viewModel = ViewModelProviders.of(this,
-            BaseViewModelFactory { CompanySignupViewModel(model) })
-            .get(CompanySignupViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_company_signup_second)
+        binding.viewModel = viewModel
+        viewModel.setCompanySignupForm(intent.getParcelableExtra<CompanySignup>("signup"))
         initUI()
         setupOnClicks()
         setupObservers()
@@ -36,6 +44,11 @@ class CompanySignupFormTwoActivity : BaseActivity() {
         } else {
             super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onBackPressed() {
+        viewModel?.onBackPressOnPageTwo()
+        super.onBackPressed()
     }
     // endregion
 
@@ -52,12 +65,9 @@ class CompanySignupFormTwoActivity : BaseActivity() {
     }
 
     private fun setupObservers() {
-//        viewModel.signupAction.observe(this, Observer {
-//            navigateToSignupScreen()
-//        })
-//        viewModel.resetPasswordAction.observe(this, Observer {
-//            navigateToResetPassword()
-//        })
+        viewModel.companySignupAction.observe(this, Observer {
+            Toast.makeText(this@CompanySignupFormTwoActivity, it.first, Toast.LENGTH_LONG).show()
+        })
     }
     // endregion
 }

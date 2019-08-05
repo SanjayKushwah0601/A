@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import com.freight.shipper.ui.authentication.login.LoginActivity
 import com.freight.shipper.ui.authentication.resetpassword.ResetPasswordActivity
+import com.freight.shipper.ui.authentication.signup.CompanySignup
 import com.freight.shipper.ui.authentication.signup.SignupLandingActivity
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupActivity
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwoActivity
@@ -35,6 +36,8 @@ fun Activity.navigateToCompanySignup() {
     startActivity(Intent(this, CompanySignupActivity::class.java))
 }
 
-fun Activity.navigateToCompanySignupSecondPage() {
-    startActivity(Intent(this, CompanySignupFormTwoActivity::class.java))
+fun Activity.navigateToCompanySignupSecondPage(signupData: CompanySignup) {
+    startActivity(Intent(this, CompanySignupFormTwoActivity::class.java).apply {
+        putExtra("signup", signupData)
+    })
 }

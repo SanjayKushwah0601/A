@@ -1,17 +1,18 @@
 package com.freight.shipper.core.persistence.network.client.server
 
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.freight.shipper.core.persistence.network.response.ApiResponse
-import com.freight.shipper.model.Category
-import com.freight.shipper.model.Login
-import com.freight.shipper.model.Token
 import com.freight.shipper.core.persistence.network.result.APIError
 import com.freight.shipper.core.persistence.network.result.APIErrorType
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.network.service.AuthenticationService
 import com.freight.shipper.core.persistence.network.service.CategoryService
 import com.freight.shipper.core.persistence.network.service.UserService
+import com.freight.shipper.model.Category
+import com.freight.shipper.model.Login
+import com.freight.shipper.model.Token
+import com.freight.shipper.ui.authentication.signup.CompanySignup
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import org.json.JSONObject
@@ -43,6 +44,14 @@ class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
     override suspend fun login(email: String, password: String): APIResult<Login> {
 //        return authService.authenticate(email, password).mappedApiResult()
         return authService.login(email, password).apiResult()
+    }
+
+    override suspend fun signupAsCompany(model: CompanySignup): APIResult<Login> {
+        return authService.signupAsCompany(
+            model.firstName, model.lastName, model.email, model.phone,
+            "${model.addressLine1} ${model.addressLine2}", model.country, model.state,
+            model.city, model.postcode, model.password, model.companyName
+        ).apiResult()
     }
 
     override suspend fun register(
@@ -115,9 +124,17 @@ class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
     // region - Response Parsing
     private suspend fun <T : Any> Call<ApiResponse<T>>.apiResult(): APIResult<T> {
         val result = awaitResult()
-        return when  {
+        return when {
             result is Result.Ok && result.value.isSuccessful() -> APIResult.Success(result.value)
-            result is Result.Ok && !result.value.isSuccessful() -> APIResult.Failure(APIError(mapOf(), APIErrorType.FalseAPIResponse, 0, Throwable(result.value.getMessage()), result.value.getMessage()))
+            result is Result.Ok && !result.value.isSuccessful() -> APIResult.Failure(
+                APIError(
+                    mapOf(),
+                    APIErrorType.FalseAPIResponse,
+                    0,
+                    Throwable(result.value.getMessage()),
+                    result.value.getMessage()
+                )
+            )
             result is Result.Error -> APIResult.Failure(errorFromHttpException(result.exception))
             result is Result.Exception -> APIResult.Failure(errorFromAnyException(result.exception))
             else -> APIResult.Failure(errorFromHttpException(HttpException(null)))
