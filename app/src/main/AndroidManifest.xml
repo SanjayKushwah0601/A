@@ -34,7 +34,7 @@
 
         <activity android:name=".ui.authentication.login.LoginActivity"
                   android:screenOrientation="portrait"
-                  android:windowSoftInputMode="stateHidden|adjustNothing"/>
+                  android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <activity android:name=".ui.authentication.signup.SignupLandingActivity"
                   android:screenOrientation="portrait"
@@ -42,19 +42,19 @@
 
         <activity android:name=".ui.authentication.signup.individual.IndividualSignupActivity"
                   android:screenOrientation="portrait"
-                  android:windowSoftInputMode="stateHidden|adjustNothing"/>
+                  android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <activity android:name=".ui.authentication.signup.company.CompanySignupActivity"
                   android:screenOrientation="portrait"
-                  android:windowSoftInputMode="stateHidden|adjustNothing"/>
+                  android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <activity android:name=".ui.authentication.signup.company.CompanySignupFormTwoActivity"
                   android:screenOrientation="portrait"
-                  android:windowSoftInputMode="stateHidden|adjustNothing"/>
+                  android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <activity android:name=".ui.authentication.resetpassword.ResetPasswordActivity"
                   android:screenOrientation="portrait"
-                  android:windowSoftInputMode="stateHidden|adjustNothing"/>
+                  android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <provider
                 android:name="androidx.core.content.FileProvider"
