@@ -17,4 +17,21 @@
     <string name="reset_password">Reset Password</string>
     <string name="signup_as_a_company">Signup as a Company</string>
     <string name="signup_as_an_individual">Signup as an Individual</string>
+    <string name="company">Company</string>
+    <string name="company_details">Company Details</string>
+    <string name="company_name">Company Name</string>
+    <string name="company_address">Company Address</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="country">Country</string>
+    <string name="state">State</string>
+    <string name="city_suburb">City/Suburb</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="next">Next</string>
+    <string name="contact_person_details">Contact Person Details</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone">Phone</string>
+    <string name="signup">Signup</string>
 </resources>

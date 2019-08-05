@@ -6,6 +6,7 @@ import com.freight.shipper.ui.authentication.login.LoginActivity
 import com.freight.shipper.ui.authentication.resetpassword.ResetPasswordActivity
 import com.freight.shipper.ui.authentication.signup.SignupLandingActivity
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupActivity
+import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwoActivity
 import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
 
 
@@ -32,4 +33,8 @@ fun Activity.navigateToIndividualSignup() {
 
 fun Activity.navigateToCompanySignup() {
     startActivity(Intent(this, CompanySignupActivity::class.java))
+}
+
+fun Activity.navigateToCompanySignupSecondPage() {
+    startActivity(Intent(this, CompanySignupFormTwoActivity::class.java))
 }

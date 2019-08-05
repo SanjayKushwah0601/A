@@ -31,14 +31,14 @@ class LoginActivity : BaseActivity() {
         setupOnClicks()
         setupObservers()
     }
+    // endregion
 
+    // region - Private functions
     private fun initUI() {
         setupToolbar(toolbar, enableUpButton = false)
         tvToolbarTitle?.text = getString(R.string.login)
     }
-    // endregion
 
-    // region - Private functions
     private fun setupOnClicks() {
         buttonLogin?.setOnClickListener { viewModel.login() }
         signUp?.setOnClickListener { viewModel.onSignupButtonClicked() }
