@@ -17,14 +17,36 @@ class LoginViewModel(
 
     val signupAction = ActionLiveData<Boolean>()
     val resetPasswordAction = ActionLiveData<Boolean>()
+    val errorAction = ActionLiveData<String>()
+    private var loginEmail: String? = null
+    private var loginPassword: String? = null
+
+    fun onEmailChanged(email: String) {
+        loginEmail = email
+    }
+
+
+    fun onPasswordChanged(password: String) {
+        loginPassword = password
+    }
 
     fun login() {
+        if (loginEmail.isNullOrEmpty() && loginPassword.isNullOrEmpty()) {
+            errorAction.sendAction("Username or Password is empty")
+            return
+        }
         GlobalScope.launch(dispatcher.io) {
-            val result = model.login()
+            val result = model.login(loginEmail!!, loginPassword!!)
             withContext(dispatcher.main) {
                 when (result) {
-                    is APIResult.Success -> Timber.e("Success Sanjay: ${result.response}")
-                    is APIResult.Failure -> Timber.e("Failure Sanjay: ${result.error}")
+                    is APIResult.Success -> {
+                        errorAction.sendAction("Login Success ${result.response.getMessage()}")
+                        Timber.e("Success Sanjay: ${result.response}")
+                    }
+                    is APIResult.Failure -> {
+                        errorAction.sendAction(result.error?.message ?: "Login Failed")
+                        Timber.e("Failure Sanjay: ${result.error}")
+                    }
                 }
             }
         }
@@ -33,6 +55,7 @@ class LoginViewModel(
     fun onSignupButtonClicked() {
         signupAction.sendAction(true)
     }
+
     fun onResetButtonClicked() {
         resetPasswordAction.sendAction(true)
     }

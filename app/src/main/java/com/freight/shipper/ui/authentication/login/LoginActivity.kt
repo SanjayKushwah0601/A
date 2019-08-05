@@ -1,12 +1,15 @@
 package com.freight.shipper.ui.authentication.login
 
 import android.os.Bundle
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
+import com.freight.shipper.databinding.ActivityLoginBinding
 import com.freight.shipper.extensions.navigateToResetPassword
 import com.freight.shipper.extensions.navigateToSignupScreen
 import com.freight.shipper.extensions.setupToolbar
@@ -16,17 +19,19 @@ import kotlinx.android.synthetic.main.toolbar.*
 class LoginActivity : BaseActivity() {
 
     // region - Private fields
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by lazy {
+        ViewModelProviders.of(this,
+            BaseViewModelFactory { LoginViewModel(LoginModel(FreightApplication.instance.meuralAPI)) })
+            .get(LoginViewModel::class.java)
+    }
+    private lateinit var binding: ActivityLoginBinding
     // endregion
 
     // region - Overridden functions
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        val loginModel = LoginModel(FreightApplication.instance.meuralAPI)
-        viewModel = ViewModelProviders.of(this,
-            BaseViewModelFactory { LoginViewModel(loginModel) })
-            .get(LoginViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding.viewModel = viewModel
         initUI()
         setupOnClicks()
         setupObservers()
@@ -51,6 +56,9 @@ class LoginActivity : BaseActivity() {
         })
         viewModel.resetPasswordAction.observe(this, Observer {
             navigateToResetPassword()
+        })
+        viewModel.errorAction.observe(this, Observer {
+            Toast.makeText(this@LoginActivity, it, Toast.LENGTH_LONG).show()
         })
     }
     // endregion

@@ -11,7 +11,7 @@ import com.freight.shipper.model.Login
  */
 class LoginModel(private val api: MeuralAPIContract) {
 
-    suspend fun login(): APIResult<Login> {
-        return api.login("indshipper6@test.com", "123")
+    suspend fun login(email: String, password: String): APIResult<Login> {
+        return api.login(email, password)
     }
 }
