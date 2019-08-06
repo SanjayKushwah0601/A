@@ -69,7 +69,9 @@
 
     <!-- region BadgeText Size -->
     <dimen name="badge_text_view_padding">5dp</dimen>
-    <dimen name="dp_5">5dp</dimen>
-    <dimen name="dp_20">20dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_1dp">1dp</dimen>
     <!-- endregion -->
 </resources>

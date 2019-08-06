@@ -2,10 +2,10 @@
 
     <!-- Base application theme. -->
     <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
-        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
     <!--</style>-->
 
     <!-- Base application theme. -->
@@ -15,30 +15,30 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>
+        <item name="android:textViewStyle">@style/TextView.Body</item>
 
-        <item name="android:editTextStyle">@style/AppTheme.Widget.EditText</item>
-        <item name="editTextStyle">@style/AppTheme.Widget.EditText</item>
+        <item name="android:editTextStyle">@style/Material.EditText</item>
+        <item name="editTextStyle">@style/Material.EditText</item>
 
-        <item name="android:buttonStyle">@style/AppTheme.Widget.Button.Gray</item>
+        <item name="android:buttonStyle">@style/Material.Button</item>
 
-        <item name="spinnerStyle">@style/AppTheme.Widget.Spinner</item>
-        <item name="android:spinnerItemStyle">@style/AppTheme.Widget.SpinnerItem</item>
+        <item name="spinnerStyle">@style/Style.Widget.Spinner</item>
+        <item name="android:spinnerItemStyle">@style/Style.Widget.SpinnerItem</item>
 
         <item name="alertDialogTheme">@style/Material.AlertDialogTheme</item>
         <item name="buttonBarButtonStyle">@style/Material.Button.Dialog</item>
 
-        <item name="toolbarStyle">@style/AppTheme.Widget.Toolbar</item>
+        <item name="toolbarStyle">@style/Material.Toolbar</item>
         <!--<item name="homeAsUpIndicator">@drawable/ic_back_dark</item>-->
         <item name="android:actionMenuTextColor">@color/toolbar_menu_title_color</item>
         <item name="actionMenuTextAppearance">@style/Material.MenuItemTextAppearance</item>
     </style>
 
-    <style name="AppTheme" parent="BaseAppTheme" />
+    <style name="AppTheme" parent="BaseAppTheme"/>
 
-    <style name="AppTheme.DarkSystemBars" parent="BaseAppTheme" />
+    <style name="AppTheme.DarkSystemBars" parent="BaseAppTheme"/>
 
-    <style name="AppTheme.Widget" />
+    <style name="AppTheme.Widget"/>
 
     <!-- Splash page theme (so it loads before the page itself -->
 
@@ -47,90 +47,11 @@
         <item name="android:windowBackground">@drawable/splash_layers</item>
     </style>
 
-    <style name="SplashTheme" parent="BaseSplashTheme" />
+    <style name="SplashTheme" parent="BaseSplashTheme"/>
 
     <!-- TextViews -->
 
-    <style name="AppTheme.Widget.TextView" parent="android:Widget.DeviceDefault.TextView">
-        <item name="android:fontFamily">@font/nunito_sans</item>
-        <item name="android:textColor">@color/text_dark</item>
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Bold" parent="AppTheme.Widget.TextView">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="AppTheme.Widget.CropMask" parent="android:Widget">
-        <item name="android:background">@color/black</item>
-        <item name="android:alpha">0.6</item>
-    </style>
-
-    <style name="AppTheme.Widget.EditText" parent="android:Widget.DeviceDefault.EditText">
-        <item name="android:fontFamily">@font/nunito_sans</item>
-        <item name="android:textColor">@color/text_dark</item>
-        <item name="android:textColorHint">@color/text_hint</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:background">@drawable/edittext_field</item>
-        <item name="android:padding">13dp</item>
-        <item name="android:textColorHighlight">@color/edittext_highlight</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Small" parent="AppTheme.Widget.TextView">
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Serif" parent="android:Widget.DeviceDefault.TextView">
-        <item name="android:fontFamily">@font/libre_baskerville</item>
-        <item name="android:textColor">@color/text_dark</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Serif.Bold">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Serif.MainTitle" parent="AppTheme.Widget.TextView.Serif">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">28sp</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Serif.Title" parent="AppTheme.Widget.TextView.Serif">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">21sp</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Serif.SectionTitle" parent="AppTheme.Widget.TextView.Serif.Title">
-        <item name="android:background">@drawable/underline</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Serif.SectionTitle.Clickable" parent="AppTheme.Widget.TextView.Serif.Title">
-        <item name="android:drawableRight">@drawable/ic_keyboard_arrow_right</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Serif.SectionTitle.Clickable.Underlined" parent="AppTheme.Widget.TextView.Serif.SectionTitle.Clickable">
-        <item name="android:background">@drawable/underline</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Title.SmallCaps" parent="AppTheme.Widget.TextView">
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.Title.Large" parent="AppTheme.Widget.TextView">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">28sp</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.DialogTitle" parent="AppTheme.Widget.TextView">
-        <item name="fontFamily">@font/libre_baskerville</item>
-        <item name="android:textSize">21sp</item>
-    </style>
-
-    <style name="AppTheme.Widget.TextView.ToolbarTitle" parent="AppTheme.Widget.TextView">
+    <style name="AppTheme.Widget.TextView.ToolbarTitle" parent="TextView.Body">
         <item name="android:textSize">21sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_gravity">center</item>
@@ -152,59 +73,7 @@
         <item name="colorControlHighlight">#22000000</item>
     </style>
 
-    <style name="AppTheme.Widget.Button" parent="Base.Widget.AppCompat.Button.Borderless">
-        <item name="android:textSize">18sp</item>
-        <item name="android:background">@drawable/button_bg_black</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="android:theme">@style/AppTheme.LightRipple</item>
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:layout_height">58dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="AppTheme.Widget.Button.White" parent="AppTheme.Widget.Button">
-        <item name="android:background">@drawable/button_bg_white</item>
-        <item name="android:textColor">#000000</item>
-        <item name="theme">@style/AppTheme.DarkRipple</item>
-    </style>
-
-    <style name="AppTheme.Widget.Button.Gray" parent="Base.Widget.AppCompat.Button.Borderless">
-        <item name="android:background">#f5f6f8</item>
-        <item name="android:textColor">#160424</item>
-        <item name="android:fontFamily">@font/nunito_sans</item>
-        <item name="android:textSize">16sp</item>
-
-        <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="android:theme">@style/AppTheme.LightRipple</item>
-        <item name="android:layout_height">35dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="AppTheme.Widget.Button.White.NoOutline" parent="AppTheme.Widget.Button.White">
-        <item name="android:background">@drawable/button_bg_white_nostroke</item>
-    </style>
-
-
-    <style name="AppTheme.Widget.Button.Transparent" parent="AppTheme.Widget.Button.White">
-        <item name="android:background">?attr/selectableItemBackground</item>
-    </style>
     <!-- Spinners -->
-    <style name="AppTheme.Widget.Spinner" parent="Base.Widget.AppCompat.Spinner.Underlined">
-        <item name="android:paddingLeft">0dp</item>
-        <item name="android:layout_marginLeft">0dp</item>
-        <item name="android:paddingRight">0dp</item>
-        <item name="android:layout_marginRight">0dp</item>
-    </style>
-
-    <style name="AppTheme.Widget.SpinnerItem" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
-        <item name="android:paddingLeft">5dp</item>
-        <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-        <item name="android:layout_marginRight">5dp</item>
-    </style>
-
     <style name="AppTheme.Widget.Toolbar" parent="Base.Widget.AppCompat.Toolbar">
         <item name="titleTextAppearance">@style/AppTheme.Widget.TextView.ToolbarTitle</item>
         <item name="actionButtonStyle">@style/AppTheme.Widget.ActionButton</item>
@@ -319,7 +188,40 @@
     </style>
     <!--endregion-->
 
+    <!--region Spinner Style-->
+    <style name="Style.Widget.Spinner" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:paddingRight">0dp</item>
+        <item name="android:background">@drawable/button_bg_white_square</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+
+    <style name="Style.Widget.SpinnerItem" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
+
+    <style name="spinner_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/gradient_spinner</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:popupBackground">#DFFFFFFF</item>
+    </style>
+    <!--endregion-->
+
     <!--region Toolbar Style-->
+    <style name="Material.Toolbar" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/AppTheme.Widget.TextView.ToolbarTitle</item>
+        <item name="actionButtonStyle">@style/AppTheme.Widget.ActionButton</item>
+    </style>
     <style name="ToolbarStyle" parent="@style/Base.TextAppearance.AppCompat.Title">
         <item name="android:textSize">@dimen/toolbar_title_size</item>
         <item name="android:fontFamily">@font/nunito_sans_bold</item>

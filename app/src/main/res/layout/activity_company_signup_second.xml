@@ -42,7 +42,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/AppTheme.Widget.TextView.Serif.Title"
+                        style="@style/TextView.Heading.M"
                         android:text="@string/contact_person_details"/>
 
                 <LinearLayout
@@ -54,8 +54,8 @@
                             android:id="@+id/tiFirstName"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/dp_5"
-                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_marginRight="@dimen/_5dp"
+                            android:layout_marginEnd="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -72,8 +72,8 @@
                             android:id="@+id/tiLastName"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/dp_5"
-                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_marginStart="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -97,8 +97,8 @@
                             android:id="@+id/tiEmail"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/dp_5"
-                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_marginRight="@dimen/_5dp"
+                            android:layout_marginEnd="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -115,8 +115,8 @@
                             android:id="@+id/tiPhoneNumber"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/dp_5"
-                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_marginStart="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText

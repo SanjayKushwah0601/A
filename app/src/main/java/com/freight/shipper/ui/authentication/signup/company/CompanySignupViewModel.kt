@@ -123,6 +123,8 @@ class CompanySignupViewModel(
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success -> {
+                        model.saveLoginUser(result.response.data)
+                        model.saveToken(result.response.data.sessionToken)
                         companySignupAction.sendAction(Pair("Signup Success", true))
                         Timber.e("Success Sanjay: ${result.response}")
                     }

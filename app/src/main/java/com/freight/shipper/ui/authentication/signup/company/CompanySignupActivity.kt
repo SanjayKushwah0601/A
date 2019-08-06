@@ -20,7 +20,14 @@ class CompanySignupActivity : BaseActivity() {
     // region - Private properties
     private val viewModel: CompanySignupViewModel by lazy {
         ViewModelProviders.of(this,
-            BaseViewModelFactory { CompanySignupViewModel(CompanySignupModel(FreightApplication.instance.meuralAPI)) })
+            BaseViewModelFactory {
+                CompanySignupViewModel(
+                    CompanySignupModel(
+                        FreightApplication.instance.meuralAPI,
+                        FreightApplication.instance.loginManager
+                    )
+                )
+            })
             .get(CompanySignupViewModel::class.java)
     }
     private lateinit var binding: ActivityCompanySignupFirstBinding

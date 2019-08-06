@@ -55,3 +55,7 @@ class User {
     @SerializedName("updated_date")
     var updatedDate: String? = null
 }
+
+/*"""{"responseCode":true,"responseMsg":"success",
+"responseData":{"user_id":"8","first_name":"a","last_name":"b","email":"ss@gmail.com","phone":"","state":"","city":"","postal_code":"","address":"","created_date":"2019-08-06 17:56:08","updated_date":"0000-00-00 00:00:00","updated_by":null,"session_token":6449404864,"apnstoken":"","reset_code":null,"company_name":"","logo":"","role_id":"3","role_code":"individual_shipper","role_ids":"3","role_codes":"individual_shipper","finder_id":"14","shipper_id":null}}"""
+        */

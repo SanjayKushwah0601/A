@@ -43,7 +43,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/AppTheme.Widget.TextView.Serif.Title"
+                        style="@style/TextView.Heading.M"
                         android:text="@string/company_details"/>
 
                 <LinearLayout
@@ -55,8 +55,8 @@
                             android:id="@+id/tiCompanyName"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/dp_5"
-                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_marginRight="@dimen/_5dp"
+                            android:layout_marginEnd="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -73,8 +73,8 @@
                             android:id="@+id/tiRegistrationNumber"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/dp_5"
-                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_marginStart="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -93,8 +93,8 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_20"
-                        style="@style/AppTheme.Widget.TextView.Serif.Title"
+                        android:layout_marginTop="@dimen/_20dp"
+                        style="@style/TextView.Heading.M"
                         android:text="@string/company_address"/>
 
                 <LinearLayout
@@ -106,8 +106,8 @@
                             android:id="@+id/tiAddLine1"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/dp_5"
-                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_marginRight="@dimen/_5dp"
+                            android:layout_marginEnd="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -124,8 +124,8 @@
                             android:id="@+id/tiAddLine2"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/dp_5"
-                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_marginStart="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -149,8 +149,8 @@
                             android:id="@+id/tiCountry"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/dp_5"
-                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_marginRight="@dimen/_5dp"
+                            android:layout_marginEnd="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -167,8 +167,8 @@
                             android:id="@+id/tiState"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/dp_5"
-                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_marginStart="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -192,8 +192,8 @@
                             android:id="@+id/tiCity"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/dp_5"
-                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_marginRight="@dimen/_5dp"
+                            android:layout_marginEnd="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -210,8 +210,8 @@
                             android:id="@+id/tiPostalCode"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/dp_5"
-                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_marginStart="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -235,8 +235,8 @@
                             android:id="@+id/tiEmail"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/dp_5"
-                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_marginRight="@dimen/_5dp"
+                            android:layout_marginEnd="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -253,8 +253,8 @@
                             android:id="@+id/tiPhoneNumber"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/dp_5"
-                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_marginStart="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -278,8 +278,8 @@
                             android:id="@+id/tiPassword"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_marginRight="@dimen/dp_5"
-                            android:layout_marginEnd="@dimen/dp_5"
+                            android:layout_marginRight="@dimen/_5dp"
+                            android:layout_marginEnd="@dimen/_5dp"
                             app:passwordToggleEnabled="true"
                             app:passwordToggleTint="@color/colorAccent"
                             android:layout_height="wrap_content">
@@ -300,8 +300,8 @@
                             android:layout_weight="1"
                             app:passwordToggleEnabled="true"
                             app:passwordToggleTint="@color/colorAccent"
-                            android:layout_marginLeft="@dimen/dp_5"
-                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_marginLeft="@dimen/_5dp"
+                            android:layout_marginStart="@dimen/_5dp"
                             android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText

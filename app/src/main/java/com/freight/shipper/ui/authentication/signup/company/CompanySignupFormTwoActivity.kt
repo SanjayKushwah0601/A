@@ -11,6 +11,7 @@ import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityCompanySignupSecondBinding
+import com.freight.shipper.extensions.navigateToDashboard
 import com.freight.shipper.extensions.setupToolbar
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.android.synthetic.main.toolbar.*
@@ -20,7 +21,14 @@ class CompanySignupFormTwoActivity : BaseActivity() {
     // region - Private properties
     private val viewModel: CompanySignupViewModel by lazy {
         ViewModelProviders.of(this,
-            BaseViewModelFactory { CompanySignupViewModel(CompanySignupModel(FreightApplication.instance.meuralAPI)) })
+            BaseViewModelFactory {
+                CompanySignupViewModel(
+                    CompanySignupModel(
+                        FreightApplication.instance.meuralAPI,
+                        FreightApplication.instance.loginManager
+                    )
+                )
+            })
             .get(CompanySignupViewModel::class.java)
     }
     private lateinit var binding: ActivityCompanySignupSecondBinding
@@ -67,6 +75,7 @@ class CompanySignupFormTwoActivity : BaseActivity() {
     private fun setupObservers() {
         viewModel.companySignupAction.observe(this, Observer {
             Toast.makeText(this@CompanySignupFormTwoActivity, it.first, Toast.LENGTH_LONG).show()
+            if (it.second) navigateToDashboard()
         })
     }
     // endregion

@@ -22,7 +22,10 @@ fun Activity.startLoginActivity() {
 }
 
 fun Activity.navigateToDashboard() {
-    startActivity(Intent(this, DashboardActivity::class.java))
+    val intent = Intent(this, DashboardActivity::class.java).apply {
+        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    }
+    startActivity(intent)
 }
 
 fun Activity.navigateToSignupScreen() {

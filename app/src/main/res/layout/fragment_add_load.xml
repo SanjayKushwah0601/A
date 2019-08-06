@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:animateLayoutChanges="true"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="@dimen/activity_horizontal_margin"
+            tools:context="com.freight.shipper.ui.addload.AddLoadFragment">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextView.Heading.M"
+                android:textColor="@color/colorAccent"
+                android:text="@string/pickup_and_drop"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextView.Heading.XS"
+                android:text="@string/pickup"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/tvPickupAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextView.Body"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/buttonChangePickup"
+                    tools:text="@string/pickup"/>
+
+            <Button
+                    android:id="@+id/buttonChangePickup"
+                    android:layout_width="wrap_content"
+                    style="@style/Material.Button.Transparent"
+                    android:textColor="@color/colorAccent"
+                    android:text="@string/change"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TextView.Heading.XS"
+                android:text="@string/drop"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/tvDropAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextView.Body"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/buttonChangeDrop"
+                    tools:text="@string/drop"/>
+
+            <Button
+                    android:id="@+id/buttonChangeDrop"
+                    android:layout_width="wrap_content"
+                    style="@style/Material.Button.Transparent"
+                    android:textColor="@color/colorAccent"
+                    android:text="@string/change"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10dp"
+                android:paddingTop="@dimen/_5dp"
+                android:paddingBottom="@dimen/_5dp"
+                android:layout_height="wrap_content">
+
+            <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/labelDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextView.Body.Gray"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/distance_colon"/>
+
+                <TextView
+                        android:id="@+id/tvDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_toEndOf="@+id/labelDistance"
+                        android:padding="@dimen/_5dp"
+                        android:layout_height="wrap_content"
+                        style="@style/TextView.Body.Bold"
+                        android:layout_centerVertical="true"
+                        tools:text="280 Miles"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/labelETA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextView.Body.Gray"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/eta_colon"/>
+
+                <TextView
+                        android:id="@+id/tvETA"
+                        android:layout_width="wrap_content"
+                        android:layout_toEndOf="@+id/labelETA"
+                        android:padding="@dimen/_5dp"
+                        android:layout_height="wrap_content"
+                        style="@style/TextView.Body.Bold"
+                        android:layout_centerVertical="true"
+                        tools:text="5 Hr 18 Mins"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent"
+              android:background="@color/section_divider_color"
+              android:layout_height="@dimen/_1dp"/>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:paddingTop="@dimen/_5dp"
+                android:paddingBottom="@dimen/_5dp"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/labelPickupDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextView.Body.Gray"
+                    android:layout_marginEnd="@dimen/_5dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/pickup_date_star"/>
+
+            <TextView
+                    android:id="@+id/tvPickupDate"
+                    android:layout_width="match_parent"
+                    android:layout_toEndOf="@+id/labelPickupDate"
+                    android:padding="@dimen/_5dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:drawableRight="@drawable/ic_calendar"
+                    android:gravity="end"
+                    android:drawablePadding="@dimen/_5dp"
+                    android:layout_height="wrap_content"
+                    style="@style/TextView.Body.Bold"
+                    android:layout_centerVertical="true"
+                    tools:text="28 July 2019, 2:56 AM "/>
+
+
+        </RelativeLayout>
+        <View android:layout_width="match_parent"
+              android:background="@color/section_divider_color"
+              android:layout_height="@dimen/_1dp"/>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:paddingTop="@dimen/_5dp"
+                android:paddingBottom="@dimen/_5dp"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/labelDropDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/TextView.Body.Gray"
+                    android:layout_marginEnd="@dimen/_5dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/drop_date_star"/>
+
+            <TextView
+                    android:id="@+id/tvDropDate"
+                    android:layout_width="match_parent"
+                    android:layout_toEndOf="@+id/labelDropDate"
+                    android:padding="@dimen/_5dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:drawableRight="@drawable/ic_calendar"
+                    android:gravity="end"
+                    android:drawablePadding="@dimen/_5dp"
+                    android:layout_height="wrap_content"
+                    style="@style/TextView.Body.Bold"
+                    tools:text="28 July 2019, 2:56 AM "/>
+
+
+        </RelativeLayout>
+
+        <View android:layout_width="match_parent"
+              android:background="@color/section_divider_color"
+              android:layout_height="@dimen/_1dp"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextView.Heading.M"
+                android:layout_marginTop="@dimen/_10dp"
+                android:textColor="@color/colorAccent"
+                android:text="@string/select_your_vehicle_type"/>
+
+        <Spinner
+                android:layout_width="match_parent"
+                style="@style/spinner_style"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_height="wrap_content">
+
+        </Spinner>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/imageVehicleType"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_truck"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/imageVehicleType"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/tvVehicleType"
+                        android:layout_width="wrap_content"
+                        style="@style/TextView.Heading.XS"
+                        tools:text="Eicher pro 250"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        style="@style/TextView.Body.Gray"
+                        android:id="@+id/labelCapacity"
+                        android:layout_below="@+id/tvVehicleType"
+                        android:text="@string/capacity_colon"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        style="@style/TextView.Body.Gray"
+                        android:id="@+id/tvCapacity"
+                        android:layout_below="@+id/tvVehicleType"
+                        android:layout_toEndOf="@+id/labelCapacity"
+                        tools:text="10 Tons"
+                        android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextView.Heading.M"
+                android:layout_marginTop="@dimen/_10dp"
+                android:textColor="@color/colorAccent"
+                android:text="@string/who_is_the_sender"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5dp"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextReceiverName"
+                    style="@style/Material.EditText"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:inputType="textPassword"
+                    android:drawableEnd="@drawable/ic_phonebook"
+                    android:hint="@string/receiver_name"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5dp"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPhoneNumber"
+                    style="@style/Material.EditText"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:inputType="phone"
+                    android:hint="@string/phone_number"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+                android:id="@+id/buttonSubmit"
+                android:layout_width="match_parent"
+                android:text="@string/submit"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+

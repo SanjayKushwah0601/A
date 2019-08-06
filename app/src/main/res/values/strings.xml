@@ -37,9 +37,21 @@
     <string name="registration_number">Registration Number</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="add">Add</string>
     <string name="favorites">Favorites</string>
     <string name="profile">Profile</string>
+    <string name="add_new_load">Add New Load</string>
+    <string name="new_load">New Load</string>
+    <string name="pickup_and_drop">Pickup and drop?</string>
+    <string name="pickup">Pickup</string>
+    <string name="change">Change</string>
+    <string name="drop">Drop</string>
+    <string name="distance_colon">Distance:</string>
+    <string name="eta_colon">ETA: </string>
+    <string name="pickup_date_star">Pickup Date*</string>
+    <string name="drop_date_star">Drop Date*</string>
+    <string name="select_your_vehicle_type">Select your vehicle type?</string>
+    <string name="capacity_colon">Capacity:</string>
+    <string name="who_is_the_sender">Who is the sender?</string>
+    <string name="receiver_name">Receiver Name</string>
 </resources>
