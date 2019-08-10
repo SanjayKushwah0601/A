@@ -2,8 +2,8 @@ package com.freight.shipper.core.persistence.network.client.server
 
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.model.Category
-import com.freight.shipper.model.User
 import com.freight.shipper.model.Token
+import com.freight.shipper.model.User
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 
 abstract class MeuralAPIContract {
@@ -17,6 +17,7 @@ abstract class MeuralAPIContract {
     abstract suspend fun login(email: String, password: String): APIResult<User>
 
     abstract suspend fun signupAsCompany(model: CompanySignup): APIResult<User>
+    abstract suspend fun forgotPassword(email: String): APIResult<User>
 
     abstract suspend fun register(
         firstName: String, lastName: String, email: String,

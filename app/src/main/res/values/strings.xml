@@ -54,4 +54,8 @@
     <string name="capacity_colon">Capacity:</string>
     <string name="who_is_the_sender">Who is the sender?</string>
     <string name="receiver_name">Receiver Name</string>
+    <string name="forgot_password_message">Don\'t worry! Enter your valid email address below to request a password
+        reset.
+    </string>
+    <string name="emai_empty_error">Email is empty</string>
 </resources>

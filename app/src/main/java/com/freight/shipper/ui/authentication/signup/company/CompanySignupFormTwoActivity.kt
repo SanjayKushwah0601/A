@@ -13,6 +13,7 @@ import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityCompanySignupSecondBinding
 import com.freight.shipper.extensions.navigateToDashboard
 import com.freight.shipper.extensions.setupToolbar
+import com.freight.shipper.repository.AuthenticationRepository
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -23,7 +24,7 @@ class CompanySignupFormTwoActivity : BaseActivity() {
         ViewModelProviders.of(this,
             BaseViewModelFactory {
                 CompanySignupViewModel(
-                    CompanySignupModel(
+                    AuthenticationRepository(
                         FreightApplication.instance.meuralAPI,
                         FreightApplication.instance.loginManager
                     )

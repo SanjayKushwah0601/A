@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.authentication.signup.company
+package com.freight.shipper.ui.authentication.forgotpassword
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,39 +9,39 @@ import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
-import com.freight.shipper.databinding.ActivityCompanySignupFirstBinding
-import com.freight.shipper.extensions.navigateToCompanySignupSecondPage
+import com.freight.shipper.databinding.ActivityForgotPasswordBinding
+import com.freight.shipper.extensions.navigateToResetPassword
+import com.freight.shipper.extensions.setKeyboardShown
 import com.freight.shipper.extensions.setupToolbar
+import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.repository.AuthenticationRepository
-import kotlinx.android.synthetic.main.activity_company_signup_first.*
 import kotlinx.android.synthetic.main.toolbar.*
+import timber.log.Timber
 
-class CompanySignupActivity : BaseActivity() {
+class ForgotPasswordActivity : BaseActivity() {
 
-    // region - Private properties
-    private val viewModel: CompanySignupViewModel by lazy {
+    // region - Private fields
+    private val viewModel: ForgotPasswordViewModel by lazy {
         ViewModelProviders.of(this,
             BaseViewModelFactory {
-                CompanySignupViewModel(
+                ForgotPasswordViewModel(
                     AuthenticationRepository(
                         FreightApplication.instance.meuralAPI,
                         FreightApplication.instance.loginManager
                     )
                 )
             })
-            .get(CompanySignupViewModel::class.java)
+            .get(ForgotPasswordViewModel::class.java)
     }
-    private lateinit var binding: ActivityCompanySignupFirstBinding
+    private lateinit var binding: ActivityForgotPasswordBinding
     // endregion
 
-    // region - Overridden function
+    // region - Overridden functions
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_company_signup_first)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_company_signup_first)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_forgot_password)
         binding.viewModel = viewModel
-        initUI()
-        setupOnClicks()
+        initUi()
         setupObservers()
     }
 
@@ -56,19 +56,27 @@ class CompanySignupActivity : BaseActivity() {
     // endregion
 
     // region - Private functions
-    private fun initUI() {
+    private fun initUi() {
         setupToolbar(toolbar, enableUpButton = true)
-        tvToolbarTitle?.text = getString(R.string.company)
-    }
-
-    private fun setupOnClicks() {
-        buttonNext?.setOnClickListener { viewModel.onNextButtonClicked() }
+        tvToolbarTitle?.text = getString(R.string.forgot_password)
     }
 
     private fun setupObservers() {
-        viewModel.nextButtonAction.observe(this, Observer {
-            navigateToCompanySignupSecondPage(it)
+        viewModel.isLoading.observe(this, Observer {
+            Timber.d("Loading...")
+            binding.root?.let { it.setKeyboardShown(it.context, false) }
+        })
+
+        viewModel.error.observe(this, Observer {
+            Timber.d("ApiError... $it")
+            showErrorMessage(it)
+        })
+
+        viewModel.forgotPasswordResponse.observe(this, Observer {
+            Timber.d("Response... ${it.toString()}")
+            navigateToResetPassword()
         })
     }
     // endregion
+
 }

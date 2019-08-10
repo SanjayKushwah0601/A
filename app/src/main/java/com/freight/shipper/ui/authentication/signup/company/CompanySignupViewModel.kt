@@ -5,6 +5,7 @@ import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvid
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
+import com.freight.shipper.repository.AuthenticationRepository
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -12,7 +13,7 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class CompanySignupViewModel(
-    private val model: CompanySignupModel,
+    private val model: AuthenticationRepository,
     val dispatcher: DispatcherProvider = DispatcherProviderImpl()
 ) : BaseViewModel() {
 

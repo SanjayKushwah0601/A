@@ -10,10 +10,8 @@ import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityLoginBinding
-import com.freight.shipper.extensions.navigateToDashboard
-import com.freight.shipper.extensions.navigateToResetPassword
-import com.freight.shipper.extensions.navigateToSignupScreen
-import com.freight.shipper.extensions.setupToolbar
+import com.freight.shipper.extensions.*
+import com.freight.shipper.repository.AuthenticationRepository
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -23,7 +21,7 @@ class LoginActivity : BaseActivity() {
     private val viewModel: LoginViewModel by lazy {
         ViewModelProviders.of(this, BaseViewModelFactory {
             LoginViewModel(
-                LoginModel(
+                AuthenticationRepository(
                     FreightApplication.instance.meuralAPI,
                     FreightApplication.instance.loginManager
                 )
@@ -61,7 +59,7 @@ class LoginActivity : BaseActivity() {
             navigateToSignupScreen()
         })
         viewModel.resetPasswordAction.observe(this, Observer {
-            navigateToResetPassword()
+            navigateToForgotPassword()
         })
         viewModel.loginStatusAction.observe(this, Observer {
             navigateToDashboard()

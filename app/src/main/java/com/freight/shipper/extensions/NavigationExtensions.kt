@@ -2,6 +2,7 @@ package com.freight.shipper.extensions
 
 import android.app.Activity
 import android.content.Intent
+import com.freight.shipper.ui.authentication.forgotpassword.ForgotPasswordActivity
 import com.freight.shipper.ui.authentication.login.LoginActivity
 import com.freight.shipper.ui.authentication.resetpassword.ResetPasswordActivity
 import com.freight.shipper.ui.authentication.signup.CompanySignup
@@ -30,6 +31,10 @@ fun Activity.navigateToDashboard() {
 
 fun Activity.navigateToSignupScreen() {
     startActivity(Intent(this, SignupLandingActivity::class.java))
+}
+
+fun Activity.navigateToForgotPassword() {
+    startActivity(Intent(this, ForgotPasswordActivity::class.java))
 }
 
 fun Activity.navigateToResetPassword() {

@@ -5,13 +5,14 @@ import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvid
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
+import com.freight.shipper.repository.AuthenticationRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class LoginViewModel(
-    private val model: LoginModel,
+    private val model: AuthenticationRepository,
     val dispatcher: DispatcherProvider = DispatcherProviderImpl()
 ) : BaseViewModel() {
 

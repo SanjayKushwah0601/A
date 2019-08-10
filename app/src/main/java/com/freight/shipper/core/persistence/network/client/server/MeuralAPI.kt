@@ -8,8 +8,8 @@ import com.freight.shipper.core.persistence.network.service.AuthenticationServic
 import com.freight.shipper.core.persistence.network.service.CategoryService
 import com.freight.shipper.core.persistence.network.service.UserService
 import com.freight.shipper.model.Category
-import com.freight.shipper.model.User
 import com.freight.shipper.model.Token
+import com.freight.shipper.model.User
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -52,6 +52,10 @@ class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
             "${model.addressLine1} ${model.addressLine2}", model.country, model.state,
             model.city, model.postcode, model.password, model.companyName
         ).apiResult()
+    }
+
+    override suspend fun forgotPassword(email: String): APIResult<User> {
+        return authService.forgotPassword(email).apiResult()
     }
 
     override suspend fun register(
