@@ -58,4 +58,8 @@
         reset.
     </string>
     <string name="emai_empty_error">Email is empty</string>
+    <string name="no_load_available">No load available</string>
+    <string name="failed_to_fetch_load">Failed to fetch loads</string>
+    <string name="active">Active</string>
+    <string name="past">Past</string>
 </resources>

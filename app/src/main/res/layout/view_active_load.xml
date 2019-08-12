@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="activeLoad"
+            type="com.freight.shipper.model.ActiveLoad"/>
+
+        <variable
+            name="viewholder"
+            type="com.freight.shipper.ui.bookings.pager.ActiveLoadViewHolder"/>
+
+        <variable
+            name="isEditing"
+            type="boolean"/>
+
+        <variable
+            name="clickListener"
+            type="com.freight.shipper.ui.bookings.pager.LoadEventListener"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{(v)->clickListener.onWorkClicked(activeLoad)}"
+        android:visibility="@{activeLoad!=null ? View.VISIBLE : View.GONE}">
+
+        <LinearLayout
+            android:id="@+id/imageViewContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp">
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{ activeLoad.url }"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/imageName"
+                style="@style/TextView.Heading.XS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="@{activeLoad.url}"
+                tools:text="TextView"/>
+
+            <TextView
+                android:id="@+id/itemCount"
+                style="@style/TextView.Body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:gravity="center_vertical"
+                android:text="@{activeLoad.url}"
+                tools:text="TextView"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

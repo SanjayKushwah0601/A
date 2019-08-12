@@ -9,6 +9,7 @@ import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.extensions.setupToolbar
 import com.freight.shipper.ui.addload.AddLoadFragment
+import com.freight.shipper.ui.bookings.LoadPagerFragment
 import com.freight.shipper.ui.home.HomeFragment
 import com.freight.shipper.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -29,6 +30,7 @@ class DashboardActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     private var loginManager = FreightApplication.instance.loginManager
     private var lastItemSelected = R.id.navigation_home
 
+    private val loadFragment by lazy { LoadPagerFragment.newInstance() }
     private val homeFragment by lazy { HomeFragment.newInstance() }
     private val addLoadFragment by lazy { AddLoadFragment.newInstance() }
     private val profileFragment by lazy { ProfileFragment.newInstance() }
@@ -74,7 +76,7 @@ class DashboardActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     private fun onHomeSelected() {
         lastItemSelected = R.id.navigation_home
         setToolbarTitle()
-        replaceFragmentOrAction(homeFragment)
+        replaceFragmentOrAction(loadFragment)
     }
 
     private fun onSecondSelected() {
@@ -101,7 +103,7 @@ class DashboardActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
             START_SCREEN_HOME -> {
                 bottomNavigationView.selectedItemId = R.id.navigation_home
                 setToolbarTitle()
-                homeFragment
+                loadFragment
             }
             START_SCREEN_PROFILE -> {
                 bottomNavigationView.selectedItemId = R.id.navigation_profile
@@ -111,7 +113,7 @@ class DashboardActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
             else -> {
                 bottomNavigationView.selectedItemId = R.id.navigation_home
                 setToolbarTitle()
-                homeFragment
+                loadFragment
             }
         }
 
