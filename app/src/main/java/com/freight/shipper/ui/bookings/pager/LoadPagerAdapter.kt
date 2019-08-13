@@ -23,6 +23,13 @@ class LoadPagerAdapter(
         return fragments[position].getTabTitle()
     }
 
+    /**
+     * FragmentPagerAdapter doesn't use saveState() because the entire fragment is retained
+     * in memory. If you want to avoid that behavior you use FragmentStatePagerAdapter which
+     * only saves state. If you don't want to save anything at all, then you use
+     * FragmentStatepagerAdapter without saving state; it automatically does not save the
+     * Fragment in memory
+     */
     override fun saveState(): Parcelable? {
         return null
     }
