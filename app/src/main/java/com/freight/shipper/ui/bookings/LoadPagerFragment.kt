@@ -48,7 +48,7 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
         pagerAdapter = LoadPagerAdapter(fragments, childFragmentManager)
         viewPager.adapter = pagerAdapter
         viewPager.addOnPageChangeListener(this)
-        viewPager.offscreenPageLimit = 3
+//            viewPager.offscreenPageLimit = 3
 
         tabLayout.setupWithViewPager(viewPager)
         tabLayout.tabMode = TabLayout.MODE_FIXED
