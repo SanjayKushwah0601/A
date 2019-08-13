@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.freight.shipper.core.platform.BaseViewModel
 import com.freight.shipper.model.ActiveLoad
+import com.freight.shipper.model.PastLoad
 import com.freight.shipper.repository.LoadRepository
 
 class LoadPagerViewModel(private val model: LoadRepository) : BaseViewModel() {
@@ -18,10 +19,22 @@ class LoadPagerViewModel(private val model: LoadRepository) : BaseViewModel() {
             fetchActiveLoad()
             return _activeLoads
         }
-    private val _activeLoads = MediatorLiveData<List<ActiveLoad>>()
 
-    fun fetchActiveLoad() {
+    val pastLoads: LiveData<List<PastLoad>>
+        get() {
+            fetchPastLoad()
+            return _pastLoads
+        }
+    private val _activeLoads = MediatorLiveData<List<ActiveLoad>>()
+    private val _pastLoads = MediatorLiveData<List<PastLoad>>()
+
+    private fun fetchActiveLoad() {
         isLoading.postValue(true)
-        model.forgotPassword(Pair(_activeLoads, error))
+        model.fetchActiveLoad(Pair(_activeLoads, error))
+    }
+
+    private fun fetchPastLoad() {
+        isLoading.postValue(true)
+        model.fetchPastLoad(Pair(_pastLoads, error))
     }
 }

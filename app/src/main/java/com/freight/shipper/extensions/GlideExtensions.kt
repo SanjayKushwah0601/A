@@ -19,6 +19,7 @@ fun ImageView.setImageDrawable(drawable: Drawable?) {
     drawable?.also { this.setImageDrawable(drawable) }
 }
 
+@BindingAdapter("loadCircularImage")
 fun ImageView.loadCircularImage(str: String?) {
     Glide.with(this)
         .load(str)

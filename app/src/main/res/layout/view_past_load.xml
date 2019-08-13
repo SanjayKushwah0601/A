@@ -9,12 +9,12 @@
         <import type="android.view.View"/>
 
         <variable
-            name="activeLoad"
-            type="com.freight.shipper.model.ActiveLoad"/>
+            name="pastLoad"
+            type="com.freight.shipper.model.PastLoad"/>
 
         <variable
             name="viewholder"
-            type="com.freight.shipper.ui.bookings.pager.ActiveLoadViewHolder"/>
+            type="com.freight.shipper.ui.bookings.pager.PastLoadViewHolder"/>
 
         <variable
             name="isEditing"
@@ -22,7 +22,7 @@
 
         <variable
             name="clickListener"
-            type="com.freight.shipper.ui.bookings.pager.LoadEventListener"/>
+            type="com.freight.shipper.ui.bookings.pager.PastLoadEventListener"/>
 
     </data>
 
@@ -46,7 +46,7 @@
                 android:layout_margin="@dimen/_10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                app:loadCircularImage="@{ activeLoad.customerImage }"/>
+                app:loadCircularImage="@{ pastLoad.customerImage }"/>
 
             <TextView
                 android:id="@+id/tvCustomerName"
@@ -54,17 +54,34 @@
                 style="@style/TextView.Heading.XS"
                 android:singleLine="true"
                 android:layout_marginTop="@dimen/_5dp"
-                android:text="@{activeLoad.customerName}"
+                android:text="@{pastLoad.customerName}"
                 tools:text="@string/customer_name"
                 android:layout_toEndOf="@+id/image"
                 android:layout_height="wrap_content"/>
 
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                style="@style/TextView.Body.Bold"
+                android:singleLine="true"
+                android:paddingLeft="@dimen/_10dp"
+                android:paddingRight="@dimen/_10dp"
+                android:background="@drawable/bg_rounded_outline_accent"
+                android:layout_marginTop="@dimen/_20dp"
+                android:text="@string/completed"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_5dp"
+                android:layout_alignParentEnd="true"
+            />
+
             <TextView
                 android:layout_width="wrap_content"
                 style="@style/TextView.Body"
-                android:text="@{`Load id: `+activeLoad.id}"
+                android:text="@{`Load id: `+pastLoad.id}"
                 tools:text="@string/customer_name"
                 android:singleLine="true"
+                android:id="@+id/tvLoadId"
                 android:layout_toEndOf="@+id/image"
                 android:layout_below="@+id/tvCustomerName"
                 android:layout_height="wrap_content"/>
@@ -95,7 +112,7 @@
                         android:textStyle="bold"
                         android:maxLines="1"
                         tools:text="Pickup City"
-                        android:text="@{activeLoad.pickCity}"
+                        android:text="@{pastLoad.pickCity}"
                         android:drawableLeft="@drawable/square_accent"
                         android:drawablePadding="@dimen/_3dp"
                         android:drawableTint="@color/colorAccent"
@@ -112,7 +129,7 @@
                             android:maxLines="1"
                             android:drawableTint="@color/button_gray"
                             tools:text="Destination City"
-                            android:text="@{activeLoad.destinationCity}"
+                            android:text="@{pastLoad.destinationCity}"
                             android:drawableLeft="@drawable/square_gray"
                             android:drawablePadding="@dimen/_3dp"
                             android:gravity="end"
@@ -129,7 +146,7 @@
                         style="@style/TextView.Body"
                         tools:text="Pickup Address"
                         android:maxLines="2"
-                        android:text="@{activeLoad.pickAddress}"
+                        android:text="@{pastLoad.pickAddress}"
                         android:drawablePadding="@dimen/_3dp"
                         android:layout_height="wrap_content"/>
 
@@ -141,7 +158,7 @@
                         android:layout_height="wrap_content"
                         style="@style/TextView.Body"
                         tools:text="Destination Address"
-                        android:text="@{activeLoad.destinationAddress}"
+                        android:text="@{pastLoad.destinationAddress}"
                         android:drawablePadding="@dimen/_3dp"/>
 
                 </LinearLayout>
@@ -155,7 +172,7 @@
                         style="@style/TextView.Body.Gray"
                         tools:text="10:00 AM, 22 Jul"
                         android:maxLines="2"
-                        android:text="@{activeLoad.pickTime}"
+                        android:text="@{pastLoad.pickTime}"
                         android:drawablePadding="@dimen/_3dp"
                         android:layout_height="wrap_content"/>
 
@@ -167,7 +184,7 @@
                         android:layout_height="wrap_content"
                         style="@style/TextView.Body.Gray"
                         tools:text="10:00 AM, 22 Jul"
-                        android:text="@{activeLoad.destinationTime}"
+                        android:text="@{pastLoad.destinationTime}"
                         android:drawablePadding="@dimen/_3dp"/>
 
                 </LinearLayout>
@@ -192,7 +209,8 @@
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/ic_help_outline_accent"
                         app:layout_constraintStart_toEndOf="@+id/textView4"
-                        app:layout_constraintTop_toTopOf="parent" android:id="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:id="@+id/imageView"
                         android:layout_marginStart="4dp"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -200,7 +218,7 @@
                         tools:text="122.00"
                         android:maxLines="1"
                         android:textColor="@color/colorAccent"
-                        android:text="@{activeLoad.amount}"
+                        android:text="@{pastLoad.amount}"
                         android:drawablePadding="@dimen/_3dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
@@ -228,25 +246,11 @@
                         android:layout_height="wrap_content"
                         style="@style/TextView.Body"
                         tools:text="Electronics"
-                        android:text="@{activeLoad.goodsName}"
+                        android:text="@{pastLoad.goodsName}"
                         android:drawablePadding="@dimen/_3dp"
                         app:layout_constraintTop_toTopOf="parent"
                         android:id="@+id/textView5"
                         app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="4dp"/>
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView.Body.Gray"
-                        android:text="@string/you_ll_receive"
-                        android:drawablePadding="@dimen/_3dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textView4"
-                        app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                        android:id="@+id/textView7"/>
 
 
                     <TextView
@@ -259,7 +263,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         app:layout_constraintEnd_toStartOf="@+id/textView6"
                         app:layout_constraintTop_toBottomOf="@+id/textView2" android:layout_marginEnd="4dp"
-                        app:layout_constraintStart_toEndOf="@+id/textView7" android:layout_marginStart="8dp"/>
+                        app:layout_constraintStart_toEndOf="@+id/imageView" android:layout_marginStart="8dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -269,59 +273,11 @@
                         android:layout_height="wrap_content"
                         style="@style/TextView.Body"
                         tools:text="Receiver"
-                        android:text="@{activeLoad.paidBy}"
+                        android:text="@{pastLoad.paidBy}"
                         android:drawablePadding="@dimen/_3dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView5" android:id="@+id/textView6"/>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/section_divider_color"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7" android:id="@+id/view"/>
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView.Body.Small"
-                        android:text="@string/time_left_for_pickup"
-                        android:drawablePadding="@dimen/_3dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="8dp" app:layout_constraintTop_toBottomOf="@+id/view"
-                        android:layout_marginTop="8dp" android:id="@+id/textView8"/>
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView.Heading.M"
-                        android:textColor="@color/gray_dark"
-                        tools:text="00:39 Hrs"
-                        android:paddingBottom="@dimen/_10dp"
-                        android:text="@{activeLoad.timeLeftToPickup}"
-                        android:drawablePadding="@dimen/_3dp"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
-                        app:layout_constraintStart_toStartOf="@+id/textView8"/>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:text="@string/start"
-                        android:layout_marginBottom="@dimen/_10dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="8dp"
-
-                        app:layout_constraintTop_toBottomOf="@+id/view"
-                        android:layout_marginTop="8dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
@@ -333,8 +289,8 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:onClick="@{(v)->clickListener.onWorkClicked(activeLoad)}"
-        android:visibility="@{activeLoad!=null ? View.VISIBLE : View.GONE}">
+        android:onClick="@{(v)->clickListener.onWorkClicked(pastLoad)}"
+        android:visibility="@{pastLoad!=null ? View.VISIBLE : View.GONE}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -357,7 +313,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:lines="1"
-                android:text="@{activeLoad.url}"
+                android:text="@{pastLoad.url}"
                 tools:text="TextView"/>
 
             <TextView
@@ -367,7 +323,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:gravity="center_vertical"
-                android:text="@{activeLoad.url}"
+                android:text="@{pastLoad.url}"
                 tools:text="TextView"/>
         </LinearLayout>
 

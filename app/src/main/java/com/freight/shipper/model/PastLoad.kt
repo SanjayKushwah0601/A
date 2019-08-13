@@ -6,7 +6,7 @@ package com.freight.shipper.model
  * sanjaykushwah0601@gmail.com
  */
 
-class ActiveLoad(val id: Long, val customerName: String) {
+class PastLoad(val id: Long, val customerName: String) {
     val customerImage: String = "http://www.gravatar.com/avatar/?d=identicon"
     val pickCity: String = "Pickup City"
     val destinationCity: String = "Destination City"

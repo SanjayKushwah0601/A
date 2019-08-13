@@ -6,6 +6,8 @@
 
     <color name="background">#FFFFFF</color>
     <color name="button_black_disabled">#AAAAAA</color>
+    <color name="gray">#ced1dd</color>
+    <color name="gray_dark">#A5A5A5</color>
 
     <color name="section_divider_color">#dadce5</color>
     <color name="bottom_sheet_handle_color">#dadce5</color>

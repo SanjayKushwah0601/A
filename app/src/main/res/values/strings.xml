@@ -62,4 +62,12 @@
     <string name="failed_to_fetch_load">Failed to fetch loads</string>
     <string name="active">Active</string>
     <string name="past">Past</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="goods_colon">Goods:</string>
+    <string name="you_ll_receive">You\'ll Receive</string>
+    <string name="dollar">$</string>
+    <string name="paid_by">Paid by</string>
+    <string name="time_left_for_pickup">Time left for pickup</string>
+    <string name="start">Start</string>
+    <string name="completed">Completed</string>
 </resources>

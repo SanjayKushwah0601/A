@@ -1,0 +1,61 @@
+package com.freight.shipper.ui.bookings.pager
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.freight.shipper.R
+import com.freight.shipper.model.PastLoad
+
+class PastLoadAdapter : RecyclerView.Adapter<PastLoadViewHolder>() {
+
+    var editing = false
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    var imageList: MutableList<PastLoad>? = null
+        set(value) {
+            field = value
+//            field = value?.sortedBy { it.name?.toLowerCase() }?.toMutableList()
+            notifyDataSetChanged()
+        }
+
+    var clickListener: PastLoadEventListener? = null
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PastLoadViewHolder {
+        val view = DataBindingUtil.inflate<ViewDataBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.view_past_load, parent, false
+        )
+        return PastLoadViewHolder(view)
+    }
+
+    override fun getItemCount(): Int {
+        return imageList?.size ?: 0
+    }
+
+    override fun onBindViewHolder(holder: PastLoadViewHolder, position: Int) {
+        holder.bind(imageList?.get(position), clickListener)
+    }
+
+    override fun getItemId(position: Int): Long {
+        return imageList?.get(position)?.id ?: -1
+    }
+
+    fun getItemAt(position: Int): PastLoad? {
+        return imageList?.getOrNull(position)
+    }
+
+    fun removeAt(position: Int) {
+        imageList?.removeAt(position)
+        notifyItemRemoved(position)
+    }
+}
+
+interface PastLoadEventListener {
+    fun onWorkClicked(image: PastLoad) {}
+//    fun onDeleteClicked(image: Image, viewHolder: PastLoadViewHolder) {}
+}

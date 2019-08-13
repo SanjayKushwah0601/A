@@ -20,7 +20,7 @@ import com.freight.shipper.ui.bookings.LoadPagerViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_load_list.*
 
-abstract class LoadListFragment<T> : Fragment() {
+public abstract class LoadListFragment<T> : Fragment() {
     companion object {
         const val REQUEST_CODE_PLAYLIST_DETAIL = 0
         const val REQUEST_CODE_ARTIST_DETAIL = 1

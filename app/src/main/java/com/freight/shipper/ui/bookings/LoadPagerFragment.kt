@@ -2,11 +2,11 @@ package com.freight.shipper.ui.bookings
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.ViewPager
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseFragment
 import com.freight.shipper.ui.bookings.frgments.ActiveLoadFragment
+import com.freight.shipper.ui.bookings.frgments.PastLoadFragment
 import com.freight.shipper.ui.bookings.pager.LoadListFragment
 import com.freight.shipper.ui.bookings.pager.LoadPagerAdapter
 import com.google.android.material.tabs.TabLayout
@@ -20,15 +20,16 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
 
     var currentPage: Int = 0
     lateinit var pagerAdapter: LoadPagerAdapter
+
     val fragments by lazy {
         listOf(
             ActiveLoadFragment.newInstance(getString(R.string.active)),
-            ActiveLoadFragment.newInstance(getString(R.string.past))
+            PastLoadFragment.newInstance(getString(R.string.past))
         )
     }
 
 
-//    private lateinit var viewModel: LoadPagerViewModel
+    //    private lateinit var viewModel: LoadPagerViewModel
 //
     override fun getLayoutId(): Int = R.layout.fragment_load_pager
 
