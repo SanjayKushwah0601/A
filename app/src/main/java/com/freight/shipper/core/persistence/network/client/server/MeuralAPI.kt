@@ -6,7 +6,9 @@ import com.freight.shipper.core.persistence.network.result.APIErrorType
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.network.service.AuthenticationService
 import com.freight.shipper.core.persistence.network.service.CategoryService
+import com.freight.shipper.core.persistence.network.service.LoadService
 import com.freight.shipper.core.persistence.network.service.UserService
+import com.freight.shipper.model.ActiveLoad
 import com.freight.shipper.model.Category
 import com.freight.shipper.model.Token
 import com.freight.shipper.model.User
@@ -34,6 +36,7 @@ class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
 
     // region - Service init
     private val authService = retrofit.create(AuthenticationService::class.java)
+    private val loadService = retrofit.create(LoadService::class.java)
     private val categoryService = retrofit.create(CategoryService::class.java)
     private val userService = retrofit.create(UserService::class.java)
     // endregion
@@ -42,7 +45,6 @@ class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
 
     // region - Auth
     override suspend fun login(email: String, password: String): APIResult<User> {
-//        return authService.authenticate(email, password).mappedApiResult()
         return authService.login(email, password).apiResult()
     }
 
@@ -67,6 +69,12 @@ class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
             firstName, lastName, email, password, confirmPassword, countryCode,
             isReceiveCommunications, isSecurityToken
         ).apiResult()
+    }
+    // endregion
+
+    // region - Load services
+    override suspend fun getLoad(pickDate: String?): APIResult<List<ActiveLoad>> {
+        return loadService.getLoad(pickDate).apiResult()
     }
     // endregion
 

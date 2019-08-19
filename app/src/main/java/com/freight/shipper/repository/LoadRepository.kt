@@ -4,6 +4,7 @@ import androidx.lifecycle.MediatorLiveData
 import com.freight.shipper.core.persistence.network.client.server.MeuralAPIContract
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
+import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
 import com.freight.shipper.model.ActiveLoad
@@ -11,6 +12,7 @@ import com.freight.shipper.model.PastLoad
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 
 
 /**
@@ -29,19 +31,19 @@ class LoadRepository(
             withContext(dispatcher.main) {
                 success.value = listOf(ActiveLoad(1, "Customer1"), ActiveLoad(2, "Customer2"))
             }
-            /*val result = api.forgotPassword(email)
+            val result = api.getLoad(null)
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success -> {
                         Timber.e("Success Sanjay: ${result.response}")
-                        success.value = result.response.data
+//                        success.value = result.response.data
                     }
                     is APIResult.Failure -> {
                         Timber.e("Failure Sanjay: ${result.error}")
                         failure.value = result.error?.message ?: ""
                     }
                 }
-            }*/
+            }
         }
     }
 

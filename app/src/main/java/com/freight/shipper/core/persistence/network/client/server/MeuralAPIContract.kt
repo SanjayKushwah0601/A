@@ -1,6 +1,7 @@
 package com.freight.shipper.core.persistence.network.client.server
 
 import com.freight.shipper.core.persistence.network.result.APIResult
+import com.freight.shipper.model.ActiveLoad
 import com.freight.shipper.model.Category
 import com.freight.shipper.model.Token
 import com.freight.shipper.model.User
@@ -24,6 +25,10 @@ abstract class MeuralAPIContract {
         password: String, confirmPassword: String, countryCode: String,
         isReceiveCommunications: Boolean, isSecurityToken: Boolean
     ): APIResult<Token>
+    // endregion
+
+    // region - Category
+    abstract suspend fun getLoad(pickDate: String?): APIResult<List<ActiveLoad>>
     // endregion
 
     // region - Category

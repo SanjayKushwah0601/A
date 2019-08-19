@@ -38,7 +38,7 @@ interface AuthenticationService {
         @Field("postcode") postcode: String,
         @Field("password") password: String,
         @Field("company_name") companyName: String,
-        @Field("param") param: String = "customerRegister"
+        @Field("param") param: String = "shipperRegister"
     ): Call<ApiResponse<User>>
 
     @FormUrlEncoded
