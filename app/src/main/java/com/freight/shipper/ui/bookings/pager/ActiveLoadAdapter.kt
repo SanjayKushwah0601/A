@@ -41,10 +41,6 @@ class ActiveLoadAdapter : RecyclerView.Adapter<ActiveLoadViewHolder>() {
         holder.bind(imageList?.get(position), clickListener)
     }
 
-    override fun getItemId(position: Int): Long {
-        return imageList?.get(position)?.id ?: -1
-    }
-
     fun getItemAt(position: Int): ActiveLoad? {
         return imageList?.getOrNull(position)
     }

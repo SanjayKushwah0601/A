@@ -151,7 +151,7 @@ class MeuralAPI(val retrofit: Retrofit) : MeuralAPIContract() {
             is SocketTimeoutException,
             is SocketException,
             is UnknownHostException -> Pair("Network", "Network error")
-            else -> Pair("NetworkCall", "An error occurred")
+            else -> Pair("NetworkCall", "An error occurred ${exception.message}")
         }
         return APIError(hashMapOf(typeString to reason), APIErrorType.Network(exception), -1, exception, reason)
     }
