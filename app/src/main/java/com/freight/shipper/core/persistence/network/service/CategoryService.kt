@@ -10,7 +10,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
- * Contract for Category-related REST API calls
+ * Contract for Category-related REST api calls
  *
  * A Retrofit object will create the actual implementation of this Service
  */

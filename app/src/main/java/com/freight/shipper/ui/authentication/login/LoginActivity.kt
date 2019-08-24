@@ -22,7 +22,7 @@ class LoginActivity : BaseActivity() {
         ViewModelProviders.of(this, BaseViewModelFactory {
             LoginViewModel(
                 AuthenticationRepository(
-                    FreightApplication.instance.meuralAPI,
+                    FreightApplication.instance.api,
                     FreightApplication.instance.loginManager
                 )
             )

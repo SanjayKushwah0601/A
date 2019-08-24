@@ -24,7 +24,7 @@ class CompanySignupActivity : BaseActivity() {
             BaseViewModelFactory {
                 CompanySignupViewModel(
                     AuthenticationRepository(
-                        FreightApplication.instance.meuralAPI,
+                        FreightApplication.instance.api,
                         FreightApplication.instance.loginManager
                     )
                 )

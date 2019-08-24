@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.extensions.setupToolbar
+import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.addload.AddLoadFragment
 import com.freight.shipper.ui.bookings.LoadPagerFragment
 import com.freight.shipper.ui.home.HomeFragment
@@ -44,6 +45,10 @@ class DashboardActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
         setupToolbar(toolbar, enableUpButton = false)
         setStartScreen()
+        LoadRepository(
+            FreightApplication.instance.api,
+            FreightApplication.instance.loginManager
+        ).getMasterConfigData()
     }
 
     /**

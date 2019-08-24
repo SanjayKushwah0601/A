@@ -8,7 +8,7 @@ sealed class MeuralResponse<T> {
 }
 
 /**
- * Generic response for the Meural API. Used in most API calls.
+ * Generic response for the Meural api. Used in most api calls.
  *
  * The "data" field will contain the actual response data
  *
@@ -68,7 +68,7 @@ sealed class ErrorResponse<T> : MeuralResponse<T>() {
 }
 
 /**
- * Error Response for when an error message from the API is expected
+ * Error Response for when an error message from the api is expected
  */
 class ApiErrorResponse<T>(
     @SerializedName("errors")

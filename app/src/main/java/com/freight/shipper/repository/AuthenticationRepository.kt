@@ -1,7 +1,7 @@
 package com.freight.shipper.repository
 
 import androidx.lifecycle.MediatorLiveData
-import com.freight.shipper.core.persistence.network.client.server.MeuralAPIContract
+import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
 import com.freight.shipper.core.persistence.network.result.APIResult
@@ -20,7 +20,7 @@ import timber.log.Timber
  * sanjaykushwah0601@gmail.com
  */
 class AuthenticationRepository(
-    private val api: MeuralAPIContract,
+    private val api: APIContract,
     private val loginManager: LoginManager,
     val dispatcher: DispatcherProvider = DispatcherProviderImpl()
 ) : BaseRepository() {
@@ -31,6 +31,10 @@ class AuthenticationRepository(
 
     suspend fun companySignup(model: CompanySignup): APIResult<User> {
         return api.signupAsCompany(model)
+    }
+
+    fun getMasterConfigData() {
+        GlobalScope.launch(dispatcher.io) { api.getMasterConfigData() }
     }
 
     fun forgotPassword(email: String, observer: Pair<MediatorLiveData<User>, MediatorLiveData<String>>) {

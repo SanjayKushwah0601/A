@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
-import com.freight.shipper.core.persistence.network.client.server.MeuralAPIContract
+import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.core.platform.NonNullObserver
 import com.freight.shipper.extensions.setVisibleIf
@@ -28,7 +28,7 @@ public abstract class LoadListFragment<T> : Fragment() {
         const val ARG_TITLE = "title"
     }
 
-    open val meuralAPI: MeuralAPIContract by lazy { FreightApplication.instance.meuralAPI }
+    open val API: APIContract by lazy { FreightApplication.instance.api }
     open lateinit var adapter: RecyclerView.Adapter<out RecyclerView.ViewHolder>
     open var errorSnackbar: Snackbar? = null
     val viewmodel: LoadPagerViewModel by lazy {
@@ -36,7 +36,7 @@ public abstract class LoadListFragment<T> : Fragment() {
             BaseViewModelFactory {
                 LoadPagerViewModel(
                     LoadRepository(
-                        FreightApplication.instance.meuralAPI,
+                        FreightApplication.instance.api,
                         FreightApplication.instance.loginManager
                     )
                 )

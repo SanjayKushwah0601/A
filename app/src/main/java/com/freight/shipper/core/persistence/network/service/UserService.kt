@@ -9,7 +9,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 /**
- * Contract for User-related REST API calls
+ * Contract for User-related REST api calls
  *
  * A Retrofit object will create the actual implementation of this Service
  */

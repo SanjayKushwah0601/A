@@ -1,5 +1,6 @@
 package com.freight.shipper.core.persistence.network.client.server
 
+import com.freight.shipper.core.persistence.db.RoomDb
 import com.freight.shipper.core.persistence.network.response.ApiResponse
 import com.freight.shipper.core.persistence.network.result.APIError
 import com.freight.shipper.core.persistence.network.result.APIErrorType
@@ -8,10 +9,7 @@ import com.freight.shipper.core.persistence.network.service.AuthenticationServic
 import com.freight.shipper.core.persistence.network.service.CategoryService
 import com.freight.shipper.core.persistence.network.service.LoadService
 import com.freight.shipper.core.persistence.network.service.UserService
-import com.freight.shipper.model.ActiveLoad
-import com.freight.shipper.model.Category
-import com.freight.shipper.model.Token
-import com.freight.shipper.model.User
+import com.freight.shipper.model.*
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -32,7 +30,7 @@ import java.net.UnknownHostException
 import java.util.*
 
 
-class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
+class API(retrofit: Retrofit) : APIContract() {
 
     // region - Service init
     private val authService = retrofit.create(AuthenticationService::class.java)
@@ -69,6 +67,18 @@ class MeuralAPI(retrofit: Retrofit) : MeuralAPIContract() {
             firstName, lastName, email, password, confirmPassword, countryCode,
             isReceiveCommunications, isSecurityToken
         ).apiResult()
+    }
+
+    override suspend fun getMasterConfigData(): APIResult<MasterConfig> {
+        val result = authService.getMasterConfig().apiResult()
+        if (result is APIResult.Success) {
+            // TODO: Load type
+            RoomDb.instance.countryDao().addCountryList(result.response.data.country)
+            RoomDb.instance.countryDao().addStateList(result.response.data.state)
+            RoomDb.instance.loadCategoryDao().addList(result.response.data.loadCategory)
+            RoomDb.instance.loadStatusDao().addList(result.response.data.loadStatus)
+        }
+        return result
     }
     // endregion
 

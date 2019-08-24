@@ -13,8 +13,8 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 
-object MeuralAPIFactory {
-    fun standardClient(loginManager: LoginManager): MeuralAPI {
+object APIFactory {
+    fun standardClient(loginManager: LoginManager): API {
         val authInterceptor = AuthHeaderInterceptor(loginManager)
         val headerInterceptor = MeuralHeaderInterceptor()
 
@@ -32,7 +32,7 @@ object MeuralAPIFactory {
         return createClient(interceptors, BuildConfig.SERVER_URL, 10)
     }
 
-    fun createClient(interceptors: List<Interceptor>, baseUrl: String, timeoutSeconds: Long): MeuralAPI {
+    fun createClient(interceptors: List<Interceptor>, baseUrl: String, timeoutSeconds: Long): API {
         val okClientBuilder = OkHttpClient.Builder()
 
         interceptors.forEach {
@@ -52,6 +52,6 @@ object MeuralAPIFactory {
             .client(okClient)
             .build()
 
-        return MeuralAPI(retrofit)
+        return API(retrofit)
     }
 }

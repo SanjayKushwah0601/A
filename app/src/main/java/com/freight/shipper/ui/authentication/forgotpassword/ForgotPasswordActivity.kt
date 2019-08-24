@@ -26,7 +26,7 @@ class ForgotPasswordActivity : BaseActivity() {
             BaseViewModelFactory {
                 ForgotPasswordViewModel(
                     AuthenticationRepository(
-                        FreightApplication.instance.meuralAPI,
+                        FreightApplication.instance.api,
                         FreightApplication.instance.loginManager
                     )
                 )

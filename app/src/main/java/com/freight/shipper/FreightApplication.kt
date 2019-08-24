@@ -4,8 +4,8 @@ package com.freight.shipper
 import android.app.Application
 import com.bumptech.glide.Glide
 import com.bumptech.glide.MemoryCategory
-import com.freight.shipper.core.persistence.network.client.server.MeuralAPI
-import com.freight.shipper.core.persistence.network.client.server.MeuralAPIFactory
+import com.freight.shipper.core.persistence.network.client.server.API
+import com.freight.shipper.core.persistence.network.client.server.APIFactory
 import com.freight.shipper.core.persistence.preference.LoginManager
 import timber.log.Timber
 
@@ -15,7 +15,7 @@ class FreightApplication : Application() {
 //    val assetsManager: AssetsManager by lazy { AssetsManager(this) }
 //    val prefManager: PrefManager by lazy { PrefManager(this) }
     val loginManager: LoginManager by lazy { LoginManager(this) }
-    val meuralAPI: MeuralAPI by lazy { MeuralAPIFactory.standardClient(loginManager) }
+    val api: API by lazy { APIFactory.standardClient(loginManager) }
     //endregion
 
     init {
