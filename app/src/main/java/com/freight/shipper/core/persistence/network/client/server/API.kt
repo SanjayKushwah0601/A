@@ -5,12 +5,10 @@ import com.freight.shipper.core.persistence.network.response.ApiResponse
 import com.freight.shipper.core.persistence.network.result.APIError
 import com.freight.shipper.core.persistence.network.result.APIErrorType
 import com.freight.shipper.core.persistence.network.result.APIResult
-import com.freight.shipper.core.persistence.network.service.AuthenticationService
-import com.freight.shipper.core.persistence.network.service.CategoryService
-import com.freight.shipper.core.persistence.network.service.LoadService
-import com.freight.shipper.core.persistence.network.service.UserService
+import com.freight.shipper.core.persistence.network.service.*
 import com.freight.shipper.model.*
 import com.freight.shipper.ui.authentication.signup.CompanySignup
+import com.freight.shipper.ui.profile.paymentdetails.PaymentRequest
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.GlobalScope
@@ -35,6 +33,7 @@ class API(retrofit: Retrofit) : APIContract() {
     // region - Service init
     private val authService = retrofit.create(AuthenticationService::class.java)
     private val loadService = retrofit.create(LoadService::class.java)
+    private val profileService = retrofit.create(ProfileService::class.java)
     private val categoryService = retrofit.create(CategoryService::class.java)
     private val userService = retrofit.create(UserService::class.java)
     // endregion
@@ -87,6 +86,15 @@ class API(retrofit: Retrofit) : APIContract() {
         return loadService.getLoad(pickDate).apiResult()
     }
     // endregion
+
+    // region - Profile services
+    override suspend fun addShipperPaymentDetail(paymentRequest: PaymentRequest): APIResult<Any> {
+        return profileService.addShipperPaymentDetail(
+            paymentRequest.accountNumber, paymentRequest.bankName, paymentRequest.bankAddress,
+            paymentRequest.wireTransNumber, paymentRequest.currency).apiResult()
+    }
+    // endregion
+
 
     // region - Category
     override suspend fun getCategory(id: Long): APIResult<Category> {

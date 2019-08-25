@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
     tools:context="com.freight.shipper.ui.profile.ProfileFragment">
+
+    <Button
+        android:id="@+id/buttonPaymentDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/_10dp"
+        android:paddingStart="@dimen/_10dp"
+        android:paddingEnd="@dimen/_10dp"
+        android:text="@string/payment_detail" />
 
     <Button
         android:id="@+id/buttonLogout"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:text="@string/logout"/>
+        android:layout_gravity="center"
+        android:text="@string/logout" />
 
-</FrameLayout>
+</LinearLayout>

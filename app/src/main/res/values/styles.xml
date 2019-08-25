@@ -220,6 +220,7 @@
     <!--region Toolbar Style-->
     <style name="Material.Toolbar" parent="Base.Widget.AppCompat.Toolbar">
         <item name="titleTextAppearance">@style/AppTheme.Widget.TextView.ToolbarTitle</item>
+        <item name="subtitleTextAppearance">@style/AppTheme.Widget.TextView.ToolbarSubTitle</item>
         <item name="actionButtonStyle">@style/AppTheme.Widget.ActionButton</item>
     </style>
     <style name="ToolbarStyle" parent="@style/Base.TextAppearance.AppCompat.Title">

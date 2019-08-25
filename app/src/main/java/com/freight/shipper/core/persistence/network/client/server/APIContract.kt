@@ -3,6 +3,7 @@ package com.freight.shipper.core.persistence.network.client.server
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.model.*
 import com.freight.shipper.ui.authentication.signup.CompanySignup
+import com.freight.shipper.ui.profile.paymentdetails.PaymentRequest
 
 abstract class APIContract {
 
@@ -27,6 +28,10 @@ abstract class APIContract {
 
     // region - Load
     abstract suspend fun getLoad(pickDate: String?): APIResult<List<ActiveLoad>>
+    // endregion
+
+    // region - Profile
+    abstract suspend fun addShipperPaymentDetail(paymentRequest: PaymentRequest): APIResult<Any>
     // endregion
 
     // region - Category

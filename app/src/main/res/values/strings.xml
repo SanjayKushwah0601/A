@@ -71,4 +71,11 @@
     <string name="start">Start</string>
     <string name="completed">Completed</string>
     <string name="logout">Logout</string>
+    <string name="payment_detail">Payment Detail</string>
+    <string name="bank_account_number">Bank Account Number</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="bank_address">Bank Address</string>
+    <string name="wire_transfer_number">Wire Transfer Number</string>
+    <string name="currency">Currency</string>
+    <string name="payment_detail_added_success_msg">Payment detail submitted successfully</string>
 </resources>

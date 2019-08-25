@@ -1,60 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
 
         <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:contentInsetLeft="0dp"
-                app:contentInsetStart="0dp"
-                app:contentInsetStartWithNavigation="0dp"
-                app:titleTextAppearance="@style/ToolbarStyle"
-                app:titleTextColor="@color/colorAccent">
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetStartWithNavigation="0dp"
+            app:subtitleTextColor="@color/colorAccent"
+            app:titleTextColor="@color/colorAccent">
+            <!--            app:titleTextAppearance="@style/ToolbarStyle"-->
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvToolbarTitle"
+                    style="@style/AppTheme.Widget.TextView.ToolbarTitle"
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_height="wrap_content">
+                    android:fontFamily="@font/nunito_sans"
+                    android:lineSpacingExtra="8sp"
+                    android:textColor="@color/toolbar_title_color"
+                    android:textStyle="bold"
+                    tools:layout_editor_absoluteX="146dp"
+                    tools:layout_editor_absoluteY="16dp"
+                    tools:text="@string/login" />
 
                 <TextView
-                        android:id="@+id/tvToolbarTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        style="@style/AppTheme.Widget.TextView.ToolbarTitle"
-                        android:fontFamily="@font/nunito_sans"
-                        android:lineSpacingExtra="8sp"
-                        tools:text="@string/login"
-                        android:textColor="@color/toolbar_title_color"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="146dp"
-                        tools:layout_editor_absoluteY="16dp"/>
-
-                <TextView
-                        android:id="@+id/tvToolbarSubTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        style="@style/AppTheme.Widget.TextView.ToolbarSubTitle"
-                        android:fontFamily="@font/nunito_sans"
-                        android:lineSpacingExtra="8sp"
-                        tools:text="@string/login"
-                        android:visibility="gone"
-                        tools:visibility="visible"
-                        android:textColor="@color/toolbar_title_color"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="146dp"
-                        tools:layout_editor_absoluteY="16dp"/>
+                    android:id="@+id/tvToolbarSubTitle"
+                    style="@style/AppTheme.Widget.TextView.ToolbarSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/nunito_sans"
+                    android:lineSpacingExtra="8sp"
+                    android:textColor="@color/toolbar_title_color"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:layout_editor_absoluteX="146dp"
+                    tools:layout_editor_absoluteY="16dp"
+                    tools:text="@string/login"
+                    tools:visibility="visible" />
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>

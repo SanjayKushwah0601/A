@@ -12,6 +12,7 @@ import com.freight.shipper.ui.authentication.signup.company.CompanySignupActivit
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwoActivity
 import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
 import com.freight.shipper.ui.dashboard.DashboardActivity
+import com.freight.shipper.ui.profile.paymentdetails.PaymentDetailsActivity
 
 
 /**
@@ -60,4 +61,12 @@ fun Activity.navigateToCompanySignupSecondPage(signupData: CompanySignup) {
     startActivity(Intent(this, CompanySignupFormTwoActivity::class.java).apply {
         putExtra("signup", signupData)
     })
+}
+
+fun Activity.navigateToPaymentDetails() {
+    startActivity(Intent(this, PaymentDetailsActivity::class.java))
+}
+
+fun Fragment.navigateToPaymentDetails() {
+    activity?.navigateToPaymentDetails()
 }
