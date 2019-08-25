@@ -76,6 +76,7 @@ class API(retrofit: Retrofit) : APIContract() {
             RoomDb.instance.countryDao().addStateList(result.response.data.state)
             RoomDb.instance.loadCategoryDao().addList(result.response.data.loadCategory)
             RoomDb.instance.loadStatusDao().addList(result.response.data.loadStatus)
+            RoomDb.instance.vehicleDao().addVehicleTypeList(result.response.data.vehicleType)
         }
         return result
     }
@@ -91,7 +92,8 @@ class API(retrofit: Retrofit) : APIContract() {
     override suspend fun addShipperPaymentDetail(paymentRequest: PaymentRequest): APIResult<Any> {
         return profileService.addShipperPaymentDetail(
             paymentRequest.accountNumber, paymentRequest.bankName, paymentRequest.bankAddress,
-            paymentRequest.wireTransNumber, paymentRequest.currency).apiResult()
+            paymentRequest.wireTransNumber, paymentRequest.currency
+        ).apiResult()
     }
     // endregion
 
@@ -202,7 +204,13 @@ class API(retrofit: Retrofit) : APIContract() {
             is UnknownHostException -> Pair("Network", "Network error")
             else -> Pair("NetworkCall", "An error occurred")
         }
-        return APIError(hashMapOf(typeString to reason), APIErrorType.Network(exception), -1, exception, reason)
+        return APIError(
+            hashMapOf(typeString to reason),
+            APIErrorType.Network(exception),
+            -1,
+            exception,
+            reason
+        )
     }
 
     private fun errorTypeFrom(errors: HashMap<String, String>): APIErrorType {

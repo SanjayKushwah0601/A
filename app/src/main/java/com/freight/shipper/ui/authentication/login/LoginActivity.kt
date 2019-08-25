@@ -39,6 +39,7 @@ class LoginActivity : BaseActivity() {
         initUI()
         setupOnClicks()
         setupObservers()
+        viewModel.getMasterConfig()
     }
     // endregion
 

@@ -23,10 +23,13 @@ class LoginViewModel(
     private var loginEmail: String? = null
     private var loginPassword: String? = null
 
+    fun getMasterConfig() {
+        model.getMasterConfigData()
+    }
+
     fun onEmailChanged(email: String) {
         loginEmail = email
     }
-
 
     fun onPasswordChanged(password: String) {
         loginPassword = password

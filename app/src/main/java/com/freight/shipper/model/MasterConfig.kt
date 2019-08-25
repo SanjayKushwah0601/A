@@ -9,8 +9,12 @@ class MasterConfig(
     val loadCategory: List<LoadCategory>,
     @SerializedName("load_status")
     val loadStatus: List<LoadStatus>,
+    @SerializedName("state")
+    val state: List<State>,
+    @SerializedName("vehicle_type")
+    val vehicleType: List<VehicleType>,
     @SerializedName("load_type")
     val loadType: List<String>,
-    @SerializedName("state")
-    val state: List<State>
+    @SerializedName("document_type")
+    val documentType: List<String>
 )
