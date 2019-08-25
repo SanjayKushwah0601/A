@@ -3,6 +3,7 @@ package com.freight.shipper.ui.profile.paymentdetails
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import com.freight.shipper.core.persistence.network.request.PaymentRequest
 import com.freight.shipper.core.platform.BaseViewModel
 import com.freight.shipper.repository.ProfileRepository
 import timber.log.Timber
@@ -43,17 +44,5 @@ class PaymentDetailsViewModel(
 //            btnSignupEnable.set(true)
             true
         }
-    }
-}
-
-class PaymentRequest {
-    var accountNumber: String = ""
-    var bankName: String = ""
-    var bankAddress: String = ""
-    var wireTransNumber: String = ""
-    var currency: String = ""
-
-    override fun toString(): String {
-        return "PaymentRequest(accountNumber=$accountNumber, bankName=$bankName, bankAddress=$bankAddress, wireTransNumber=$wireTransNumber, currency=$currency)"
     }
 }

@@ -1,9 +1,9 @@
 package com.freight.shipper.core.persistence.network.client.server
 
+import com.freight.shipper.core.persistence.network.request.PaymentRequest
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.model.*
 import com.freight.shipper.ui.authentication.signup.CompanySignup
-import com.freight.shipper.ui.profile.paymentdetails.PaymentRequest
 
 abstract class APIContract {
 

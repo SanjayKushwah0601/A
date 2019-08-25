@@ -4,11 +4,10 @@ import androidx.lifecycle.MediatorLiveData
 import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
+import com.freight.shipper.core.persistence.network.request.PaymentRequest
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
-import com.freight.shipper.model.ActiveLoad
-import com.freight.shipper.ui.profile.paymentdetails.PaymentRequest
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -25,7 +24,10 @@ class ProfileRepository(
     val dispatcher: DispatcherProvider = DispatcherProviderImpl()
 ) : BaseRepository() {
 
-    fun savePaymentDetails(paymentRequest: PaymentRequest, observer: Pair<MediatorLiveData<String>, MediatorLiveData<String>>) {
+    fun savePaymentDetails(
+        paymentRequest: PaymentRequest,
+        observer: Pair<MediatorLiveData<String>, MediatorLiveData<String>>
+    ) {
         val (success, failure) = setupObserver(observer)
         GlobalScope.launch(dispatcher.io) {
             val result = api.addShipperPaymentDetail(paymentRequest)
