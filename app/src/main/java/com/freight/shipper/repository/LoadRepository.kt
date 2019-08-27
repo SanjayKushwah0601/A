@@ -32,9 +32,6 @@ class LoadRepository(
     fun fetchActiveLoad(observer: Pair<MediatorLiveData<List<ActiveLoad>>, MediatorLiveData<String>>) {
         val (success, failure) = setupObserver(observer)
         GlobalScope.launch(dispatcher.io) {
-//            withContext(dispatcher.main) {
-//                success.value = listOf(ActiveLoad(1, "Customer1"), ActiveLoad(2, "Customer2"))
-//            }
             val result = api.getLoad(null)
             withContext(dispatcher.main) {
                 when (result) {

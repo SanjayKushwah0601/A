@@ -155,7 +155,7 @@
                         style="@style/TextView.Body.Gray"
                         tools:text="10:00 AM, 22 Jul"
                         android:maxLines="2"
-                        android:text='@{String.format("%s, %s", activeLoad.getFormatedPickTime(), activeLoad.getFormatedPickDate())}'
+                        android:text='@{String.format("%s, %s", activeLoad.getFormattedPickTime(), activeLoad.getFormattedPickDate())}'
                         android:drawablePadding="@dimen/_3dp"
                         android:layout_height="wrap_content"/>
 
@@ -167,7 +167,7 @@
                         android:layout_height="wrap_content"
                         style="@style/TextView.Body.Gray"
                         tools:text="10:00 AM, 22 Jul"
-                        android:text='@{String.format("%s", activeLoad.getFormatedDestDate())}'
+                        android:text='@{String.format("%s", activeLoad.getFormattedDestDate())}'
                         android:drawablePadding="@dimen/_3dp"/>
 
                 </LinearLayout>

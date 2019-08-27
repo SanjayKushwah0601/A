@@ -71,12 +71,7 @@ class API(retrofit: Retrofit) : APIContract() {
     override suspend fun getMasterConfigData(): APIResult<MasterConfig> {
         val result = authService.getMasterConfig().apiResult()
         if (result is APIResult.Success) {
-            // TODO: Load type
-            RoomDb.instance.countryDao().addCountryList(result.response.data.country)
-            RoomDb.instance.countryDao().addStateList(result.response.data.state)
-            RoomDb.instance.loadCategoryDao().addList(result.response.data.loadCategory)
-            RoomDb.instance.loadStatusDao().addList(result.response.data.loadStatus)
-            RoomDb.instance.vehicleDao().addVehicleTypeList(result.response.data.vehicleType)
+            RoomDb.instance.configDao().addConfig(result.response.data)
         }
         return result
     }

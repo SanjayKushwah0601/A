@@ -138,7 +138,7 @@ class ActiveLoad(
     val paidBy: String = "Receiver"
     val timeLeftToPickup: String = "00:57 Hrs"
 
-    fun getFormatedPickTime(): String {
+    fun getFormattedPickTime(): String {
 //        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
 //        val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
 //        val output = formatter.format(parser.parse("2018-12-14T09:55:00"))
@@ -148,7 +148,7 @@ class ActiveLoad(
         return output ?: pickTime ?: "00:00"
     }
 
-    fun getFormatedPickDate(): String {
+    fun getFormattedPickDate(): String {
 //        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
 //        val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
 //        val output = formatter.format(parser.parse("2018-12-14T09:55:00"))
@@ -158,7 +158,7 @@ class ActiveLoad(
         return output ?: pickDate ?: "00 Jan"
     }
 
-    fun getFormatedDestDate(): String {
+    fun getFormattedDestDate(): String {
         val parser = SimpleDateFormat("dd-MM-yyyy", Locale.US)
         val formatter = SimpleDateFormat("dd MMM", Locale.US)
         val output = formatter.format(parser.parse(deliveryDate))

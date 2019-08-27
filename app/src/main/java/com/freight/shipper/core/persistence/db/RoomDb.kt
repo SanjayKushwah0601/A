@@ -10,13 +10,14 @@ import com.freight.shipper.model.*
 @Database(
     version = 1,
     entities = [Image::class, Country::class, State::class, LoadCategory::class,
-        LoadStatus::class, VehicleType::class]
+        LoadStatus::class, VehicleType::class, MasterConfig::class]
 )
 abstract class RoomDb : RoomDatabase() {
 
     // region - DAO accessors
     abstract fun imageDao(): ImageDao
 
+    abstract fun configDao(): ConfigDao
     abstract fun countryDao(): CountryDao
     abstract fun loadStatusDao(): LoadStatusDao
     abstract fun loadCategoryDao(): LoadCategoryDao

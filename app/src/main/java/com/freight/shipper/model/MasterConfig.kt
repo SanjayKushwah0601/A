@@ -1,20 +1,31 @@
 package com.freight.shipper.model
 
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.freight.shipper.core.persistence.db.converters.CustomTypeConverters
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
+@Entity(tableName = "config")
+@TypeConverters(CustomTypeConverters::class)
 class MasterConfig(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long,
     @SerializedName("country")
-    val country: List<Country>,
+    val countries: List<Country>,
     @SerializedName("load_category")
-    val loadCategory: List<LoadCategory>,
+    val loadCategories: List<LoadCategory>,
     @SerializedName("load_status")
-    val loadStatus: List<LoadStatus>,
+    val loadStatusList: List<LoadStatus>,
     @SerializedName("state")
-    val state: List<State>,
+    val stateList: List<State>,
     @SerializedName("vehicle_type")
-    val vehicleType: List<VehicleType>,
+    val vehicleTypes: List<VehicleType>,
     @SerializedName("load_type")
-    val loadType: List<String>,
+    val loadTypes: List<String>,
     @SerializedName("document_type")
-    val documentType: List<String>
-)
+    val documentTypes: List<String>
+) : Parcelable
