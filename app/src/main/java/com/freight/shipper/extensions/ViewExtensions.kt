@@ -6,9 +6,12 @@ import android.graphics.Color
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.freight.shipper.R
+import com.freight.shipper.core.platform.HintSpinnerAdapter
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -56,5 +59,20 @@ fun View.setKeyboardShown(context: Context, shown: Boolean) {
         inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
     } else {
         inputMethodManager.hideSoftInputFromWindow(this.windowToken, 0)
+    }
+}
+
+fun <T> Spinner.setOnItemSelectListener(
+    adapter: HintSpinnerAdapter<T>,
+    listener: (position: T) -> Unit
+) {
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+    this.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        override fun onNothingSelected(p0: AdapterView<*>?) {}
+        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+            if (p2 - 1 != -1) {
+                listener(adapter.getItemAtPosition(p2-1))
+            }
+        }
     }
 }

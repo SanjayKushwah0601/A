@@ -1,6 +1,8 @@
 package com.freight.shipper.repository
 
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import com.freight.shipper.core.persistence.db.RoomDb
 import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
@@ -8,6 +10,7 @@ import com.freight.shipper.core.persistence.network.request.PaymentRequest
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
+import com.freight.shipper.model.VehicleType
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,6 +26,14 @@ class ProfileRepository(
     private val loginManager: LoginManager,
     val dispatcher: DispatcherProvider = DispatcherProviderImpl()
 ) : BaseRepository() {
+
+    val vehicleTypes by lazy { MutableLiveData<List<VehicleType>>() }
+
+    init {
+        GlobalScope.launch(dispatcher.io) {
+            vehicleTypes.postValue(RoomDb.instance.configDao().getConfig().vehicleTypes)
+        }
+    }
 
     fun savePaymentDetails(
         paymentRequest: PaymentRequest,

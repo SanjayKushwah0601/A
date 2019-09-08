@@ -72,6 +72,8 @@ class API(retrofit: Retrofit) : APIContract() {
         val result = authService.getMasterConfig().apiResult()
         if (result is APIResult.Success) {
             RoomDb.instance.configDao().addConfig(result.response.data)
+            RoomDb.instance.countryDao().addCountryList(result.response.data.countries)
+            RoomDb.instance.countryDao().addStateList(result.response.data.stateList)
         }
         return result
     }
