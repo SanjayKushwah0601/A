@@ -1,16 +1,11 @@
 package com.freight.shipper.core.persistence.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import com.freight.shipper.model.Image
 
 @Dao
 interface ImageDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    /*@Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun add(values: Image)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -26,5 +21,5 @@ interface ImageDao {
     fun fetchWorksWithIds(ids: List<Long>): LiveData<List<Image>>
 
     @Query("DELETE FROM image WHERE image.id= :id")
-    fun removeById(id: Long)
+    fun removeById(id: Long)*/
 }

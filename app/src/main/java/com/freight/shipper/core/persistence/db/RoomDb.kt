@@ -9,7 +9,7 @@ import com.freight.shipper.model.*
 
 @Database(
     version = 1,
-    entities = [Image::class, Country::class, State::class, LoadCategory::class,
+    entities = [Country::class, State::class, LoadCategory::class,
         LoadStatus::class, VehicleType::class, MasterConfig::class]
 )
 abstract class RoomDb : RoomDatabase() {
@@ -29,7 +29,8 @@ abstract class RoomDb : RoomDatabase() {
             Room.databaseBuilder(
                 FreightApplication.instance.applicationContext,
                 RoomDb::class.java, "Crop.db"
-            ).build()
+            ).fallbackToDestructiveMigration()
+                .build()
         }
     }
 }

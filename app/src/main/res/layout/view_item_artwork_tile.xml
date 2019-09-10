@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.util.List" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="imageModel"
+            type="com.freight.shipper.model.Image" />
+
+        <variable
+            name="clickListener"
+            type="com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageClickListener" />
+
+        <variable
+            name="infoButton"
+            type="Boolean" />
+
+        <variable
+            name="hideDeleteButton"
+            type="Boolean" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="isFirstPosition"
+            type="Boolean" />
+
+        <variable
+            name="galleryName"
+            type="String" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@android:color/transparent"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrantLayout"
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:id="@+id/artworkView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:onClick="@{(v)-> isFirstPosition ? clickListener.onNewItemClicked() : clickListener.onImageClicked(imageModel)}"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_add_circle_outline" />
+
+            <ImageView
+                android:id="@+id/removeButton"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:onClick="@{(v)-> clickListener.onDeleteButtonClicked(imageModel,position)}"
+                android:paddingStart="10dp"
+                android:paddingBottom="10dp"
+                android:visibility="@{hideDeleteButton ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_remove_circle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
