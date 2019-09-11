@@ -3,6 +3,7 @@ package com.freight.shipper.core.persistence.network.client.server
 import com.freight.shipper.core.persistence.db.RoomDb
 import com.freight.shipper.core.persistence.network.request.PaymentRequest
 import com.freight.shipper.core.persistence.network.response.ApiResponse
+import com.freight.shipper.core.persistence.network.response.EmptyResponse
 import com.freight.shipper.core.persistence.network.result.APIError
 import com.freight.shipper.core.persistence.network.result.APIErrorType
 import com.freight.shipper.core.persistence.network.result.APIResult
@@ -13,6 +14,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import okhttp3.MultipartBody
 import org.json.JSONObject
 import org.json.JSONTokener
 import retrofit2.Call
@@ -91,6 +93,10 @@ class API(retrofit: Retrofit) : APIContract() {
             paymentRequest.accountNumber, paymentRequest.bankName, paymentRequest.bankAddress,
             paymentRequest.wireTransNumber, paymentRequest.currency
         ).apiResult()
+    }
+
+    override suspend fun addVehicle(requestBody: MultipartBody): APIResult<EmptyResponse> {
+        return profileService.addVehicle(requestBody).apiResult()
     }
     // endregion
 

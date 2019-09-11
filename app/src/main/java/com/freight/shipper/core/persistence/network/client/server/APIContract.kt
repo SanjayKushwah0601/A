@@ -1,9 +1,11 @@
 package com.freight.shipper.core.persistence.network.client.server
 
 import com.freight.shipper.core.persistence.network.request.PaymentRequest
+import com.freight.shipper.core.persistence.network.response.EmptyResponse
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.model.*
 import com.freight.shipper.ui.authentication.signup.CompanySignup
+import okhttp3.MultipartBody
 
 abstract class APIContract {
 
@@ -32,6 +34,7 @@ abstract class APIContract {
 
     // region - Profile
     abstract suspend fun addShipperPaymentDetail(paymentRequest: PaymentRequest): APIResult<Any>
+    abstract suspend fun addVehicle(requestBody: MultipartBody): APIResult<EmptyResponse>
     // endregion
 
     // region - Category

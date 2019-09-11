@@ -6,12 +6,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.app.JobIntentService
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
+import com.freight.shipper.core.persistence.network.request.AddVehicleRequest
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.core.platform.HintSpinnerAdapter
@@ -23,10 +28,14 @@ import com.freight.shipper.extensions.showImageChooser
 import com.freight.shipper.model.Image
 import com.freight.shipper.model.VehicleType
 import com.freight.shipper.repository.ProfileRepository
+import com.freight.shipper.services.AddVehicleWorkManager
+import com.freight.shipper.services.MyWorkManager
 import com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageAdapter
+import com.freight.shipper.utils.serializeToJson
 import kotlinx.android.synthetic.main.activity_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 import timber.log.Timber
+
 
 class AddVehicleActivity : BaseActivity() {
 
@@ -148,8 +157,45 @@ class AddVehicleActivity : BaseActivity() {
                 }
                 adapter.addImages(items.map { Image(it) })
 //                navigateToCropScreen(ArrayList(items), REQUEST_CODE_CROP)
+//                addVehicle(adapter.artworks)
+                addVehicle1(adapter.artworks)
             }
         }
+    }
+
+
+    private fun addVehicle(list: MutableList<Image>) {
+        val imageUploadIntent = Intent()
+        imageUploadIntent.putExtra(
+            AddVehicleWorkManager.EXTRA_REQUEST,
+            AddVehicleRequest().apply { images.addAll(list.map { it.uri.toString() }) })
+        JobIntentService.enqueueWork(this, AddVehicleWorkManager::class.java, 6, imageUploadIntent)
+    }
+
+    private fun addVehicle1(list: MutableList<Image>) {
+        val pojo =
+            serializeToJson(AddVehicleRequest().apply { images.addAll(list.map { it.uri.toString() }) })
+        val data = Data.Builder()
+            .putString(MyWorkManager.EXTRA_REQUEST, pojo)
+            .build()
+
+        val workRequest = OneTimeWorkRequest.Builder(MyWorkManager::class.java)
+            .setInputData(data)
+            .build()
+
+        WorkManager.getInstance(this).enqueue(workRequest)
+
+        WorkManager.getInstance(this).getWorkInfoByIdLiveData(workRequest.id)
+            .observe(this,
+                Observer { workInfo ->
+                    Timber.e(workInfo.toString())
+                })
+
+//        val imageUploadIntent = Intent()
+//        imageUploadIntent.putExtra(
+//            AddVehicleWorkManager.EXTRA_REQUEST,
+//            AddVehicleRequest().apply { images.addAll(list) })
+//        JobIntentService.enqueueWork(this, AddVehicleWorkManager::class.java, 6, imageUploadIntent)
     }
 
     private fun setAdapter() {
@@ -159,5 +205,4 @@ class AddVehicleActivity : BaseActivity() {
         recyclerView.adapter = adapter
     }
     // endregion
-
 }

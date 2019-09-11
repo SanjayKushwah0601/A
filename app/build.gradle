@@ -75,6 +75,10 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -138,6 +142,9 @@ dependencies {
 
     //OKHttp - Networking (low-level)
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    // Work Manager
+    implementation 'androidx.work:work-runtime-ktx:2.2.0'
 
     //Retrofit - Networking (high-level)
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
