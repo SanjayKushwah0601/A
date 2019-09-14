@@ -1,6 +1,8 @@
 package com.freight.shipper.repository
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
@@ -8,6 +10,7 @@ import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
 import com.freight.shipper.model.ActiveLoad
+import com.freight.shipper.model.NewLoad
 import com.freight.shipper.model.PastLoad
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -25,8 +28,32 @@ class LoadRepository(
     val dispatcher: DispatcherProvider = DispatcherProviderImpl()
 ) : BaseRepository() {
 
+    private val _newLoadList = MutableLiveData<List<NewLoad>>()
+    val newLoadList: LiveData<List<NewLoad>>
+        get() {
+            fetchNewLoad()
+            return _newLoadList
+        }
+    private val _newLoadError = MutableLiveData<String>()
+    val newLoadError: LiveData<String> get() = _newLoadError
+
     fun getMasterConfigData() {
         GlobalScope.launch(dispatcher.io) { api.getMasterConfigData() }
+    }
+
+    fun fetchNewLoad() {
+        GlobalScope.launch(dispatcher.io) {
+            val result = api.getNewLoad(null)
+            withContext(dispatcher.main) {
+                when (result) {
+                    is APIResult.Success ->
+                        _newLoadList.postValue(result.response.data)
+
+                    is APIResult.Failure ->
+                        _newLoadError.postValue(result.error?.message ?: "")
+                }
+            }
+        }
     }
 
     fun fetchActiveLoad(observer: Pair<MediatorLiveData<List<ActiveLoad>>, MediatorLiveData<String>>) {

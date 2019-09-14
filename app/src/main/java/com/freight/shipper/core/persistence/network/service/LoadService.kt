@@ -2,6 +2,7 @@ package com.freight.shipper.core.persistence.network.service
 
 import com.freight.shipper.core.persistence.network.response.ApiResponse
 import com.freight.shipper.model.ActiveLoad
+import com.freight.shipper.model.NewLoad
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -19,4 +20,10 @@ interface LoadService {
         @Field("pick_date") pick_date: String?,
         @Field("param") param: String = "getLoad"
     ): Call<ApiResponse<List<ActiveLoad>>>
+
+    @FormUrlEncoded
+    @POST("webservices?param=getLoad")
+    fun getNewLoad(
+        @Field("pick_date") pick_date: String?
+    ): Call<ApiResponse<List<NewLoad>>>
 }

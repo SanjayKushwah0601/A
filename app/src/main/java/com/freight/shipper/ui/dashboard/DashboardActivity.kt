@@ -11,6 +11,7 @@ import com.freight.shipper.extensions.setupToolbar
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.addload.AddLoadFragment
 import com.freight.shipper.ui.bookings.assigned.LoadPagerFragment
+import com.freight.shipper.ui.bookings.newload.NewLoadFragment
 import com.freight.shipper.ui.home.HomeFragment
 import com.freight.shipper.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,6 +26,7 @@ class DashboardActivity : AppCompatActivity(),
         const val EXTRA_START_SCREEN = "start_screen"
         const val START_SCREEN_PROFILE = 0
         const val START_SCREEN_HOME = 1
+        const val START_SCREEN_ASSIGNED = 2
     }
     // endregion
 
@@ -32,6 +34,7 @@ class DashboardActivity : AppCompatActivity(),
     private var loginManager = FreightApplication.instance.loginManager
     private var lastItemSelected = R.id.navigation_home
 
+    private val newLoadFragment by lazy { NewLoadFragment.newInstance() }
     private val loadFragment by lazy { LoadPagerFragment.newInstance() }
     private val homeFragment by lazy { HomeFragment.newInstance() }
     private val addLoadFragment by lazy { AddLoadFragment.newInstance() }
@@ -82,7 +85,7 @@ class DashboardActivity : AppCompatActivity(),
     private fun onHomeSelected() {
         lastItemSelected = R.id.navigation_home
         setToolbarTitle()
-        replaceFragmentOrAction(loadFragment)
+        replaceFragmentOrAction(newLoadFragment)
     }
 
     private fun onSecondSelected() {
@@ -93,8 +96,8 @@ class DashboardActivity : AppCompatActivity(),
 
     private fun onFavoritesSelected() {
         lastItemSelected = R.id.navigation_favorite
-        setToolbarTitle(R.string.favorites)
-        message.setText(R.string.favorites)
+        setToolbarTitle(R.string.assiged_load)
+        replaceFragmentOrAction(loadFragment)
     }
 
     private fun onProfileSelected() {
@@ -109,6 +112,11 @@ class DashboardActivity : AppCompatActivity(),
             START_SCREEN_HOME -> {
                 bottomNavigationView.selectedItemId = R.id.navigation_home
                 setToolbarTitle()
+                newLoadFragment
+            }
+            START_SCREEN_ASSIGNED -> {
+                bottomNavigationView.selectedItemId = R.id.navigation_favorite
+                setToolbarTitle(R.string.assiged_load)
                 loadFragment
             }
             START_SCREEN_PROFILE -> {
@@ -119,7 +127,7 @@ class DashboardActivity : AppCompatActivity(),
             else -> {
                 bottomNavigationView.selectedItemId = R.id.navigation_home
                 setToolbarTitle()
-                loadFragment
+                newLoadFragment
             }
         }
 
