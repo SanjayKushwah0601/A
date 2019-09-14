@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
+import com.freight.shipper.extensions.navigateToAddShipper
 import com.freight.shipper.extensions.navigateToAddVehicle
 import com.freight.shipper.extensions.navigateToPaymentDetails
 import com.freight.shipper.extensions.startLoginActivity
@@ -45,6 +46,9 @@ class ProfileFragment : Fragment() {
         }
         buttonAddVehicle?.setOnClickListener {
             navigateToAddVehicle()
+        }
+        buttonAddShipper?.setOnClickListener {
+            navigateToAddShipper()
         }
     }
 

@@ -12,6 +12,7 @@ import com.freight.shipper.ui.authentication.signup.company.CompanySignupActivit
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwoActivity
 import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
 import com.freight.shipper.ui.dashboard.DashboardActivity
+import com.freight.shipper.ui.profile.addshipper.AddShipperActivity
 import com.freight.shipper.ui.profile.addvehicle.AddVehicleActivity
 import com.freight.shipper.ui.profile.paymentdetails.PaymentDetailsActivity
 
@@ -78,4 +79,12 @@ fun Activity.navigateToAddVehicle() {
 
 fun Fragment.navigateToAddVehicle() {
     activity?.navigateToAddVehicle()
+}
+
+fun Activity.navigateToAddShipper() {
+    startActivity(Intent(this, AddShipperActivity::class.java))
+}
+
+fun Fragment.navigateToAddShipper() {
+    activity?.navigateToAddShipper()
 }

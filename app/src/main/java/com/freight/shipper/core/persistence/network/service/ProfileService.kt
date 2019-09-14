@@ -29,4 +29,20 @@ interface ProfileService {
     @POST("webservices")
     fun addVehicle(@Body file: RequestBody)
             : Call<ApiResponse<EmptyResponse>>
+
+    @FormUrlEncoded
+    @POST("webservices")
+    fun addNewShipper(
+        @Field("first_name") firstName: String,
+        @Field("last_name") lastName: String,
+        @Field("email") email: String,
+        @Field("phone") phone: String,
+        @Field("country_id") countryId: String,
+        @Field("state") state: String,
+        @Field("city") city: String,
+        @Field("postcode") postcode: String,
+        @Field("address") address: String,
+        @Field("password") password: String,
+        @Field("param") param: String = "addDriver"
+    ): Call<ApiResponse<EmptyResponse>>
 }

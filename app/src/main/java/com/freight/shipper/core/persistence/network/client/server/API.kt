@@ -1,6 +1,7 @@
 package com.freight.shipper.core.persistence.network.client.server
 
 import com.freight.shipper.core.persistence.db.RoomDb
+import com.freight.shipper.core.persistence.network.request.AddShipperRequest
 import com.freight.shipper.core.persistence.network.request.PaymentRequest
 import com.freight.shipper.core.persistence.network.response.ApiResponse
 import com.freight.shipper.core.persistence.network.response.EmptyResponse
@@ -97,6 +98,13 @@ class API(retrofit: Retrofit) : APIContract() {
 
     override suspend fun addVehicle(requestBody: MultipartBody): APIResult<EmptyResponse> {
         return profileService.addVehicle(requestBody).apiResult()
+    }
+
+    override suspend fun addNewShipper(request: AddShipperRequest): APIResult<EmptyResponse> {
+        return profileService.addNewShipper(
+            request.firstName, request.lastName, request.email, request.phone, request.countryId,
+            request.state, request.city, request.postcode, request.address, request.password
+        ).apiResult()
     }
     // endregion
 

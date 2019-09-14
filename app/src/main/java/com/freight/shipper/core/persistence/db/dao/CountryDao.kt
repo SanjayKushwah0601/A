@@ -17,12 +17,12 @@ interface CountryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addStateList(values: List<State>)
 
-    @Query("SELECT * FROM country")
+    @Query("SELECT * FROM country ORDER BY countryName")
     fun getCountries(): List<Country>
 
-    @Query("SELECT * FROM country")
+    @Query("SELECT * FROM country ORDER BY countryName")
     fun getCountriesLiveData(): LiveData<List<Country>>
 
-    @Query("SELECT * FROM state WHERE state.countryId = (:countryId)")
+    @Query("SELECT * FROM state WHERE state.countryId = (:countryId) ORDER BY stateName")
     fun getStateLiveData(countryId: String): LiveData<List<State>>
 }
