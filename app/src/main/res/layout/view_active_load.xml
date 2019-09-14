@@ -14,7 +14,7 @@
 
         <variable
             name="viewholder"
-            type="com.freight.shipper.ui.bookings.pager.ActiveLoadViewHolder"/>
+            type="com.freight.shipper.ui.bookings.assigned.pager.ActiveLoadViewHolder"/>
 
         <variable
             name="isEditing"
@@ -22,7 +22,7 @@
 
         <variable
             name="clickListener"
-            type="com.freight.shipper.ui.bookings.pager.LoadEventListener"/>
+            type="com.freight.shipper.ui.bookings.assigned.pager.LoadEventListener"/>
 
     </data>
 

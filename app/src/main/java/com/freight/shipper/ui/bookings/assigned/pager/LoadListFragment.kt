@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.bookings.pager
+package com.freight.shipper.ui.bookings.assigned.pager
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.core.platform.NonNullObserver
 import com.freight.shipper.extensions.setVisibleIf
 import com.freight.shipper.repository.LoadRepository
-import com.freight.shipper.ui.bookings.LoadPagerViewModel
+import com.freight.shipper.ui.bookings.assigned.LoadPagerViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_load_list.*
 

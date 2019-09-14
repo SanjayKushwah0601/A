@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.bookings.pager
+package com.freight.shipper.ui.bookings.assigned.pager
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,9 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.freight.shipper.R
-import com.freight.shipper.model.PastLoad
+import com.freight.shipper.model.ActiveLoad
 
-class PastLoadAdapter : RecyclerView.Adapter<PastLoadViewHolder>() {
+class ActiveLoadAdapter : RecyclerView.Adapter<ActiveLoadViewHolder>() {
 
     var editing = false
         set(value) {
@@ -16,36 +16,32 @@ class PastLoadAdapter : RecyclerView.Adapter<PastLoadViewHolder>() {
             notifyDataSetChanged()
         }
 
-    var imageList: MutableList<PastLoad>? = null
+    var imageList: MutableList<ActiveLoad>? = null
         set(value) {
             field = value
 //            field = value?.sortedBy { it.name?.toLowerCase() }?.toMutableList()
             notifyDataSetChanged()
         }
 
-    var clickListener: PastLoadEventListener? = null
+    var clickListener: LoadEventListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PastLoadViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActiveLoadViewHolder {
         val view = DataBindingUtil.inflate<ViewDataBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.view_past_load, parent, false
+            R.layout.view_active_load, parent, false
         )
-        return PastLoadViewHolder(view)
+        return ActiveLoadViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return imageList?.size ?: 0
     }
 
-    override fun onBindViewHolder(holder: PastLoadViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ActiveLoadViewHolder, position: Int) {
         holder.bind(imageList?.get(position), clickListener)
     }
 
-    override fun getItemId(position: Int): Long {
-        return imageList?.get(position)?.id ?: -1
-    }
-
-    fun getItemAt(position: Int): PastLoad? {
+    fun getItemAt(position: Int): ActiveLoad? {
         return imageList?.getOrNull(position)
     }
 
@@ -55,7 +51,7 @@ class PastLoadAdapter : RecyclerView.Adapter<PastLoadViewHolder>() {
     }
 }
 
-interface PastLoadEventListener {
-    fun onWorkClicked(image: PastLoad) {}
-//    fun onDeleteClicked(image: Image, viewHolder: PastLoadViewHolder) {}
+interface LoadEventListener {
+    fun onWorkClicked(image: ActiveLoad) {}
+//    fun onDeleteClicked(image: Image, viewHolder: ActiveLoadViewHolder) {}
 }

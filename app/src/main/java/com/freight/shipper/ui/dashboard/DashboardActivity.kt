@@ -10,14 +10,15 @@ import com.freight.shipper.R
 import com.freight.shipper.extensions.setupToolbar
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.addload.AddLoadFragment
-import com.freight.shipper.ui.bookings.LoadPagerFragment
+import com.freight.shipper.ui.bookings.assigned.LoadPagerFragment
 import com.freight.shipper.ui.home.HomeFragment
 import com.freight.shipper.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class DashboardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class DashboardActivity : AppCompatActivity(),
+    BottomNavigationView.OnNavigationItemSelectedListener {
 
     // region - Companion object
     companion object {

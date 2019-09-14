@@ -1,14 +1,14 @@
-package com.freight.shipper.ui.bookings
+package com.freight.shipper.ui.bookings.assigned
 
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager.widget.ViewPager
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseFragment
-import com.freight.shipper.ui.bookings.frgments.ActiveLoadFragment
-import com.freight.shipper.ui.bookings.frgments.PastLoadFragment
-import com.freight.shipper.ui.bookings.pager.LoadListFragment
-import com.freight.shipper.ui.bookings.pager.LoadPagerAdapter
+import com.freight.shipper.ui.bookings.assigned.frgments.ActiveLoadFragment
+import com.freight.shipper.ui.bookings.assigned.frgments.PastLoadFragment
+import com.freight.shipper.ui.bookings.assigned.pager.LoadListFragment
+import com.freight.shipper.ui.bookings.assigned.pager.LoadPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_load_pager.*
 
@@ -45,7 +45,10 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
     }
 
     private fun initPager() {
-        pagerAdapter = LoadPagerAdapter(fragments, childFragmentManager)
+        pagerAdapter = LoadPagerAdapter(
+            fragments,
+            childFragmentManager
+        )
         viewPager.adapter = pagerAdapter
         viewPager.addOnPageChangeListener(this)
 //            viewPager.offscreenPageLimit = 3

@@ -1,19 +1,20 @@
-package com.freight.shipper.ui.bookings.frgments
+package com.freight.shipper.ui.bookings.assigned.frgments
 
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.freight.shipper.model.PastLoad
-import com.freight.shipper.ui.bookings.pager.LoadListFragment
-import com.freight.shipper.ui.bookings.pager.PastLoadAdapter
-import com.freight.shipper.ui.bookings.pager.PastLoadEventListener
+import com.freight.shipper.model.ActiveLoad
+import com.freight.shipper.ui.bookings.assigned.pager.ActiveLoadAdapter
+import com.freight.shipper.ui.bookings.assigned.pager.LoadEventListener
+import com.freight.shipper.ui.bookings.assigned.pager.LoadListFragment
 
 
-class PastLoadFragment : LoadListFragment<PastLoad>(), PastLoadEventListener {
+class ActiveLoadFragment : LoadListFragment<ActiveLoad>(),
+    LoadEventListener {
     //region - Companion
     companion object {
-        fun newInstance(title: String) = PastLoadFragment().apply {
+        fun newInstance(title: String) = ActiveLoadFragment().apply {
             arguments = Bundle().apply {
                 putString(ARG_TITLE, title)
             }
@@ -22,7 +23,7 @@ class PastLoadFragment : LoadListFragment<PastLoad>(), PastLoadEventListener {
     //endregion
 
     //region - Private functions
-    private val imageRowAdapter = PastLoadAdapter()
+    private val imageRowAdapter = ActiveLoadAdapter()
     //endregion
 
     //region - Public functions
@@ -37,13 +38,13 @@ class PastLoadFragment : LoadListFragment<PastLoad>(), PastLoadEventListener {
         return LinearLayoutManager(context)
     }
 
-    override fun setAdapterItems(items: List<PastLoad>?) {
+    override fun setAdapterItems(items: List<ActiveLoad>?) {
         imageRowAdapter.imageList?.clear()
         imageRowAdapter.imageList = items?.toMutableList()
     }
 
-    override fun fetchItem(): LiveData<List<PastLoad>>? {
-        return viewmodel.pastLoads
+    override fun fetchItem(): LiveData<List<ActiveLoad>>? {
+        return viewmodel.activeLoads
     }
 
     override fun removeItemFromAdapter(position: Int) {
@@ -54,12 +55,12 @@ class PastLoadFragment : LoadListFragment<PastLoad>(), PastLoadEventListener {
         imageRowAdapter.editing = editing
     }
 
-    /*override fun onWorkClicked(image: PastLoad) {
+    /*override fun onWorkClicked(image: ActiveLoad) {
 //        val imageIds = imageRowAdapter.imageList?.map { it.id } ?: listOf(image).map { it.id }
 //        navigateToImageDetailScreen(image, null, imageIds, REQUEST_CODE_IMAGE_DETAIL)
     }
 
-    override fun onDeleteClicked(image: PastLoad, viewHolder: ActiveLoadViewHolder) {
+    override fun onDeleteClicked(image: ActiveLoad, viewHolder: ActiveLoadViewHolder) {
         removeItemFromAdapter(viewHolder.adapterPosition)
         viewmodel.unFavorite(viewHolder, image)
     }*/

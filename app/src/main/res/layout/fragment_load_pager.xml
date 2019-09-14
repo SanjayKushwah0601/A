@@ -6,7 +6,7 @@
     android:background="@color/background"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.freight.shipper.ui.bookings.LoadPagerFragment">
+    tools:context="com.freight.shipper.ui.bookings.assigned.LoadPagerFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

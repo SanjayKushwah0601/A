@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.bookings
+package com.freight.shipper.ui.bookings.assigned
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
