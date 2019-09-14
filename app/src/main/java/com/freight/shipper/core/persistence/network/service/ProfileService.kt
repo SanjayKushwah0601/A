@@ -2,6 +2,7 @@ package com.freight.shipper.core.persistence.network.service
 
 import com.freight.shipper.core.persistence.network.response.ApiResponse
 import com.freight.shipper.core.persistence.network.response.EmptyResponse
+import com.freight.shipper.model.Vehicle
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -43,6 +44,10 @@ interface ProfileService {
         @Field("postcode") postcode: String,
         @Field("address") address: String,
         @Field("password") password: String,
+        @Field("vehicle_id") vehicleId: String,
         @Field("param") param: String = "addDriver"
     ): Call<ApiResponse<EmptyResponse>>
+
+    @POST("webservices?param=getVehicleByShipper")
+    fun getVehicleListByShipper(): Call<ApiResponse<List<Vehicle>>>
 }

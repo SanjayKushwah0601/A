@@ -19,8 +19,10 @@ class AddShipperRequest(
     var state: String = "",
     var countryId: String = "",
     var postcode: String = "",
-    var password: String = ""
+    var password: String = "",
+    var vehicleId: String = ""
 ) : Parcelable {
+
 
     @Throws(IllegalAccessException::class)
     fun isAllFilled(): Boolean {

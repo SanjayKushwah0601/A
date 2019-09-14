@@ -113,6 +113,36 @@
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/_40dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/vType"
+                    style="@style/TextView.Body.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:padding="0dp"
+                    android:paddingStart="@dimen/_15dp"
+                    android:text="@string/vehicle"
+                    android:textColor="@color/gray_dark"
+                    tools:ignore="RtlSymmetry" />
+
+                <Spinner
+                    android:id="@+id/spVehicle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/vType"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:paddingTop="0dp"
+                    android:spinnerMode="dropdown"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light" />
+            </RelativeLayout>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

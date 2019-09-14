@@ -17,8 +17,10 @@ import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.model.Country
 import com.freight.shipper.model.State
+import com.freight.shipper.model.Vehicle
 import com.freight.shipper.repository.ProfileRepository
 import kotlinx.android.synthetic.main.activity_add_shipper.*
+import kotlinx.android.synthetic.main.activity_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
@@ -54,6 +56,17 @@ class AddShipperActivity : BaseActivity() {
         ) {
             override fun getLabelFor(item: State): String {
                 return item.stateName
+            }
+        }
+    }
+
+    private val vehicleAdapter by lazy {
+        object : HintSpinnerAdapter<Vehicle>(
+            this@AddShipperActivity, mutableListOf(),
+            getString(R.string.select_vehicle)
+        ) {
+            override fun getLabelFor(item: Vehicle): String {
+                return item.vehicleName
             }
         }
     }
@@ -98,6 +111,14 @@ class AddShipperActivity : BaseActivity() {
             spState.setOnItemSelectListener(stateAdapter) {
                 Log.d("SelectedItem", "${it?.stateName}")
                 viewModel.requestModel.state = it.stateName
+            }
+        }
+        viewModel.vehicleList.observeForever { list ->
+            spVehicle.adapter = vehicleAdapter
+            vehicleAdapter.setList(list)
+            spVehicle.setOnItemSelectListener(vehicleAdapter) {
+                Log.d("SelectedItem", "${it?.vehicleName}")
+                viewModel.requestModel.vehicleId = it.vehicleId
             }
         }
         viewModel.addShipperResponse.observe(this, Observer {

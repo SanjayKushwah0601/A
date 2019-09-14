@@ -13,6 +13,7 @@ import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
 import com.freight.shipper.model.State
+import com.freight.shipper.model.Vehicle
 import com.freight.shipper.model.VehicleType
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -33,9 +34,33 @@ class ProfileRepository(
     val vehicleTypes by lazy { MutableLiveData<List<VehicleType>>() }
     val countries by lazy { RoomDb.instance.countryDao().getCountriesLiveData() }
 
+    private val _vehicleList = MutableLiveData<List<Vehicle>>()
+    val vehicleList: LiveData<List<Vehicle>>
+        get() {
+            fetchVehicleList()
+            return _vehicleList
+        }
+    private val _vehicleListError = MutableLiveData<String>()
+    val vehicleListError: LiveData<String> get() = _vehicleListError
+
     init {
         GlobalScope.launch(dispatcher.io) {
             vehicleTypes.postValue(RoomDb.instance.configDao().getConfig().vehicleTypes)
+        }
+    }
+
+    private fun fetchVehicleList() {
+        GlobalScope.launch(dispatcher.io) {
+            val result: APIResult<List<Vehicle>> = api.getVehicleList()
+            withContext(dispatcher.main) {
+                when (result) {
+                    is APIResult.Success ->
+                        _vehicleList.postValue(result.response.data)
+
+                    is APIResult.Failure ->
+                        _vehicleListError.postValue(result.error?.message ?: "")
+                }
+            }
         }
     }
 

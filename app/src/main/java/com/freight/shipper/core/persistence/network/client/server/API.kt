@@ -107,8 +107,12 @@ class API(retrofit: Retrofit) : APIContract() {
     override suspend fun addNewShipper(request: AddShipperRequest): APIResult<EmptyResponse> {
         return profileService.addNewShipper(
             request.firstName, request.lastName, request.email, request.phone, request.countryId,
-            request.state, request.city, request.postcode, request.address, request.password
+            request.state, request.city, request.postcode, request.address, request.password, request.vehicleId
         ).apiResult()
+    }
+
+    override suspend fun getVehicleList(): APIResult<List<Vehicle>> {
+        return profileService.getVehicleListByShipper().apiResult()
     }
     // endregion
 
