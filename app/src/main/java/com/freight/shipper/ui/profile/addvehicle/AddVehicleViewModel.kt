@@ -1,22 +1,48 @@
 package com.freight.shipper.ui.profile.addvehicle
 
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.freight.shipper.core.persistence.network.request.PaymentRequest
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
+import com.freight.shipper.FreightApplication
+import com.freight.shipper.core.persistence.network.request.AddVehicleRequest
 import com.freight.shipper.core.platform.ActionLiveData
-import com.freight.shipper.core.platform.BaseViewModel
 import com.freight.shipper.model.Image
 import com.freight.shipper.model.VehicleType
 import com.freight.shipper.repository.ProfileRepository
+import com.freight.shipper.services.MyWorkManager
 import com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageClickListener
+import com.freight.shipper.utils.serializeToJson
 import timber.log.Timber
 
 
 class AddVehicleViewModel(
     private val model: ProfileRepository
-) : BaseViewModel(), ImageClickListener {
+) : AndroidViewModel(FreightApplication.instance), ImageClickListener {
+
+    var vehicleType: MutableLiveData<List<VehicleType>> = model.vehicleTypes
+    val newItemClickObserver = ActionLiveData<Boolean>()
+    val removeImageObserver = ActionLiveData<Int>()
+
+    val requestModel: AddVehicleRequest by lazy { AddVehicleRequest() }
+
+    var isLoading = ObservableField<Boolean>().apply { set(false) }
+    val addVehicleResponse = MutableLiveData<String>()
+    var error = MutableLiveData<String>()
+
+
+    fun submitVehicleDetails() {
+        Timber.e(requestModel.toString())
+        if (validateFormField()) {
+            isLoading.set(true)
+            addVehicle()
+        }
+    }
+
+    // region - Image callbacks
     override fun onImageClicked(image: Image) {
         // TODO //To change body of created functions use File | Settings | File Templates.
     }
@@ -28,41 +54,50 @@ class AddVehicleViewModel(
     override fun onNewItemClicked() {
         newItemClickObserver.postValue(true)
     }
+    // endregion
 
+    private fun addVehicle() {
+        val pojo = serializeToJson(requestModel)
+        val data = Data.Builder()
+            .putString(MyWorkManager.EXTRA_REQUEST, pojo)
+            .build()
 
-    var vehicleType: MutableLiveData<List<VehicleType>> = model.vehicleTypes
-    val newItemClickObserver = ActionLiveData<Boolean>()
-    val removeImageObserver = ActionLiveData<Int>()
+        val workRequest = OneTimeWorkRequest.Builder(MyWorkManager::class.java)
+            .setInputData(data)
+            .build()
 
-    val requestModel: PaymentRequest by lazy { PaymentRequest() }
-    var error = MediatorLiveData<String>()
+        WorkManager.getInstance(getApplication()).enqueue(workRequest)
 
-    var isLoading = ObservableField<Boolean>().apply { set(false) }
-    val paymentDetailResponse: LiveData<String>
-        get() = _paymentDetailResponse
-
-    private val _paymentDetailResponse = MediatorLiveData<String>()
-
-
-    fun submitPaymentDetails() {
-        Timber.e(requestModel.toString())
-        if (validateFormField()) {
-            isLoading.set(true)
-            model.savePaymentDetails(requestModel, Pair(_paymentDetailResponse, error))
-        }
+        WorkManager.getInstance(getApplication()).getWorkInfoByIdLiveData(workRequest.id)
+            .observeForever {
+                if (it.state == WorkInfo.State.SUCCEEDED) {
+                    isLoading.set(false)
+                    addVehicleResponse.postValue(it.outputData.getString(MyWorkManager.KEY_DATA))
+                } else if (it.state == WorkInfo.State.FAILED) {
+                    isLoading.set(false)
+                    error.postValue(it.outputData.getString(MyWorkManager.KEY_DATA))
+                }
+                Timber.e(it.toString())
+            }
     }
 
     private fun validateFormField(): Boolean {
-        return if (requestModel.accountNumber.isEmpty() || requestModel.bankName.isEmpty() ||
-            requestModel.bankAddress.isEmpty() || requestModel.wireTransNumber.isEmpty() ||
-            requestModel.currency.isEmpty()
+        return if (requestModel.height.isNullOrEmpty() || requestModel.images.isEmpty() ||
+            requestModel.length.isNullOrEmpty() || requestModel.numberPlate.isNullOrEmpty() ||
+            requestModel.regNumber.isNullOrEmpty() || requestModel.vehicleName.isNullOrEmpty() ||
+            requestModel.vehicleType.isNullOrEmpty() || requestModel.weight.isNullOrEmpty() ||
+            requestModel.width.isNullOrEmpty()
         ) {
-//            btnSignupEnable.set(false)
-            Timber.d(requestModel.accountNumber)
+            Timber.d(requestModel.vehicleType)
             false
         } else {
 //            btnSignupEnable.set(true)
             true
         }
+    }
+
+    fun addVehicleImages(vehicleImages: MutableList<Image>) {
+        requestModel.images.clear()
+        requestModel.images.addAll(vehicleImages.map { it.uri.toString() })
     }
 }

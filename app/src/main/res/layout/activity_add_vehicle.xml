@@ -52,7 +52,7 @@
                         android:hint="@string/vehicle_name"
                         android:inputType="textPersonName"
                         android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.bankName }" />
+                        android:text="@={ viewModel.requestModel.vehicleName }" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +109,7 @@
                         android:hint="@string/length"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.bankName }" />
+                        android:text="@={ viewModel.requestModel.length }" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,7 +127,7 @@
                         android:hint="@string/width"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.bankName }" />
+                        android:text="@={ viewModel.requestModel.width }" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +144,7 @@
                         android:hint="@string/height"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.bankName }" />
+                        android:text="@={ viewModel.requestModel.height }" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,7 +160,7 @@
                     android:hint="@string/weight_capacity"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:text="@={viewModel.requestModel.accountNumber}" />
+                    android:text="@={viewModel.requestModel.weight}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,7 +183,7 @@
                         android:hint="@string/number_plat"
                         android:inputType="textCapCharacters"
                         android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.bankName }" />
+                        android:text="@={ viewModel.requestModel.numberPlate }" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -201,7 +201,7 @@
                         android:hint="@string/registration_number"
                         android:inputType="textCapCharacters"
                         android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.bankName }" />
+                        android:text="@={ viewModel.requestModel.regNumber }" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -229,7 +229,7 @@
                     style="@style/Material.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> viewModel.submitPaymentDetails()}"
+                    android:onClick="@{() -> viewModel.submitVehicleDetails()}"
                     android:text="@string/submit"
                     android:visibility="@{ !viewModel.isLoading ? View.VISIBLE : View.GONE, default=visible}" />
 

@@ -88,4 +88,7 @@
     <string name="number_plat">Number Plat</string>
     <string name="select_vehicle_type">Select Vehicle Type</string>
     <string name="error_uploading_vehicle_images">Error on uploading vehicle images</string>
+    <string name="only_images_are_allowed">Only three images are allowed</string>
+    <string name="vehicle_added_success_message">Vehicle added successfully</string>
+    <string name="add_vehicle_error">Error while adding vehicle</string>
 </resources>

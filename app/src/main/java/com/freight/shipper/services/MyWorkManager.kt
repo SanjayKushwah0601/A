@@ -6,12 +6,15 @@ import android.net.Uri
 import android.provider.OpenableColumns
 import android.webkit.MimeTypeMap
 import androidx.work.CoroutineWorker
+import androidx.work.Data
 import androidx.work.WorkerParameters
 import com.freight.shipper.FreightApplication
+import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.request.AddVehicleRequest
 import com.freight.shipper.core.persistence.network.request.ProgressRequestBody
 import com.freight.shipper.core.persistence.network.response.EmptyResponse
 import com.freight.shipper.core.persistence.network.result.APIResult
+import com.freight.shipper.utils.StringUtil
 import com.freight.shipper.utils.deserializeFromJson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -31,6 +34,7 @@ class MyWorkManager(val context: Context, val workParams: WorkerParameters) :
 
     companion object {
         const val EXTRA_REQUEST = "vehicle_request"
+        const val KEY_DATA: String = "data"
     }
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
@@ -42,9 +46,9 @@ class MyWorkManager(val context: Context, val workParams: WorkerParameters) :
                     return@withContext uploadAll(data)
                 }
             }
-            return@withContext Result.failure()
+            return@withContext Result.failure(createOutputData(StringUtil.getString(R.string.default_api_error)))
         } catch (e: Exception) {
-            return@withContext Result.failure()
+            return@withContext Result.failure(createOutputData(StringUtil.getString(R.string.default_api_error)))
         }
     }
 
@@ -90,11 +94,15 @@ class MyWorkManager(val context: Context, val workParams: WorkerParameters) :
         return when (result) {
             is APIResult.Success -> {
                 Timber.e("AddVehicle: Success")
-                Result.success()
+                Result.success(createOutputData(result.response.getMessage()))
             }
             is APIResult.Failure -> {
                 Timber.e("AddVehicle: Failure")
-                Result.failure()
+                Result.failure(
+                    createOutputData(
+                        result.error?.message ?: StringUtil.getString(R.string.add_vehicle_error)
+                    )
+                )
             }
         }
 
@@ -144,6 +152,12 @@ class MyWorkManager(val context: Context, val workParams: WorkerParameters) :
     fun getFileSize(uri: Uri): Int {
         val inputStream = context.contentResolver.openInputStream(uri)
         return inputStream.available()
+    }
+
+    private fun createOutputData(data: String): Data {
+        return Data.Builder()
+            .putString(Companion.KEY_DATA, data)
+            .build()
     }
 }
 

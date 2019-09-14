@@ -22,14 +22,14 @@ class AddVehicleRequest(
 ) : Parcelable {
 
     constructor(
-        vehicleName: String = "My Vehicle",
-        vehicleType: String? = "2",
-        regNumber: String? = "MP093103",
-        length: String? = "9",
-        width: String? = "4",
-        height: String? = "5",
-        weight: String? = "120",
-        numberPlate: String? = "MP0931039"
+        vehicleName: String,// = "My Vehicle",
+        vehicleType: String?,// = "2",
+        regNumber: String?,// = "MP093103",
+        length: String?,// = "9",
+        width: String?,// = "4",
+        height: String?,// = "5",
+        weight: String?,// = "120",
+        numberPlate: String?// = "MP0931039"
     ) : this(
         mutableListOf(),
         vehicleName,

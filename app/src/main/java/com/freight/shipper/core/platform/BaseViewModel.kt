@@ -14,11 +14,6 @@ abstract class BaseViewModel : ViewModel() {
 
     fun getString(@StringRes resId: Int): String =
         FreightApplication.instance.getString(resId)
-    //region - Exception handling
-//    open fun parseException(exception: APIError, @StringRes defaultMessageId: Int) {
-//
-//    }
-    //endregion
 }
 
 abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel(application)
