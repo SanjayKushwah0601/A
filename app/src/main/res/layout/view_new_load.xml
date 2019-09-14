@@ -8,7 +8,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="activeLoad"
+            name="loadModel"
             type="com.freight.shipper.model.NewLoad" />
 
         <variable
@@ -46,7 +46,7 @@
                 android:layout_margin="@dimen/_10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                app:loadCircularImage="@{ activeLoad.image }" />
+                app:loadCircularImage="@{ loadModel.image }" />
 
             <TextView
                 android:id="@+id/tvCustomerName"
@@ -56,7 +56,7 @@
                 android:layout_marginTop="@dimen/_5dp"
                 android:layout_toEndOf="@+id/image"
                 android:singleLine="true"
-                android:text='@{String.format("%s", activeLoad.finderName)}'
+                android:text='@{String.format("%s", loadModel.finderName)}'
                 tools:text="@string/customer_name" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_below="@+id/tvCustomerName"
                 android:layout_toEndOf="@+id/image"
                 android:singleLine="true"
-                android:text="@{`Load id: `+activeLoad.loadsId}"
+                android:text="@{`Load id: `+loadModel.loadsId}"
                 tools:text="@string/customer_name" />
 
             <View
@@ -98,7 +98,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:drawableTint="@color/colorAccent"
                         android:maxLines="2"
-                        android:text='@{String.format("%s, %s, %s", activeLoad.pickCity, activeLoad.pickState, activeLoad.pickCountry)}'
+                        android:text='@{String.format("%s, %s, %s", loadModel.pickCity, loadModel.pickState, loadModel.pickCountry)}'
                         android:textStyle="bold"
                         tools:text="Pickup City" />
 
@@ -117,7 +117,7 @@
                             android:drawableTint="@color/button_gray"
                             android:gravity="end"
                             android:maxLines="2"
-                            android:text='@{String.format("%s, %s, %s", activeLoad.destCity, activeLoad.destState, activeLoad.destCountry)}'
+                            android:text='@{String.format("%s, %s, %s", loadModel.destCity, loadModel.destState, loadModel.destCountry)}'
                             android:textStyle="bold"
                             tools:text="Destination City" />
                     </LinearLayout>
@@ -135,7 +135,7 @@
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/_3dp"
                         android:maxLines="2"
-                        android:text='@{String.format("%s, %s", activeLoad.pickAddress, activeLoad.pickPostcode)}'
+                        android:text='@{String.format("%s, %s", loadModel.pickAddress, loadModel.pickPostcode)}'
                         tools:text="Pickup Address" />
 
                     <TextView
@@ -146,7 +146,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:gravity="end"
                         android:maxLines="2"
-                        android:text='@{String.format("%s, %s", activeLoad.destAddress, activeLoad.destPostcode)}'
+                        android:text='@{String.format("%s, %s", loadModel.destAddress, loadModel.destPostcode)}'
                         tools:text="Destination Address" />
 
                 </LinearLayout>
@@ -163,7 +163,7 @@
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/_3dp"
                         android:maxLines="2"
-                        android:text='@{String.format("%s, %s", activeLoad.getFormattedPickTime(), activeLoad.getFormattedPickDate())}'
+                        android:text='@{String.format("%s, %s", loadModel.getFormattedPickTime(), loadModel.getFormattedPickDate())}'
                         tools:text="10:00 AM, 22 Jul" />
 
                     <TextView
@@ -174,7 +174,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:gravity="end"
                         android:maxLines="2"
-                        android:text='@{String.format("%s", activeLoad.getFormattedDestDate())}'
+                        android:text='@{String.format("%s", loadModel.getFormattedDestDate())}'
                         tools:text="10:00 AM, 22 Jul" />
 
                 </LinearLayout>
@@ -212,7 +212,7 @@
                         android:layout_marginStart="4dp"
                         android:drawablePadding="@dimen/_3dp"
                         android:maxLines="1"
-                        android:text="@{activeLoad.price}"
+                        android:text="@{loadModel.price}"
                         android:textColor="@color/colorAccent"
                         app:layout_constraintStart_toEndOf="@+id/textView3"
                         app:layout_constraintTop_toTopOf="parent"
@@ -244,7 +244,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:gravity="end"
                         android:maxLines="2"
-                        android:text="@{activeLoad.loadName}"
+                        android:text="@{loadModel.loadName}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Electronics" />
@@ -288,7 +288,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:gravity="end"
                         android:maxLines="2"
-                        android:text="@{activeLoad.paidBy}"
+                        android:text="@{loadModel.paidBy}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView5"
                         tools:text="Receiver" />
@@ -303,47 +303,41 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/TextView.Body.Small"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:text="@string/time_left_for_pickup"
+                        android:orientation="horizontal"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/view" />
+                        app:layout_constraintTop_toBottomOf="@+id/view">
+
+                        <Button
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="@dimen/_10dp"
+                            android:layout_weight="1"
+                            android:onClick="@{(view) -> clickListener != null ? clickListener.onCounterLoad(viewholder.position, loadModel) : null }"
+                            android:text="@string/counter"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+                        <Button
+                            style="@style/Material.Button.Gray"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="@dimen/_10dp"
+                            android:layout_weight="1"
+                            android:onClick="@{(view) -> clickListener != null ? clickListener.onAcceptLoad(viewholder.position, loadModel) : null }"
+                            android:text="@string/accept"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+                    </LinearLayout>
 
 
-                    <TextView
-                        style="@style/TextView.Heading.M"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:paddingBottom="@dimen/_10dp"
-                        android:text="@{activeLoad.timeLeftToPickup}"
-                        android:textColor="@color/gray_dark"
-                        app:layout_constraintStart_toStartOf="@+id/textView8"
-                        app:layout_constraintTop_toBottomOf="@+id/textView8"
-                        tools:text="00:39 Hrs" />
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="@dimen/_10dp"
-                        android:text="@string/start"
-
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/view" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
@@ -355,8 +349,8 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:onClick="@{(v)->clickListener.onWorkClicked(activeLoad)}"
-        android:visibility="@{activeLoad!=null ? View.VISIBLE : View.GONE}">
+        android:onClick="@{(v)->clickListener.onWorkClicked(loadModel)}"
+        android:visibility="@{loadModel!=null ? View.VISIBLE : View.GONE}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -379,7 +373,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:lines="1"
-                android:text="@{activeLoad.url}"
+                android:text="@{loadModel.url}"
                 tools:text="TextView"/>
 
             <TextView
@@ -389,7 +383,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:gravity="center_vertical"
-                android:text="@{activeLoad.url}"
+                android:text="@{loadModel.url}"
                 tools:text="TextView"/>
         </LinearLayout>
 

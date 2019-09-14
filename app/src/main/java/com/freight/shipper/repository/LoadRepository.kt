@@ -96,4 +96,26 @@ class LoadRepository(
             }*/
         }
     }
+
+    fun acceptLoad(
+        loadId: String,
+        observers: Pair<MediatorLiveData<String>, MediatorLiveData<String>>
+    ) {
+        val (success, failure) = setupObserver(observers)
+        GlobalScope.launch(dispatcher.io) {
+            val result = api.acceptLoad(loadId)
+            withContext(dispatcher.main) {
+                when (result) {
+                    is APIResult.Success -> {
+                        Timber.e("Success Sanjay: ${result.response}")
+                        success.value = result.response.getMessage()
+                    }
+                    is APIResult.Failure -> {
+                        Timber.e("Failure Sanjay: ${result.error}")
+                        failure.value = result.error?.message ?: ""
+                    }
+                }
+            }
+        }
+    }
 }

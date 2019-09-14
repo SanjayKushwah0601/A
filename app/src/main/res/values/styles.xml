@@ -262,7 +262,7 @@
     </style>
 
     <style name="Material.Button.Gray" parent="Material.Button">
-        <item name="android:background">@color/button_gray</item>
+        <item name="android:background">@drawable/button_bg_gray_square</item>
         <item name="android:textColor">@color/button_gray_text_color</item>
         <item name="android:theme">@style/AppTheme.LightRipple</item>
     </style>

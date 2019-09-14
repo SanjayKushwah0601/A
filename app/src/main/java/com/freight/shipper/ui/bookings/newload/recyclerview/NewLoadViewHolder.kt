@@ -14,7 +14,7 @@ class NewLoadViewHolder(private val dataBinding: ViewDataBinding) :
     RecyclerView.ViewHolder(dataBinding.root) {
 
     fun bind(image: NewLoad?, clickListener: NewLoadEventListener?) {
-        dataBinding.setVariable(BR.activeLoad, image)
+        dataBinding.setVariable(BR.loadModel, image)
         dataBinding.setVariable(BR.clickListener, clickListener)
         dataBinding.setVariable(BR.viewholder, this)
         dataBinding.executePendingBindings()

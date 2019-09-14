@@ -90,6 +90,16 @@ class API(retrofit: Retrofit) : APIContract() {
     override suspend fun getNewLoad(date: String?): APIResult<List<NewLoad>> {
         return loadService.getNewLoad(date).apiResult()
     }
+
+    override suspend fun acceptLoad(loadId: String): APIResult<EmptyResponse> {
+        return loadService.acceptLoad(loadId).apiResult()
+    }
+
+    override suspend fun addLoadOfferPrice(
+        loadId: String, offerPrice: String
+    ): APIResult<EmptyResponse> {
+        return loadService.addLoadOfferPrice(loadId, offerPrice).apiResult()
+    }
     // endregion
 
     // region - Profile services
@@ -106,8 +116,17 @@ class API(retrofit: Retrofit) : APIContract() {
 
     override suspend fun addNewShipper(request: AddShipperRequest): APIResult<EmptyResponse> {
         return profileService.addNewShipper(
-            request.firstName, request.lastName, request.email, request.phone, request.countryId,
-            request.state, request.city, request.postcode, request.address, request.password, request.vehicleId
+            request.firstName,
+            request.lastName,
+            request.email,
+            request.phone,
+            request.countryId,
+            request.state,
+            request.city,
+            request.postcode,
+            request.address,
+            request.password,
+            request.vehicleId
         ).apiResult()
     }
 

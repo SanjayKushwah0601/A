@@ -33,6 +33,10 @@ abstract class APIContract {
     abstract suspend fun getLoad(pickDate: String?): APIResult<List<ActiveLoad>>
 
     abstract suspend fun getNewLoad(date: String?): APIResult<List<NewLoad>>
+    abstract suspend fun acceptLoad(loadId: String): APIResult<EmptyResponse>
+    abstract suspend fun addLoadOfferPrice(
+        loadId: String, offerPrice: String
+    ): APIResult<EmptyResponse>
     // endregion
 
     // region - Profile

@@ -12,12 +12,14 @@ import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.extensions.setVisibleIf
+import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.bookings.assigned.pager.LoadEventListener
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadAdapter
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadEventListener
 import kotlinx.android.synthetic.main.fragment_new_load_list.*
+import timber.log.Timber
 
 
 class NewLoadFragment : Fragment(),
@@ -70,6 +72,18 @@ class NewLoadFragment : Fragment(),
             swipeRefreshLayout.isRefreshing = false
             adapterNewLoad.addListItems(it)
             setEmptyViewVisibility()
+        })
+
+        viewModel.acceptLoadResponse.observe(this, Observer {
+            viewModel.isLoading.postValue(false)
+            showConfirmationMessage(it)
+        })
+        viewModel.counterAction.observe(this, Observer {
+            Timber.i("$it")
+        })
+        viewModel.error.observe(this, Observer {
+            viewModel.isLoading.postValue(false)
+            showErrorMessage(it)
         })
     }
 

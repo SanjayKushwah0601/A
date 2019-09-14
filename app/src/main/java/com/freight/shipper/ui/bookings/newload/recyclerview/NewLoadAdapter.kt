@@ -21,11 +21,12 @@ class NewLoadAdapter(
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewLoadViewHolder {
-        val view = DataBindingUtil.inflate<ViewDataBinding>(
-            LayoutInflater.from(parent.context),
-            R.layout.view_new_load, parent, false
+        return NewLoadViewHolder(
+            DataBindingUtil.inflate<ViewDataBinding>(
+                LayoutInflater.from(parent.context),
+                R.layout.view_new_load, parent, false
+            )
         )
-        return NewLoadViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -53,6 +54,7 @@ class NewLoadAdapter(
 }
 
 interface NewLoadEventListener {
-    fun onWorkClicked(image: NewLoad) {}
+    fun onAcceptLoad(position: Int, load: NewLoad) {}
+    fun onCounterLoad(position: Int, load: NewLoad) {}
 //    fun onDeleteClicked(image: Image, viewHolder: ActiveLoadViewHolder) {}
 }
