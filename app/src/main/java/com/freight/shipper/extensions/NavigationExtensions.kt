@@ -2,7 +2,9 @@ package com.freight.shipper.extensions
 
 import android.app.Activity
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.freight.shipper.model.NewLoad
 import com.freight.shipper.ui.authentication.forgotpassword.ForgotPasswordActivity
 import com.freight.shipper.ui.authentication.login.LoginActivity
 import com.freight.shipper.ui.authentication.resetpassword.ResetPasswordActivity
@@ -11,6 +13,7 @@ import com.freight.shipper.ui.authentication.signup.SignupLandingActivity
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupActivity
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwoActivity
 import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
+import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.dashboard.DashboardActivity
 import com.freight.shipper.ui.profile.addshipper.AddShipperActivity
 import com.freight.shipper.ui.profile.addvehicle.AddVehicleActivity
@@ -87,4 +90,13 @@ fun Activity.navigateToAddShipper() {
 
 fun Fragment.navigateToAddShipper() {
     activity?.navigateToAddShipper()
+}
+
+fun AppCompatActivity.showCounterDialog(newLoad: NewLoad) {
+    val editNameDialogFragment = CounterDialog.newInstance(newLoad)
+    editNameDialogFragment.show(supportFragmentManager, "fragment_edit_name")
+}
+
+fun Fragment.showCounterDialog(newLoad: NewLoad) {
+    (activity as AppCompatActivity?)?.showCounterDialog(newLoad)
 }

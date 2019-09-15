@@ -13,6 +13,7 @@ import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.extensions.setVisibleIf
 import com.freight.shipper.extensions.showConfirmationMessage
+import com.freight.shipper.extensions.showCounterDialog
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.bookings.assigned.pager.LoadEventListener
@@ -80,6 +81,7 @@ class NewLoadFragment : Fragment(),
         })
         viewModel.counterAction.observe(this, Observer {
             Timber.i("$it")
+            showCounterDialog(it)
         })
         viewModel.error.observe(this, Observer {
             viewModel.isLoading.postValue(false)

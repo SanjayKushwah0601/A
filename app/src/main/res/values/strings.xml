@@ -102,4 +102,11 @@
     <string name="select_vehicle">Select vehicle</string>
     <string name="counter">Counter</string>
     <string name="accept">Accept</string>
+    <string name="counter_price">Counter Price</string>
+    <string name="note_offers_once_accepted_by_both_parties_cannot_be_changed_later">Note - Offers once accepted by both parties cannot be changed later</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="counter_price_enter_error">Please enter counter price</string>
+    <string name="offer_update_message">Offer price updated successfully</string>
+    <string name="error_updating_offer_price">Error while updating offer price</string>
 </resources>

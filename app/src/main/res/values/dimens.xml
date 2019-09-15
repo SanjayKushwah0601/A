@@ -77,5 +77,6 @@
     <dimen name="_40dp">40dp</dimen>
     <dimen name="_12dp">12dp</dimen>
     <dimen name="_15dp">15dp</dimen>
+    <dimen name="_30dp">30dp</dimen>
     <!-- endregion -->
 </resources>
