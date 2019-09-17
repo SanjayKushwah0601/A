@@ -223,7 +223,7 @@
                         android:layout_below="@+id/tvCountry"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:paddingT    op="0dp"
+                        android:paddingTop="0dp"
                         android:spinnerMode="dropdown"
                         android:theme="@style/ThemeOverlay.AppCompat.Light" />
                 </RelativeLayout>
