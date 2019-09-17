@@ -193,9 +193,9 @@
         <item name="android:paddingLeft">0dp</item>
         <item name="android:layout_marginLeft">0dp</item>
         <item name="android:paddingRight">0dp</item>
-        <item name="android:background">@drawable/button_bg_white_square</item>
         <item name="android:layout_marginRight">0dp</item>
     </style>
+<!--        <item name="android:background">@drawable/button_bg_white_square</item>-->
 
     <style name="Style.Widget.SpinnerItem" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:paddingLeft">5dp</item>

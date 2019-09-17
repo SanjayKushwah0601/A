@@ -8,18 +8,8 @@
     tools:context="com.freight.shipper.ui.profile.ProfileFragment">
 
     <Button
-        android:id="@+id/buttonPaymentDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/_10dp"
-        android:paddingStart="@dimen/_10dp"
-        android:paddingEnd="@dimen/_10dp"
-        android:text="@string/payment_detail" />
-
-    <Button
         android:id="@+id/buttonAddVehicle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/_10dp"
@@ -28,8 +18,19 @@
         android:text="@string/add_vehicle" />
 
     <Button
+        android:id="@+id/buttonPaymentDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/_10dp"
+        android:paddingStart="@dimen/_10dp"
+        android:paddingEnd="@dimen/_10dp"
+        android:text="@string/payment_detail" />
+
+
+    <Button
         android:id="@+id/buttonAddShipper"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/_10dp"
@@ -38,10 +39,23 @@
         android:text="@string/add_shipper" />
 
     <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="wrap_content"
+        android:id="@+id/buttonUploadDocument"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_margin="@dimen/_10dp"
+        android:paddingStart="@dimen/_10dp"
+        android:paddingEnd="@dimen/_10dp"
+        android:text="@string/upload_document" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/_10dp"
+        android:paddingStart="@dimen/_10dp"
+        android:paddingEnd="@dimen/_10dp"
         android:text="@string/logout" />
 
 </LinearLayout>

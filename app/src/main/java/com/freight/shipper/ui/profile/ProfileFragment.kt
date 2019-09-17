@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
-import com.freight.shipper.extensions.navigateToAddShipper
-import com.freight.shipper.extensions.navigateToAddVehicle
-import com.freight.shipper.extensions.navigateToPaymentDetails
-import com.freight.shipper.extensions.startLoginActivity
+import com.freight.shipper.extensions.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
@@ -49,6 +46,9 @@ class ProfileFragment : Fragment() {
         }
         buttonAddShipper?.setOnClickListener {
             navigateToAddShipper()
+        }
+        buttonUploadDocument?.setOnClickListener {
+            showConfirmationMessage("Work in process")
         }
     }
 

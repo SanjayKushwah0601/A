@@ -1,172 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-                name="viewModel"
-                type="com.freight.shipper.ui.authentication.login.LoginViewModel"/>
-    </data>
-    <LinearLayout
-            android:id="@+id/text_fields"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/background"
-            android:orientation="vertical">
 
-        <include layout="@layout/toolbar"/>
+        <variable
+            name="viewModel"
+            type="com.freight.shipper.ui.authentication.login.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/text_fields"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar" />
 
 
         <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
-                    android:layout_width="match_parent"
-                    app:srcCompat="@drawable/backgraund"
-                    android:layout_gravity="bottom"
-                    android:scaleType="fitEnd"
-                    android:layout_height="wrap_content"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:scaleType="fitEnd"
+                app:srcCompat="@drawable/backgraund" />
 
             <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fillViewport="true">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
                 <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
 
                     <ImageView
-                            android:id="@+id/logo"
-                            android:layout_width="wrap_content"
-                            android:src="@drawable/logo"
-                            android:layout_margin="@dimen/component_padding"
-                            android:layout_centerHorizontal="true"
-                            android:layout_height="wrap_content"/>
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="@dimen/component_padding"
+                        android:src="@drawable/logo" />
 
                     <LinearLayout
-                            android:id="@+id/linear_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_above="@+id/signUp"
-                            android:animateLayoutChanges="true"
-                            android:layout_below="@+id/logo"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true"
-                            android:orientation="vertical"
-                            android:paddingLeft="@dimen/component_padding"
-                            android:paddingRight="@dimen/component_padding">
+                        android:id="@+id/linear_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/signUp"
+                        android:layout_below="@+id/logo"
+                        android:animateLayoutChanges="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/component_padding"
+                        android:paddingRight="@dimen/component_padding">
 
                         <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/textInputLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                            android:id="@+id/textInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/editText"
-                                    style="@style/Material.EditText"
-                                    android:maxLines="1"
-                                    android:paddingStart="5dp"
-                                    android:paddingLeft="5dp"
-                                    android:hint="@string/username"
-                                    android:inputType="textEmailAddress"
-                                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onEmailChanged(text.toString())}"
-                                    android:paddingEnd="5dp"
-                                    android:paddingRight="5dp"/>
+                                android:id="@+id/editText"
+                                style="@style/Material.EditText"
+                                android:hint="@string/username"
+                                android:inputType="textEmailAddress"
+                                android:maxLines="1"
+                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onEmailChanged(text.toString())}"
+                                android:paddingStart="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingEnd="5dp"
+                                android:paddingRight="5dp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/textInputLayoutPassword"
-                                android:layout_width="match_parent"
-                                android:layout_marginTop="20dp"
-                                app:passwordToggleEnabled="true"
-                                app:passwordToggleTint="@color/colorAccent"
-                                android:layout_height="wrap_content">
+                            android:id="@+id/textInputLayoutPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            app:passwordToggleEnabled="true"
+                            app:passwordToggleTint="@color/colorAccent">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/editTextPassword"
-                                    style="@style/Material.EditText"
-                                    android:maxLines="1"
-                                    android:paddingStart="5dp"
-                                    android:paddingLeft="5dp"
-                                    android:inputType="textPassword"
-                                    android:hint="@string/password"
-                                    android:paddingEnd="5dp"
-                                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}"
-                                    android:paddingRight="5dp"/>
+                                android:id="@+id/editTextPassword"
+                                style="@style/Material.EditText"
+                                android:hint="@string/password"
+                                android:inputType="textPassword"
+                                android:maxLines="1"
+                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}"
+                                android:paddingStart="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingEnd="5dp"
+                                android:paddingRight="5dp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <FrameLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="25dp">
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp">
 
                             <Button
-                                    android:id="@+id/buttonLogin"
-                                    style="@style/Material.Button"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/login"/>
+                                android:id="@+id/buttonLogin"
+                                style="@style/Material.Button"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/login" />
 
                             <ProgressBar
-                                    android:id="@+id/progressBar"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:visibility="gone"/>
+                                android:id="@+id/progressBar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:visibility="gone" />
                         </FrameLayout>
 
                         <Button
-                                android:id="@+id/forgotPassword"
-                                style="@style/Material.Button.White"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/forgot_password"/>
+                            android:id="@+id/forgotPassword"
+                            style="@style/Material.Button.Gray"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/forgot_password" />
 
                     </LinearLayout>
 
                     <FrameLayout
-                            android:id="@+id/signUp"
-                            android:layout_width="match_parent"
-                            android:layout_height="58dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginRight="30dp"
-                            android:background="?attr/selectableItemBackground"
-                            android:clickable="true"
-                            android:focusable="true">
+                        android:id="@+id/signUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/section_divider_color"/>
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/section_divider_color" />
 
                         <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center">
+
+                            <TextView
+                                style="@style/TextView.Body"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/don_t_have_an_account" />
+
+                            <TextView
+                                style="@style/TextView.Body.Bold"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center">
-
-                            <TextView
-                                    style="@style/TextView.Body"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:text="@string/don_t_have_an_account"/>
-
-                            <TextView
-                                    style="@style/TextView.Body.Bold"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:layout_marginLeft="4dp"
-                                    android:text="@string/sign_up_dot"/>
+                                android:layout_marginStart="4dp"
+                                android:layout_marginLeft="4dp"
+                                android:text="@string/sign_up_dot" />
                         </LinearLayout>
                     </FrameLayout>
 

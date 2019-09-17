@@ -136,6 +136,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/vType"
+                    android:minHeight="@dimen/_40dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:paddingTop="0dp"
@@ -222,7 +223,7 @@
                         android:layout_below="@+id/tvCountry"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center_vertical"
-                        android:paddingTop="0dp"
+                        android:paddingT    op="0dp"
                         android:spinnerMode="dropdown"
                         android:theme="@style/ThemeOverlay.AppCompat.Light" />
                 </RelativeLayout>

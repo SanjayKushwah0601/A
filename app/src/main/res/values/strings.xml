@@ -109,4 +109,5 @@
     <string name="counter_price_enter_error">Please enter counter price</string>
     <string name="offer_update_message">Offer price updated successfully</string>
     <string name="error_updating_offer_price">Error while updating offer price</string>
+    <string name="upload_document">Upload Document</string>
 </resources>

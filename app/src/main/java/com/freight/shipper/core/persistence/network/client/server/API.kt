@@ -240,7 +240,7 @@ class API(retrofit: Retrofit) : APIContract() {
             is SocketTimeoutException,
             is SocketException,
             is UnknownHostException -> Pair("Network", "Network error")
-            else -> Pair("NetworkCall", "An error occurred")
+            else -> Pair("NetworkCall", "An error occurred ${exception.localizedMessage}")
         }
         return APIError(
             hashMapOf(typeString to reason),

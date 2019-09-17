@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">networking</string>
-    <string name="favorite_error_login">Favorite error</string>
-    <string name="not_implemented">Not implemented</string>
-    <string name="default_api_error">Default Api Error</string>
-</resources>
