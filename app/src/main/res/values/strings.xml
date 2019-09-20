@@ -110,4 +110,5 @@
     <string name="offer_update_message">Offer price updated successfully</string>
     <string name="error_updating_offer_price">Error while updating offer price</string>
     <string name="upload_document">Upload Document</string>
+    <string name="type_colon">Type:</string>
 </resources>

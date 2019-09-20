@@ -229,7 +229,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:maxLines="2"
-                        android:text="@string/goods_colon"
+                        android:text="@string/type_colon"
                         app:layout_constraintEnd_toStartOf="@+id/textView5"
                         app:layout_constraintStart_toEndOf="@+id/imageView"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -244,7 +244,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:gravity="end"
                         android:maxLines="2"
-                        android:text="@{loadModel.loadName}"
+                        android:text="@{loadModel.loadType}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Electronics" />
