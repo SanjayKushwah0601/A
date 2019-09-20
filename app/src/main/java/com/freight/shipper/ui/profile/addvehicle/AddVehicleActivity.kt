@@ -113,6 +113,12 @@ class AddVehicleActivity : BaseActivity() {
             spVehicleType.setOnItemSelectListener(vehicleTypeAdapter) {
                 Log.d("SelectedItem", "${it?.vehicleType}")
                 viewModel.requestModel.vehicleType = it.vehicleTypeId
+
+                dimensionsContainer?.setVisibleIf { true }
+                etWidth?.setText(it.width)
+                etHeight?.setText(it.height)
+                etLength?.setText(it.length)
+                etCapacity?.setText(it.weight)
             }
         }
         viewModel.addVehicleResponse.observe(this, Observer {

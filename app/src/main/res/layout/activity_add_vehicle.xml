@@ -90,80 +90,91 @@
 
             </LinearLayout>
 
-
             <LinearLayout
+                android:id="@+id/dimensionsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLength"
+                            style="@style/Material.EditText"
+                            android:enabled="false"
+                            android:hint="@string/length"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:text="@={ viewModel.requestModel.length }" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etWidth"
+                            style="@style/Material.EditText"
+                            android:enabled="false"
+                            android:hint="@string/width"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:text="@={ viewModel.requestModel.width }" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etHeight"
+                            style="@style/Material.EditText"
+                            android:enabled="false"
+                            android:hint="@string/height"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:text="@={ viewModel.requestModel.height }" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5dp"
-                    android:layout_marginEnd="@dimen/_5dp"
-                    android:layout_weight="1">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etLength"
+                        android:id="@+id/etCapacity"
                         style="@style/Material.EditText"
-                        android:hint="@string/length"
+                        android:enabled="false"
+                        android:hint="@string/weight_capacity"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.length }" />
+                        android:text="@={viewModel.requestModel.weight}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5dp"
-                    android:layout_marginEnd="@dimen/_5dp"
-                    android:layout_weight="1">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etWidth"
-                        style="@style/Material.EditText"
-                        android:hint="@string/width"
-                        android:inputType="number"
-                        android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.width }" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5dp"
-                    android:layout_marginEnd="@dimen/_5dp"
-                    android:layout_weight="1">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etHeight"
-                        style="@style/Material.EditText"
-                        android:hint="@string/height"
-                        android:inputType="number"
-                        android:maxLines="1"
-                        android:text="@={ viewModel.requestModel.height }" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
             </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etCapacity"
-                    style="@style/Material.EditText"
-                    android:hint="@string/weight_capacity"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:text="@={viewModel.requestModel.weight}" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
