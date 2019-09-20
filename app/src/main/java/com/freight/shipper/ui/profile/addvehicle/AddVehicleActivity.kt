@@ -177,7 +177,7 @@ class AddVehicleActivity : BaseActivity() {
     private fun setAdapter() {
         adapter = ImageAdapter(viewModel, hideDeleteButtons = false, hideAddButton = false)
         recyclerView.layoutManager =
-            GridLayoutManager(this@AddVehicleActivity, 3)
+            GridLayoutManager(this@AddVehicleActivity, 2)
         recyclerView.adapter = adapter
     }
     // endregion

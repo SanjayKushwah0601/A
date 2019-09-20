@@ -39,16 +39,16 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:background="@android:color/transparent"
         app:cardCornerRadius="0dp"
         app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constrantLayout"
-            android:layout_width="100dp"
-            android:layout_height="100dp">
+            android:layout_width="150dp"
+            android:layout_height="150dp">
 
             <ImageView
                 android:id="@+id/artworkView"
@@ -57,11 +57,23 @@
                 android:layout_margin="10dp"
                 android:onClick="@{(v)-> isFirstPosition ? clickListener.onNewItemClicked() : clickListener.onImageClicked(imageModel)}"
                 android:scaleType="centerCrop"
+                app:layout_constraintBottom_toTopOf="@+id/title"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_add_circle_outline" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:gravity="top|center_horizontal"
+                android:onClick="@{(v)-> isFirstPosition ? clickListener.onNewItemClicked() : clickListener.onImageClicked(imageModel)}"
+                android:text="@string/add_vehicle"
+                android:visibility="@{isFirstPosition ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/artworkView" />
 
             <ImageView
                 android:id="@+id/removeButton"
