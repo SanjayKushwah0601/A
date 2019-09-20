@@ -105,6 +105,7 @@
                         style="@style/Material.EditText"
                         android:hint="@string/phone_number"
                         android:inputType="phone"
+                        android:maxLength="10"
                         android:maxLines="1"
                         android:text="@={ viewModel.requestModel.phone }" />
 
@@ -136,9 +137,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/vType"
-                    android:minHeight="@dimen/_40dp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
+                    android:minHeight="@dimen/_40dp"
                     android:paddingTop="0dp"
                     android:spinnerMode="dropdown"
                     android:theme="@style/ThemeOverlay.AppCompat.Light" />
