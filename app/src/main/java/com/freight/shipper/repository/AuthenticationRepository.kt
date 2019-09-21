@@ -42,6 +42,10 @@ class AuthenticationRepository(
         return api.signupAsCompany(model)
     }
 
+    suspend fun individualSignup(model: CompanySignup): APIResult<User> {
+        return api.signupIndividual(model)
+    }
+
     fun getMasterConfigData() {
         GlobalScope.launch(dispatcher.io) { api.getMasterConfigData() }
     }

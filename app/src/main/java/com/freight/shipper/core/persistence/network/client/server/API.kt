@@ -56,6 +56,14 @@ class API(retrofit: Retrofit) : APIContract() {
         ).apiResult()
     }
 
+    override suspend fun signupIndividual(model: CompanySignup): APIResult<User> {
+        return authService.signupIndividual(
+            model.firstName, model.lastName, model.email, model.phone,
+            "${model.addressLine1} ${model.addressLine2}", model.country, model.state,
+            model.city, model.postcode, model.password
+        ).apiResult()
+    }
+
     override suspend fun forgotPassword(email: String): APIResult<User> {
         return authService.forgotPassword(email).apiResult()
     }

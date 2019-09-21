@@ -43,6 +43,21 @@ interface AuthenticationService {
     ): Call<ApiResponse<User>>
 
     @FormUrlEncoded
+    @POST("webservices?param=shipperRegister&shipper_type=i")
+    fun signupIndividual(
+        @Field("first_name") firstName: String,
+        @Field("last_name") lastName: String,
+        @Field("email") email: String,
+        @Field("phone") phone: String,
+        @Field("address") address: String,
+        @Field("country_id") country: String,
+        @Field("state") state: String,
+        @Field("city") city: String,
+        @Field("postcode") postcode: String,
+        @Field("password") password: String
+    ): Call<ApiResponse<User>>
+
+    @FormUrlEncoded
     @POST("webservices")
     fun forgotPassword(
         @Field("email") email: String,

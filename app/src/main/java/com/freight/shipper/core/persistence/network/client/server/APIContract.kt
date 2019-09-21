@@ -18,6 +18,7 @@ abstract class APIContract {
     abstract suspend fun login(email: String, password: String): APIResult<User>
 
     abstract suspend fun signupAsCompany(model: CompanySignup): APIResult<User>
+    abstract suspend fun signupIndividual(model: CompanySignup): APIResult<User>
     abstract suspend fun forgotPassword(email: String): APIResult<User>
 
     abstract suspend fun register(
