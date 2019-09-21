@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.dialog_counter.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 /**
@@ -37,6 +38,7 @@ class CounterDialog : DialogFragment() {
     }
 
     private lateinit var load: NewLoad
+    var listener: CounterListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -66,16 +68,23 @@ class CounterDialog : DialogFragment() {
         GlobalScope.launch(Dispatchers.IO) {
             load.loadsId?.also {
                 val result = FreightApplication.instance.api.addLoadOfferPrice(it, price)
-                when (result) {
-                    is APIResult.Success -> {
-                        activity?.showConfirmationMessage(getString(R.string.offer_update_message))
-                    }
-                    is APIResult.Failure -> {
-                        activity?.showErrorMessage(getString(R.string.error_updating_offer_price))
+                withContext(Dispatchers.Main) {
+                    when (result) {
+                        is APIResult.Success -> {
+                            activity?.showConfirmationMessage(getString(R.string.offer_update_message))
+                            listener?.onSuccess()
+                        }
+                        is APIResult.Failure -> {
+                            activity?.showErrorMessage(getString(R.string.error_updating_offer_price))
+                        }
                     }
                 }
                 dismiss()
             }
         }
+    }
+
+    interface CounterListener {
+        fun onSuccess()
     }
 }

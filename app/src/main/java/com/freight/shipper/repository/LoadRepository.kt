@@ -29,11 +29,8 @@ class LoadRepository(
 ) : BaseRepository() {
 
     private val _newLoadList = MutableLiveData<List<NewLoad>>()
-    val newLoadList: LiveData<List<NewLoad>>
-        get() {
-            fetchNewLoad()
-            return _newLoadList
-        }
+    val newLoadList: LiveData<List<NewLoad>> get() = _newLoadList
+
     private val _newLoadError = MutableLiveData<String>()
     val newLoadError: LiveData<String> get() = _newLoadError
 

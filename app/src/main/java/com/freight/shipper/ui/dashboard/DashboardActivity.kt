@@ -17,6 +17,9 @@ import com.freight.shipper.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class DashboardActivity : AppCompatActivity(),
     BottomNavigationView.OnNavigationItemSelectedListener {
@@ -150,6 +153,15 @@ class DashboardActivity : AppCompatActivity(),
             toReplace.commitAllowingStateLoss()
         } else {
             toReplace.commit()
+        }
+    }
+
+    var isNavigateToActiveLoad = false
+
+    fun navigateToActiveLoad() {
+        GlobalScope.launch(Dispatchers.Main) {
+            isNavigateToActiveLoad = true
+            bottomNavigationView.selectedItemId = R.id.navigation_favorite
         }
     }
     // endregion

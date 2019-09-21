@@ -17,8 +17,10 @@ import com.freight.shipper.extensions.showCounterDialog
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.bookings.assigned.pager.LoadEventListener
+import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadAdapter
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadEventListener
+import com.freight.shipper.ui.dashboard.DashboardActivity
 import kotlinx.android.synthetic.main.fragment_new_load_list.*
 import timber.log.Timber
 
@@ -61,6 +63,11 @@ class NewLoadFragment : Fragment(),
         swipeRefreshLayout?.setOnRefreshListener { viewModel.refreshNewLoad() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.refreshNewLoad()
+    }
+
     private fun setObservers() {
         viewModel.newLoadsError.observe(this, Observer {
             viewModel.isLoading.postValue(false)
@@ -75,13 +82,19 @@ class NewLoadFragment : Fragment(),
             setEmptyViewVisibility()
         })
 
-        viewModel.acceptLoadResponse.observe(this, Observer {
+        viewModel.acceptLoadResponse.observe(viewLifecycleOwner, Observer {
             viewModel.isLoading.postValue(false)
             showConfirmationMessage(it)
+            (activity as DashboardActivity).navigateToActiveLoad()
         })
         viewModel.counterAction.observe(this, Observer {
             Timber.i("$it")
-            showCounterDialog(it)
+            showCounterDialog(it, object : CounterDialog.CounterListener {
+                override fun onSuccess() {
+                    // TODO: Navigate to active load screen
+                    (activity as DashboardActivity).navigateToActiveLoad()
+                }
+            })
         })
         viewModel.error.observe(this, Observer {
             viewModel.isLoading.postValue(false)

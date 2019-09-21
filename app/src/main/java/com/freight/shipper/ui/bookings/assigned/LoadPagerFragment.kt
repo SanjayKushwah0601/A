@@ -18,7 +18,7 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
         fun newInstance() = LoadPagerFragment()
     }
 
-    var currentPage: Int = 0
+    var currentPage: Int = 1
     lateinit var pagerAdapter: LoadPagerAdapter
 
     val fragments by lazy {
@@ -44,6 +44,10 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
         initPager()
     }
 
+    fun setActiveLoadPage() {
+        viewPager?.currentItem = 1
+    }
+
     private fun initPager() {
         pagerAdapter = LoadPagerAdapter(
             fragments,
@@ -52,7 +56,7 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
         viewPager.adapter = pagerAdapter
         viewPager.addOnPageChangeListener(this)
 //            viewPager.offscreenPageLimit = 3
-
+//        viewPager.currentItem = currentPage
         tabLayout.setupWithViewPager(viewPager)
         tabLayout.tabMode = TabLayout.MODE_FIXED
     }

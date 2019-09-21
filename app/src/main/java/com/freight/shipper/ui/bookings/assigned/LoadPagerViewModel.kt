@@ -25,6 +25,7 @@ class LoadPagerViewModel(private val model: LoadRepository) : BaseViewModel() {
             fetchPastLoad()
             return _pastLoads
         }
+
     private val _activeLoads = MediatorLiveData<List<ActiveLoad>>()
     private val _pastLoads = MediatorLiveData<List<PastLoad>>()
 

@@ -92,11 +92,12 @@ fun Fragment.navigateToAddShipper() {
     activity?.navigateToAddShipper()
 }
 
-fun AppCompatActivity.showCounterDialog(newLoad: NewLoad) {
-    val editNameDialogFragment = CounterDialog.newInstance(newLoad)
-    editNameDialogFragment.show(supportFragmentManager, "fragment_edit_name")
+fun AppCompatActivity.showCounterDialog(newLoad: NewLoad, listener: CounterDialog.CounterListener) {
+    val counterDialog = CounterDialog.newInstance(newLoad)
+    counterDialog.listener = listener
+    counterDialog.show(supportFragmentManager, "fragment_edit_name")
 }
 
-fun Fragment.showCounterDialog(newLoad: NewLoad) {
-    (activity as AppCompatActivity?)?.showCounterDialog(newLoad)
+fun Fragment.showCounterDialog(newLoad: NewLoad, listener: CounterDialog.CounterListener) {
+    (activity as AppCompatActivity?)?.showCounterDialog(newLoad, listener)
 }

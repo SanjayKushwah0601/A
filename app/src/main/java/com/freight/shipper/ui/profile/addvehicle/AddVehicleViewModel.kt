@@ -48,11 +48,11 @@ class AddVehicleViewModel(
     }
 
     override fun onDeleteButtonClicked(image: Image, position: Int) {
-        removeImageObserver.postValue(position)
+        removeImageObserver.sendAction(position)
     }
 
     override fun onNewItemClicked() {
-        newItemClickObserver.postValue(true)
+        newItemClickObserver.sendAction(true)
     }
     // endregion
 

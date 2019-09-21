@@ -3,14 +3,17 @@ package com.freight.shipper.ui.bookings.newload
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
 import com.freight.shipper.model.NewLoad
 import com.freight.shipper.repository.LoadRepository
+import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadEventListener
 import timber.log.Timber
 
-class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), NewLoadEventListener {
+class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), NewLoadEventListener,
+    CounterDialog.CounterListener {
 
     var isLoading = MutableLiveData<Boolean>()
 
@@ -21,6 +24,15 @@ class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), New
 
     val counterAction = ActionLiveData<NewLoad>()
 
+    private val acceptObserver = Observer<String> { acceptLoadResponse.sendAction(it) }
+    private val _acceptLoadResponse = MediatorLiveData<String>().apply {
+        observeForever(acceptObserver)
+    }
+    val acceptLoadResponse = ActionLiveData<String>()
+
+    var error = MediatorLiveData<String>()
+
+
     init {
         _newLoadsError.addSource(model.newLoadError) {
             _newLoadsError.postValue(it)
@@ -30,13 +42,16 @@ class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), New
         }
     }
 
+
     fun refreshNewLoad() {
         model.fetchNewLoad()
     }
 
-    private val _acceptLoadResponse = MediatorLiveData<String>()
-    val acceptLoadResponse: LiveData<String> get() = _acceptLoadResponse
-    var error = MediatorLiveData<String>()
+    // region - CounterDialog.CounterListener interface method
+    override fun onSuccess() {
+
+    }
+    // endregion
 
     // region - NewLoadEventListener interface methods
     override fun onAcceptLoad(position: Int, load: NewLoad) {
@@ -52,4 +67,9 @@ class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), New
         counterAction.sendAction(load)
     }
     // endregion
+
+    override fun onCleared() {
+        super.onCleared()
+        _acceptLoadResponse.removeObserver(acceptObserver)
+    }
 }
