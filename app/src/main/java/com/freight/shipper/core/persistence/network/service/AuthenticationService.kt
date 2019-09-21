@@ -26,7 +26,7 @@ interface AuthenticationService {
     ): Call<ApiResponse<User>>
 
     @FormUrlEncoded
-    @POST("webservices")
+    @POST("webservices?param=shipperRegister&shipper_type=c")
     fun signupAsCompany(
         @Field("first_name") firstName: String,
         @Field("last_name") lastName: String,
@@ -39,7 +39,7 @@ interface AuthenticationService {
         @Field("postcode") postcode: String,
         @Field("password") password: String,
         @Field("company_name") companyName: String,
-        @Field("param") param: String = "shipperRegister"
+        @Field("registration_no") regNumber: String
     ): Call<ApiResponse<User>>
 
     @FormUrlEncoded

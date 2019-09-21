@@ -1,12 +1,15 @@
 package com.freight.shipper.repository
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import com.freight.shipper.core.persistence.db.RoomDb
 import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
+import com.freight.shipper.model.State
 import com.freight.shipper.model.User
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.coroutines.GlobalScope
@@ -24,6 +27,12 @@ class AuthenticationRepository(
     private val loginManager: LoginManager,
     val dispatcher: DispatcherProvider = DispatcherProviderImpl()
 ) : BaseRepository() {
+
+    val countries by lazy { RoomDb.instance.countryDao().getCountriesLiveData() }
+
+    fun getPickStates(countryId: String): LiveData<List<State>> {
+        return RoomDb.instance.countryDao().getStateLiveData(countryId)
+    }
 
     suspend fun login(email: String, password: String): APIResult<User> {
         return api.login(email, password)

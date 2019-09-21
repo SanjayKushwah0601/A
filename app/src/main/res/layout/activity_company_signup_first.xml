@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-                name="viewModel"
-                type="com.freight.shipper.ui.authentication.signup.company.CompanySignupViewModel"/>
-    </data>
-    <LinearLayout
-            android:id="@+id/text_fields"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/background"
-            android:orientation="vertical">
 
-        <include layout="@layout/toolbar"/>
+        <variable
+            name="viewModel"
+            type="com.freight.shipper.ui.authentication.signup.company.CompanySignupViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/text_fields"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar" />
 
         <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
             <!--<RelativeLayout-->
             <!--android:layout_width="match_parent"-->
@@ -29,61 +32,61 @@
             <!--android:focusableInTouchMode="true">-->
 
             <LinearLayout
-                    android:id="@+id/linear_layout"
+                android:id="@+id/linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:padding="@dimen/component_padding">
+
+
+                <TextView
+                    style="@style/TextView.Heading.M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/company_details" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:animateLayoutChanges="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:orientation="vertical"
-                    android:padding="@dimen/component_padding">
-
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView.Heading.M"
-                        android:text="@string/company_details"/>
-
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiCompanyName"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginRight="@dimen/_5dp"
-                            android:layout_marginEnd="@dimen/_5dp"
-                            android:layout_height="wrap_content">
+                        android:id="@+id/tiCompanyName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:layout_marginRight="@dimen/_5dp"
+                        android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etCompanyName"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/company_name"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onCompanyNameChanged(text.toString())}"
-                                android:inputType="textPersonName"/>
+                            android:id="@+id/etCompanyName"
+                            style="@style/Material.EditText"
+                            android:hint="@string/company_name"
+                            android:inputType="textCapWords"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onCompanyNameChanged(text.toString())}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiRegistrationNumber"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_marginStart="@dimen/_5dp"
-                            android:layout_height="wrap_content">
+                        android:id="@+id/tiRegistrationNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:layout_marginLeft="@dimen/_5dp"
+                        android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etRegistrationNumber"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/registration_number"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onRegistrationNumberChanged(text.toString())}"
-                                android:inputType="number"/>
+                            android:id="@+id/etRegistrationNumber"
+                            style="@style/Material.EditText"
+                            android:hint="@string/registration_number"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onRegistrationNumberChanged(text.toString())}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,251 +94,232 @@
 
 
                 <TextView
-                        android:layout_width="wrap_content"
+                    style="@style/TextView.Heading.M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:text="@string/company_address" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tiAddLine1"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20dp"
-                        style="@style/TextView.Heading.M"
-                        android:text="@string/company_address"/>
-
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiAddLine1"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginRight="@dimen/_5dp"
-                            android:layout_marginEnd="@dimen/_5dp"
-                            android:layout_height="wrap_content">
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:layout_marginRight="@dimen/_5dp"
+                        android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etAddLine1"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/address_line_1"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onAddressLine1Changed(text.toString())}"
-                                android:inputType="textPostalAddress"/>
+                            android:id="@+id/etAddLine1"
+                            style="@style/Material.EditText"
+                            android:hint="@string/address_line_1"
+                            android:inputType="textPostalAddress"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onAddressLine1Changed(text.toString())}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiAddLine2"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_marginStart="@dimen/_5dp"
-                            android:layout_height="wrap_content">
+                        android:id="@+id/tiAddLine2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:layout_marginLeft="@dimen/_5dp"
+                        android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etAddLine2"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/address_line_2"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onAddressLine2Changed(text.toString())}"
-                                android:inputType="textPostalAddress"/>
+                            android:id="@+id/etAddLine2"
+                            style="@style/Material.EditText"
+                            android:hint="@string/address_line_2"
+                            android:inputType="textPostalAddress"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onAddressLine2Changed(text.toString())}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvCountry"
+                            style="@style/TextView.Body.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:padding="0dp"
+                            android:paddingStart="@dimen/_15dp"
+                            android:text="@string/country"
+                            android:textColor="@color/gray_dark"
+                            tools:ignore="RtlSymmetry" />
+
+                        <Spinner
+                            android:id="@+id/spCountry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvCountry"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:paddingTop="0dp"
+                            android:spinnerMode="dropdown"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvState"
+                            style="@style/TextView.Body.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:padding="0dp"
+                            android:paddingStart="@dimen/_15dp"
+                            android:text="@string/state"
+                            android:textColor="@color/gray_dark"
+                            tools:ignore="RtlSymmetry" />
+
+                        <Spinner
+                            android:id="@+id/spState"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvState"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center_vertical"
+                            android:paddingTop="0dp"
+                            android:spinnerMode="dropdown"
+                            android:theme="@style/ThemeOverlay.AppCompat.Light" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiCountry"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginRight="@dimen/_5dp"
-                            android:layout_marginEnd="@dimen/_5dp"
-                            android:layout_height="wrap_content">
+                        android:id="@+id/tiCity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:layout_marginRight="@dimen/_5dp"
+                        android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etCountry"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/country"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onCountryChanged(text.toString())}"
-                                android:inputType="textPersonName"/>
+                            android:id="@+id/etCity"
+                            style="@style/Material.EditText"
+                            android:hint="@string/city_suburb"
+                            android:inputType="textCapWords"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onCityChanged(text.toString())}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiState"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_marginStart="@dimen/_5dp"
-                            android:layout_height="wrap_content">
+                        android:id="@+id/tiPostalCode"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:layout_marginLeft="@dimen/_5dp"
+                        android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etState"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/state"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onStateChanged(text.toString())}"
-                                android:inputType="textPersonName"/>
+                            android:id="@+id/etPostalCode"
+                            style="@style/Material.EditText"
+                            android:hint="@string/postal_code"
+                            android:inputType="textPostalAddress"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPostCodeChanged(text.toString())}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiCity"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginRight="@dimen/_5dp"
-                            android:layout_marginEnd="@dimen/_5dp"
-                            android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etCity"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/city_suburb"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onCityChanged(text.toString())}"
-                                android:inputType="textPersonName"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiPostalCode"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_marginStart="@dimen/_5dp"
-                            android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etPostalCode"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/postal_code"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onPostCodeChanged(text.toString())}"
-                                android:inputType="textPostalAddress"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
 
                 <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiEmail"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginRight="@dimen/_5dp"
-                            android:layout_marginEnd="@dimen/_5dp"
-                            android:layout_height="wrap_content">
+                        android:id="@+id/tiPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5dp"
+                        android:layout_marginRight="@dimen/_5dp"
+                        android:layout_weight="1"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/colorAccent">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etEmail"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/email"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onCompanyEmailChanged(text.toString())}"
-                                android:inputType="textEmailAddress"/>
+                            android:id="@+id/etPassword"
+                            style="@style/Material.EditText"
+                            android:hint="@string/password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiPhoneNumber"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_marginStart="@dimen/_5dp"
-                            android:layout_height="wrap_content">
+                        android:id="@+id/tiConfirmPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5dp"
+                        android:layout_marginLeft="@dimen/_5dp"
+                        android:layout_weight="1"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/colorAccent">
 
                         <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etPhoneNumber"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/phone_number"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onCompanyPhoneChanged(text.toString())}"
-                                android:inputType="phone"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiPassword"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_marginRight="@dimen/_5dp"
-                            android:layout_marginEnd="@dimen/_5dp"
-                            app:passwordToggleEnabled="true"
-                            app:passwordToggleTint="@color/colorAccent"
-                            android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etPassword"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/password"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}"
-                                android:inputType="textPassword"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tiConfirmPassword"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            app:passwordToggleEnabled="true"
-                            app:passwordToggleTint="@color/colorAccent"
-                            android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_marginStart="@dimen/_5dp"
-                            android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etConfirmPassword"
-                                style="@style/Material.EditText"
-                                android:maxLines="1"
-                                android:hint="@string/confirm_password"
-                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onConfirmPasswordChanged(text.toString())}"
-                                android:inputType="textPassword"/>
+                            android:id="@+id/etConfirmPassword"
+                            style="@style/Material.EditText"
+                            android:hint="@string/confirm_password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onConfirmPasswordChanged(text.toString())}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
                 <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="25dp">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="25dp">
 
                     <Button
-                            android:id="@+id/buttonNext"
-                            style="@style/Material.Button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:onClick="@{() -> viewModel.onNextButtonClicked()}"
-                            android:text="@string/next"/>
+                        android:id="@+id/buttonNext"
+                        style="@style/Material.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.onNextButtonClicked()}"
+                        android:text="@string/next" />
 
                     <ProgressBar
-                            android:id="@+id/progressBar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:visibility="gone"/>
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone" />
                 </FrameLayout>
 
             </LinearLayout>

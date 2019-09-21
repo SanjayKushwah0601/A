@@ -22,8 +22,9 @@ data class CompanySignup(
     var city: String,
     var postcode: String,
     var password: String,
-    var companyName: String
+    var companyName: String,
+    var registrationNo: String
 ) : Parcelable {
 
-    constructor() : this("", "", "", "", "", "", "", "", "", "", "", "", "")
+    constructor() : this("", "", "", "", "", "", "", "", "", "", "", "", "", "")
 }

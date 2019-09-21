@@ -52,7 +52,7 @@ class API(retrofit: Retrofit) : APIContract() {
         return authService.signupAsCompany(
             model.firstName, model.lastName, model.email, model.phone,
             "${model.addressLine1} ${model.addressLine2}", model.country, model.state,
-            model.city, model.postcode, model.password, model.companyName
+            model.city, model.postcode, model.password, model.companyName, model.registrationNo
         ).apiResult()
     }
 

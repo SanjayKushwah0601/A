@@ -1,10 +1,15 @@
 package com.freight.shipper.ui.authentication.signup.company
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
+import com.freight.shipper.model.Country
+import com.freight.shipper.model.State
 import com.freight.shipper.repository.AuthenticationRepository
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.coroutines.GlobalScope
@@ -21,6 +26,11 @@ class CompanySignupViewModel(
     val companySignupAction = ActionLiveData<Pair<String, Boolean>>()
     var companySignup = CompanySignup()
 
+    private val selectedCountry = MutableLiveData<Country>()
+    var countries: LiveData<List<Country>> = model.countries
+    var states: LiveData<List<State>> =
+        Transformations.switchMap(selectedCountry) { model.getPickStates(it.countryId) }
+
 
     // region - First page Text change listeners
     fun onCompanyNameChanged(companyName: String) {
@@ -29,7 +39,7 @@ class CompanySignupViewModel(
     }
 
     fun onRegistrationNumberChanged(regNumber: String) {
-//        companySignup.phone = regNumber
+        companySignup.registrationNo = regNumber
         Timber.d(companySignup.companyName)
     }
 
@@ -106,6 +116,11 @@ class CompanySignupViewModel(
         Timber.d(companySignup.companyName)
     }
     // endregion
+
+    fun onCountrySelect(country: Country) {
+        companySignup.country = country.countryId
+        selectedCountry.postValue(country)
+    }
 
     fun onNextButtonClicked() {
         nextButtonAction.sendAction(companySignup)
