@@ -11,5 +11,6 @@ interface DateConstants {
         val DATE_MONTH_DAY_YEAR_FORMAT = SimpleDateFormat("MMMM dd, yyyy", Locale.US)
 
         fun getDateTimeFormat() = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        fun get24HrTimeFormat() = SimpleDateFormat("HH:mm", Locale.getDefault())
     }
 }

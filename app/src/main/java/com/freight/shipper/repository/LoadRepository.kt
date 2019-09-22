@@ -79,13 +79,13 @@ class LoadRepository(
         val (success, failure) = setupObserver(observer)
         GlobalScope.launch(dispatcher.io) {
             withContext(dispatcher.main) {
-                success.value = listOf(
-                    PastLoad(
-                        1,
-                        "Customer1"
-                    ),
-                    PastLoad(2, "Customer2")
-                )
+//                success.value = listOf(
+//                    PastLoad(
+//                        1,
+//                        "Customer1"
+//                    ),
+//                    PastLoad(2, "Customer2")
+//                )
             }
             /*val result = api.forgotPassword(email)
             withContext(dispatcher.main) {

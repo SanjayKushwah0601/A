@@ -45,7 +45,8 @@ class ProfileFragment : Fragment() {
             navigateToVehicleList()
         }
         buttonAddShipper?.setOnClickListener {
-            navigateToDriverList()
+            showConfirmationMessage("Work in process")
+//            navigateToDriverList()
         }
         buttonUploadDocument?.setOnClickListener {
             showConfirmationMessage("Work in process")
