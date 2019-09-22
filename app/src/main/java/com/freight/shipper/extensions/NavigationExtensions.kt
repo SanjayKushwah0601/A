@@ -18,6 +18,7 @@ import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwo
 import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
 import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.dashboard.DashboardActivity
+import com.freight.shipper.ui.driverlist.DriverListActivity
 import com.freight.shipper.ui.paymentdetails.PaymentDetailsActivity
 import com.freight.shipper.ui.vehiclelist.VehicleListActivity
 
@@ -107,6 +108,15 @@ fun Activity.navigateToVehicleList() {
 
 fun Fragment.navigateToVehicleList() {
     activity?.navigateToVehicleList()
+}
+
+fun Activity.navigateToDriverList() {
+    val intent = Intent(this, DriverListActivity::class.java)
+    startActivity(intent)
+}
+
+fun Fragment.navigateToDriverList() {
+    activity?.navigateToDriverList()
 }
 
 fun AppCompatActivity.showCounterDialog(newLoad: NewLoad, listener: CounterDialog.CounterListener) {

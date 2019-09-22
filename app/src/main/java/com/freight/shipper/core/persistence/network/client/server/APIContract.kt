@@ -45,6 +45,7 @@ abstract class APIContract {
     abstract suspend fun addVehicle(requestBody: MultipartBody): APIResult<EmptyResponse>
     abstract suspend fun addNewShipper(request: AddShipperRequest): APIResult<EmptyResponse>
     abstract suspend fun getVehicleList(): APIResult<List<Vehicle>>
+    abstract suspend fun getDriverList(): APIResult<List<Driver>>
     // endregion
 
     // region - Category

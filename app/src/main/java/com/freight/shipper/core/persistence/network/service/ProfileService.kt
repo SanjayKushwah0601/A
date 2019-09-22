@@ -1,6 +1,7 @@
 package com.freight.shipper.core.persistence.network.service
 
 import com.freight.shipper.core.persistence.network.response.ApiResponse
+import com.freight.shipper.core.persistence.network.response.Driver
 import com.freight.shipper.core.persistence.network.response.EmptyResponse
 import com.freight.shipper.core.persistence.network.response.Vehicle
 import okhttp3.RequestBody
@@ -50,4 +51,7 @@ interface ProfileService {
 
     @POST("webservices?param=getVehicleByShipper")
     fun getVehicleListByShipper(): Call<ApiResponse<List<Vehicle>>>
+
+    @POST("webservices?param=getDriver")
+    fun getDriver(): Call<ApiResponse<List<Driver>>>
 }

@@ -139,6 +139,9 @@ class API(retrofit: Retrofit) : APIContract() {
     override suspend fun getVehicleList(): APIResult<List<Vehicle>> {
         return profileService.getVehicleListByShipper().apiResult()
     }
+    override suspend fun getDriverList(): APIResult<List<Driver>> {
+        return profileService.getDriver().apiResult()
+    }
     // endregion
 
 

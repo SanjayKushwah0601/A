@@ -8,16 +8,16 @@
         <import type="android.view.View" />
 
         <variable
-            name="vehicle"
-            type="com.freight.shipper.core.persistence.network.response.Vehicle" />
+            name="driver"
+            type="com.freight.shipper.core.persistence.network.response.Driver" />
 
         <variable
             name="viewholder"
-            type="com.freight.shipper.ui.vehiclelist.recyclerview.VehicleViewHolder" />
+            type="com.freight.shipper.ui.driverlist.recyclerview.DriverViewHolder" />
 
         <variable
             name="clickListener"
-            type="com.freight.shipper.ui.vehiclelist.recyclerview.VehicleClickListener" />
+            type="com.freight.shipper.ui.driverlist.recyclerview.DriverClickListener" />
 
     </data>
 
@@ -40,11 +40,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/tvStatus"
                 android:padding="@dimen/_5dp"
                 android:singleLine="true"
-                android:text='@{String.format("%s", vehicle.vehicleName)}'
-                tools:text="Vehicle Name" />
+                android:text='@{String.format("%s %s", driver.firstName, driver.lastName)}'
+                tools:text="Driver Name" />
 
             <TextView
                 style="@style/TextView.Body"
@@ -52,25 +51,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvVehicleName"
                 android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/tvStatus"
                 android:paddingLeft="@dimen/_5dp"
                 android:singleLine="true"
-                android:text="@{vehicle.vehicleType}"
-                tools:text="Vehicle type" />
+                android:text="@{driver.vehicleName}"
+                tools:text="Associated vehicle" />
 
-            <TextView
-                android:id="@+id/tvStatus"
-                style="@style/TextView.Heading.XS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/_5dp"
-                android:capitalize="words"
-                android:singleLine="true"
-                android:text='@{vehicle.getDisplayVehicleStatus()}'
-                android:textStyle="italic"
-                tools:text="Status" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

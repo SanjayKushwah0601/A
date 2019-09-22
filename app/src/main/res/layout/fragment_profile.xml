@@ -26,7 +26,7 @@
         android:layout_margin="@dimen/_10dp"
         android:paddingStart="@dimen/_10dp"
         android:paddingEnd="@dimen/_10dp"
-        android:text="@string/add_shipper" />
+        android:text="@string/shipper_list" />
 
     <Button
         android:id="@+id/buttonUploadDocument"

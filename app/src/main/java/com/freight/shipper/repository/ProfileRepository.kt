@@ -9,6 +9,7 @@ import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvid
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
 import com.freight.shipper.core.persistence.network.request.AddShipperRequest
 import com.freight.shipper.core.persistence.network.request.PaymentRequest
+import com.freight.shipper.core.persistence.network.response.Driver
 import com.freight.shipper.core.persistence.network.response.State
 import com.freight.shipper.core.persistence.network.response.Vehicle
 import com.freight.shipper.core.persistence.network.response.VehicleType
@@ -40,8 +41,16 @@ class ProfileRepository(
             fetchVehicleList()
             return _vehicleList
         }
+
     private val _vehicleListError = MutableLiveData<String>()
     val vehicleListError: LiveData<String> get() = _vehicleListError
+
+
+    private val _driverList = MutableLiveData<List<Driver>>()
+    val driverList: LiveData<List<Driver>> get() = _driverList
+
+    private val _driverListError = MutableLiveData<String>()
+    val driverListError: LiveData<String> get() = _driverListError
 
     init {
         GlobalScope.launch(dispatcher.io) {
@@ -59,6 +68,21 @@ class ProfileRepository(
 
                     is APIResult.Failure ->
                         _vehicleListError.postValue(result.error?.message ?: "")
+                }
+            }
+        }
+    }
+
+    fun fetchDriverList() {
+        GlobalScope.launch(dispatcher.io) {
+            val result = api.getDriverList()
+            withContext(dispatcher.main) {
+                when (result) {
+                    is APIResult.Success ->
+                        _driverList.postValue(result.response.data)
+
+                    is APIResult.Failure ->
+                        _driverListError.postValue(result.error?.message ?: "")
                 }
             }
         }

@@ -114,4 +114,6 @@
     <string name="vehicle_list">Vehicle List</string>
     <string name="inactive">Inactive</string>
     <string name="no_vehicles_available">No vehicles available</string>
+    <string name="no_drivers_available">No drivers available</string>
+    <string name="shipper_list">Shipper list</string>
 </resources>
