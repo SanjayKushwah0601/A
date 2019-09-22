@@ -3,21 +3,21 @@ package com.freight.shipper.ui.authentication.signup.individual
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
+import com.freight.shipper.core.persistence.network.response.Country
+import com.freight.shipper.core.persistence.network.response.State
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.core.platform.HintSpinnerAdapter
 import com.freight.shipper.databinding.ActivityIndividualSignupBinding
-import com.freight.shipper.extensions.navigateToDashboard
+import com.freight.shipper.extensions.navigateToAddVehicle
 import com.freight.shipper.extensions.setOnItemSelectListener
 import com.freight.shipper.extensions.setupToolbar
-import com.freight.shipper.core.persistence.network.response.Country
-import com.freight.shipper.core.persistence.network.response.State
+import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.repository.AuthenticationRepository
 import kotlinx.android.synthetic.main.activity_company_signup_first.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -102,8 +102,11 @@ class IndividualSignupActivity : BaseActivity() {
             }
         })
         viewModel.companySignupAction.observe(this, Observer {
-            Toast.makeText(this@IndividualSignupActivity, it.first, Toast.LENGTH_LONG).show()
-            if (it.second) navigateToDashboard()
+            showConfirmationMessage(it.first)
+            if (it.second) {
+                navigateToAddVehicle(true)
+                finish()
+            }
         })
     }
 

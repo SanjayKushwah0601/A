@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.freight.shipper.core.persistence.network.response.NewLoad
+import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.ui.authentication.forgotpassword.ForgotPasswordActivity
 import com.freight.shipper.ui.authentication.login.LoginActivity
 import com.freight.shipper.ui.authentication.resetpassword.ResetPasswordActivity
@@ -68,28 +69,34 @@ fun Activity.navigateToCompanySignupSecondPage(signupData: CompanySignup) {
     })
 }
 
-fun Activity.navigateToPaymentDetails() {
-    startActivity(Intent(this, PaymentDetailsActivity::class.java))
+fun Activity.navigateToPaymentDetails(isSignUp: Boolean = false) {
+    val intent = Intent(this, PaymentDetailsActivity::class.java)
+    intent.putExtra(IntentExtras.EXTRA_IS_SIGNUP, isSignUp)
+    startActivity(intent)
 }
 
-fun Fragment.navigateToPaymentDetails() {
-    activity?.navigateToPaymentDetails()
+fun Fragment.navigateToPaymentDetails(isSignUp: Boolean = false) {
+    activity?.navigateToPaymentDetails(isSignUp)
 }
 
-fun Activity.navigateToAddVehicle() {
-    startActivity(Intent(this, AddVehicleActivity::class.java))
+fun Activity.navigateToAddVehicle(isSignUp: Boolean = false) {
+    val intent = Intent(this, AddVehicleActivity::class.java)
+    intent.putExtra(IntentExtras.EXTRA_IS_SIGNUP, isSignUp)
+    startActivity(intent)
 }
 
-fun Fragment.navigateToAddVehicle() {
-    activity?.navigateToAddVehicle()
+fun Fragment.navigateToAddVehicle(isSignUp: Boolean = false) {
+    activity?.navigateToAddVehicle(isSignUp)
 }
 
-fun Activity.navigateToAddShipper() {
-    startActivity(Intent(this, AddShipperActivity::class.java))
+fun Activity.navigateToAddShipper(isSignUp: Boolean = false) {
+    val intent = Intent(this, AddShipperActivity::class.java)
+    intent.putExtra(IntentExtras.EXTRA_IS_SIGNUP, isSignUp)
+    startActivity(intent)
 }
 
-fun Fragment.navigateToAddShipper() {
-    activity?.navigateToAddShipper()
+fun Fragment.navigateToAddShipper(isSignUp: Boolean = false) {
+    activity?.navigateToAddShipper(isSignUp)
 }
 
 fun AppCompatActivity.showCounterDialog(newLoad: NewLoad, listener: CounterDialog.CounterListener) {

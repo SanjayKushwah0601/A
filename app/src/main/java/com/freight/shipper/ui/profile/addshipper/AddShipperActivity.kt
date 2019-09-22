@@ -7,17 +7,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
+import com.freight.shipper.core.persistence.network.response.Country
+import com.freight.shipper.core.persistence.network.response.State
+import com.freight.shipper.core.persistence.network.response.Vehicle
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.core.platform.HintSpinnerAdapter
 import com.freight.shipper.databinding.ActivityAddShipperBinding
-import com.freight.shipper.extensions.setOnItemSelectListener
-import com.freight.shipper.extensions.setupToolbar
-import com.freight.shipper.extensions.showConfirmationMessage
-import com.freight.shipper.extensions.showErrorMessage
-import com.freight.shipper.core.persistence.network.response.Country
-import com.freight.shipper.core.persistence.network.response.State
-import com.freight.shipper.core.persistence.network.response.Vehicle
+import com.freight.shipper.extensions.*
 import com.freight.shipper.repository.ProfileRepository
 import kotlinx.android.synthetic.main.activity_add_shipper.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -89,7 +86,7 @@ class AddShipperActivity : BaseActivity() {
     // region - Private functions
     private fun initUI() {
         setupToolbar(
-            toolbar, enableUpButton = true,
+            toolbar, enableUpButton = !isSignUp,
             title = getString(R.string.company),
             subTitle = getString(R.string.add_shipper)
         )
@@ -123,6 +120,9 @@ class AddShipperActivity : BaseActivity() {
         viewModel.addShipperResponse.observe(this, Observer {
             viewModel.isLoading.set(false)
             showConfirmationMessage(getString(R.string.shipper_added_success_message))
+            if (isSignUp && !isIndividual) navigateToPaymentDetails(isSignUp)
+            // TODO : Set result to list
+            finish()
             // navigateToSignupScreen()
         })
         viewModel.error.observe(this, Observer {

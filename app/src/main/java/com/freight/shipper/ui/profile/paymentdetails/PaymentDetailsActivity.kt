@@ -10,7 +10,10 @@ import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityPaymentDetailsBinding
+import com.freight.shipper.extensions.navigateToDashboard
 import com.freight.shipper.extensions.setupToolbar
+import com.freight.shipper.extensions.showConfirmationMessage
+import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.repository.ProfileRepository
 import kotlinx.android.synthetic.main.toolbar.*
 import timber.log.Timber
@@ -48,9 +51,11 @@ class PaymentDetailsActivity : BaseActivity() {
 
     // region - Private functions
     private fun initUI() {
-        setupToolbar(toolbar, enableUpButton = true,
+        setupToolbar(
+            toolbar, enableUpButton = !isSignUp,
             title = getString(R.string.company),
-            subTitle = getString(R.string.payment_detail))
+            subTitle = getString(R.string.payment_detail)
+        )
 //        tvToolbarTitle?.text = getString(R.string.company)
 //        tvToolbarSubTitle?.text = getString(R.string.payment_detail)
     }
@@ -60,15 +65,13 @@ class PaymentDetailsActivity : BaseActivity() {
             // navigateToSignupScreen()
             viewModel.isLoading.set(false)
             Timber.d("Payment Submit Success")
-            Toast.makeText(
-                this@PaymentDetailsActivity,
-                getString(R.string.payment_detail_added_success_msg),
-                Toast.LENGTH_LONG
-            ).show()
+            showConfirmationMessage(getString(R.string.payment_detail_added_success_msg))
+            if (isSignUp) navigateToDashboard()
+            finish()
         })
         viewModel.error.observe(this, Observer {
             viewModel.isLoading.set(false)
-            Toast.makeText(this@PaymentDetailsActivity, it, Toast.LENGTH_LONG).show()
+            showErrorMessage(it)
         })
     }
     // endregion

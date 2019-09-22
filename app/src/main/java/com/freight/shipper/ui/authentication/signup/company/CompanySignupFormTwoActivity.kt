@@ -11,6 +11,7 @@ import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityCompanySignupSecondBinding
+import com.freight.shipper.extensions.navigateToAddVehicle
 import com.freight.shipper.extensions.navigateToDashboard
 import com.freight.shipper.extensions.setupToolbar
 import com.freight.shipper.repository.AuthenticationRepository
@@ -76,7 +77,11 @@ class CompanySignupFormTwoActivity : BaseActivity() {
     private fun setupObservers() {
         viewModel.companySignupAction.observe(this, Observer {
             Toast.makeText(this@CompanySignupFormTwoActivity, it.first, Toast.LENGTH_LONG).show()
-            if (it.second) navigateToDashboard()
+//            if (it.second) navigateToDashboard()
+            if (it.second) {
+                navigateToAddVehicle(true)
+                finish()
+            }
         })
     }
     // endregion

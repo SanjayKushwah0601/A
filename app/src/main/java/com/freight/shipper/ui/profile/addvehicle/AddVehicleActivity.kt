@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.request.AddVehicleRequest
+import com.freight.shipper.core.persistence.network.response.Image
+import com.freight.shipper.core.persistence.network.response.VehicleType
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.core.platform.HintSpinnerAdapter
 import com.freight.shipper.core.platform.NonNullObserver
 import com.freight.shipper.databinding.ActivityAddVehicleBinding
 import com.freight.shipper.extensions.*
-import com.freight.shipper.core.persistence.network.response.Image
-import com.freight.shipper.core.persistence.network.response.VehicleType
 import com.freight.shipper.repository.ProfileRepository
 import com.freight.shipper.services.AddVehicleWorkManager
 import com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageAdapter
@@ -88,7 +88,7 @@ class AddVehicleActivity : BaseActivity() {
     // region - Private functions
     private fun initUI() {
         setupToolbar(
-            toolbar, enableUpButton = true,
+            toolbar, enableUpButton = !isSignUp,
             title = getString(R.string.company),
             subTitle = getString(R.string.add_vehicle)
         )
@@ -125,7 +125,10 @@ class AddVehicleActivity : BaseActivity() {
             // navigateToSignupScreen()
             viewModel.isLoading.set(false)
             showConfirmationMessage(getString(R.string.vehicle_added_success_message))
-            Timber.d("Payment Submit Success")
+            if (isSignUp && !isIndividual) navigateToAddShipper(isSignUp)
+            else if (isSignUp) navigateToPaymentDetails(isSignUp)
+            finish()
+            Timber.d("Payment Submit Success $isSignUp")
         })
         viewModel.error.observe(this, Observer {
             viewModel.isLoading.set(false)
