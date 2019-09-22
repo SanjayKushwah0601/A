@@ -30,7 +30,7 @@ abstract class APIContract {
     // endregion
 
     // region - Load
-    abstract suspend fun getLoad(pickDate: String?): APIResult<List<ActiveLoad>>
+    abstract suspend fun getActiveLoad(): APIResult<List<ActiveLoad>>
 
     abstract suspend fun getNewLoad(date: String?): APIResult<List<NewLoad>>
     abstract suspend fun acceptLoad(loadId: String): APIResult<EmptyResponse>

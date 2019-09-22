@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.freight.shipper.R
 
 
 @BindingAdapter("imageUrl")
@@ -23,7 +24,7 @@ fun ImageView.setImageDrawable(drawable: Drawable?) {
 fun ImageView.loadCircularImage(str: String?) {
     Glide.with(this)
         .load(str)
-        .apply(RequestOptions.circleCropTransform())
+        .apply(RequestOptions.circleCropTransform().placeholder(R.drawable.round_gray).error(R.drawable.round_gray))
         .into(this)
 }
 

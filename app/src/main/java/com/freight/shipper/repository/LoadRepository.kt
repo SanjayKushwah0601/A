@@ -4,18 +4,20 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.freight.shipper.core.persistence.network.client.server.APIContract
+import com.freight.shipper.core.persistence.network.date.DateConstants
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
-import com.freight.shipper.core.persistence.network.result.APIResult
-import com.freight.shipper.core.persistence.preference.LoginManager
-import com.freight.shipper.extensions.BaseRepository
 import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.persistence.network.response.NewLoad
 import com.freight.shipper.core.persistence.network.response.PastLoad
+import com.freight.shipper.core.persistence.network.result.APIResult
+import com.freight.shipper.core.persistence.preference.LoginManager
+import com.freight.shipper.extensions.BaseRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import java.util.*
 
 
 /**
@@ -40,7 +42,8 @@ class LoadRepository(
 
     fun fetchNewLoad() {
         GlobalScope.launch(dispatcher.io) {
-            val result = api.getNewLoad(null)
+            val strDate = DateConstants.getDateTimeFormat().format(Date())
+            val result = api.getNewLoad(strDate)
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success ->
@@ -56,7 +59,7 @@ class LoadRepository(
     fun fetchActiveLoad(observer: Pair<MediatorLiveData<List<ActiveLoad>>, MediatorLiveData<String>>) {
         val (success, failure) = setupObserver(observer)
         GlobalScope.launch(dispatcher.io) {
-            val result = api.getLoad(null)
+            val result = api.getActiveLoad()
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success -> {

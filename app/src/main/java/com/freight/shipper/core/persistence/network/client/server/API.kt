@@ -89,8 +89,8 @@ class API(retrofit: Retrofit) : APIContract() {
     // endregion
 
     // region - Load services
-    override suspend fun getLoad(pickDate: String?): APIResult<List<ActiveLoad>> {
-        return loadService.getLoad(pickDate).apiResult()
+    override suspend fun getActiveLoad(): APIResult<List<ActiveLoad>> {
+        return loadService.getActiveLoad().apiResult()
     }
 
     override suspend fun getNewLoad(date: String?): APIResult<List<NewLoad>> {
