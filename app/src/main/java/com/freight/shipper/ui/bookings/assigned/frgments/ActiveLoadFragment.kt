@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.freight.shipper.model.ActiveLoad
+import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.ui.bookings.assigned.pager.ActiveLoadAdapter
 import com.freight.shipper.ui.bookings.assigned.pager.LoadEventListener
 import com.freight.shipper.ui.bookings.assigned.pager.LoadListFragment

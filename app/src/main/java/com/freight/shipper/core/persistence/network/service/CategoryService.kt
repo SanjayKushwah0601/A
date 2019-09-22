@@ -3,7 +3,7 @@ package com.freight.shipper.core.persistence.network.service
 import com.freight.shipper.core.persistence.network.constraint.Filter
 import com.freight.shipper.core.persistence.network.constraint.Sort
 import com.freight.shipper.core.persistence.network.response.ApiResponse
-import com.freight.shipper.model.Category
+import com.freight.shipper.core.persistence.network.response.Category
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

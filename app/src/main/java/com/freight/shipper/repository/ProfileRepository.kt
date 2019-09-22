@@ -12,9 +12,9 @@ import com.freight.shipper.core.persistence.network.request.PaymentRequest
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
-import com.freight.shipper.model.State
-import com.freight.shipper.model.Vehicle
-import com.freight.shipper.model.VehicleType
+import com.freight.shipper.core.persistence.network.response.State
+import com.freight.shipper.core.persistence.network.response.Vehicle
+import com.freight.shipper.core.persistence.network.response.VehicleType
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

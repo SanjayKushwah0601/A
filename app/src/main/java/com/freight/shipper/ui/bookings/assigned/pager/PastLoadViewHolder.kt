@@ -3,7 +3,7 @@ package com.freight.shipper.ui.bookings.assigned.pager
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.freight.shipper.BR
-import com.freight.shipper.model.PastLoad
+import com.freight.shipper.core.persistence.network.response.PastLoad
 
 /**
  * View Holder implementation for a RecyclerView that displays work items

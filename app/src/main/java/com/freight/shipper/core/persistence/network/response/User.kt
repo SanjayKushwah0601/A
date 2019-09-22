@@ -1,5 +1,6 @@
-package com.freight.shipper.model
+package com.freight.shipper.core.persistence.network.response
 
+import com.freight.shipper.model.UserRole
 import com.google.gson.annotations.SerializedName
 
 
@@ -37,9 +38,9 @@ class User {
     @SerializedName("postal_code")
     var postalCode: String? = null
     @SerializedName("reset_code")
-    var resetCode: Any? = null
-    @SerializedName("role_code")
-    var roleCode: String? = null
+    var resetCode: String? = null
+    @SerializedName("role_code") // Make it as enum individual_shipper, shipper_company
+    var roleCode: UserRole? = null
     @SerializedName("role_codes")
     var roleCodes: String? = null
     @SerializedName("role_id")

@@ -3,7 +3,8 @@ package com.freight.shipper.core.persistence.preference
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import com.freight.shipper.model.User
+import com.freight.shipper.core.persistence.network.response.User
+import com.freight.shipper.model.UserRole
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -31,6 +32,9 @@ class LoginManager(context: Context) {
             persistLoggedInUser(user)
         }
 
+    val userRole: UserRole?
+        get() = loggedInUser?.roleCode
+
     private var user: User? = null
 
     private var token: String? = null
@@ -50,7 +54,8 @@ class LoginManager(context: Context) {
     val gson = Gson()
 
     init {
-        this.sharedPreferences = context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
+        this.sharedPreferences =
+            context.getSharedPreferences(SHARED_PREFS_NAME, Context.MODE_PRIVATE)
     }
 
     private fun persistLoggedInUser(user: User?) {
@@ -110,5 +115,6 @@ class LoginManager(context: Context) {
 
 }
 
-inline fun <reified T> Gson.fromJson(json: String): T = this.fromJson<T>(json, object : TypeToken<T>() {}.type)
+inline fun <reified T> Gson.fromJson(json: String): T =
+    this.fromJson<T>(json, object : TypeToken<T>() {}.type)
 

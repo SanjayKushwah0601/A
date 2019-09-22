@@ -19,8 +19,8 @@ import com.freight.shipper.core.platform.HintSpinnerAdapter
 import com.freight.shipper.core.platform.NonNullObserver
 import com.freight.shipper.databinding.ActivityAddVehicleBinding
 import com.freight.shipper.extensions.*
-import com.freight.shipper.model.Image
-import com.freight.shipper.model.VehicleType
+import com.freight.shipper.core.persistence.network.response.Image
+import com.freight.shipper.core.persistence.network.response.VehicleType
 import com.freight.shipper.repository.ProfileRepository
 import com.freight.shipper.services.AddVehicleWorkManager
 import com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageAdapter
@@ -159,7 +159,11 @@ class AddVehicleActivity : BaseActivity() {
                     val clipData = data.clipData.getItemAt(n)
                     items.add(clipData.uri)
                 }
-                adapter.addImages(items.map { Image(it) })
+                adapter.addImages(items.map {
+                    Image(
+                        it
+                    )
+                })
                 viewModel.addVehicleImages(adapter.artworks)
             }
         }

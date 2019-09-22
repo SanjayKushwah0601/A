@@ -8,8 +8,8 @@ import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvid
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
-import com.freight.shipper.model.Country
-import com.freight.shipper.model.State
+import com.freight.shipper.core.persistence.network.response.Country
+import com.freight.shipper.core.persistence.network.response.State
 import com.freight.shipper.repository.AuthenticationRepository
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.coroutines.GlobalScope

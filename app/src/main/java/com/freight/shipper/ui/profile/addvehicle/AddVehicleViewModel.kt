@@ -10,8 +10,8 @@ import androidx.work.WorkManager
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.core.persistence.network.request.AddVehicleRequest
 import com.freight.shipper.core.platform.ActionLiveData
-import com.freight.shipper.model.Image
-import com.freight.shipper.model.VehicleType
+import com.freight.shipper.core.persistence.network.response.Image
+import com.freight.shipper.core.persistence.network.response.VehicleType
 import com.freight.shipper.repository.ProfileRepository
 import com.freight.shipper.services.MyWorkManager
 import com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageClickListener

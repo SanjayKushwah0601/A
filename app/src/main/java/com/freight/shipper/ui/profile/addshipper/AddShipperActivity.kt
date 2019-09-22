@@ -15,12 +15,11 @@ import com.freight.shipper.extensions.setOnItemSelectListener
 import com.freight.shipper.extensions.setupToolbar
 import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.extensions.showErrorMessage
-import com.freight.shipper.model.Country
-import com.freight.shipper.model.State
-import com.freight.shipper.model.Vehicle
+import com.freight.shipper.core.persistence.network.response.Country
+import com.freight.shipper.core.persistence.network.response.State
+import com.freight.shipper.core.persistence.network.response.Vehicle
 import com.freight.shipper.repository.ProfileRepository
 import kotlinx.android.synthetic.main.activity_add_shipper.*
-import kotlinx.android.synthetic.main.activity_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 

@@ -5,8 +5,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.freight.shipper.model.Country
-import com.freight.shipper.model.State
+import com.freight.shipper.core.persistence.network.response.Country
+import com.freight.shipper.core.persistence.network.response.State
 
 @Dao
 interface CountryDao {

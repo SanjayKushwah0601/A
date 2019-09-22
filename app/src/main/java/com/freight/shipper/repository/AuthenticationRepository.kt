@@ -9,8 +9,8 @@ import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvid
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
-import com.freight.shipper.model.State
-import com.freight.shipper.model.User
+import com.freight.shipper.core.persistence.network.response.State
+import com.freight.shipper.core.persistence.network.response.User
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

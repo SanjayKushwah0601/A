@@ -5,7 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.core.persistence.db.dao.*
-import com.freight.shipper.model.*
+import com.freight.shipper.core.persistence.network.response.*
 
 @Database(
     version = 1,

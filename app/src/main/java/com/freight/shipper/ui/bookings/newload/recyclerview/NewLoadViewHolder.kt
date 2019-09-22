@@ -3,7 +3,7 @@ package com.freight.shipper.ui.bookings.newload.recyclerview
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.freight.shipper.BR
-import com.freight.shipper.model.NewLoad
+import com.freight.shipper.core.persistence.network.response.NewLoad
 
 
 /**

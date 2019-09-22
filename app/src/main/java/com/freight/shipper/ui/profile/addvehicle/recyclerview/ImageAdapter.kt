@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.freight.shipper.R
-import com.freight.shipper.model.Image
+import com.freight.shipper.core.persistence.network.response.Image
 
 /**
  * RecyclerView adapter implementation for a RecyclerView that displays image items

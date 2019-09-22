@@ -9,9 +9,9 @@ import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvid
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
-import com.freight.shipper.model.ActiveLoad
-import com.freight.shipper.model.NewLoad
-import com.freight.shipper.model.PastLoad
+import com.freight.shipper.core.persistence.network.response.ActiveLoad
+import com.freight.shipper.core.persistence.network.response.NewLoad
+import com.freight.shipper.core.persistence.network.response.PastLoad
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -76,7 +76,13 @@ class LoadRepository(
         val (success, failure) = setupObserver(observer)
         GlobalScope.launch(dispatcher.io) {
             withContext(dispatcher.main) {
-                success.value = listOf(PastLoad(1, "Customer1"), PastLoad(2, "Customer2"))
+                success.value = listOf(
+                    PastLoad(
+                        1,
+                        "Customer1"
+                    ),
+                    PastLoad(2, "Customer2")
+                )
             }
             /*val result = api.forgotPassword(email)
             withContext(dispatcher.main) {

@@ -1,4 +1,4 @@
-package com.freight.shipper.model
+package com.freight.shipper.core.persistence.network.response
 
 import android.os.Parcelable
 import androidx.room.Entity

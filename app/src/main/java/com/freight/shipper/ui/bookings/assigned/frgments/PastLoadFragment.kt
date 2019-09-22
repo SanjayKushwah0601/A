@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.freight.shipper.model.PastLoad
+import com.freight.shipper.core.persistence.network.response.PastLoad
 import com.freight.shipper.ui.bookings.assigned.pager.LoadListFragment
 import com.freight.shipper.ui.bookings.assigned.pager.PastLoadAdapter
 import com.freight.shipper.ui.bookings.assigned.pager.PastLoadEventListener

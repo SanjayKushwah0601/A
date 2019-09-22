@@ -2,7 +2,7 @@ package com.freight.shipper.core.persistence.network.service
 
 import com.freight.shipper.core.persistence.network.response.ApiResponse
 import com.freight.shipper.core.persistence.network.response.EmptyResponse
-import com.freight.shipper.model.Vehicle
+import com.freight.shipper.core.persistence.network.response.Vehicle
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body

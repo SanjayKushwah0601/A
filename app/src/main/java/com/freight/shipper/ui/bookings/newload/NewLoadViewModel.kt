@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
-import com.freight.shipper.model.NewLoad
+import com.freight.shipper.core.persistence.network.response.NewLoad
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadEventListener

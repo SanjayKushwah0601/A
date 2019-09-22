@@ -5,7 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseViewModel
-import com.freight.shipper.model.User
+import com.freight.shipper.core.persistence.network.response.User
 import com.freight.shipper.repository.AuthenticationRepository
 
 class ForgotPasswordViewModel(private val model: AuthenticationRepository) : BaseViewModel() {

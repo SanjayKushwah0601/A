@@ -1,8 +1,8 @@
 package com.freight.shipper.core.persistence.network.service
 
 import com.freight.shipper.core.persistence.network.response.ApiResponse
-import com.freight.shipper.model.MasterConfig
-import com.freight.shipper.model.User
+import com.freight.shipper.core.persistence.network.response.MasterConfig
+import com.freight.shipper.core.persistence.network.response.User
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -17,12 +17,10 @@ import retrofit2.http.POST
 interface AuthenticationService {
 
     @FormUrlEncoded
-    @POST("webservices")
+    @POST("webservices?param=login&type=shipper")
     fun login(
         @Field("username") userName: String,
-        @Field("password") password: String,
-        @Field("type") type: String = "shipper",
-        @Field("param") param: String = "login"
+        @Field("password") password: String
     ): Call<ApiResponse<User>>
 
     @FormUrlEncoded
@@ -64,9 +62,6 @@ interface AuthenticationService {
         @Field("param") param: String = "forgotPassword"
     ): Call<ApiResponse<User>>
 
-    @FormUrlEncoded
-    @POST("webservices")
-    fun getMasterConfig(
-        @Field("param") param: String = "getMasterData"
-    ): Call<ApiResponse<MasterConfig>>
+    @POST("webservices?param=getMasterData")
+    fun getMasterConfig(): Call<ApiResponse<MasterConfig>>
 }

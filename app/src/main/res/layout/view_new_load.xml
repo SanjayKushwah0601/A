@@ -9,7 +9,7 @@
 
         <variable
             name="loadModel"
-            type="com.freight.shipper.model.NewLoad" />
+            type="com.freight.shipper.core.persistence.network.response.NewLoad" />
 
         <variable
             name="viewholder"

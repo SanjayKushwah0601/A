@@ -11,7 +11,7 @@
 
         <variable
             name="imageModel"
-            type="com.freight.shipper.model.Image" />
+            type="com.freight.shipper.core.persistence.network.response.Image" />
 
         <variable
             name="clickListener"

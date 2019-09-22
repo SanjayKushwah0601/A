@@ -2,9 +2,9 @@ package com.freight.shipper.core.persistence.network.service
 
 import com.freight.shipper.core.persistence.network.request.UserFeedback
 import com.freight.shipper.core.persistence.network.response.ApiResponse
-import com.freight.shipper.model.Category
-import com.freight.shipper.model.Token
-import com.freight.shipper.model.User
+import com.freight.shipper.core.persistence.network.response.Category
+import com.freight.shipper.core.persistence.network.response.Token
+import com.freight.shipper.core.persistence.network.response.User
 import retrofit2.Call
 import retrofit2.http.*
 

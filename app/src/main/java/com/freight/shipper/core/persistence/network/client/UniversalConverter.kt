@@ -1,5 +1,6 @@
 package com.freight.shipper.core.persistence.network.client
 
+import com.freight.shipper.model.UserRole
 import com.google.gson.GsonBuilder
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -17,12 +18,17 @@ class UniversalConverter : Converter.Factory() {
         declineNullConvertor = GsonConverterFactory.create(GsonBuilder().create())
 
         val gson = GsonBuilder().serializeNulls().create()
-        val gsonConverter = GsonBuilder().serializeNulls().create()
+        val gsonDeserializer = UserRoleDeserializer()
+        val gsonConverter = GsonBuilder()
+            .registerTypeAdapter(UserRole::class.java, gsonDeserializer)
+            .serializeNulls().create()
         acceptNullConvertor = GsonConverterFactory.create(gsonConverter)
     }
 
-    override fun responseBodyConverter(type: Type, annotations: Array<Annotation>,
-                                       retrofit: Retrofit): Converter<ResponseBody, *>? {
+    override fun responseBodyConverter(
+        type: Type, annotations: Array<Annotation>,
+        retrofit: Retrofit
+    ): Converter<ResponseBody, *>? {
         if (type == Unit::class.java) {
             return UnitConverter
         } else {
@@ -30,12 +36,24 @@ class UniversalConverter : Converter.Factory() {
         }
     }
 
-    override fun requestBodyConverter(type: Type, parameterAnnotations: Array<Annotation>,
-                                      annotations: Array<Annotation>, retrofit: Retrofit): Converter<*, RequestBody>? {
+    override fun requestBodyConverter(
+        type: Type, parameterAnnotations: Array<Annotation>,
+        annotations: Array<Annotation>, retrofit: Retrofit
+    ): Converter<*, RequestBody>? {
         if (annotations.get(0).annotationClass == DeclineNullValue::class) {
-            return declineNullConvertor.requestBodyConverter(type, parameterAnnotations, annotations, retrofit)
+            return declineNullConvertor.requestBodyConverter(
+                type,
+                parameterAnnotations,
+                annotations,
+                retrofit
+            )
         } else {
-            return acceptNullConvertor.requestBodyConverter(type, parameterAnnotations, annotations, retrofit)
+            return acceptNullConvertor.requestBodyConverter(
+                type,
+                parameterAnnotations,
+                annotations,
+                retrofit
+            )
         }
     }
 

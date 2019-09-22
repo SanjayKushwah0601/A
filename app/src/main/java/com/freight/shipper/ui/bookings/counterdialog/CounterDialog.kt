@@ -10,7 +10,7 @@ import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.extensions.showErrorMessage
-import com.freight.shipper.model.NewLoad
+import com.freight.shipper.core.persistence.network.response.NewLoad
 import kotlinx.android.synthetic.main.dialog_counter.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

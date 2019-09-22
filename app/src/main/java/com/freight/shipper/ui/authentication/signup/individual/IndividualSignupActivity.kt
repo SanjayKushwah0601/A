@@ -16,8 +16,8 @@ import com.freight.shipper.databinding.ActivityIndividualSignupBinding
 import com.freight.shipper.extensions.navigateToDashboard
 import com.freight.shipper.extensions.setOnItemSelectListener
 import com.freight.shipper.extensions.setupToolbar
-import com.freight.shipper.model.Country
-import com.freight.shipper.model.State
+import com.freight.shipper.core.persistence.network.response.Country
+import com.freight.shipper.core.persistence.network.response.State
 import com.freight.shipper.repository.AuthenticationRepository
 import kotlinx.android.synthetic.main.activity_company_signup_first.*
 import kotlinx.android.synthetic.main.toolbar.*

@@ -7,9 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.freight.shipper.core.persistence.network.request.AddShipperRequest
 import com.freight.shipper.core.platform.BaseViewModel
-import com.freight.shipper.model.Country
-import com.freight.shipper.model.State
-import com.freight.shipper.model.Vehicle
+import com.freight.shipper.core.persistence.network.response.Country
+import com.freight.shipper.core.persistence.network.response.State
+import com.freight.shipper.core.persistence.network.response.Vehicle
 import com.freight.shipper.repository.ProfileRepository
 import timber.log.Timber
 

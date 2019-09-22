@@ -1,7 +1,7 @@
 package com.freight.shipper.core.persistence.db.converters
 
 import androidx.room.TypeConverter
-import com.freight.shipper.model.*
+import com.freight.shipper.core.persistence.network.response.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

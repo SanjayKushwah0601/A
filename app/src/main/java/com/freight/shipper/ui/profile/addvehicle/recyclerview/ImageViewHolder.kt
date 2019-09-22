@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.freight.shipper.BR
 import com.freight.shipper.R
-import com.freight.shipper.model.Image
+import com.freight.shipper.core.persistence.network.response.Image
 
 /**
  * View Holder implementation for a RecyclerView that displays image items
