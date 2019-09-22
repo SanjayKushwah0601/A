@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.profile.addshipper
+package com.freight.shipper.ui.addshipper
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData

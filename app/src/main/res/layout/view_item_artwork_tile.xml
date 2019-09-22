@@ -15,7 +15,7 @@
 
         <variable
             name="clickListener"
-            type="com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageClickListener" />
+            type="com.freight.shipper.ui.addvehicle.recyclerview.ImageClickListener" />
 
         <variable
             name="infoButton"

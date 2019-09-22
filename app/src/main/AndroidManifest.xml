@@ -25,11 +25,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-
+        <activity android:name=".ui.vehiclelist.VehicleListActivity"></activity>
         <activity
             android:name=".ui.dashboard.DashboardActivity"
             android:label="@string/title_activity_dashboard" />
-
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,17 +64,16 @@
             android:name=".ui.authentication.resetpassword.ResetPasswordActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-
         <activity
-            android:name=".ui.profile.paymentdetails.PaymentDetailsActivity"
+            android:name=".ui.paymentdetails.PaymentDetailsActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.profile.addvehicle.AddVehicleActivity"
+            android:name=".ui.addvehicle.AddVehicleActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.profile.addshipper.AddShipperActivity"
+            android:name=".ui.addshipper.AddShipperActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 

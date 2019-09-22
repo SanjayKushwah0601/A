@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.freight.shipper.ui.profile.paymentdetails.PaymentDetailsViewModel" />
+            type="com.freight.shipper.ui.paymentdetails.PaymentDetailsViewModel" />
     </data>
 
     <LinearLayout

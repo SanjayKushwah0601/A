@@ -15,17 +15,7 @@
         android:layout_margin="@dimen/_10dp"
         android:paddingStart="@dimen/_10dp"
         android:paddingEnd="@dimen/_10dp"
-        android:text="@string/add_vehicle" />
-
-    <Button
-        android:id="@+id/buttonPaymentDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/_10dp"
-        android:paddingStart="@dimen/_10dp"
-        android:paddingEnd="@dimen/_10dp"
-        android:text="@string/payment_detail" />
+        android:text="@string/vehicle_list" />
 
 
     <Button

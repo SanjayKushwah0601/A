@@ -1,6 +1,8 @@
 package com.freight.shipper.core.persistence.network.response
 
 import android.os.Parcelable
+import com.freight.shipper.R
+import com.freight.shipper.utils.StringUtil
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -40,7 +42,7 @@ class Vehicle(
     @SerializedName("document")
     val document: String,
     @SerializedName("status")
-    val status: String,
+    val status: Int,
     @SerializedName("is_deleted")
     val isDeleted: String,
     @SerializedName("created_date")
@@ -48,4 +50,12 @@ class Vehicle(
     @SerializedName("vehicle_type")
     val vehicleType: String
 ) : Parcelable {
+
+    fun getDisplayVehicleStatus(): String {
+        return when (status) {
+            0 -> StringUtil.getString(R.string.inactive)
+            1 -> StringUtil.getString(R.string.active)
+            else -> StringUtil.getString(R.string.inactive)
+        }
+    }
 }

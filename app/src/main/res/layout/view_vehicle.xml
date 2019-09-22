@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vehicle"
+            type="com.freight.shipper.core.persistence.network.response.Vehicle" />
+
+        <variable
+            name="viewholder"
+            type="com.freight.shipper.ui.vehiclelist.recyclerview.VehicleViewHolder" />
+
+        <variable
+            name="clickListener"
+            type="com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadEventListener" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_3dp"
+        app:cardElevation="@dimen/_3dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/_10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvVehicleName"
+                style="@style/TextView.Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/tvStatus"
+                android:padding="@dimen/_5dp"
+                android:singleLine="true"
+                android:text='@{String.format("%s", vehicle.vehicleName)}'
+                tools:text="Vehicle Name" />
+
+            <TextView
+                style="@style/TextView.Body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvVehicleName"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/tvStatus"
+                android:paddingLeft="@dimen/_5dp"
+                android:singleLine="true"
+                android:text="@{vehicle.vehicleType}"
+                tools:text="Vehicle type" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                style="@style/TextView.Heading.XS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_5dp"
+                android:capitalize="words"
+                android:singleLine="true"
+                android:text='@{vehicle.getDisplayVehicleStatus()}'
+                android:textStyle="italic"
+                tools:text="Status" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

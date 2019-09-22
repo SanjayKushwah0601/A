@@ -11,8 +11,7 @@ import com.freight.shipper.core.persistence.network.response.NewLoad
 class NewLoadAdapter(
     private val list: MutableList<NewLoad> = mutableListOf(),
     private val clickListener: NewLoadEventListener? = null
-) :
-    RecyclerView.Adapter<NewLoadViewHolder>() {
+) : RecyclerView.Adapter<NewLoadViewHolder>() {
 
     var editing = false
         set(value) {

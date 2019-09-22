@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.profile.addvehicle
+package com.freight.shipper.ui.addvehicle
 
 import android.app.Activity
 import android.content.Intent
@@ -23,7 +23,7 @@ import com.freight.shipper.databinding.ActivityAddVehicleBinding
 import com.freight.shipper.extensions.*
 import com.freight.shipper.repository.ProfileRepository
 import com.freight.shipper.services.AddVehicleWorkManager
-import com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageAdapter
+import com.freight.shipper.ui.addvehicle.recyclerview.ImageAdapter
 import kotlinx.android.synthetic.main.activity_add_vehicle.*
 import kotlinx.android.synthetic.main.toolbar.*
 import timber.log.Timber

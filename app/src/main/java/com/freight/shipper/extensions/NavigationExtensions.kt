@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.freight.shipper.core.persistence.network.response.NewLoad
 import com.freight.shipper.model.IntentExtras
+import com.freight.shipper.ui.addshipper.AddShipperActivity
+import com.freight.shipper.ui.addvehicle.AddVehicleActivity
 import com.freight.shipper.ui.authentication.forgotpassword.ForgotPasswordActivity
 import com.freight.shipper.ui.authentication.login.LoginActivity
 import com.freight.shipper.ui.authentication.resetpassword.ResetPasswordActivity
@@ -16,9 +18,8 @@ import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwo
 import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
 import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.dashboard.DashboardActivity
-import com.freight.shipper.ui.profile.addshipper.AddShipperActivity
-import com.freight.shipper.ui.profile.addvehicle.AddVehicleActivity
-import com.freight.shipper.ui.profile.paymentdetails.PaymentDetailsActivity
+import com.freight.shipper.ui.paymentdetails.PaymentDetailsActivity
+import com.freight.shipper.ui.vehiclelist.VehicleListActivity
 
 
 /**
@@ -97,6 +98,15 @@ fun Activity.navigateToAddShipper(isSignUp: Boolean = false) {
 
 fun Fragment.navigateToAddShipper(isSignUp: Boolean = false) {
     activity?.navigateToAddShipper(isSignUp)
+}
+
+fun Activity.navigateToVehicleList() {
+    val intent = Intent(this, VehicleListActivity::class.java)
+    startActivity(intent)
+}
+
+fun Fragment.navigateToVehicleList() {
+    activity?.navigateToVehicleList()
 }
 
 fun AppCompatActivity.showCounterDialog(newLoad: NewLoad, listener: CounterDialog.CounterListener) {

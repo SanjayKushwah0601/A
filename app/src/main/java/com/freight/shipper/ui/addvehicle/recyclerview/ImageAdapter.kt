@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.profile.addvehicle.recyclerview
+package com.freight.shipper.ui.addvehicle.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

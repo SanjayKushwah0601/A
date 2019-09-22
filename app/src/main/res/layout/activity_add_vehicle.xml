@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.freight.shipper.ui.profile.addvehicle.AddVehicleViewModel" />
+            type="com.freight.shipper.ui.addvehicle.AddVehicleViewModel" />
     </data>
 
     <LinearLayout

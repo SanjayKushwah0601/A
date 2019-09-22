@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
-import com.freight.shipper.extensions.*
+import com.freight.shipper.extensions.navigateToAddShipper
+import com.freight.shipper.extensions.navigateToVehicleList
+import com.freight.shipper.extensions.showConfirmationMessage
+import com.freight.shipper.extensions.startLoginActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
@@ -38,11 +41,8 @@ class ProfileFragment : Fragment() {
             FreightApplication.instance.loginManager.clearDataForLogout()
             startLoginActivity()
         }
-        buttonPaymentDetails?.setOnClickListener {
-            navigateToPaymentDetails()
-        }
         buttonAddVehicle?.setOnClickListener {
-            navigateToAddVehicle()
+            navigateToVehicleList()
         }
         buttonAddShipper?.setOnClickListener {
             navigateToAddShipper()

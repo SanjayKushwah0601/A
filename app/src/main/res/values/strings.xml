@@ -111,4 +111,7 @@
     <string name="error_updating_offer_price">Error while updating offer price</string>
     <string name="upload_document">Upload Document</string>
     <string name="type_colon">Type:</string>
+    <string name="vehicle_list">Vehicle List</string>
+    <string name="inactive">Inactive</string>
+    <string name="no_vehicles_available">No vehicles available</string>
 </resources>

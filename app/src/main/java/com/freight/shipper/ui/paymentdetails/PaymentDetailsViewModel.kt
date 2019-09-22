@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.profile.paymentdetails
+package com.freight.shipper.ui.paymentdetails
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData

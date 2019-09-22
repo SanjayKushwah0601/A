@@ -9,12 +9,12 @@ import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvid
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
 import com.freight.shipper.core.persistence.network.request.AddShipperRequest
 import com.freight.shipper.core.persistence.network.request.PaymentRequest
-import com.freight.shipper.core.persistence.network.result.APIResult
-import com.freight.shipper.core.persistence.preference.LoginManager
-import com.freight.shipper.extensions.BaseRepository
 import com.freight.shipper.core.persistence.network.response.State
 import com.freight.shipper.core.persistence.network.response.Vehicle
 import com.freight.shipper.core.persistence.network.response.VehicleType
+import com.freight.shipper.core.persistence.network.result.APIResult
+import com.freight.shipper.core.persistence.preference.LoginManager
+import com.freight.shipper.extensions.BaseRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -49,7 +49,7 @@ class ProfileRepository(
         }
     }
 
-    private fun fetchVehicleList() {
+    fun fetchVehicleList() {
         GlobalScope.launch(dispatcher.io) {
             val result: APIResult<List<Vehicle>> = api.getVehicleList()
             withContext(dispatcher.main) {

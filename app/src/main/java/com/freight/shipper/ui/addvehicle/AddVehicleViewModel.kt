@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.profile.addvehicle
+package com.freight.shipper.ui.addvehicle
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
@@ -14,7 +14,7 @@ import com.freight.shipper.core.persistence.network.response.Image
 import com.freight.shipper.core.persistence.network.response.VehicleType
 import com.freight.shipper.repository.ProfileRepository
 import com.freight.shipper.services.MyWorkManager
-import com.freight.shipper.ui.profile.addvehicle.recyclerview.ImageClickListener
+import com.freight.shipper.ui.addvehicle.recyclerview.ImageClickListener
 import com.freight.shipper.utils.serializeToJson
 import timber.log.Timber
 

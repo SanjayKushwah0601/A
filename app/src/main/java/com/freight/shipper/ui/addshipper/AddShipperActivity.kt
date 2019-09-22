@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.profile.addshipper
+package com.freight.shipper.ui.addshipper
 
 import android.os.Bundle
 import android.util.Log
