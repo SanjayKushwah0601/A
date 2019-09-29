@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
+import com.freight.shipper.core.persistence.network.response.Country
+import com.freight.shipper.core.persistence.network.response.State
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
-import com.freight.shipper.core.persistence.network.response.Country
-import com.freight.shipper.core.persistence.network.response.State
 import com.freight.shipper.repository.AuthenticationRepository
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import kotlinx.coroutines.GlobalScope
@@ -106,7 +106,11 @@ class SignupViewModel(
                         Timber.e("Success Sanjay: ${result.response}")
                     }
                     is APIResult.Failure -> {
-                        companySignupAction.sendAction(Pair("Signup Failed", false))
+                        companySignupAction.sendAction(
+                            Pair(
+                                result.details.message ?: "Signup Failed", false
+                            )
+                        )
                         Timber.e("Failure Sanjay: ${result.error}")
                     }
                 }

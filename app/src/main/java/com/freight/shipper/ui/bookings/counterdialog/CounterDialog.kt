@@ -75,7 +75,7 @@ class CounterDialog : DialogFragment() {
                             listener?.onSuccess()
                         }
                         is APIResult.Failure -> {
-                            activity?.showErrorMessage(getString(R.string.error_updating_offer_price))
+                            activity?.showErrorMessage(result.details.message ?: getString(R.string.error_updating_offer_price))
                         }
                     }
                 }

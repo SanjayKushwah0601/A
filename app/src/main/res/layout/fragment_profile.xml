@@ -36,7 +36,8 @@
         android:layout_margin="@dimen/_10dp"
         android:paddingStart="@dimen/_10dp"
         android:paddingEnd="@dimen/_10dp"
-        android:text="@string/upload_document" />
+        android:text="@string/upload_document"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/buttonLogout"
