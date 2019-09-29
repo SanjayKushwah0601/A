@@ -35,6 +35,6 @@ interface LoadService {
     @POST("webservices?param=addLoadOfferPrice")
     fun addLoadOfferPrice(
         @Field("loads_id") loadId: String?,
-        @Field("offer_price") offerPrice: String?
+        @Field("price") offerPrice: String?
     ): Call<ApiResponse<EmptyResponse>>
 }
