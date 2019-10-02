@@ -1,7 +1,9 @@
 package com.freight.shipper.ui.bookings.assigned
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.viewpager.widget.ViewPager
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseFragment
@@ -31,8 +33,10 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
 
     //    private lateinit var viewModel: LoadPagerViewModel
 //
-    override fun getLayoutId(): Int = R.layout.fragment_load_pager
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_load_pager, container, false)
+    }
 
 //    override fun onActivityCreated(savedInstanceState: Bundle?) {
 //        super.onActivityCreated(savedInstanceState)

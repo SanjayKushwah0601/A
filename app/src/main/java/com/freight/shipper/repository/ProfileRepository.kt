@@ -9,10 +9,7 @@ import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvid
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
 import com.freight.shipper.core.persistence.network.request.AddShipperRequest
 import com.freight.shipper.core.persistence.network.request.PaymentRequest
-import com.freight.shipper.core.persistence.network.response.Driver
-import com.freight.shipper.core.persistence.network.response.State
-import com.freight.shipper.core.persistence.network.response.Vehicle
-import com.freight.shipper.core.persistence.network.response.VehicleType
+import com.freight.shipper.core.persistence.network.response.*
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
@@ -134,6 +131,10 @@ class ProfileRepository(
                 }
             }
         }
+    }
+
+    fun getUserProfile(): User {
+        return loginManager.loggedInUser!!
     }
 
 }

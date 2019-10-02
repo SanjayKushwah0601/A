@@ -1,52 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="user"
+            type="com.freight.shipper.core.persistence.network.response.User" />
+
+    </data>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.freight.customer.ui.profile.ProfileFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10dp"
+                app:srcCompat="@drawable/ic_user" />
+
+            <TextView
+                style="@style/TextView.Body.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text='@{String.format("%s %s", user.firstName, user.lastName)}'
+                android:textColor="@color/colorAccent"
+                tools:text="First Last Name" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFirstName"
+                    style="@style/Material.EditText"
+                    android:hint="@string/first_name"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@{user.firstName}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLastName"
+                    style="@style/Material.EditText"
+                    android:hint="@string/last_name"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@{user.lastName}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    style="@style/Material.EditText"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@{user.email}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMobile"
+                    style="@style/Material.EditText"
+                    android:hint="@string/mobile_number"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@{user.phone}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddress"
+                    style="@style/Material.EditText"
+                    android:hint="@string/address"
+                    android:inputType="textPostalAddress"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@{user.address}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCity"
+                        style="@style/Material.EditText"
+                        android:hint="@string/city"
+                        android:inputType="textCapWords"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:text="@{user.city}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPostcode"
+                        style="@style/Material.EditText"
+                        android:hint="@string/postal_code"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:text="@{user.postalCode}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPassword"
+                    style="@style/Material.EditText"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingStart="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}"-->
+
+            <Button
+                android:id="@+id/buttonAddVehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10dp"
+                android:text="@string/vehicle_list" />
+
+
+            <Button
+                android:id="@+id/buttonAddShipper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10dp"
+                android:text="@string/shipper_list" />
+
+            <Button
+                android:id="@+id/buttonUploadDocument"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10dp"
+                android:text="@string/upload_document"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/buttonLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10dp"
+                android:text="@string/logout" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout><!--
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="@dimen/activity_horizontal_margin"
+tools:context="com.freight.shipper.ui.profile.ProfileFragment">
+
+<Button
+    android:id="@+id/buttonAddVehicle"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_horizontal_margin"
-    tools:context="com.freight.shipper.ui.profile.ProfileFragment">
-
-    <Button
-        android:id="@+id/buttonAddVehicle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/_10dp"
-        android:paddingStart="@dimen/_10dp"
-        android:paddingEnd="@dimen/_10dp"
-        android:text="@string/vehicle_list" />
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/_10dp"
+    android:paddingStart="@dimen/_10dp"
+    android:paddingEnd="@dimen/_10dp"
+    android:text="@string/vehicle_list" />
 
 
-    <Button
-        android:id="@+id/buttonAddShipper"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/_10dp"
-        android:paddingStart="@dimen/_10dp"
-        android:paddingEnd="@dimen/_10dp"
-        android:text="@string/shipper_list" />
+<Button
+    android:id="@+id/buttonAddShipper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/_10dp"
+    android:paddingStart="@dimen/_10dp"
+    android:paddingEnd="@dimen/_10dp"
+    android:text="@string/shipper_list" />
 
-    <Button
-        android:id="@+id/buttonUploadDocument"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/_10dp"
-        android:paddingStart="@dimen/_10dp"
-        android:paddingEnd="@dimen/_10dp"
-        android:text="@string/upload_document"
-        android:visibility="gone" />
+<Button
+    android:id="@+id/buttonUploadDocument"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/_10dp"
+    android:paddingStart="@dimen/_10dp"
+    android:paddingEnd="@dimen/_10dp"
+    android:text="@string/upload_document"
+    android:visibility="gone" />
 
-    <Button
-        android:id="@+id/buttonLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/_10dp"
-        android:paddingStart="@dimen/_10dp"
-        android:paddingEnd="@dimen/_10dp"
-        android:text="@string/logout" />
+<Button
+    android:id="@+id/buttonLogout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/_10dp"
+    android:paddingStart="@dimen/_10dp"
+    android:paddingEnd="@dimen/_10dp"
+    android:text="@string/logout" />
 
 </LinearLayout>
+-->
