@@ -25,6 +25,11 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="be7430ba2091e8aa72d7b54e95857c9fc956869b" />
+
         <activity
             android:name=".ui.dashboard.DashboardActivity"
             android:label="@string/title_activity_dashboard" />

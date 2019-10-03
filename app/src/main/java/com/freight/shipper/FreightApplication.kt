@@ -8,6 +8,12 @@ import com.freight.shipper.core.persistence.network.client.server.API
 import com.freight.shipper.core.persistence.network.client.server.APIFactory
 import com.freight.shipper.core.persistence.preference.LoginManager
 import timber.log.Timber
+import com.crashlytics.android.Crashlytics
+import io.fabric.sdk.android.Fabric
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 class FreightApplication : Application() {
 
@@ -31,6 +37,7 @@ class FreightApplication : Application() {
     //region -Lifecycle functions
     override fun onCreate() {
         super.onCreate()
+        Fabric.with(this, Crashlytics())
         Glide.get(this).setMemoryCategory(MemoryCategory.HIGH)
         initLogging()
     }
