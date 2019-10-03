@@ -43,7 +43,7 @@ class LoadRepository(
     fun fetchNewLoad() {
         GlobalScope.launch(dispatcher.io) {
             val strDate = DateConstants.getDateTimeFormat().format(Date())
-            val result = api.getNewLoad(strDate)
+            val result = api.getNewLoad()
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success ->

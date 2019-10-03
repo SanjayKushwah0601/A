@@ -126,7 +126,7 @@ class ActiveLoad(
     @SerializedName("width")
     var width: String? = null
 ) {
-//    val customerImage: String = "http://www.gravatar.com/avatar/?d=identicon"
+    //    val customerImage: String = "http://www.gravatar.com/avatar/?d=identicon"
 //    val pickCity: String = "Pickup City"
 //    val destinationCity: String = "Destination City"
 //    val pickAddress: String = "Pickup Address"
@@ -139,29 +139,23 @@ class ActiveLoad(
     val timeLeftToPickup: String = "00:57 Hrs"
 
     fun getFormattedPickTime(): String {
-//        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-//        val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
-//        val output = formatter.format(parser.parse("2018-12-14T09:55:00"))
-        val parser = SimpleDateFormat("hh:mm:ss", Locale.US)
-        val formatter = SimpleDateFormat("hh:mm a", Locale.US)
+        val parser = SimpleDateFormat("hh:mm:ss", Locale.getDefault())
+        val formatter = SimpleDateFormat("hh:mm a", Locale.getDefault())
         val output = formatter.format(parser.parse(pickTime))
         return output ?: pickTime ?: "00:00"
     }
 
     fun getFormattedPickDate(): String {
-//        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-//        val formatter = SimpleDateFormat("dd.MM.yyyy HH:mm")
-//        val output = formatter.format(parser.parse("2018-12-14T09:55:00"))
-        val parser = SimpleDateFormat("dd-MM-yyyy", Locale.US)
-        val formatter = SimpleDateFormat("dd MMM", Locale.US)
+        val parser = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formatter = SimpleDateFormat("dd MMM", Locale.getDefault())
         val output = formatter.format(parser.parse(pickDate))
-        return output ?: pickDate ?: "00 Jan"
+        return output ?: pickDate ?: "Nil"
     }
 
     fun getFormattedDestDate(): String {
-        val parser = SimpleDateFormat("dd-MM-yyyy", Locale.US)
-        val formatter = SimpleDateFormat("dd MMM", Locale.US)
+        val parser = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val formatter = SimpleDateFormat("dd MMM", Locale.getDefault())
         val output = formatter.format(parser.parse(deliveryDate))
-        return output ?: deliveryDate ?: ""
+        return output ?: deliveryDate ?: "Nil"
     }
 }

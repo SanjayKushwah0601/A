@@ -13,17 +13,14 @@ import retrofit2.http.POST
  */
 interface LoadService {
 
-    @POST("webservices?param=getLoad&load_type=MLT")
+    @POST("webservices?param=getLoad&load_type=MAL")
     fun getActiveLoad(): Call<ApiResponse<List<ActiveLoad>>>
 
-    @POST("webservices?param=getLoad&load_type=MTP")
+    @POST("webservices?param=getLoad&load_type=MLCC")
     fun getPastLoad(): Call<ApiResponse<List<PastLoad>>>
 
-    @FormUrlEncoded
     @POST("webservices?param=getLoad")
-    fun getNewLoad(
-        @Field("pick_date") pick_date: String?
-    ): Call<ApiResponse<List<NewLoad>>>
+    fun getNewLoad(): Call<ApiResponse<List<NewLoad>>>
 
     @FormUrlEncoded
     @POST("webservices?param=addLoadOfferPrice")

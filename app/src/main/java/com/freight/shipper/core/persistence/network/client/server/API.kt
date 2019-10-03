@@ -93,8 +93,8 @@ class API(retrofit: Retrofit) : APIContract() {
         return loadService.getActiveLoad().apiResult()
     }
 
-    override suspend fun getNewLoad(date: String?): APIResult<List<NewLoad>> {
-        return loadService.getNewLoad(date).apiResult()
+    override suspend fun getNewLoad(): APIResult<List<NewLoad>> {
+        return loadService.getNewLoad().apiResult()
     }
 
     override suspend fun acceptLoad(loadId: String): APIResult<EmptyResponse> {
@@ -139,6 +139,7 @@ class API(retrofit: Retrofit) : APIContract() {
     override suspend fun getVehicleList(): APIResult<List<Vehicle>> {
         return profileService.getVehicleListByShipper().apiResult()
     }
+
     override suspend fun getDriverList(): APIResult<List<Driver>> {
         return profileService.getDriver().apiResult()
     }
