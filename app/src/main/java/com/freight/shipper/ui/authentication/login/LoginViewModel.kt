@@ -1,5 +1,6 @@
 package com.freight.shipper.ui.authentication.login
 
+import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
 import com.freight.shipper.core.persistence.network.result.APIResult
@@ -36,8 +37,8 @@ class LoginViewModel(
     }
 
     fun login() {
-        if (loginEmail.isNullOrEmpty() && loginPassword.isNullOrEmpty()) {
-            errorAction.sendAction("Username or Password is empty")
+        if (loginEmail.isNullOrEmpty() || loginPassword.isNullOrEmpty()) {
+            errorAction.sendAction(getString(R.string.username_or_password_empty_error))
             return
         }
         GlobalScope.launch(dispatcher.io) {

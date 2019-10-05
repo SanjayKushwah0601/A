@@ -118,4 +118,5 @@
     <string name="shipper_list">Shipper list</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="offered_price">Offered Price</string>
+    <string name="username_or_password_empty_error">Username or Password is empty</string>
 </resources>
