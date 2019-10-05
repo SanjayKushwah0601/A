@@ -310,18 +310,52 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view">
 
-                        <Button
-                            style="@style/Material.Button.Gray"
+
+                        <FrameLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_marginBottom="@dimen/_10dp"
-                            android:layout_weight="1"
-                            android:onClick="@{(view) -> clickListener != null ? clickListener.onCounterLoad(viewholder.position, loadModel) : null }"
-                            android:text="@string/counter"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/view" />
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:orientation="vertical"
+                                app:manageVisibility="@{ !loadModel.isShowCounterOption() &amp;&amp; loadModel.shipperOfferedPrice != null}">
+
+                                <TextView
+                                    style="@style/TextView.Heading.L"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawablePadding="@dimen/_3dp"
+                                    android:maxLines="1"
+                                    android:text="@{`$` + loadModel.shipperOfferedPrice}"
+                                    tools:text="122.00" />
+
+                                <TextView
+                                    style="@style/TextView.Body.Gray"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/offered_price" />
+
+                            </LinearLayout>
+
+                            <!--                            app:manageVisibility="@{ loadModel.shipperOffered.equalsIgnoreCase('Y')}"-->
+                            <Button
+                                style="@style/Material.Button.Gray"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_marginBottom="@dimen/_10dp"
+                                android:onClick="@{(view) -> clickListener != null ? clickListener.onCounterLoad(viewholder.position, loadModel) : null }"
+                                android:text="@string/counter"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/view"
+                                app:manageVisibility="@{ loadModel.isShowCounterOption()}" />
+                            <!--                            app:manageVisibility="@{ !loadModel.shipperOffered.equalsIgnoreCase('Y')}"-->
+
+                        </FrameLayout>
 
                         <Button
                             android:layout_width="0dp"

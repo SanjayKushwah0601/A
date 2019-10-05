@@ -127,7 +127,13 @@ class NewLoad(
     @SerializedName("status")
     var status: String? = null,
     @SerializedName("width")
-    var width: String? = null
+    var width: String? = null,
+    @SerializedName("total_offer")
+    var totalOffer: String? = null,
+    @SerializedName("shipper_offered")
+    var shipperOffered: String? = null,
+    @SerializedName("shipper_offered_price")
+    var shipperOfferedPrice: String? = null
 ) : Parcelable {
     //    val customerImage: String = "http://www.gravatar.com/avatar/?d=identicon"
 //    val pickCity: String = "Pickup City"
@@ -140,6 +146,10 @@ class NewLoad(
 //    val goodsName: String = "Electronics"
     val paidBy: String = "Receiver"
     val timeLeftToPickup: String = "00:57 Hrs"
+
+    fun isShowCounterOption(): Boolean {
+        return if (shipperOffered != null) !shipperOffered.equals("Y", true) else true
+    }
 
     fun getFormattedPickTime(): String {
         val parser = SimpleDateFormat("hh:mm:ss", Locale.getDefault())
