@@ -1,6 +1,8 @@
 package com.freight.shipper.core.persistence.network.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -9,7 +11,7 @@ import java.util.*
  * @CreatedBy Sanjay Kushwah on 8/12/2019.
  * sanjaykushwah0601@gmail.com
  */
-
+@Parcelize
 class ActiveLoad(
     @SerializedName("address")
     var address: String? = null,
@@ -112,7 +114,7 @@ class ActiveLoad(
     @SerializedName("refrence_no")
     var refrenceNo: String? = null,
     @SerializedName("registration_no")
-    var registrationNo: Any? = null,
+    var registrationNo: String? = null,
     @SerializedName("shipper_id")
     var shipperId: String? = null,
     @SerializedName("shipper_name")
@@ -125,7 +127,7 @@ class ActiveLoad(
     var status: String? = null,
     @SerializedName("width")
     var width: String? = null
-) {
+) : Parcelable {
     //    val customerImage: String = "http://www.gravatar.com/avatar/?d=identicon"
 //    val pickCity: String = "Pickup City"
 //    val destinationCity: String = "Destination City"

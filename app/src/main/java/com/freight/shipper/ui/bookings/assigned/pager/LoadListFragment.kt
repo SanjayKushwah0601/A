@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.UiThread
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.freight.shipper.FreightApplication
@@ -14,6 +15,7 @@ import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.core.platform.NonNullObserver
+import com.freight.shipper.extensions.navigateToRouteActivity
 import com.freight.shipper.extensions.setVisibleIf
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.bookings.assigned.LoadPagerViewModel
@@ -53,7 +55,9 @@ public abstract class LoadListFragment<T> : Fragment() {
     abstract fun removeItemFromAdapter(position: Int)
     abstract fun setEditMode(editing: Boolean)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_load_list, container, false)
     }
 
@@ -100,6 +104,10 @@ public abstract class LoadListFragment<T> : Fragment() {
                 )
             }
         })*/
+
+        viewmodel.startRouteAction.observe(this, Observer {
+            navigateToRouteActivity(it)
+        })
     }
 
     private fun setEmptyViewVisibility() {

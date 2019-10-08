@@ -16,7 +16,7 @@ import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.extensions.showCounterDialog
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.repository.LoadRepository
-import com.freight.shipper.ui.bookings.assigned.pager.LoadEventListener
+import com.freight.shipper.ui.bookings.assigned.pager.ActiveLoadEventListener
 import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadAdapter
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadEventListener
@@ -26,7 +26,7 @@ import timber.log.Timber
 
 
 class NewLoadFragment : Fragment(),
-    LoadEventListener {
+    ActiveLoadEventListener {
     //region - Companion
     companion object {
         fun newInstance() = NewLoadFragment()

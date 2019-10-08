@@ -23,7 +23,7 @@ class ActiveLoadAdapter : RecyclerView.Adapter<ActiveLoadViewHolder>() {
             notifyDataSetChanged()
         }
 
-    var clickListener: LoadEventListener? = null
+    var clickListener: ActiveLoadEventListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActiveLoadViewHolder {
         val view = DataBindingUtil.inflate<ViewDataBinding>(
@@ -51,7 +51,6 @@ class ActiveLoadAdapter : RecyclerView.Adapter<ActiveLoadViewHolder>() {
     }
 }
 
-interface LoadEventListener {
-    fun onWorkClicked(image: ActiveLoad) {}
-//    fun onDeleteClicked(image: Image, viewHolder: ActiveLoadViewHolder) {}
+interface ActiveLoadEventListener {
+    fun onStartRoute(load: ActiveLoad) {}
 }

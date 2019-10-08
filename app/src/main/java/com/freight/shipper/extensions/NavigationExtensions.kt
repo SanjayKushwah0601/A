@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.persistence.network.response.NewLoad
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.ui.addshipper.AddShipperActivity
@@ -20,6 +21,7 @@ import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.dashboard.DashboardActivity
 import com.freight.shipper.ui.driverlist.DriverListActivity
 import com.freight.shipper.ui.paymentdetails.PaymentDetailsActivity
+import com.freight.shipper.ui.route.RouteActivity
 import com.freight.shipper.ui.vehiclelist.VehicleListActivity
 
 
@@ -127,4 +129,14 @@ fun AppCompatActivity.showCounterDialog(newLoad: NewLoad, listener: CounterDialo
 
 fun Fragment.showCounterDialog(newLoad: NewLoad, listener: CounterDialog.CounterListener) {
     (activity as AppCompatActivity?)?.showCounterDialog(newLoad, listener)
+}
+
+fun Activity.navigateToRouteActivity(activeLoad: ActiveLoad) {
+    startActivity(Intent(this, RouteActivity::class.java).apply {
+        putExtra(IntentExtras.ACTIVE_LOAD, activeLoad)
+    })
+}
+
+fun Fragment.navigateToRouteActivity(activeLoad: ActiveLoad) {
+    activity?.navigateToRouteActivity(activeLoad)
 }

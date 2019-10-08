@@ -6,12 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.ui.bookings.assigned.pager.ActiveLoadAdapter
-import com.freight.shipper.ui.bookings.assigned.pager.LoadEventListener
 import com.freight.shipper.ui.bookings.assigned.pager.LoadListFragment
 
 
-class ActiveLoadFragment : LoadListFragment<ActiveLoad>(),
-    LoadEventListener {
+class ActiveLoadFragment : LoadListFragment<ActiveLoad>() {
     //region - Companion
     companion object {
         fun newInstance(title: String) = ActiveLoadFragment().apply {
@@ -30,7 +28,7 @@ class ActiveLoadFragment : LoadListFragment<ActiveLoad>(),
     override fun getTabTitle(): String = arguments?.getString(ARG_TITLE) ?: ""
 
     override fun initRecyclerViewAdapter(): RecyclerView.Adapter<out RecyclerView.ViewHolder> {
-        imageRowAdapter.clickListener = this
+        imageRowAdapter.clickListener = viewmodel
         return imageRowAdapter
     }
 

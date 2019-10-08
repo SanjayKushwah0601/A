@@ -11,7 +11,7 @@ import com.freight.shipper.core.persistence.network.response.ActiveLoad
 class ActiveLoadViewHolder(private val dataBinding: ViewDataBinding) :
     RecyclerView.ViewHolder(dataBinding.root) {
 
-    fun bind(image: ActiveLoad?, clickListener: LoadEventListener?) {
+    fun bind(image: ActiveLoad?, clickListener: ActiveLoadEventListener?) {
         dataBinding.setVariable(BR.activeLoad, image)
         dataBinding.setVariable(BR.clickListener, clickListener)
         dataBinding.setVariable(BR.viewholder, this)
