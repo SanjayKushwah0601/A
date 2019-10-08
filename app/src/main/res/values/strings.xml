@@ -119,4 +119,7 @@
     <string name="mobile_number">Mobile Number</string>
     <string name="offered_price">Offered Price</string>
     <string name="username_or_password_empty_error">Username or Password is empty</string>
+    <string name="title_activity_route1">Map</string>
+    <string name="arrived_pickup">Arrived Pickup</string>
+    <string name="arrived_at_pickup">Arrived at Pickup</string>
 </resources>
