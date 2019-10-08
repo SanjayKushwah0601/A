@@ -1,6 +1,7 @@
 package com.freight.shipper.ui.dashboard
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -74,7 +75,32 @@ class DashboardActivity : AppCompatActivity(),
             R.id.navigation_profile -> onProfileSelected()
             else -> return false
         }
+        invalidateOptionsMenu()
         return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        val saveButton = menu?.findItem(R.id.menu_update_profile)
+        val editButton = menu?.findItem(R.id.menu_edit_profile)
+        saveButton?.isVisible = profileFragment.isEdit
+        editButton?.isVisible = !profileFragment.isEdit
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        if (lastItemSelected == R.id.navigation_profile)
+            menuInflater.inflate(R.menu.menu_profile, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_edit_profile, R.id.menu_update_profile -> {
+                profileFragment.onProfileMenuClicked(!profileFragment.isEdit)
+                invalidateOptionsMenu()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
     // endregion
 
@@ -105,6 +131,7 @@ class DashboardActivity : AppCompatActivity(),
 
     private fun onProfileSelected() {
         lastItemSelected = R.id.navigation_profile
+        profileFragment.isEdit = false
         setToolbarTitle(R.string.profile)
         replaceFragmentOrAction(profileFragment)
     }

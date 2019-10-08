@@ -21,6 +21,7 @@ class ProfileFragment : BaseFragment() {
         fun newInstance() = ProfileFragment()
     }
 
+    var isEdit: Boolean = false
     private lateinit var viewModel: ProfileViewModel
     private lateinit var binding: FragmentProfileBinding
 
@@ -66,6 +67,11 @@ class ProfileFragment : BaseFragment() {
                     )
                 )
             }).get(ProfileViewModel::class.java)
+    }
+
+    fun onProfileMenuClicked(isEdit: Boolean) {
+        this.isEdit = isEdit
+
     }
     // endregion
 
