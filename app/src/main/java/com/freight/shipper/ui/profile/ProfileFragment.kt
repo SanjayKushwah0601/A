@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 class ProfileFragment : BaseFragment() {
 
     companion object {
+        const val REQUEST_CODE_EDIT_PROFILE = 676
         fun newInstance() = ProfileFragment()
     }
 
@@ -71,7 +72,8 @@ class ProfileFragment : BaseFragment() {
 
     fun onProfileMenuClicked(isEdit: Boolean) {
         this.isEdit = isEdit
-
+        // Todo : Navigate to edit profile screen
+        navigateToEditProfile(REQUEST_CODE_EDIT_PROFILE)
     }
     // endregion
 

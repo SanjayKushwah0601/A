@@ -21,6 +21,7 @@ import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.dashboard.DashboardActivity
 import com.freight.shipper.ui.driverlist.DriverListActivity
 import com.freight.shipper.ui.paymentdetails.PaymentDetailsActivity
+import com.freight.shipper.ui.profile.editprofile.EditProfileActivity
 import com.freight.shipper.ui.route.RouteActivity
 import com.freight.shipper.ui.vehiclelist.VehicleListActivity
 
@@ -140,3 +141,12 @@ fun Activity.navigateToRouteActivity(activeLoad: ActiveLoad) {
 fun Fragment.navigateToRouteActivity(activeLoad: ActiveLoad) {
     activity?.navigateToRouteActivity(activeLoad)
 }
+
+fun Activity.navigateToEditProfile(requestCode: Int) {
+    startActivityForResult(Intent(this, EditProfileActivity::class.java), requestCode)
+}
+
+fun Fragment.navigateToEditProfile(requestCode: Int) {
+    activity?.navigateToEditProfile(requestCode)
+}
+
