@@ -48,8 +48,7 @@ class EditProfileActivity : BaseActivity() {
     private fun initUI() {
         setupToolbar(
             toolbar, enableUpButton = !isSignUp,
-            title = getString(R.string.company),
-            subTitle = getString(R.string.payment_detail)
+            title = getString(R.string.edit_profile)
         )
 //        tvToolbarTitle?.text = getString(R.string.company)
 //        tvToolbarSubTitle?.text = getString(R.string.payment_detail)
