@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.response.ActiveLoad
-import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityRouteBinding
 import com.freight.shipper.extensions.setupToolbar
+import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.repository.RouteRepository
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -20,7 +20,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.toolbar.*
 
-class RouteActivity : BaseActivity(), OnMapReadyCallback {
+class RouteActivity : LocationActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     // region - Private fields
@@ -82,6 +82,11 @@ class RouteActivity : BaseActivity(), OnMapReadyCallback {
             sydney, 15.5f
         )
         mMap.animateCamera(cameraUpdate)
+        fetchLastKnownLocation()
+    }
+
+    override fun onLastLocationFound(lat: Double, lng: Double) {
+        showConfirmationMessage("$lat : $lng")
     }
 
     private fun initUI() {

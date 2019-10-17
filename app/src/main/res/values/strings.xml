@@ -122,4 +122,8 @@
     <string name="title_activity_route1">Map</string>
     <string name="arrived_pickup">Arrived Pickup</string>
     <string name="arrived_at_pickup">Arrived at Pickup</string>
+    <string name="no_location_detected">No location detected</string>
+    <string name="settings">Location Setting</string>
+    <string name="permission_denied_explanation">Allow location permission from the setting</string>
+    <string name="permission_rationale">Location Permission</string>
 </resources>
