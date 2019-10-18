@@ -1,7 +1,9 @@
 package com.freight.shipper.ui.route
 
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
@@ -9,7 +11,7 @@ import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityRouteBinding
 import com.freight.shipper.extensions.setupToolbar
-import com.freight.shipper.extensions.showConfirmationMessage
+import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.repository.RouteRepository
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -41,10 +43,19 @@ class RouteActivity : LocationActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         initViewModel()
         initUI()
+        setupObservers()
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+    }
+
+    private fun setupObservers() {
+        viewModel.error.observe(this, Observer { showErrorMessage(it) })
+
+        viewModel.successRouteResponse.observe(this, Observer {
+            Log.e("SuccessRoute", it.toString())
+        })
     }
 
     /**
@@ -86,11 +97,15 @@ class RouteActivity : LocationActivity(), OnMapReadyCallback {
     }
 
     override fun onLastLocationFound(lat: Double, lng: Double) {
-        showConfirmationMessage("$lat : $lng")
+        viewModel.setCurrentLocation(LatLng(lat, lng))
     }
 
     private fun initUI() {
-        setupToolbar(toolbar, enableUpButton = true, title = getString(R.string.arrived_at_pickup))
+        setupToolbar(
+            toolbar,
+            enableUpButton = true,
+            title = getString(R.string.arrived_at_pickup)
+        )
 //        setAdapter()
     }
 
@@ -98,7 +113,7 @@ class RouteActivity : LocationActivity(), OnMapReadyCallback {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_route)
         binding.viewModel = viewModel
         binding.loadModel = intent.getParcelableExtra(IntentExtras.ACTIVE_LOAD) as ActiveLoad
-        binding.executePendingBindings()
+//        binding.executePendingBindings()
     }
 
     override fun onSupportNavigateUp(): Boolean {
