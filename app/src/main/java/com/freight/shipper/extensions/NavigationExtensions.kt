@@ -20,9 +20,11 @@ import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupA
 import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.dashboard.DashboardActivity
 import com.freight.shipper.ui.driverlist.DriverListActivity
+import com.freight.shipper.ui.invoice.InvoiceActivity
 import com.freight.shipper.ui.paymentdetails.PaymentDetailsActivity
 import com.freight.shipper.ui.profile.editprofile.EditProfileActivity
-import com.freight.shipper.ui.route.RouteActivity
+import com.freight.shipper.ui.route.destination.DestinationRouteActivity
+import com.freight.shipper.ui.route.pickup.PickupRouteActivity
 import com.freight.shipper.ui.vehiclelist.VehicleListActivity
 
 
@@ -133,7 +135,7 @@ fun Fragment.showCounterDialog(newLoad: NewLoad, listener: CounterDialog.Counter
 }
 
 fun Activity.navigateToRouteActivity(activeLoad: ActiveLoad) {
-    startActivity(Intent(this, RouteActivity::class.java).apply {
+    startActivity(Intent(this, PickupRouteActivity::class.java).apply {
         putExtra(IntentExtras.ACTIVE_LOAD, activeLoad)
     })
 }
@@ -150,3 +152,24 @@ fun Fragment.navigateToEditProfile(requestCode: Int) {
     activity?.navigateToEditProfile(requestCode)
 }
 
+
+
+fun Activity.navigateToDestinationRouteActivity(activeLoad: ActiveLoad) {
+    startActivity(Intent(this, DestinationRouteActivity::class.java).apply {
+        putExtra(IntentExtras.ACTIVE_LOAD, activeLoad)
+    })
+}
+
+fun Fragment.navigateToDestinationRouteActivity(activeLoad: ActiveLoad) {
+    activity?.navigateToDestinationRouteActivity(activeLoad)
+}
+
+fun Activity.navigateToInvoiceActivity(activeLoad: ActiveLoad) {
+    startActivity(Intent(this, InvoiceActivity::class.java).apply {
+        putExtra(IntentExtras.ACTIVE_LOAD, activeLoad)
+    })
+}
+
+fun Fragment.navigateToInvoiceActivity(activeLoad: ActiveLoad) {
+    activity?.navigateToInvoiceActivity(activeLoad)
+}

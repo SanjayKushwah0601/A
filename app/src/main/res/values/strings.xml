@@ -119,6 +119,15 @@
     <string name="mobile_number">Mobile Number</string>
     <string name="offered_price">Offered Price</string>
     <string name="username_or_password_empty_error">Username or Password is empty</string>
+    <string name="title_activity_route1">Map</string>
+    <string name="arrived_pickup">Arrived Pickup</string>
+    <string name="arrived_at_pickup">Arrived at Pickup</string>
+    <string name="no_location_detected">No location detected</string>
+    <string name="settings">Location Setting</string>
+    <string name="permission_denied_explanation">Allow location permission from the setting</string>
+    <string name="permission_rationale">Location Permission</string>
+    <string name="arrived_destination">Arrived Destination</string>
+    <string name="arrived_at_destination">Arrived at Destination</string>
     <string name="edit">Edit</string>
     <string name="update">Update</string>
     <string name="save">Save</string>

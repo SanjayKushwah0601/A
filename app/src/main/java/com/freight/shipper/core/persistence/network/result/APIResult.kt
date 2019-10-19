@@ -92,3 +92,8 @@ data class APIError(
         val default = APIError(hashMapOf(), APIErrorType.General, -1, null, getString(R.string.default_api_error))
     }
 }
+
+interface NetworkCallback<T> {
+    fun success(result: T)
+    fun failure(errorMessage: String)
+}

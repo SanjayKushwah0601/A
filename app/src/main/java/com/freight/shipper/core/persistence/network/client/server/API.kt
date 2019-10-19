@@ -8,6 +8,7 @@ import com.freight.shipper.core.persistence.network.result.APIError
 import com.freight.shipper.core.persistence.network.result.APIErrorType
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.network.service.*
+import com.freight.shipper.model.LoadStatus
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -105,6 +106,12 @@ class API(retrofit: Retrofit) : APIContract() {
         loadId: String, offerPrice: String
     ): APIResult<EmptyResponse> {
         return loadService.addLoadOfferPrice(loadId, offerPrice).apiResult()
+    }
+
+    override suspend fun updateLoadStatus(
+        loadId: String, loadStatus: LoadStatus
+    ): APIResult<EmptyResponse> {
+        return loadService.updateLoadStatus(loadId, loadStatus.id).apiResult()
     }
     // endregion
 

@@ -34,4 +34,11 @@ interface LoadService {
         @Field("loads_id") loadId: String?,
         @Field("price") offerPrice: String?
     ): Call<ApiResponse<EmptyResponse>>
+
+    @FormUrlEncoded
+    @POST("webservices?param=updateLoadStatus")
+    fun updateLoadStatus(
+        @Field("loads_id") loadId: String,
+        @Field("load_status_id") loadStatusId: Int
+    ): Call<ApiResponse<EmptyResponse>>
 }
