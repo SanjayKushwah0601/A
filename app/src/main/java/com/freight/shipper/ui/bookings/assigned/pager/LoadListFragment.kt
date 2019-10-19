@@ -17,6 +17,7 @@ import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.core.platform.NonNullObserver
 import com.freight.shipper.extensions.navigateToRouteActivity
 import com.freight.shipper.extensions.setVisibleIf
+import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.bookings.assigned.LoadPagerViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -105,7 +106,13 @@ public abstract class LoadListFragment<T> : Fragment() {
             }
         })*/
 
+        viewmodel.error.observe(this, Observer {
+            viewmodel.isLoading.postValue(false)
+            showErrorMessage(it)
+        })
+
         viewmodel.startRouteAction.observe(this, Observer {
+            viewmodel.isLoading.postValue(false)
             navigateToRouteActivity(it)
         })
     }

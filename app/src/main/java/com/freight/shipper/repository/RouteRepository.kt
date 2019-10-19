@@ -3,8 +3,6 @@ package com.freight.shipper.repository
 import android.util.Log
 import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.client.server.APIContract
-import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
-import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.utils.DirectionsJSONParser
 import com.freight.shipper.utils.StringUtil
@@ -27,9 +25,8 @@ import java.net.URL
  */
 class RouteRepository(
     private val api: APIContract,
-    private val loginManager: LoginManager,
-    val dispatcher: DispatcherProvider = DispatcherProviderImpl()
-) {
+    private val loginManager: LoginManager
+) : LoadRepository(api, loginManager) {
 
     @Throws(IOException::class)
     private fun downloadUrl(strUrl: String): String {
@@ -79,9 +76,7 @@ class RouteRepository(
         GlobalScope.launch(dispatcher.io) {
             try {
                 val strJson = downloadUrl(url)
-
                 val resultJson = JSONObject(strJson)
-
                 if (resultJson.has("error_message")) {
                     withContext(dispatcher.main) {
                         failure(resultJson.getString("error_message"))
@@ -90,7 +85,6 @@ class RouteRepository(
                 }
 
                 val result = DirectionsJSONParser().parse(resultJson)
-
                 val pointsList: MutableList<MutableList<LatLng>> = mutableListOf()
                 // Traversing through all the routes
                 result.forEachIndexed { index, list ->
@@ -101,15 +95,12 @@ class RouteRepository(
                     // Fetching all the points in i-th route
                     for (j in path.indices) {
                         val point = path[j]
-
                         val lat = java.lang.Double.parseDouble(point["lat"]!!)
                         val lng = java.lang.Double.parseDouble(point["lng"]!!)
                         val position = LatLng(lat, lng)
-
                         points.add(position)
                     }
                     pointsList.add(points)
-
                 }
                 withContext(dispatcher.main) { success(pointsList) }
             } catch (e: Exception) {

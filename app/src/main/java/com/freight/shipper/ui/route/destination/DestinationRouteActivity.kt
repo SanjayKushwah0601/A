@@ -1,4 +1,4 @@
-package com.freight.shipper.ui.route
+package com.freight.shipper.ui.route.destination
 
 import android.os.Bundle
 import android.util.Log
@@ -9,11 +9,14 @@ import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.platform.BaseViewModelFactory
-import com.freight.shipper.databinding.ActivityRouteBinding
+import com.freight.shipper.databinding.ActivityRouteDestinationBinding
+import com.freight.shipper.extensions.navigateToInvoiceActivity
 import com.freight.shipper.extensions.setupToolbar
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.repository.RouteRepository
+import com.freight.shipper.ui.route.LocationActivity
+import com.freight.shipper.ui.route.RouteViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -22,7 +25,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.toolbar.*
 
-class RouteActivity : LocationActivity(), OnMapReadyCallback {
+class DestinationRouteActivity : LocationActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     // region - Private fields
@@ -37,7 +40,7 @@ class RouteActivity : LocationActivity(), OnMapReadyCallback {
             )
         }).get(RouteViewModel::class.java)
     }
-    private lateinit var binding: ActivityRouteBinding
+    private lateinit var binding: ActivityRouteDestinationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,14 +51,6 @@ class RouteActivity : LocationActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-    }
-
-    private fun setupObservers() {
-        viewModel.error.observe(this, Observer { showErrorMessage(it) })
-
-        viewModel.successRouteResponse.observe(this, Observer {
-            Log.e("SuccessRoute", it.toString())
-        })
     }
 
     /**
@@ -74,8 +69,8 @@ class RouteActivity : LocationActivity(), OnMapReadyCallback {
 
     private fun setupMap(load: ActiveLoad) {
         // Add a marker in Sydney and move the camera
-        val pickLat = load.pickLatitude?.toDoubleOrNull()
-        val pickLong = load.pickLongitude?.toDoubleOrNull()
+        val pickLat = load.destLatitude?.toDoubleOrNull()
+        val pickLong = load.destLongitude?.toDoubleOrNull()
         val sydney: LatLng = if (pickLat != null && pickLong != null)
             LatLng(pickLat, pickLong)
         else LatLng(-34.0, 151.0)
@@ -93,7 +88,10 @@ class RouteActivity : LocationActivity(), OnMapReadyCallback {
             sydney, 15.5f
         )
         mMap.animateCamera(cameraUpdate)
-        fetchLastKnownLocation()
+
+        // Fetch destination route
+        viewModel.getDestinationRoute()
+//        fetchLastKnownLocation()
     }
 
     override fun onLastLocationFound(lat: Double, lng: Double) {
@@ -102,22 +100,38 @@ class RouteActivity : LocationActivity(), OnMapReadyCallback {
 
     private fun initUI() {
         setupToolbar(
-            toolbar,
-            enableUpButton = true,
-            title = getString(R.string.arrived_at_pickup)
+            toolbar, enableUpButton = true, title = getString(R.string.arrived_at_destination)
         )
 //        setAdapter()
     }
 
     private fun initViewModel() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_route)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_route_destination)
         binding.viewModel = viewModel
         binding.loadModel = intent.getParcelableExtra(IntentExtras.ACTIVE_LOAD) as ActiveLoad
-//        binding.executePendingBindings()
+        binding.executePendingBindings()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    private fun setupObservers() {
+        viewModel.error.observe(this, Observer {
+            viewModel.isLoading.set(false)
+            showErrorMessage(it)
+        })
+
+        viewModel.arrivedAtDestinationAction.observe(this, Observer {
+            viewModel.isLoading.set(false)
+            navigateToInvoiceActivity(it)
+            finish()
+        })
+
+        viewModel.successRouteResponse.observe(this, Observer {
+            viewModel.isLoading.set(false)
+            Log.e("SuccessRoute", it.toString())
+        })
     }
 }

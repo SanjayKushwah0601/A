@@ -126,4 +126,6 @@
     <string name="settings">Location Setting</string>
     <string name="permission_denied_explanation">Allow location permission from the setting</string>
     <string name="permission_rationale">Location Permission</string>
+    <string name="arrived_destination">Arrived Destination</string>
+    <string name="arrived_at_destination">Arrived at Destination</string>
 </resources>
