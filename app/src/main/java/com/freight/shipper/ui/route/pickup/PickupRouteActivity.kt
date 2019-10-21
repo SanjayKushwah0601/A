@@ -27,8 +27,8 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class PickupRouteActivity : LocationActivity(), OnMapReadyCallback {
 
-    private lateinit var mMap: GoogleMap
     // region - Private fields
+    private lateinit var mMap: GoogleMap
     private val viewModel: RouteViewModel by lazy {
         ViewModelProviders.of(this, BaseViewModelFactory {
             RouteViewModel(
@@ -41,6 +41,7 @@ class PickupRouteActivity : LocationActivity(), OnMapReadyCallback {
         }).get(RouteViewModel::class.java)
     }
     private lateinit var binding: ActivityRoutePickupBinding
+    // endregion
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

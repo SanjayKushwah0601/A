@@ -113,6 +113,10 @@ class API(retrofit: Retrofit) : APIContract() {
     ): APIResult<EmptyResponse> {
         return loadService.updateLoadStatus(loadId, loadStatus.id).apiResult()
     }
+
+    override suspend fun getLoadDetail(loadId: String): APIResult<LoadDetail> {
+        return loadService.getLoadDetail(loadId).apiResult()
+    }
     // endregion
 
     // region - Profile services

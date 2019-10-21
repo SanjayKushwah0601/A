@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.freight.shipper.ui.invoice.InvoiceViewModel" />
+
+        <variable
+            name="loadDetail"
+            type="com.freight.shipper.core.persistence.network.response.LoadDetail" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!--        <ScrollView-->
         <com.freight.shipper.utils.customviews.CustomScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
@@ -54,9 +69,9 @@
                             android:layout_marginStart="4dp"
                             android:drawablePadding="@dimen/_3dp"
                             android:maxLines="1"
-                            android:text="122.00"
-                            android:textColor="@color/colorAccent" />
-                        <!--                android:text="@{loadModel.price}"-->
+                            android:text='@{viewModel.loadField.price ?? ""}'
+                            android:textColor="@color/colorAccent"
+                            tools:text="120.0" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -89,9 +104,10 @@
                                 android:layout_toEndOf="@+id/textViewHeading"
                                 android:drawablePadding="@dimen/_3dp"
                                 android:maxLines="1"
-                                android:text="23"
+                                android:text="@{ loadDetail.loadsId }"
                                 android:textColor="@color/colorAccent"
-                                android:textStyle="bold" />
+                                android:textStyle="bold"
+                                tools:text="23" />
 
                         </LinearLayout>
 
@@ -128,7 +144,8 @@
                     android:paddingStart="@dimen/_10dp"
                     android:paddingTop="@dimen/_5dp"
                     android:paddingEnd="@dimen/_10dp"
-                    android:text="Finder Name" />
+                    android:text="@{ loadDetail.finderName }"
+                    tools:text="Finder Name" />
 
                 <TextView
                     style="@style/TextView.Body"
@@ -137,7 +154,34 @@
                     android:paddingStart="@dimen/_10dp"
                     android:paddingEnd="@dimen/_10dp"
                     android:paddingBottom="@dimen/_5dp"
-                    android:text="9893801881" />
+                    android:text="@{ loadDetail.loadsId }"
+                    android:visibility="gone"
+                    tools:text="9893801881" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextView.Body.Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10dp"
+                        android:paddingEnd="@dimen/_10dp"
+                        android:paddingBottom="@dimen/_5dp"
+                        android:text="@string/address_colon" />
+
+                    <TextView
+                        style="@style/TextView.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingEnd="@dimen/_10dp"
+                        android:text="@{ loadDetail.pickAddress }"
+                        tools:text="Pickup address" />
+
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
@@ -167,7 +211,8 @@
                     android:paddingStart="@dimen/_10dp"
                     android:paddingTop="@dimen/_5dp"
                     android:paddingEnd="@dimen/_10dp"
-                    android:text="Receiver Name" />
+                    android:text="@{ loadDetail.receiverName }"
+                    tools:text="Receiver Name" />
 
                 <TextView
                     style="@style/TextView.Body"
@@ -176,7 +221,33 @@
                     android:paddingStart="@dimen/_10dp"
                     android:paddingEnd="@dimen/_10dp"
                     android:paddingBottom="@dimen/_5dp"
-                    android:text="9893801881" />
+                    android:text="@{ loadDetail.receiverPhone }"
+                    tools:text="9893801881" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextView.Body.Bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10dp"
+                        android:paddingEnd="@dimen/_10dp"
+                        android:paddingBottom="@dimen/_5dp"
+                        android:text="@string/address_colon" />
+
+                    <TextView
+                        style="@style/TextView.Body"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingEnd="@dimen/_10dp"
+                        android:text="@{ loadDetail.destAddress }"
+                        tools:text="Pickup address" />
+
+                </LinearLayout>
 
                 <TextView
                     style="@style/TextView.Heading.XS"
@@ -243,16 +314,18 @@
                 style="@style/Material.Button.Black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/submit" />
-            <!--                android:onClick="@{() -> viewModel.submitVehicleDetails()}"-->
-            <!--                android:visibility="@{ !viewModel.isLoading ? View.VISIBLE : View.GONE, default=visible}" -->
+                android:onClick="@{() -> viewModel.submitInvoice()}"
+                android:text="@string/submit"
+                android:visibility="@{ !viewModel.isLoading ? View.VISIBLE : View.GONE, default=visible}" />
+
 
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
-            <!--                android:visibility="@{ viewModel.isLoading ? View.VISIBLE : View.GONE, default=gone}" -->
+                android:layout_gravity="center"
+                android:visibility="@{ viewModel.isLoading ? View.VISIBLE : View.GONE, default=gone}" />
+
         </FrameLayout>
     </RelativeLayout>
 </layout>

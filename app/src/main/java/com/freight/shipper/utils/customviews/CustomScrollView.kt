@@ -9,7 +9,7 @@ import android.widget.ScrollView
  * @CreatedBy Sanjay Kushwah on 10/19/2019.
  * sanjaykushwah0601@gmail.com
  */
-class CustomScrollView : ScrollView {
+open class CustomScrollView : ScrollView {
 
     var isEnableScrolling = true
 

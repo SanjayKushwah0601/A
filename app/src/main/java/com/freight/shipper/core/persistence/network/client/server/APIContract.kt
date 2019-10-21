@@ -42,6 +42,8 @@ abstract class APIContract {
     abstract suspend fun updateLoadStatus(
         loadId: String, loadStatus: LoadStatus
     ): APIResult<EmptyResponse>
+
+    abstract suspend fun getLoadDetail(loadId: String): APIResult<LoadDetail>
     // endregion
 
     // region - Profile
