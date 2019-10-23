@@ -20,6 +20,7 @@ class InvoiceViewModel(val activeLoad: ActiveLoad, val model: RouteRepository) :
 
     // region - Private properties
     var isLoading = ObservableField<Boolean>()
+    var submitInvoice = ActionLiveData<String>()
     var loadField = ObservableField<LoadDetail>()
     val loadDetail: LiveData<LoadDetail> get() = _loadDetail
     private val _loadDetail = MutableLiveData<LoadDetail>()
@@ -32,6 +33,7 @@ class InvoiceViewModel(val activeLoad: ActiveLoad, val model: RouteRepository) :
 
     fun submitInvoice() {
         Timber.d("submitInvoice")
+        submitInvoice.sendAction("Invoice_${activeLoad.loadsId}.jpg")
     }
 
     private fun getLoadDetail() {

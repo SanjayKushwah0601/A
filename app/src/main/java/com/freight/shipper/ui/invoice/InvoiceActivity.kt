@@ -53,6 +53,10 @@ class InvoiceActivity : BaseActivity() {
         viewModel.error.observe(this, Observer { errorMsg ->
             showErrorMessage(errorMsg)
         })
+
+        viewModel.submitInvoice.observe(this, Observer {
+            mSignature.print(it)
+        })
     }
 
     private fun initUI() {

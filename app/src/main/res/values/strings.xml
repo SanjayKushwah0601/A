@@ -134,4 +134,6 @@
     <string name="receiver_signature">Receiver Signature</string>
     <string name="documents">Documents</string>
     <string name="address_colon">Address :</string>
+    <string name="booking_date_colon">Booking Date :</string>
+    <string name="delivery_date_colon">Delivery Date :</string>
 </resources>
