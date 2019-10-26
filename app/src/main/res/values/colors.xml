@@ -10,6 +10,7 @@
     <color name="gray_dark">#A5A5A5</color>
 
     <color name="section_divider_color">#dadce5</color>
+    <color name="section_divider_color_dark">#8B8B8B</color>
     <color name="bottom_sheet_handle_color">#dadce5</color>
     <color name="sleep_button_asleep">#7313bd</color>
     <color name="sleep_button_awake">@color/white</color>
@@ -25,6 +26,7 @@
     <color name="add_item_tint">#a1a4b3</color>
     <color name="splash_bg">#7313bd</color>
     <color name="text_light_gray">#a1a4b2</color>
+    <color name="light_gray">#EBEAEA</color>
     <color name="text_hint">#dadce5</color>
     <color name="text_dark">#270c3f</color>
     <color name="edittext_highlight">#EEEEEE</color>
@@ -72,6 +74,7 @@
     <color name="button_disable_color">#EB837D</color>
     <color name="button_gray">#ced1dd</color>
     <color name="button_gray_text_color">#160424</color>
+    <color name="button_white_text_color">#FFFFFF</color>
     <color name="material_seekbar_bg_dark">#2c1c3a</color>
     <color name="material_seekbar_bg_light">#FFF</color>
     <color name="remove_canvas_button_color">#d9dce7</color>

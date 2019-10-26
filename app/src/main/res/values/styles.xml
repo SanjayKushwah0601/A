@@ -34,11 +34,11 @@
         <item name="actionMenuTextAppearance">@style/Material.MenuItemTextAppearance</item>
     </style>
 
-    <style name="AppTheme" parent="BaseAppTheme"/>
+    <style name="AppTheme" parent="BaseAppTheme" />
 
-    <style name="AppTheme.DarkSystemBars" parent="BaseAppTheme"/>
+    <style name="AppTheme.DarkSystemBars" parent="BaseAppTheme" />
 
-    <style name="AppTheme.Widget"/>
+    <style name="AppTheme.Widget" />
 
     <!-- Splash page theme (so it loads before the page itself -->
 
@@ -47,7 +47,7 @@
         <item name="android:windowBackground">@drawable/splash_layers</item>
     </style>
 
-    <style name="SplashTheme" parent="BaseSplashTheme"/>
+    <style name="SplashTheme" parent="BaseSplashTheme" />
 
     <!-- TextViews -->
 
@@ -195,7 +195,7 @@
         <item name="android:paddingRight">0dp</item>
         <item name="android:layout_marginRight">0dp</item>
     </style>
-<!--        <item name="android:background">@drawable/button_bg_white_square</item>-->
+    <!--        <item name="android:background">@drawable/button_bg_white_square</item>-->
 
     <style name="Style.Widget.SpinnerItem" parent="Base.Widget.AppCompat.DropDownItem.Spinner">
         <item name="android:paddingLeft">5dp</item>
@@ -223,6 +223,7 @@
         <item name="subtitleTextAppearance">@style/AppTheme.Widget.TextView.ToolbarSubTitle</item>
         <item name="actionButtonStyle">@style/AppTheme.Widget.ActionButton</item>
     </style>
+
     <style name="ToolbarStyle" parent="@style/Base.TextAppearance.AppCompat.Title">
         <item name="android:textSize">@dimen/toolbar_title_size</item>
         <item name="android:fontFamily">@font/nunito_sans_bold</item>
@@ -264,6 +265,12 @@
     <style name="Material.Button.Gray" parent="Material.Button">
         <item name="android:background">@drawable/button_bg_gray_square</item>
         <item name="android:textColor">@color/button_gray_text_color</item>
+        <item name="android:theme">@style/AppTheme.LightRipple</item>
+    </style>
+
+    <style name="Material.Button.Black" parent="Material.Button">
+        <item name="android:background">@drawable/button_bg_black_square</item>
+        <item name="android:textColor">@color/button_white_text_color</item>
         <item name="android:theme">@style/AppTheme.LightRipple</item>
     </style>
 

@@ -7,10 +7,7 @@ import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.persistence.network.date.DateConstants
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProviderImpl
-import com.freight.shipper.core.persistence.network.response.ActiveLoad
-import com.freight.shipper.core.persistence.network.response.EmptyResponse
-import com.freight.shipper.core.persistence.network.response.NewLoad
-import com.freight.shipper.core.persistence.network.response.PastLoad
+import com.freight.shipper.core.persistence.network.response.*
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.network.result.NetworkCallback
 import com.freight.shipper.core.persistence.preference.LoginManager
@@ -38,6 +35,19 @@ open class LoadRepository(
 
     private val _newLoadError = MutableLiveData<String>()
     val newLoadError: LiveData<String> get() = _newLoadError
+
+    fun getLoadDetails(loadId: String, callback: NetworkCallback<LoadDetail>) {
+        GlobalScope.launch(dispatcher.io) {
+            val result = api.getLoadDetail(loadId)
+            withContext(dispatcher.main) {
+                when (result) {
+                    is APIResult.Success -> callback.success(result.response.data)
+                    is APIResult.Failure -> callback.failure(result.error?.message ?: "")
+                }
+            }
+        }
+    }
+
 
     fun getMasterConfigData() {
         GlobalScope.launch(dispatcher.io) { api.getMasterConfigData() }

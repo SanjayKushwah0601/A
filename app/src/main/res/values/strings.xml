@@ -128,6 +128,14 @@
     <string name="permission_rationale">Location Permission</string>
     <string name="arrived_destination">Arrived Destination</string>
     <string name="arrived_at_destination">Arrived at Destination</string>
+    <string name="sender_information">Sender Information</string>
+    <string name="load_id_colon">Load id :</string>
+    <string name="receiver_information">Receiver Information</string>
+    <string name="receiver_signature">Receiver Signature</string>
+    <string name="documents">Documents</string>
+    <string name="address_colon">Address :</string>
+    <string name="booking_date_colon">Booking Date :</string>
+    <string name="delivery_date_colon">Delivery Date :</string>
     <string name="edit">Edit</string>
     <string name="update">Update</string>
     <string name="save">Save</string>
