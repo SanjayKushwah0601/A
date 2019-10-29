@@ -53,6 +53,7 @@ abstract class APIContract {
     abstract suspend fun addNewShipper(request: AddShipperRequest): APIResult<EmptyResponse>
     abstract suspend fun getVehicleList(): APIResult<List<Vehicle>>
     abstract suspend fun getDriverList(): APIResult<List<Driver>>
+    abstract suspend fun updateProfile(user: User): APIResult<EmptyResponse>
     // endregion
 
     // region - Category

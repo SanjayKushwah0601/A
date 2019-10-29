@@ -1,9 +1,6 @@
 package com.freight.shipper.core.persistence.network.service
 
-import com.freight.shipper.core.persistence.network.response.ApiResponse
-import com.freight.shipper.core.persistence.network.response.Driver
-import com.freight.shipper.core.persistence.network.response.EmptyResponse
-import com.freight.shipper.core.persistence.network.response.Vehicle
+import com.freight.shipper.core.persistence.network.response.*
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -54,4 +51,8 @@ interface ProfileService {
 
     @POST("webservices?param=getDriver")
     fun getDriver(): Call<ApiResponse<List<Driver>>>
+
+    @POST("webservices?param=updateShipperProfile")
+    fun updateProfile(@Body user: User)
+            : Call<ApiResponse<EmptyResponse>>
 }

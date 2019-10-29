@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.persistence.network.response.NewLoad
+import com.freight.shipper.core.persistence.network.response.User
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.ui.addshipper.AddShipperActivity
 import com.freight.shipper.ui.addvehicle.AddVehicleActivity
@@ -144,14 +145,15 @@ fun Fragment.navigateToRouteActivity(activeLoad: ActiveLoad) {
     activity?.navigateToRouteActivity(activeLoad)
 }
 
-fun Activity.navigateToEditProfile(requestCode: Int) {
-    startActivityForResult(Intent(this, EditProfileActivity::class.java), requestCode)
+fun Activity.navigateToEditProfile(user: User, requestCode: Int) {
+    startActivityForResult(Intent(this, EditProfileActivity::class.java).apply {
+        putExtra(IntentExtras.USER, user)
+    }, requestCode)
 }
 
-fun Fragment.navigateToEditProfile(requestCode: Int) {
-    activity?.navigateToEditProfile(requestCode)
+fun Fragment.navigateToEditProfile(user: User, requestCode: Int) {
+    activity?.navigateToEditProfile(user, requestCode)
 }
-
 
 
 fun Activity.navigateToDestinationRouteActivity(activeLoad: ActiveLoad) {

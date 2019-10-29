@@ -192,6 +192,52 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_5dp"
+                        android:paddingEnd="@dimen/_5dp">
+
+                        <com.freight.shipper.utils.customviews.MaterialSpinner
+                            android:id="@+id/spinnerCountry"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:ms_alignLabels="true"
+                            app:ms_floatingLabelColor="@color/colorAccent"
+                            app:ms_hint="@string/country"
+                            app:ms_hintColor="@color/gray"
+                            app:ms_multiline="false" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/_5dp"
+                        android:paddingEnd="@dimen/_5dp">
+
+                        <com.freight.shipper.utils.customviews.MaterialSpinner
+                            android:id="@+id/spinnerState"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:ms_alignLabels="true"
+                            app:ms_floatingLabelColor="@color/colorAccent"
+                            app:ms_hint="@string/state"
+                            app:ms_hintColor="@color/gray"
+                            app:ms_multiline="false" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutPassword"
                     android:layout_width="match_parent"
@@ -221,12 +267,12 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10dp">
 
-                    <!--                    android:onClick="@{() -> viewModel.submitPaymentDetails()}"-->
                     <Button
                         android:id="@+id/buttonAddVehicle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:onClick="@{() -> viewModel.updateProfile()}"
                         android:text="@string/submit"
                         android:visibility="@{ !viewModel.isLoading ? View.VISIBLE : View.GONE, default=visible}" />
 

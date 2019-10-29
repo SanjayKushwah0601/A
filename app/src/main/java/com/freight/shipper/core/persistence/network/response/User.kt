@@ -2,13 +2,14 @@ package com.freight.shipper.core.persistence.network.response
 
 import com.freight.shipper.model.UserRole
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 /**
  * @CreatedBy Sanjay Kushwah on 8/4/2019.
  * sanjaykushwah0601@gmail.com
  */
-class User {
+class User : Serializable {
     @SerializedName("user_id")
     var userId: Long? = null
     @SerializedName("apnstoken")
@@ -48,13 +49,15 @@ class User {
     @SerializedName("role_ids")
     var roleIds: String? = null
     @SerializedName("shipper_id")
-    var shipperId: Any? = null
+    var shipperId: String? = null
     @SerializedName("state")
     var state: String? = null
     @SerializedName("updated_by")
-    var updatedBy: Any? = null
+    var updatedBy: String? = null
     @SerializedName("updated_date")
     var updatedDate: String? = null
+    @SerializedName("country_id")
+    var countryId: String? = null
 }
 
 /*"""{"responseCode":true,"responseMsg":"success",

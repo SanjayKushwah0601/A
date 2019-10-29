@@ -111,6 +111,28 @@ class ProfileRepository(
         }
     }
 
+    fun updateProfile(
+        user: User,
+        observer: Pair<MediatorLiveData<String>, MediatorLiveData<String>>
+    ) {
+        val (success, failure) = setupObserver(observer)
+        GlobalScope.launch(dispatcher.io) {
+            val result = api.updateProfile(user)
+            withContext(dispatcher.main) {
+                when (result) {
+                    is APIResult.Success -> {
+                        Timber.e("Success Sanjay: ${result.response}")
+                        success.value = result.response.data.toString()
+                    }
+                    is APIResult.Failure -> {
+                        Timber.e("Failure Sanjay: ${result.error}")
+                        failure.value = result.error?.message ?: ""
+                    }
+                }
+            }
+        }
+    }
+
     fun addNewShipper(
         requestModel: AddShipperRequest,
         observer: Pair<MediatorLiveData<String>, MediatorLiveData<String>>

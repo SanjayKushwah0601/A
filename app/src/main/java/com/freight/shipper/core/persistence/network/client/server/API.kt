@@ -15,6 +15,8 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import okhttp3.MultipartBody
+import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import org.json.JSONTokener
 import retrofit2.Call
@@ -154,6 +156,10 @@ class API(retrofit: Retrofit) : APIContract() {
     override suspend fun getDriverList(): APIResult<List<Driver>> {
         return profileService.getDriver().apiResult()
     }
+
+    override suspend fun updateProfile(user: User): APIResult<EmptyResponse> {
+        return profileService.updateProfile(user).apiResult()
+    }
     // endregion
 
 
@@ -240,8 +246,12 @@ class API(retrofit: Retrofit) : APIContract() {
         val message = exception.message()
 
         return if (errorBody != null) {
-            if (JSONTokener(errorBody).nextValue() !is JSONObject)
-                return APIError(mapOf(), APIErrorType.General, code, exception, message)
+            if (isJSONValid(errorBody)) {
+                if (JSONTokener(errorBody).nextValue() !is JSONObject)
+                    return APIError(mapOf(), APIErrorType.General, code, exception, message)
+            } else {
+                return APIError(mapOf(), APIErrorType.General, code, exception, errorBody)
+            }
 
             val errors: HashMap<String, Any?> = decoder.fromJson(errorBody, errorMapType)
             val stringError: HashMap<String, String> = HashMap(errors.mapValues {
@@ -254,6 +264,22 @@ class API(retrofit: Retrofit) : APIContract() {
         } else {
             APIError(mapOf(), APIErrorType.General, code, exception, message)
         }
+    }
+
+    fun isJSONValid(test: String): Boolean {
+        try {
+            JSONObject(test)
+        } catch (ex: JSONException) {
+            // edited, to include @Arthur's comment
+            // e.g. in case JSONArray is valid as well...
+            try {
+                JSONArray(test)
+            } catch (ex1: JSONException) {
+                return false
+            }
+
+        }
+        return true
     }
 
     private fun errorFromAnyException(exception: Throwable): APIError {

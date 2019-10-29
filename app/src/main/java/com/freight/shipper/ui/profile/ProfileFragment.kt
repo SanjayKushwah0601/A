@@ -73,7 +73,7 @@ class ProfileFragment : BaseFragment() {
     fun onProfileMenuClicked(isEdit: Boolean) {
         this.isEdit = isEdit
         // Todo : Navigate to edit profile screen
-        navigateToEditProfile(REQUEST_CODE_EDIT_PROFILE)
+        navigateToEditProfile(viewModel.user, REQUEST_CODE_EDIT_PROFILE)
     }
     // endregion
 

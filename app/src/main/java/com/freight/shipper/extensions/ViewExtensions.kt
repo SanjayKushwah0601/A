@@ -1,18 +1,13 @@
 package com.freight.shipper.extensions
 
-import android.app.Activity
 import android.content.Context
-import android.graphics.Color
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.Spinner
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import com.freight.shipper.R
 import com.freight.shipper.core.platform.HintSpinnerAdapter
-import com.google.android.material.snackbar.Snackbar
+import com.freight.shipper.core.platform.HintSpinnerAdapter1
 
 /**
  * Do some work on a view only after it is measured
@@ -54,7 +49,8 @@ fun View.setHiddenIf(predicate: () -> Boolean) {
 
 
 fun View.setKeyboardShown(context: Context, shown: Boolean) {
-    val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    val inputMethodManager =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     if (shown) {
         inputMethodManager.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
     } else {
@@ -71,7 +67,24 @@ fun <T> Spinner.setOnItemSelectListener(
         override fun onNothingSelected(p0: AdapterView<*>?) {}
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             if (p2 - 1 != -1) {
-                listener(adapter.getItemAtPosition(p2-1))
+                listener(adapter.getItemAtPosition(p2 - 1))
+            }
+        }
+    }
+}
+
+fun <T> Spinner.onItemSelectedListenerWithoutLabel(
+    adapter: HintSpinnerAdapter1<T>,
+    listener: (position: T) -> Unit
+) {
+    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+    this.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        override fun onNothingSelected(p0: AdapterView<*>?) {}
+        override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+            if (p2 >= 0) {
+//                val selected = p0?.getItemAtPosition(p2).toString()
+//                itemSelected?.invoke(selected)
+                listener(adapter.getItemAtPosition(p2))
             }
         }
     }

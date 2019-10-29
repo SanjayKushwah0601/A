@@ -80,4 +80,5 @@
     <color name="remove_canvas_button_color">#d9dce7</color>
     <color name="badge_drawable_color">#7313bd</color>
     <color name="material_light_gray_color">#a1a4b3</color>
+    <color name="disabled_color">#44000000</color>
 </resources>

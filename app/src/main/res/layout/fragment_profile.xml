@@ -48,6 +48,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFirstName"
                     style="@style/Material.EditText"
+                    android:enabled="false"
                     android:hint="@string/first_name"
                     android:inputType="textPersonName"
                     android:maxLines="1"
@@ -67,6 +68,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etLastName"
                     style="@style/Material.EditText"
+                    android:enabled="false"
                     android:hint="@string/last_name"
                     android:inputType="textPersonName"
                     android:maxLines="1"
@@ -85,6 +87,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmail"
                     style="@style/Material.EditText"
+                    android:enabled="false"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
@@ -103,6 +106,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etMobile"
                     style="@style/Material.EditText"
+                    android:enabled="false"
                     android:hint="@string/mobile_number"
                     android:inputType="phone"
                     android:maxLines="1"
@@ -121,6 +125,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAddress"
                     style="@style/Material.EditText"
+                    android:enabled="false"
                     android:hint="@string/address"
                     android:inputType="textPostalAddress"
                     android:maxLines="1"
@@ -145,6 +150,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etCity"
                         style="@style/Material.EditText"
+                        android:enabled="false"
                         android:hint="@string/city"
                         android:inputType="textCapWords"
                         android:maxLines="1"
@@ -164,6 +170,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPostcode"
                         style="@style/Material.EditText"
+                        android:enabled="false"
                         android:hint="@string/postal_code"
                         android:inputType="number"
                         android:maxLines="1"
@@ -236,56 +243,4 @@
         </LinearLayout>
 
     </ScrollView>
-</layout><!--
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:padding="@dimen/activity_horizontal_margin"
-tools:context="com.freight.shipper.ui.profile.ProfileFragment">
-
-<Button
-    android:id="@+id/buttonAddVehicle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="@dimen/_10dp"
-    android:paddingStart="@dimen/_10dp"
-    android:paddingEnd="@dimen/_10dp"
-    android:text="@string/vehicle_list" />
-
-
-<Button
-    android:id="@+id/buttonAddShipper"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="@dimen/_10dp"
-    android:paddingStart="@dimen/_10dp"
-    android:paddingEnd="@dimen/_10dp"
-    android:text="@string/shipper_list" />
-
-<Button
-    android:id="@+id/buttonUploadDocument"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="@dimen/_10dp"
-    android:paddingStart="@dimen/_10dp"
-    android:paddingEnd="@dimen/_10dp"
-    android:text="@string/upload_document"
-    android:visibility="gone" />
-
-<Button
-    android:id="@+id/buttonLogout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="@dimen/_10dp"
-    android:paddingStart="@dimen/_10dp"
-    android:paddingEnd="@dimen/_10dp"
-    android:text="@string/logout" />
-
-</LinearLayout>
--->
+</layout>

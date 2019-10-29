@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat
  * @CreatedBy Sanjay Kushwah on 8/28/2019.
  * sanjaykushwah0601@gmail.com
  */
-open class HintSpinnerAdapter<T>(
+open class HintSpinnerAdapter1<T>(
     context: Context, val list: MutableList<T>, private var hint: String? = null
 ) : ArrayAdapter<T>(
     context, android.R.layout.simple_list_item_1, list
@@ -49,7 +49,7 @@ open class HintSpinnerAdapter<T>(
                 )
             )
         } else {
-            val item = list.get(position - 1)
+            val item = list.get(position)
             item?.also {
                 textView.text = getLabelFor(it)
             }
@@ -82,7 +82,7 @@ open class HintSpinnerAdapter<T>(
         if (hint != null && position == 0) {
             textView.text = hint
         } else {
-            val item = list?.get(position - 1)
+            val item = list?.get(position)
             item?.also {
                 textView.text = getLabelFor(it)
             }
@@ -114,7 +114,7 @@ open class HintSpinnerAdapter<T>(
         list.forEachIndexed { index, item ->
             if (title == getLabelFor(item)) position = index
         }
-        if (position != -1) spinner.setSelection(position)
+        if (position != -1) spinner.setSelection(position + 1)
     }
 
     fun selectItemById(spinner: Spinner, id: String?) {
