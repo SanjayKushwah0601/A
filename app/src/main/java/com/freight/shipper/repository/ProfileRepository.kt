@@ -3,6 +3,7 @@ package com.freight.shipper.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import com.freight.shipper.R
 import com.freight.shipper.core.persistence.db.RoomDb
 import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
@@ -13,6 +14,7 @@ import com.freight.shipper.core.persistence.network.response.*
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
+import com.freight.shipper.utils.StringUtil.getString
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -122,7 +124,8 @@ class ProfileRepository(
                 when (result) {
                     is APIResult.Success -> {
                         Timber.e("Success Sanjay: ${result.response}")
-                        success.value = result.response.data.toString()
+                        success.value =
+                            result.response.getMessage() ?: getString(R.string.update_profile_msg)
                     }
                     is APIResult.Failure -> {
                         Timber.e("Failure Sanjay: ${result.error}")

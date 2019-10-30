@@ -152,7 +152,10 @@ fun Activity.navigateToEditProfile(user: User, requestCode: Int) {
 }
 
 fun Fragment.navigateToEditProfile(user: User, requestCode: Int) {
-    activity?.navigateToEditProfile(user, requestCode)
+    val intent = Intent(activity, EditProfileActivity::class.java).apply {
+        putExtra(IntentExtras.USER, user)
+    }
+    startActivityForResult(intent, requestCode)
 }
 
 

@@ -79,13 +79,13 @@ class DashboardActivity : AppCompatActivity(),
         return true
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        val saveButton = menu?.findItem(R.id.menu_update_profile)
-        val editButton = menu?.findItem(R.id.menu_edit_profile)
-        saveButton?.isVisible = profileFragment.isEdit
-        editButton?.isVisible = !profileFragment.isEdit
-        return true
-    }
+//    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+//        val saveButton = menu?.findItem(R.id.menu_update_profile)
+//        val editButton = menu?.findItem(R.id.menu_edit_profile)
+//        saveButton?.isVisible = profileFragment.isEdit
+//        editButton?.isVisible = !profileFragment.isEdit
+//        return true
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         if (lastItemSelected == R.id.navigation_profile)
@@ -95,9 +95,9 @@ class DashboardActivity : AppCompatActivity(),
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_edit_profile, R.id.menu_update_profile -> {
-                profileFragment.onProfileMenuClicked(!profileFragment.isEdit)
-                invalidateOptionsMenu()
+            R.id.menu_edit_profile -> {
+                profileFragment.onProfileMenuClicked()
+//                invalidateOptionsMenu()
             }
         }
         return super.onOptionsItemSelected(item)

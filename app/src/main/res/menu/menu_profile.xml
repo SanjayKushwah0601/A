@@ -7,8 +7,8 @@
         android:title="@string/edit"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/menu_update_profile"
-        android:title="@string/save"
-        app:showAsAction="always" />
+<!--    <item-->
+<!--        android:id="@+id/menu_update_profile"-->
+<!--        android:title="@string/save"-->
+<!--        app:showAsAction="always" />-->
 </menu>

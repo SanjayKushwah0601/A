@@ -67,6 +67,7 @@
                         android:hint="@string/first_name"
                         android:inputType="textPersonName"
                         android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstNameChanged(text.toString())}"
                         android:paddingStart="5dp"
                         android:paddingLeft="5dp"
                         android:paddingEnd="5dp"
@@ -86,6 +87,7 @@
                         android:hint="@string/last_name"
                         android:inputType="textPersonName"
                         android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onLastNameChanged(text.toString())}"
                         android:paddingStart="5dp"
                         android:paddingLeft="5dp"
                         android:paddingEnd="5dp"
@@ -104,6 +106,7 @@
                         android:hint="@string/email"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onPersonEmailChanged(text.toString())}"
                         android:paddingStart="5dp"
                         android:paddingLeft="5dp"
                         android:paddingEnd="5dp"
@@ -122,6 +125,7 @@
                         android:hint="@string/mobile_number"
                         android:inputType="phone"
                         android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onPersonMobileChanged(text.toString())}"
                         android:paddingStart="5dp"
                         android:paddingLeft="5dp"
                         android:paddingEnd="5dp"
@@ -135,11 +139,30 @@
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        style="@style/Material.EditText"
+                        android:hint="@string/password"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}"
+                        android:paddingStart="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:paddingRight="5dp"
+                        android:text="@{user.password}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAddress"
                         style="@style/Material.EditText"
                         android:hint="@string/address"
                         android:inputType="textPostalAddress"
                         android:maxLines="1"
+                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onAddressChanged(text.toString())}"
                         android:paddingStart="5dp"
                         android:paddingLeft="5dp"
                         android:paddingEnd="5dp"
@@ -164,6 +187,7 @@
                             android:hint="@string/city"
                             android:inputType="textCapWords"
                             android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onCityChanged(text.toString())}"
                             android:paddingStart="5dp"
                             android:paddingLeft="5dp"
                             android:paddingEnd="5dp"
@@ -183,6 +207,7 @@
                             android:hint="@string/postal_code"
                             android:inputType="number"
                             android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPostCodeChanged(text.toString())}"
                             android:paddingStart="5dp"
                             android:paddingLeft="5dp"
                             android:paddingEnd="5dp"

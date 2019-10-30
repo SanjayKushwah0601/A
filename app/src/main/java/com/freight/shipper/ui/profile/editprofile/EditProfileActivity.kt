@@ -89,11 +89,10 @@ class EditProfileActivity : BaseActivity() {
             viewModel.isLoading.set(false)
             Timber.d("Update profile Success")
             // TODO: save details
+            FreightApplication.instance.loginManager.loggedInUser = viewModel.user
             setResult(Activity.RESULT_OK)
-
-            showConfirmationMessage(getString(R.string.payment_detail_added_success_msg))
-//            if (isSignUp) navigateToDashboard()
-//            finish()
+            showConfirmationMessage(it)
+            finish()
         })
         viewModel.error.observe(this, Observer {
             viewModel.isLoading.set(false)

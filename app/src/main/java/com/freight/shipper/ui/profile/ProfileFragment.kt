@@ -1,5 +1,7 @@
 package com.freight.shipper.ui.profile
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -58,6 +60,18 @@ class ProfileFragment : BaseFragment() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CODE_EDIT_PROFILE -> {
+                    binding.user = viewModel.getUpdatedUser()
+                    binding.executePendingBindings()
+                }
+            }
+        }
+    }
+
     // region - Private functions
     private fun initViewModel() {
         viewModel = ViewModelProviders.of(this,
@@ -70,8 +84,8 @@ class ProfileFragment : BaseFragment() {
             }).get(ProfileViewModel::class.java)
     }
 
-    fun onProfileMenuClicked(isEdit: Boolean) {
-        this.isEdit = isEdit
+    fun onProfileMenuClicked() {
+//        this.isEdit = isEdit
         // Todo : Navigate to edit profile screen
         navigateToEditProfile(viewModel.user, REQUEST_CODE_EDIT_PROFILE)
     }

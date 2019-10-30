@@ -158,7 +158,18 @@ class API(retrofit: Retrofit) : APIContract() {
     }
 
     override suspend fun updateProfile(user: User): APIResult<EmptyResponse> {
-        return profileService.updateProfile(user).apiResult()
+        return profileService.updateProfile(
+            user.firstName,
+            user.lastName,
+            user.email,
+            user.phone,
+            user.countryId,
+            user.state,
+            user.city,
+            user.postalCode,
+            user.address,
+            user.password
+        ).apiResult()
     }
     // endregion
 

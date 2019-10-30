@@ -58,6 +58,8 @@ class User : Serializable {
     var updatedDate: String? = null
     @SerializedName("country_id")
     var countryId: String? = null
+    @SerializedName("password")
+    var password: String? = null
 }
 
 /*"""{"responseCode":true,"responseMsg":"success",

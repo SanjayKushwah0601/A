@@ -7,8 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.freight.shipper.core.persistence.network.response.Country
 import com.freight.shipper.core.persistence.network.response.State
+import com.freight.shipper.core.persistence.network.response.User
 import com.freight.shipper.core.platform.BaseViewModel
 import com.freight.shipper.repository.ProfileRepository
+import timber.log.Timber
 
 class ProfileViewModel(val model: ProfileRepository) : BaseViewModel() {
 
@@ -29,6 +31,50 @@ class ProfileViewModel(val model: ProfileRepository) : BaseViewModel() {
 
     fun getPickStates(selectedCountry: Country) {
         this.selectedCountry.postValue(selectedCountry)
+    }
+
+    fun onAddressChanged(line2: String) {
+        user.address = line2
+        Timber.d(user.companyName)
+    }
+
+    fun onCityChanged(city: String) {
+        user.city = city
+        Timber.d(user.companyName)
+    }
+
+    fun onPostCodeChanged(postCode: String) {
+        user.postalCode = postCode
+        Timber.d(user.companyName)
+    }
+
+    fun onPasswordChanged(password: String) {
+//        user.password = password
+        Timber.d(user.companyName)
+    }
+
+    fun onFirstNameChanged(firstName: String) {
+        user.firstName = firstName
+        Timber.d(user.companyName)
+    }
+
+    fun onLastNameChanged(lastName: String) {
+        user.lastName = lastName
+        Timber.d(user.companyName)
+    }
+
+    fun onPersonEmailChanged(email: String) {
+        user.email = email
+        Timber.d(user.companyName)
+    }
+
+    fun onPersonMobileChanged(phone: String) {
+        user.phone = phone
+        Timber.d(user.companyName)
+    }
+
+    fun getUpdatedUser(): User {
+        return model.getUserProfile()
     }
 
     fun updateProfile() {
