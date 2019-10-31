@@ -131,7 +131,6 @@ class DashboardActivity : AppCompatActivity(),
 
     private fun onProfileSelected() {
         lastItemSelected = R.id.navigation_profile
-        profileFragment.isEdit = false
         setToolbarTitle(R.string.profile)
         replaceFragmentOrAction(profileFragment)
     }

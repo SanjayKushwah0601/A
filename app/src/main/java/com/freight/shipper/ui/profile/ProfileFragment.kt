@@ -24,7 +24,6 @@ class ProfileFragment : BaseFragment() {
         fun newInstance() = ProfileFragment()
     }
 
-    var isEdit: Boolean = false
     private lateinit var viewModel: ProfileViewModel
     private lateinit var binding: FragmentProfileBinding
 

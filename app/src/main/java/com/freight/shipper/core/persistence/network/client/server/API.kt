@@ -159,16 +159,8 @@ class API(retrofit: Retrofit) : APIContract() {
 
     override suspend fun updateProfile(user: User): APIResult<EmptyResponse> {
         return profileService.updateProfile(
-            user.firstName,
-            user.lastName,
-            user.email,
-            user.phone,
-            user.countryId,
-            user.state,
-            user.city,
-            user.postalCode,
-            user.address,
-            user.password
+            user.firstName, user.lastName, user.email, user.phone, user.countryId,
+            user.state, user.city, user.postalCode, user.address, user.password
         ).apiResult()
     }
     // endregion
@@ -236,11 +228,8 @@ class API(retrofit: Retrofit) : APIContract() {
             result is Result.Ok && result.value.isSuccessful() -> APIResult.Success(result.value)
             result is Result.Ok && !result.value.isSuccessful() -> APIResult.Failure(
                 APIError(
-                    mapOf(),
-                    APIErrorType.FalseAPIResponse,
-                    0,
-                    Throwable(result.value.getMessage()),
-                    result.value.getMessage()
+                    mapOf(), APIErrorType.FalseAPIResponse, 0,
+                    Throwable(result.value.getMessage()), result.value.getMessage()
                 )
             )
             result is Result.Error -> APIResult.Failure(errorFromHttpException(result.exception))
@@ -277,18 +266,15 @@ class API(retrofit: Retrofit) : APIContract() {
         }
     }
 
-    fun isJSONValid(test: String): Boolean {
+    private fun isJSONValid(test: String): Boolean {
         try {
             JSONObject(test)
         } catch (ex: JSONException) {
-            // edited, to include @Arthur's comment
-            // e.g. in case JSONArray is valid as well...
             try {
                 JSONArray(test)
             } catch (ex1: JSONException) {
                 return false
             }
-
         }
         return true
     }
@@ -301,11 +287,8 @@ class API(retrofit: Retrofit) : APIContract() {
             else -> Pair("NetworkCall", "An error occurred ${exception.localizedMessage}")
         }
         return APIError(
-            hashMapOf(typeString to reason),
-            APIErrorType.Network(exception),
-            -1,
-            exception,
-            reason
+            hashMapOf(typeString to reason), APIErrorType.Network(exception),
+            -1, exception, reason
         )
     }
 

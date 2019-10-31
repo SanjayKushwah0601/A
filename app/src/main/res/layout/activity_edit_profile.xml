@@ -103,6 +103,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEmail"
                         style="@style/Material.EditText"
+                        android:enabled="false"
                         android:hint="@string/email"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
