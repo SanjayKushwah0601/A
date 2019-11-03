@@ -48,8 +48,8 @@ class RouteViewModel(val activeLoad: ActiveLoad, val model: RouteRepository) : B
             LatLng(pickLat, pickLong)
         else LatLng(-34.0, 151.0)
 
-        val destLat = activeLoad.pickLatitude?.toDoubleOrNull()
-        val destLong = activeLoad.pickLongitude?.toDoubleOrNull()
+        val destLat = activeLoad.destLatitude?.toDoubleOrNull()
+        val destLong = activeLoad.destLongitude?.toDoubleOrNull()
         val destination: LatLng = if (destLat != null && destLong != null)
             LatLng(destLat, destLong)
         else LatLng(-34.0, 151.0)
