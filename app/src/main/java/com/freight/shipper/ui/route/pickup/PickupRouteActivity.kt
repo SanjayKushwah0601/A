@@ -130,6 +130,7 @@ class PickupRouteActivity : LocationActivity(), OnMapReadyCallback {
         viewModel.successRouteResponse.observe(this, Observer {
             viewModel.isLoading.set(false)
             Log.e("SuccessRoute", it.toString())
+            drawRoute(mMap, it)
         })
     }
 }

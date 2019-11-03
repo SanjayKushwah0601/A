@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
@@ -15,8 +16,12 @@ import androidx.core.app.ActivityCompat
 import com.freight.shipper.BuildConfig
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseActivity
+import com.freight.shipper.extensions.showErrorMessage
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.*
 
 
 /**
@@ -52,6 +57,48 @@ abstract class LocationActivity : BaseActivity() {
         } else {
             getLastLocation()
         }
+    }
+
+    fun drawRoute(mMap: GoogleMap, locationList: MutableList<LatLng>) {
+        if (locationList.isEmpty()) {
+            showErrorMessage(getString(R.string.no_rout_found))
+            return
+        }
+
+        val lineOptions = PolylineOptions()
+
+        lineOptions.addAll(locationList)
+        lineOptions.width(5f)
+        lineOptions.color(Color.BLUE)
+
+        mMap.clear()
+        mMap.addPolyline(lineOptions)
+        val builder = LatLngBounds.Builder()
+        if (locationList.firstOrNull() != null)
+            builder.include(locationList.first())
+        if (locationList.lastOrNull() != null)
+            builder.include(locationList.last())
+        val bounds = builder.build()
+
+        if (locationList.firstOrNull() != null) {
+            mMap.addMarker(
+                MarkerOptions()
+                    .position(locationList.first())
+                    .draggable(true)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+            )
+        }
+
+        if (locationList.lastOrNull() != null) {
+            mMap.addMarker(
+                MarkerOptions()
+                    .position(locationList.last())
+                    .draggable(true)
+            )
+        }
+
+        val cu = CameraUpdateFactory.newLatLngBounds(bounds, 160)
+        mMap.moveCamera(cu)
     }
 
     private fun checkPermissions(): Boolean {
