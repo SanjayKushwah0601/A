@@ -10,8 +10,8 @@ import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityRouteDestinationBinding
-import com.freight.shipper.extensions.navigateToInvoiceActivity
 import com.freight.shipper.extensions.setupToolbar
+import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.repository.RouteRepository
@@ -125,8 +125,9 @@ class DestinationRouteActivity : LocationActivity(), OnMapReadyCallback {
 
         viewModel.arrivedAtDestinationAction.observe(this, Observer {
             viewModel.isLoading.set(false)
-            navigateToInvoiceActivity(it)
-            finish()
+            showConfirmationMessage("Navigate to invoice")
+//            navigateToInvoiceActivity(it)
+//            finish()
         })
 
         viewModel.successRouteResponse.observe(this, Observer {
