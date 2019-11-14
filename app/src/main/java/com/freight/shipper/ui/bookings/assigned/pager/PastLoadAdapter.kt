@@ -41,10 +41,6 @@ class PastLoadAdapter : RecyclerView.Adapter<PastLoadViewHolder>() {
         holder.bind(imageList?.get(position), clickListener)
     }
 
-    override fun getItemId(position: Int): Long {
-        return imageList?.get(position)?.id ?: -1
-    }
-
     fun getItemAt(position: Int): PastLoad? {
         return imageList?.getOrNull(position)
     }

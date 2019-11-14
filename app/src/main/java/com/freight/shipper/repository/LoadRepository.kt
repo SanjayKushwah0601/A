@@ -91,16 +91,7 @@ open class LoadRepository(
     fun fetchPastLoad(observer: Pair<MediatorLiveData<List<PastLoad>>, MediatorLiveData<String>>) {
         val (success, failure) = setupObserver(observer)
         GlobalScope.launch(dispatcher.io) {
-            withContext(dispatcher.main) {
-                //                success.value = listOf(
-//                    PastLoad(
-//                        1,
-//                        "Customer1"
-//                    ),
-//                    PastLoad(2, "Customer2")
-//                )
-            }
-            /*val result = api.forgotPassword(email)
+            val result = api.getPastLoad()
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success -> {
@@ -109,10 +100,11 @@ open class LoadRepository(
                     }
                     is APIResult.Failure -> {
                         Timber.e("Failure Sanjay: ${result.error}")
+                        success.value = listOf()
                         failure.value = result.error?.message ?: ""
                     }
                 }
-            }*/
+            }
         }
     }
 

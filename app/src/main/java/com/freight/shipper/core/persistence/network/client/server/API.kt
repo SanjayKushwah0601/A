@@ -96,6 +96,10 @@ class API(retrofit: Retrofit) : APIContract() {
         return loadService.getActiveLoad().apiResult()
     }
 
+    override suspend fun getPastLoad(): APIResult<List<PastLoad>> {
+        return loadService.getPastLoad().apiResult()
+    }
+
     override suspend fun getNewLoad(): APIResult<List<NewLoad>> {
         return loadService.getNewLoad().apiResult()
     }

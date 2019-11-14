@@ -16,7 +16,7 @@ interface LoadService {
     @POST("webservices?param=getLoad&load_type=MAL")
     fun getActiveLoad(): Call<ApiResponse<List<ActiveLoad>>>
 
-    @POST("webservices?param=getLoad&load_type=MLCC")
+    @POST("webservices?param=getLoad&load_type=MLP")
     fun getPastLoad(): Call<ApiResponse<List<PastLoad>>>
 
     @POST("webservices?param=getLoad")

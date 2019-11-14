@@ -46,7 +46,7 @@
                 android:layout_margin="@dimen/_10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                app:loadCircularImage="@{ pastLoad.customerImage }" />
+                app:loadCircularImage="@{ pastLoad.image }" />
 
             <TextView
                 android:id="@+id/tvCustomerName"
@@ -56,7 +56,7 @@
                 android:layout_marginTop="@dimen/_5dp"
                 android:layout_toEndOf="@+id/image"
                 android:singleLine="true"
-                android:text="@{pastLoad.customerName}"
+                android:text="@{pastLoad.finderName}"
                 tools:text="@string/customer_name" />
 
 
@@ -72,7 +72,8 @@
                 android:paddingLeft="@dimen/_10dp"
                 android:paddingRight="@dimen/_10dp"
                 android:singleLine="true"
-                android:text="@string/completed" />
+                android:text="@{ pastLoad.getLoadStatus() }"
+                tools:text="@string/completed" />
 
             <TextView
                 android:id="@+id/tvLoadId"
@@ -82,7 +83,7 @@
                 android:layout_below="@+id/tvCustomerName"
                 android:layout_toEndOf="@+id/image"
                 android:singleLine="true"
-                android:text="@{`Load id: `+pastLoad.id}"
+                android:text="@{`Load id: `+ pastLoad.loadsId}"
                 tools:text="@string/customer_name" />
 
             <View
@@ -114,7 +115,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:drawableTint="@color/colorAccent"
                         android:maxLines="1"
-                        android:text="@{pastLoad.pickCity}"
+                        android:text='@{String.format("%s, %s, %s", pastLoad.pickCity, pastLoad.pickState, pastLoad.pickCountry)}'
                         android:textStyle="bold"
                         tools:text="Pickup City" />
 
@@ -133,7 +134,7 @@
                             android:drawableTint="@color/button_gray"
                             android:gravity="end"
                             android:maxLines="1"
-                            android:text="@{pastLoad.destinationCity}"
+                            android:text='@{String.format("%s, %s, %s", pastLoad.destCity, pastLoad.destState, pastLoad.destCountry)}'
                             android:textStyle="bold"
                             tools:text="Destination City" />
                     </LinearLayout>
@@ -151,7 +152,7 @@
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/_3dp"
                         android:maxLines="2"
-                        android:text="@{pastLoad.pickAddress}"
+                        android:text='@{String.format("%s, %s", pastLoad.pickAddress, pastLoad.pickPostcode)}'
                         tools:text="Pickup Address" />
 
                     <TextView
@@ -162,7 +163,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:gravity="end"
                         android:maxLines="2"
-                        android:text="@{pastLoad.destinationAddress}"
+                        android:text='@{String.format("%s, %s", pastLoad.destAddress, pastLoad.destPostcode)}'
                         tools:text="Destination Address" />
 
                 </LinearLayout>
@@ -179,7 +180,7 @@
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/_3dp"
                         android:maxLines="2"
-                        android:text="@{pastLoad.pickTime}"
+                        android:text='@{String.format("%s, %s", pastLoad.getFormattedPickTime(), pastLoad.getFormattedPickDate())}'
                         tools:text="10:00 AM, 22 Jul" />
 
                     <TextView
@@ -190,7 +191,7 @@
                         android:drawablePadding="@dimen/_3dp"
                         android:gravity="end"
                         android:maxLines="2"
-                        android:text="@{pastLoad.destinationTime}"
+                        android:text='@{String.format("%s", pastLoad.getFormattedDestDate())}'
                         tools:text="10:00 AM, 22 Jul" />
 
                 </LinearLayout>
@@ -228,7 +229,7 @@
                         android:layout_marginStart="4dp"
                         android:drawablePadding="@dimen/_3dp"
                         android:maxLines="1"
-                        android:text="@{pastLoad.amount}"
+                        android:text="@{pastLoad.price}"
                         android:textColor="@color/colorAccent"
                         app:layout_constraintStart_toEndOf="@+id/textView3"
                         app:layout_constraintTop_toTopOf="parent"
