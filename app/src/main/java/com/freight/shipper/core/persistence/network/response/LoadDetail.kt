@@ -153,6 +153,6 @@ class LoadDetail {
     }
 
     fun getDistanceText(): String {
-        return "$distance Km"
+        return "${distance.toString()} Km"
     }
 }
