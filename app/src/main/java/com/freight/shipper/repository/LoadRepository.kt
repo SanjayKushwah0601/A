@@ -1,5 +1,6 @@
 package com.freight.shipper.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,10 +14,18 @@ import com.freight.shipper.core.persistence.network.result.NetworkCallback
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
 import com.freight.shipper.model.LoadStatus
+import com.google.gson.JsonObject
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import timber.log.Timber
+import java.io.File
 import java.util.*
 
 
@@ -42,6 +51,30 @@ open class LoadRepository(
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success -> callback.success(result.response.data)
+                    is APIResult.Failure -> callback.failure(result.error?.message ?: "")
+                }
+            }
+        }
+    }
+
+    fun uploadInvoice(loadId: String, file: File, callback: NetworkCallback<String>) {
+        GlobalScope.launch(dispatcher.io) {
+
+            val builder = MultipartBody.Builder()
+            builder.setType(MultipartBody.FORM)
+            builder.addFormDataPart("loads_id", loadId)
+
+            builder.addFormDataPart(
+                "signImage",
+                file.name,
+                RequestBody.create(MediaType.parse("multipart/form-data"), file)
+            )
+
+            val requestBody = builder.build()
+            val result = api.uploadInvoice(requestBody)
+            withContext(dispatcher.main) {
+                when (result) {
+                    is APIResult.Success -> callback.success(result.response.getMessage())
                     is APIResult.Failure -> callback.failure(result.error?.message ?: "")
                 }
             }

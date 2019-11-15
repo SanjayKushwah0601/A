@@ -137,6 +137,10 @@ class API(retrofit: Retrofit) : APIContract() {
         return profileService.addVehicle(requestBody).apiResult()
     }
 
+    override suspend fun uploadInvoice(requestBody: MultipartBody): APIResult<EmptyResponse> {
+        return loadService.uploadInvoice(requestBody).apiResult()
+    }
+
     override suspend fun addNewShipper(request: AddShipperRequest): APIResult<EmptyResponse> {
         return profileService.addNewShipper(
             request.firstName,

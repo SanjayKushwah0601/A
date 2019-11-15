@@ -48,7 +48,7 @@ public class SignatureView extends View {
     }
 
     @SuppressLint("WrongThread")
-    public void print(String fileName) {
+    public File print(String fileName) {
         ProgressDialog dialog = new ProgressDialog(mContent.getContext());
         dialog.setMessage("Saving...");
         dialog.show();
@@ -71,12 +71,13 @@ public class SignatureView extends View {
             output.close();
 
             dialog.dismiss();
-
             Toast.makeText(mContent.getContext(), "Save", Toast.LENGTH_SHORT).show();
+            return file;
         } catch (Exception e) {
             e.printStackTrace();
             dialog.dismiss();
             Toast.makeText(mContent.getContext(), "Failed", Toast.LENGTH_SHORT).show();
+            return null;
         }
     }
 

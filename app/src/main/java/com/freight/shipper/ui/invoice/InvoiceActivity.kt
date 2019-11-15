@@ -12,6 +12,7 @@ import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityInvoiceBinding
+import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.repository.RouteRepository
@@ -55,7 +56,17 @@ class InvoiceActivity : BaseActivity() {
         })
 
         viewModel.submitInvoice.observe(this, Observer {
-            mSignature.print(it)
+            val signatureFile = mSignature.print(it.first)
+            if (signatureFile != null) {
+                viewModel.uploadSignature(it.second, signatureFile)
+            } else {
+                showErrorMessage(getString(R.string.cannot_take_sign))
+            }
+        })
+
+        viewModel.submitInvoiceResponse.observe(this, Observer {
+            showConfirmationMessage(it)
+            // Todo: navigate to another screen
         })
     }
 

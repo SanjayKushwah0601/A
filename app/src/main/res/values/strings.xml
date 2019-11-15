@@ -143,4 +143,5 @@
     <string name="update_profile_msg">Profile updated successfully.</string>
     <string name="no_rout_found">No route found</string>
     <string name="cancelled">Cancelled</string>
+    <string name="cannot_take_sign">Cannot take signature</string>
 </resources>

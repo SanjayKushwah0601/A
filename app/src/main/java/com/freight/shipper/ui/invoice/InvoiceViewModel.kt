@@ -10,6 +10,7 @@ import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
 import com.freight.shipper.repository.RouteRepository
 import timber.log.Timber
+import java.io.File
 
 
 /**
@@ -20,7 +21,8 @@ class InvoiceViewModel(val activeLoad: ActiveLoad, val model: RouteRepository) :
 
     // region - Private properties
     var isLoading = ObservableField<Boolean>()
-    var submitInvoice = ActionLiveData<String>()
+    var submitInvoice = ActionLiveData<Pair<String, String>>()
+    var submitInvoiceResponse = ActionLiveData<String>()
     var loadField = ObservableField<LoadDetail>()
     val loadDetail: LiveData<LoadDetail> get() = _loadDetail
     private val _loadDetail = MutableLiveData<LoadDetail>()
@@ -33,7 +35,9 @@ class InvoiceViewModel(val activeLoad: ActiveLoad, val model: RouteRepository) :
 
     fun submitInvoice() {
         Timber.d("submitInvoice")
-        submitInvoice.sendAction("Invoice_${activeLoad.loadsId}.jpg")
+        activeLoad.loadsId?.also {
+            submitInvoice.sendAction(Pair("Invoice_${it}.png", it))
+        }
     }
 
     private fun getLoadDetail() {
@@ -52,5 +56,20 @@ class InvoiceViewModel(val activeLoad: ActiveLoad, val model: RouteRepository) :
                 }
             })
         }
+    }
+
+    fun uploadSignature(loadId: String, signatureFile: File) {
+        isLoading.set(true)
+        model.uploadInvoice(loadId, signatureFile, object : NetworkCallback<String> {
+            override fun success(result: String) {
+                isLoading.set(false)
+                submitInvoiceResponse.sendAction(result)
+            }
+
+            override fun failure(errorMessage: String) {
+                isLoading.set(false)
+                error.sendAction(errorMessage)
+            }
+        })
     }
 }

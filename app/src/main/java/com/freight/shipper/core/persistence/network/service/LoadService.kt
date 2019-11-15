@@ -1,7 +1,9 @@
 package com.freight.shipper.core.persistence.network.service
 
 import com.freight.shipper.core.persistence.network.response.*
+import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -47,4 +49,8 @@ interface LoadService {
     fun getLoadDetail(
         @Field("loads_id") loadId: String
     ): Call<ApiResponse<LoadDetail>>
+
+    @POST("webservices?param=signLoadInovice")
+    fun uploadInvoice(@Body file: RequestBody)
+            : Call<ApiResponse<EmptyResponse>>
 }

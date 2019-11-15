@@ -45,6 +45,7 @@ abstract class APIContract {
     ): APIResult<EmptyResponse>
 
     abstract suspend fun getLoadDetail(loadId: String): APIResult<LoadDetail>
+    abstract suspend fun uploadInvoice(requestBody: MultipartBody): APIResult<EmptyResponse>
     // endregion
 
     // region - Profile
