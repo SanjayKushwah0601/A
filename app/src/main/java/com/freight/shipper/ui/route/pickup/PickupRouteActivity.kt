@@ -116,6 +116,11 @@ class PickupRouteActivity : LocationActivity(), OnMapReadyCallback {
     }
 
     private fun setupObservers() {
+
+        viewModel.navigation.observe(this, Observer {
+            openGoogleNavigation(it)
+        })
+
         viewModel.error.observe(this, Observer {
             viewModel.isLoading.set(false)
             showErrorMessage(it)

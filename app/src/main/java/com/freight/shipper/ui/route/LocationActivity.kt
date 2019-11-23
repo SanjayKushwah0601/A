@@ -101,6 +101,24 @@ abstract class LocationActivity : BaseActivity() {
         mMap.moveCamera(cu)
     }
 
+
+    /**
+     * @param location to which navigation is required from current location
+     */
+    fun openGoogleNavigation(location: Pair<String, String>) {
+        val intent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse("google.navigation:q=${location.first},${location.second}&mode=d")
+        )
+//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity")
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        } else {
+            showErrorMessage(getString(R.string.does_nt_support_navigation))
+        }
+    }
+
     private fun checkPermissions(): Boolean {
         val permissionState = ActivityCompat.checkSelfPermission(
             this,

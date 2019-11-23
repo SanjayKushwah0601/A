@@ -144,4 +144,7 @@
     <string name="no_rout_found">No route found</string>
     <string name="cancelled">Cancelled</string>
     <string name="cannot_take_sign">Cannot take signature</string>
+    <string name="does_nt_support_navigation">Handset does not support Navigation</string>
+    <string name="pickup_location_null_error">Pickup location is null</string>
+    <string name="destination_location_null_error">Destination location is null</string>
 </resources>

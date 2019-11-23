@@ -2,6 +2,7 @@ package com.freight.shipper.ui.route
 
 import android.util.Log
 import androidx.databinding.ObservableField
+import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.persistence.network.response.EmptyResponse
 import com.freight.shipper.core.persistence.network.result.NetworkCallback
@@ -23,6 +24,7 @@ class RouteViewModel(val activeLoad: ActiveLoad, val model: RouteRepository) : B
     val arrivedAtDestinationAction = ActionLiveData<ActiveLoad>()
     val error = ActionLiveData<String>()
     val successRouteResponse = ActionLiveData<MutableList<LatLng>>()
+    val navigation = ActionLiveData<Pair<String, String>>()
 
     fun setCurrentLocation(latLng: LatLng) {
 
@@ -33,6 +35,26 @@ class RouteViewModel(val activeLoad: ActiveLoad, val model: RouteRepository) : B
         else LatLng(-34.0, 151.0)
 
         getPickupRoute(latLng, pickup)
+    }
+
+    fun navigateToPickup() {
+        val pickLat = activeLoad.pickLatitude
+        val pickLong = activeLoad.pickLongitude
+        if (!pickLat.isNullOrEmpty() && !pickLong.isNullOrEmpty()) {
+            navigation.sendAction(Pair(pickLat, pickLong))
+        } else {
+            error.sendAction(getString(R.string.pickup_location_null_error))
+        }
+    }
+
+    fun navigateToDestination() {
+        val destLat = activeLoad.destLatitude
+        val destLong = activeLoad.destLongitude
+        if (!destLat.isNullOrEmpty() && !destLong.isNullOrEmpty()) {
+            navigation.sendAction(Pair(destLat, destLong))
+        } else {
+            error.sendAction(getString(R.string.destination_location_null_error))
+        }
     }
 
     fun getPickupRoute(current: LatLng, pickup: LatLng) {
