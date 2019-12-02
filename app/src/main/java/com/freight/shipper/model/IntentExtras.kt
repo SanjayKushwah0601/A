@@ -10,4 +10,5 @@ object IntentExtras {
     const val EXTRA_IS_INDIVIDUAL_SHIPPER = "is_individual_shipper"
     const val ACTIVE_LOAD: String = "active_load"
     const val USER: String = "user"
+    const val LOAD_FILTER = "load_filter"
 }

@@ -147,4 +147,13 @@
     <string name="does_nt_support_navigation">Handset does not support Navigation</string>
     <string name="pickup_location_null_error">Pickup location is null</string>
     <string name="destination_location_null_error">Destination location is null</string>
+    <string name="clear_filter">Clear Filter</string>
+    <string name="distance">Distance</string>
+    <string name="_100_km">100 Km</string>
+    <string name="_0_km">0 Km</string>
+    <string name="weight">Weight</string>
+    <string name="weight_in_ton">Weight (in Ton)</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="apply">Apply</string>
 </resources>

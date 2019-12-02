@@ -11,13 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.freight.shipper.FreightApplication
 import com.freight.shipper.R
 import com.freight.shipper.core.platform.BaseViewModelFactory
-import com.freight.shipper.extensions.setVisibleIf
-import com.freight.shipper.extensions.showConfirmationMessage
-import com.freight.shipper.extensions.showCounterDialog
-import com.freight.shipper.extensions.showErrorMessage
+import com.freight.shipper.extensions.*
+import com.freight.shipper.model.LoadFilter
 import com.freight.shipper.repository.LoadRepository
 import com.freight.shipper.ui.bookings.assigned.pager.ActiveLoadEventListener
 import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
+import com.freight.shipper.ui.bookings.filter.BookingFilterBottomSheet
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadAdapter
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadEventListener
 import com.freight.shipper.ui.dashboard.DashboardActivity
@@ -26,7 +25,8 @@ import timber.log.Timber
 
 
 class NewLoadFragment : Fragment(),
-    ActiveLoadEventListener {
+    ActiveLoadEventListener, BookingFilterBottomSheet.FilterChangeListener {
+
     //region - Companion
     companion object {
         fun newInstance() = NewLoadFragment()
@@ -59,6 +59,7 @@ class NewLoadFragment : Fragment(),
         adapterNewLoad = NewLoadAdapter(clickListener = viewModel as NewLoadEventListener)
         recyclerView?.adapter = adapterNewLoad
         recyclerView?.layoutManager = LinearLayoutManager(context)
+        setupClickEvents()
         setObservers()
         swipeRefreshLayout?.setOnRefreshListener { viewModel.refreshNewLoad() }
     }
@@ -66,6 +67,26 @@ class NewLoadFragment : Fragment(),
     override fun onResume() {
         super.onResume()
         viewModel.refreshNewLoad()
+    }
+
+    // region -
+    override fun onFilterChange(filter: LoadFilter) {
+        viewModel.isLoading.postValue(true)
+        swipeRefreshLayout.isRefreshing = true
+        viewModel.onFilterChange(filter)
+    }
+
+    override fun onClearFilter() {
+        viewModel.isLoading.postValue(true)
+        swipeRefreshLayout.isRefreshing = true
+        viewModel.onFilterChange(null)
+    }
+    // endregion
+
+    // region - Private functions
+    private fun setupClickEvents() {
+        buttonFilter?.setOnClickListener { showLoadFilterBottomSheet(viewModel.filter, this) }
+        buttonClearFilter?.setOnClickListener { }
     }
 
     private fun setObservers() {
@@ -85,6 +106,7 @@ class NewLoadFragment : Fragment(),
         viewModel.acceptLoadResponse.observe(viewLifecycleOwner, Observer {
             viewModel.isLoading.postValue(false)
             showConfirmationMessage(it)
+            viewModel.refreshNewLoad()
             (activity as DashboardActivity).navigateToActiveLoad()
         })
         viewModel.counterAction.observe(this, Observer {
@@ -105,4 +127,5 @@ class NewLoadFragment : Fragment(),
     private fun setEmptyViewVisibility() {
         emptyView?.setVisibleIf { adapterNewLoad.itemCount == 0 }
     }
+    // endregion
 }

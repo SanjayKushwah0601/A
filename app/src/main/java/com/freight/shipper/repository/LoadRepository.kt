@@ -1,6 +1,5 @@
 package com.freight.shipper.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,17 +12,14 @@ import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.network.result.NetworkCallback
 import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
+import com.freight.shipper.model.LoadFilter
 import com.freight.shipper.model.LoadStatus
-import com.google.gson.JsonObject
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import timber.log.Timber
 import java.io.File
 import java.util.*
@@ -86,17 +82,19 @@ open class LoadRepository(
         GlobalScope.launch(dispatcher.io) { api.getMasterConfigData() }
     }
 
-    fun fetchNewLoad() {
+    fun fetchNewLoad(filter: LoadFilter?) {
         GlobalScope.launch(dispatcher.io) {
             val strDate = DateConstants.getDateTimeFormat().format(Date())
-            val result = api.getNewLoad()
+            val result = api.getNewLoad(filter)
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success ->
                         _newLoadList.postValue(result.response.data)
 
-                    is APIResult.Failure ->
+                    is APIResult.Failure -> {
+                        _newLoadList.postValue(listOf())
                         _newLoadError.postValue(result.error?.message ?: "")
+                    }
                 }
             }
         }
@@ -114,6 +112,7 @@ open class LoadRepository(
                     }
                     is APIResult.Failure -> {
                         Timber.e("Failure Sanjay: ${result.error}")
+                        success.value = listOf()
                         failure.value = result.error?.message ?: ""
                     }
                 }
@@ -156,6 +155,7 @@ open class LoadRepository(
                     }
                     is APIResult.Failure -> {
                         Timber.e("Failure Sanjay: ${result.error}")
+
                         failure.value = result.error?.message ?: ""
                     }
                 }

@@ -1,13 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/containerFilter"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/swipeRefreshLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="end"
+        android:animateLayoutChanges="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/buttonFilter"
+            android:layout_width="wrap_content"
+            android:layout_toStartOf="@+id/buttonClearFilter"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_5dp"
+            app:srcCompat="@drawable/ic_filter"
+            android:layout_marginEnd="@dimen/_5dp"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/buttonClearFilter"
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
+            style="@style/Material.Button.Transparent"
+            android:layout_centerVertical="true"
+            android:text="@string/clear_filter"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_marginEnd="@dimen/_5dp"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/containerFilter">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -19,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
-                android:paddingTop="10dp"/>
+                android:paddingTop="10dp" />
 
             <TextView
                 android:id="@+id/emptyView"
@@ -27,7 +66,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/no_load_available"
-                android:visibility="gone"/>
+                android:visibility="gone" />
         </FrameLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

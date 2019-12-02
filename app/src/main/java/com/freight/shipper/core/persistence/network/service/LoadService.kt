@@ -21,8 +21,13 @@ interface LoadService {
     @POST("webservices?param=getLoad&load_type=MLP")
     fun getPastLoad(): Call<ApiResponse<List<PastLoad>>>
 
+    @FormUrlEncoded
     @POST("webservices?param=getLoad")
-    fun getNewLoad(): Call<ApiResponse<List<NewLoad>>>
+    fun getNewLoad(
+        @Field("weight_from") weightFrom: Int?,
+        @Field("weight_to") weightTo: Int?,
+        @Field("distance") distance: Int?
+    ): Call<ApiResponse<List<NewLoad>>>
 
     @FormUrlEncoded
     @POST("webservices?param=addLoadOfferPrice")

@@ -8,6 +8,7 @@ import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.persistence.network.response.NewLoad
 import com.freight.shipper.core.persistence.network.response.User
 import com.freight.shipper.model.IntentExtras
+import com.freight.shipper.model.LoadFilter
 import com.freight.shipper.ui.addshipper.AddShipperActivity
 import com.freight.shipper.ui.addvehicle.AddVehicleActivity
 import com.freight.shipper.ui.authentication.forgotpassword.ForgotPasswordActivity
@@ -19,6 +20,7 @@ import com.freight.shipper.ui.authentication.signup.company.CompanySignupActivit
 import com.freight.shipper.ui.authentication.signup.company.CompanySignupFormTwoActivity
 import com.freight.shipper.ui.authentication.signup.individual.IndividualSignupActivity
 import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
+import com.freight.shipper.ui.bookings.filter.BookingFilterBottomSheet
 import com.freight.shipper.ui.dashboard.DashboardActivity
 import com.freight.shipper.ui.driverlist.DriverListActivity
 import com.freight.shipper.ui.invoice.InvoiceActivity
@@ -177,4 +179,12 @@ fun Activity.navigateToInvoiceActivity(activeLoad: ActiveLoad) {
 
 fun Fragment.navigateToInvoiceActivity(activeLoad: ActiveLoad) {
     activity?.navigateToInvoiceActivity(activeLoad)
+}
+
+fun Fragment.showLoadFilterBottomSheet(
+    filter: LoadFilter? = null, listener: BookingFilterBottomSheet.FilterChangeListener
+) {
+    val fragment = BookingFilterBottomSheet
+        .newInstance(filter, listener)
+    fragment.show(fragmentManager!!, "")
 }

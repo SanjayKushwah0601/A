@@ -8,6 +8,7 @@ import com.freight.shipper.core.persistence.network.result.APIError
 import com.freight.shipper.core.persistence.network.result.APIErrorType
 import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.core.persistence.network.service.*
+import com.freight.shipper.model.LoadFilter
 import com.freight.shipper.model.LoadStatus
 import com.freight.shipper.ui.authentication.signup.CompanySignup
 import com.google.gson.Gson
@@ -100,8 +101,10 @@ class API(retrofit: Retrofit) : APIContract() {
         return loadService.getPastLoad().apiResult()
     }
 
-    override suspend fun getNewLoad(): APIResult<List<NewLoad>> {
-        return loadService.getNewLoad().apiResult()
+    override suspend fun getNewLoad(filter: LoadFilter?): APIResult<List<NewLoad>> {
+        return loadService.getNewLoad(
+            filter?.weightFrom, filter?.weightTo, filter?.distance
+        ).apiResult()
     }
 
     override suspend fun acceptLoad(loadId: String): APIResult<EmptyResponse> {
