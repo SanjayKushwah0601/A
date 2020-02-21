@@ -71,14 +71,12 @@ class NewLoadFragment : Fragment(),
 
     // region -
     override fun onFilterChange(filter: LoadFilter) {
-        viewModel.isLoading.postValue(true)
         swipeRefreshLayout.isRefreshing = true
         viewModel.onFilterChange(filter)
         buttonClearFilter?.setVisibleIf { viewModel.isFilterEmpty().not() }
     }
 
     override fun onClearFilter() {
-        viewModel.isLoading.postValue(true)
         swipeRefreshLayout.isRefreshing = true
         viewModel.onFilterChange(null)
         buttonClearFilter?.setHiddenIf { viewModel.isFilterEmpty() }
@@ -110,6 +108,9 @@ class NewLoadFragment : Fragment(),
             showConfirmationMessage(it)
             viewModel.refreshNewLoad()
             (activity as DashboardActivity).navigateToActiveLoad()
+        })
+        viewModel.isLoading.observe(this, Observer {
+            progressBar?.setVisibleIf { it }
         })
         viewModel.counterAction.observe(this, Observer {
             Timber.i("$it")

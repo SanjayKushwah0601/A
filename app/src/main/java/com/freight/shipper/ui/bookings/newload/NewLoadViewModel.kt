@@ -5,6 +5,7 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.freight.shipper.core.persistence.network.response.NewLoad
+import com.freight.shipper.core.persistence.network.result.NetworkCallback
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.platform.BaseViewModel
 import com.freight.shipper.model.LoadFilter
@@ -26,16 +27,12 @@ class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), New
 
     val counterAction = ActionLiveData<NewLoad>()
 
-    private val acceptObserver = Observer<String> { acceptLoadResponse.sendAction(it) }
-    private val _acceptLoadResponse = MediatorLiveData<String>().apply {
-        observeForever(acceptObserver)
-    }
     val acceptLoadResponse = ActionLiveData<String>()
-
-    var error = MediatorLiveData<String>()
+    var error = ActionLiveData<String>()
 
 
     init {
+        isLoading.postValue(true)
         _newLoadsError.addSource(model.newLoadError) {
             _newLoadsError.postValue(it)
         }
@@ -69,9 +66,16 @@ class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), New
     override fun onAcceptLoad(position: Int, load: NewLoad) {
         load.loadsId?.also {
             isLoading.postValue(true)
-            model.acceptLoad(it, Pair(_acceptLoadResponse, error))
+            model.acceptLoad(it, object : NetworkCallback<String> {
+                override fun success(result: String) {
+                    acceptLoadResponse.sendAction(result)
+                }
+
+                override fun failure(errorMessage: String) {
+                    error.sendAction(errorMessage)
+                }
+            })
         }
-//        acceptAction.sendAction(load)
     }
 
     override fun onCounterLoad(position: Int, load: NewLoad) {
@@ -79,9 +83,4 @@ class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), New
         counterAction.sendAction(load)
     }
     // endregion
-
-    override fun onCleared() {
-        super.onCleared()
-        _acceptLoadResponse.removeObserver(acceptObserver)
-    }
 }

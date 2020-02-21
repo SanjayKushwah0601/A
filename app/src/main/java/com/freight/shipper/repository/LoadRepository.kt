@@ -3,6 +3,7 @@ package com.freight.shipper.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.client.server.APIContract
 import com.freight.shipper.core.persistence.network.date.DateConstants
 import com.freight.shipper.core.persistence.network.dispatchers.DispatcherProvider
@@ -14,6 +15,7 @@ import com.freight.shipper.core.persistence.preference.LoginManager
 import com.freight.shipper.extensions.BaseRepository
 import com.freight.shipper.model.LoadFilter
 import com.freight.shipper.model.LoadStatus
+import com.freight.shipper.utils.StringUtil.getString
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -140,23 +142,18 @@ open class LoadRepository(
         }
     }
 
-    fun acceptLoad(
-        loadId: String,
-        observers: Pair<MediatorLiveData<String>, MediatorLiveData<String>>
-    ) {
-        val (success, failure) = setupObserver(observers)
+    fun acceptLoad(loadId: String, callback: NetworkCallback<String>) {
         GlobalScope.launch(dispatcher.io) {
             val result = api.acceptLoad(loadId)
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success -> {
+                        callback.success(getString(R.string.load_accept_success_message))
                         Timber.e("Success Sanjay: ${result.response}")
-                        success.value = result.response.getMessage()
                     }
                     is APIResult.Failure -> {
                         Timber.e("Failure Sanjay: ${result.error}")
-
-                        failure.value = result.error?.message ?: ""
+                        callback.failure(result.error?.message ?: "")
                     }
                 }
             }
