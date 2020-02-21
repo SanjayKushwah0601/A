@@ -11,6 +11,8 @@ import com.freight.shipper.core.persistence.network.result.APIResult
 import com.freight.shipper.extensions.showConfirmationMessage
 import com.freight.shipper.extensions.showErrorMessage
 import com.freight.shipper.core.persistence.network.response.NewLoad
+import com.freight.shipper.extensions.setHiddenIf
+import com.freight.shipper.extensions.setVisibleIf
 import kotlinx.android.synthetic.main.dialog_counter.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -65,17 +67,23 @@ class CounterDialog : DialogFragment() {
     }
 
     private fun updatePrice(price: String) {
+        progressBar?.setVisibleIf { true }
         GlobalScope.launch(Dispatchers.IO) {
             load.loadsId?.also {
                 val result = FreightApplication.instance.api.addLoadOfferPrice(it, price)
                 withContext(Dispatchers.Main) {
                     when (result) {
                         is APIResult.Success -> {
+                            progressBar?.setHiddenIf { true }
                             activity?.showConfirmationMessage(getString(R.string.offer_update_message))
                             listener?.onSuccess()
                         }
                         is APIResult.Failure -> {
-                            activity?.showErrorMessage(result.details.message ?: getString(R.string.error_updating_offer_price))
+                            progressBar?.setHiddenIf { true }
+                            activity?.showErrorMessage(
+                                result.details.message
+                                    ?: getString(R.string.error_updating_offer_price)
+                            )
                         }
                     }
                 }
