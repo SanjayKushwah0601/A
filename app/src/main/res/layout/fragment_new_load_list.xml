@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/containerFilter"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/swipeRefreshLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:gravity="end"
-        android:animateLayoutChanges="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            android:id="@+id/containerFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:gravity="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/buttonFilter"
-            android:layout_width="wrap_content"
-            android:layout_toStartOf="@+id/buttonClearFilter"
-            android:layout_centerVertical="true"
-            android:padding="@dimen/_5dp"
-            app:srcCompat="@drawable/ic_filter"
-            android:layout_marginEnd="@dimen/_5dp"
-            android:background="@android:color/transparent"
-            android:layout_height="wrap_content" />
+                android:id="@+id/buttonFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_5dp"
+                android:layout_toStartOf="@+id/buttonClearFilter"
+                android:background="@android:color/transparent"
+                android:padding="@dimen/_5dp"
+                app:srcCompat="@drawable/ic_filter" />
 
         <Button
-            android:id="@+id/buttonClearFilter"
-            android:layout_width="wrap_content"
-            android:layout_alignParentEnd="true"
-            style="@style/Material.Button.Transparent"
-            android:layout_centerVertical="true"
-            android:text="@string/clear_filter"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:layout_marginEnd="@dimen/_5dp"
-            android:layout_height="wrap_content" />
+                android:id="@+id/buttonClearFilter"
+                style="@style/Material.Button.Transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_5dp"
+                android:text="@string/clear_filter"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
 
     </RelativeLayout>
 
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/containerFilter">
-
-        <FrameLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/containerFilter">
 
-            <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingTop="10dp" />
-
-            <TextView
-                android:id="@+id/emptyView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/no_load_available"
-                android:visibility="gone" />
-        </FrameLayout>
+                android:layout_height="wrap_content"
+                android:clipToPadding="false" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <TextView
+            android:id="@+id/emptyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/no_load_available"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

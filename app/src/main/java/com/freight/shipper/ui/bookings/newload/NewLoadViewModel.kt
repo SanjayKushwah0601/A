@@ -49,6 +49,12 @@ class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), New
         refreshNewLoad()
     }
 
+    fun isFilterEmpty(): Boolean {
+        return if (filter == null) true else {
+            filter?.distance == 0 && filter?.weightFrom == 0 && filter?.weightTo == 0
+        }
+    }
+
     fun refreshNewLoad() {
         model.fetchNewLoad(filter)
     }

@@ -8,6 +8,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import com.freight.shipper.FreightApplication
+import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.request.AddVehicleRequest
 import com.freight.shipper.core.platform.ActionLiveData
 import com.freight.shipper.core.persistence.network.response.Image
@@ -15,6 +16,7 @@ import com.freight.shipper.core.persistence.network.response.VehicleType
 import com.freight.shipper.repository.ProfileRepository
 import com.freight.shipper.services.MyWorkManager
 import com.freight.shipper.ui.addvehicle.recyclerview.ImageClickListener
+import com.freight.shipper.utils.StringUtil.getString
 import com.freight.shipper.utils.serializeToJson
 import timber.log.Timber
 
@@ -89,6 +91,7 @@ class AddVehicleViewModel(
             requestModel.width.isNullOrEmpty()
         ) {
             Timber.d(requestModel.vehicleType)
+            error.postValue(getString(R.string.all_fields_mandatory_error))
             false
         } else {
 //            btnSignupEnable.set(true)

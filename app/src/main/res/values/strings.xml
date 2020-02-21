@@ -156,4 +156,5 @@
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="apply">Apply</string>
+    <string name="all_fields_mandatory_error">All fields are mandatory.</string>
 </resources>

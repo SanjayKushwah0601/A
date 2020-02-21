@@ -74,19 +74,21 @@ class NewLoadFragment : Fragment(),
         viewModel.isLoading.postValue(true)
         swipeRefreshLayout.isRefreshing = true
         viewModel.onFilterChange(filter)
+        buttonClearFilter?.setVisibleIf { viewModel.isFilterEmpty().not() }
     }
 
     override fun onClearFilter() {
         viewModel.isLoading.postValue(true)
         swipeRefreshLayout.isRefreshing = true
         viewModel.onFilterChange(null)
+        buttonClearFilter?.setHiddenIf { viewModel.isFilterEmpty() }
     }
     // endregion
 
     // region - Private functions
     private fun setupClickEvents() {
         buttonFilter?.setOnClickListener { showLoadFilterBottomSheet(viewModel.filter, this) }
-        buttonClearFilter?.setOnClickListener { }
+        buttonClearFilter?.setOnClickListener { onClearFilter() }
     }
 
     private fun setObservers() {
