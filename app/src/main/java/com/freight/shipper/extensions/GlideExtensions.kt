@@ -1,6 +1,7 @@
 package com.freight.shipper.extensions
 
 import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -16,7 +17,7 @@ fun ImageView.load(str: String?) {
 }
 
 @BindingAdapter("loadDrawable")
-fun ImageView.setImageDrawable(drawable: Drawable?) {
+fun ImageView.setImageDrawableGlide(drawable: Drawable?) {
     drawable?.also { this.setImageDrawable(drawable) }
 }
 
