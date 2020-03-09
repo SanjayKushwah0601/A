@@ -4,7 +4,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
 /**
- * @author GWL
+ * @author Sanjay Kushwah
  */
 class DispatcherProviderImpl : DispatcherProvider {
 

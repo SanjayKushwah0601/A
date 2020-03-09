@@ -6,7 +6,7 @@ import kotlinx.coroutines.CoroutineDispatcher
  *
  * [DispatcherProvider] provides the dispatcher to make sure test case should run properly
  *
- * @author GWL
+ * @author Sanjay Kushwah
  */
 interface DispatcherProvider {
     val main: CoroutineDispatcher

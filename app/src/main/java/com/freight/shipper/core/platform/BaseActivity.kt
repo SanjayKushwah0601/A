@@ -6,7 +6,7 @@ import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.model.UserRole
 
 /**
- * @author GWL
+ * @author Sanjay Kushwah
  * @Created on 12/6/19.
  */
 abstract class BaseActivity : AppCompatActivity() {

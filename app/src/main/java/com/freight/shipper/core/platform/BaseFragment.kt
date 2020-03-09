@@ -5,7 +5,7 @@ import com.freight.shipper.FreightApplication
 import com.freight.shipper.model.UserRole
 
 /**
- * @author GWL
+ * @author Sanjay Kushwah
  * @Created on 12/6/19.
  */
 abstract class BaseFragment : Fragment() {

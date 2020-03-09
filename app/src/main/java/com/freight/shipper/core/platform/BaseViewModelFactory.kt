@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 /**
- * @author GWL
+ * @author Sanjay Kushwah
  * @Created on 12/6/19.
  */
 class BaseViewModelFactory<T>(val creator: () -> T) : ViewModelProvider.Factory {

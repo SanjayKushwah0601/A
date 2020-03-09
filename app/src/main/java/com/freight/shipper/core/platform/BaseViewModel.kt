@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.freight.shipper.FreightApplication
 
 /**
- * @author GWL
+ * @author Sanjay Kushwah
  * @Created on 12/6/19.
  */
 abstract class BaseViewModel : ViewModel() {
