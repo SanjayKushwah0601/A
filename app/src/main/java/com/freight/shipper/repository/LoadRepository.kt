@@ -142,9 +142,9 @@ open class LoadRepository(
         }
     }
 
-    fun acceptLoad(loadId: String, callback: NetworkCallback<String>) {
+    fun acceptLoad(loadId: String, price: String, callback: NetworkCallback<String>) {
         GlobalScope.launch(dispatcher.io) {
-            val result = api.acceptLoad(loadId)
+            val result = api.addLoadOfferPrice(loadId, price)
             withContext(dispatcher.main) {
                 when (result) {
                     is APIResult.Success -> {

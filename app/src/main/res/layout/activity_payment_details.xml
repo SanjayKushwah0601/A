@@ -39,9 +39,11 @@
                     android:text="@string/payment_detail" />
 
             <com.google.android.material.textfield.TextInputLayout
+
                     android:id="@+id/tiAcNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextInputLayoutAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etAcNumber"
@@ -54,9 +56,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+
                     android:id="@+id/tiBankName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextInputLayoutAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etBankName"
@@ -69,9 +73,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+
                     android:id="@+id/tiBankAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextInputLayoutAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etBankAddress"
@@ -84,9 +90,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+
                     android:id="@+id/tiWireTransNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextInputLayoutAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etWireTransNumber"
@@ -101,7 +109,8 @@
             <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tiCurrency"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextInputLayoutAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etCurrency"

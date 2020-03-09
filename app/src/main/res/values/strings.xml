@@ -158,4 +158,5 @@
     <string name="apply">Apply</string>
     <string name="all_fields_mandatory_error">All fields are mandatory.</string>
     <string name="load_accept_success_message">Load accepted successfully</string>
+    <string name="error_price_not_valid">Price is not valid</string>
 </resources>

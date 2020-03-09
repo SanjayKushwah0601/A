@@ -54,7 +54,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etFirstName"
@@ -67,12 +68,14 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiLastName"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etLastName"
@@ -92,12 +95,14 @@
                         android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiEmail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etEmail"
@@ -110,12 +115,14 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiPhoneNumber"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etPhoneNumber"
@@ -143,12 +150,14 @@
                         android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiAddLine1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etAddLine1"
@@ -161,12 +170,14 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiAddLine2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etAddLine2"
@@ -252,12 +263,14 @@
                         android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiCity"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etCity"
@@ -270,12 +283,14 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiPostalCode"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etPostalCode"
@@ -296,12 +311,14 @@
                         android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiPassword"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
                             android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance"
                             app:passwordToggleEnabled="true"
                             app:passwordToggleTint="@color/colorAccent">
 
@@ -316,12 +333,14 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+
                             android:id="@+id/tiConfirmPassword"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
                             android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance"
                             app:passwordToggleEnabled="true"
                             app:passwordToggleTint="@color/colorAccent">
 

@@ -43,7 +43,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_5dp"
                         android:layout_marginRight="@dimen/_5dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             style="@style/Material.EditText"
@@ -59,7 +60,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_5dp"
                         android:layout_marginRight="@dimen/_5dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             style="@style/Material.EditText"
@@ -83,7 +85,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_5dp"
                         android:layout_marginRight="@dimen/_5dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             style="@style/Material.EditText"
@@ -99,7 +102,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_5dp"
                         android:layout_marginRight="@dimen/_5dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             style="@style/Material.EditText"
@@ -147,7 +151,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:theme="@style/TextInputLayoutAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etCapacity"
@@ -167,7 +172,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCity"
@@ -182,7 +188,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             style="@style/Material.EditText"
@@ -265,7 +272,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5dp"
-                    android:layout_marginEnd="@dimen/_5dp">
+                    android:layout_marginEnd="@dimen/_5dp"
+                    android:theme="@style/TextInputLayoutAppearance">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etNumberPlat"

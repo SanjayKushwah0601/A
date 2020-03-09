@@ -1,13 +1,18 @@
 package com.freight.shipper.extensions
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
+import android.widget.SeekBar
 import android.widget.Spinner
+import androidx.annotation.ColorInt
+import androidx.databinding.BindingAdapter
 import com.freight.shipper.core.platform.HintSpinnerAdapter
 import com.freight.shipper.core.platform.HintSpinnerAdapter1
+
 
 /**
  * Do some work on a view only after it is measured
@@ -88,4 +93,9 @@ fun <T> Spinner.onItemSelectedListenerWithoutLabel(
             }
         }
     }
+}
+
+@BindingAdapter("app:thumbTintCompat")
+fun SeekBar.setThumbTint(@ColorInt color: Int) {
+    thumb.setColorFilter(color, PorterDuff.Mode.SRC_IN)
 }

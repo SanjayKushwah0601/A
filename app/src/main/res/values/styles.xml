@@ -261,6 +261,21 @@
         <item name="android:textColorHint">@color/text_hint</item>
         <item name="android:padding">13dp</item>
         <item name="android:textColorHighlight">@color/edittext_highlight</item>
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <!-- reference our hint & error styles -->
+<!--        <item name="hintTextAppearance">@style/HintText</item>-->
+<!--        <item name="errorTextAppearance">@style/ErrorText</item>-->
+<!--        <item name="android:textColor">@color/user_input_color</item>-->
+<!--        <item name="android:textColorHint">@color/colorPrimary</item>-->
+<!--        <item name="colorControlNormal">@color/colorPrimary</item>-->
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
     </style>
     <!-- endregion -->
 

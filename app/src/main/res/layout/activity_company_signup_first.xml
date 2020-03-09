@@ -60,7 +60,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etCompanyName"
@@ -78,7 +79,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etRegistrationNumber"
@@ -111,7 +113,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etAddLine1"
@@ -129,7 +132,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etAddLine2"
@@ -220,7 +224,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etCity"
@@ -238,7 +243,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etPostalCode"
@@ -265,6 +271,7 @@
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
                             android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance"
                             app:passwordToggleEnabled="true"
                             app:passwordToggleTint="@color/colorAccent">
 
@@ -285,6 +292,7 @@
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
                             android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance"
                             app:passwordToggleEnabled="true"
                             app:passwordToggleTint="@color/colorAccent">
 

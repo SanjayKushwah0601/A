@@ -3,7 +3,7 @@ package com.freight.shipper.ui.bookings.newload
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+import com.freight.shipper.R
 import com.freight.shipper.core.persistence.network.response.NewLoad
 import com.freight.shipper.core.persistence.network.result.NetworkCallback
 import com.freight.shipper.core.platform.ActionLiveData
@@ -64,9 +64,13 @@ class NewLoadViewModel(private val model: LoadRepository) : BaseViewModel(), New
 
     // region - NewLoadEventListener interface methods
     override fun onAcceptLoad(position: Int, load: NewLoad) {
+        if (load.price.isNullOrEmpty()) {
+            error.sendAction(getString(R.string.error_price_not_valid))
+            return
+        }
         load.loadsId?.also {
             isLoading.postValue(true)
-            model.acceptLoad(it, object : NetworkCallback<String> {
+            model.acceptLoad(it, load.price!!, object : NetworkCallback<String> {
                 override fun success(result: String) {
                     acceptLoadResponse.sendAction(result)
                 }

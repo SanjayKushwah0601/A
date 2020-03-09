@@ -58,7 +58,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etFirstName"
@@ -76,7 +77,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etLastName"
@@ -101,7 +103,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_5dp"
                             android:layout_marginRight="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etEmail"
@@ -119,7 +122,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginLeft="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etPhoneNumber"

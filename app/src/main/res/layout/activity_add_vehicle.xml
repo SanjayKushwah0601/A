@@ -44,7 +44,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_5dp"
                         android:layout_marginRight="@dimen/_5dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etLoadName"
@@ -108,7 +109,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginEnd="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etLength"
@@ -127,7 +129,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginEnd="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etWidth"
@@ -145,7 +148,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5dp"
                             android:layout_marginEnd="@dimen/_5dp"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etHeight"
@@ -162,7 +166,8 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCapacity"
@@ -186,7 +191,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5dp"
                         android:layout_marginEnd="@dimen/_5dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etNumberPlat"
@@ -204,7 +210,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5dp"
                         android:layout_marginEnd="@dimen/_5dp"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etRegNumber"

@@ -6,307 +6,325 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
-            type="com.freight.shipper.ui.profile.ProfileViewModel" />
+                name="viewModel"
+                type="com.freight.shipper.ui.profile.ProfileViewModel" />
 
         <variable
-            name="user"
-            type="com.freight.shipper.core.persistence.network.response.User" />
+                name="user"
+                type="com.freight.shipper.core.persistence.network.response.User" />
 
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.freight.customer.ui.profile.ProfileFragment">
-
-        <include
-            android:id="@+id/tb"
-            layout="@layout/toolbar" />
-
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             tools:context="com.freight.customer.ui.profile.ProfileFragment">
 
-            <LinearLayout
+        <include
+                android:id="@+id/tb"
+                layout="@layout/toolbar" />
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/_10dp">
+                android:layout_height="match_parent"
+                tools:context="com.freight.customer.ui.profile.ProfileFragment">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10dp">
 
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_10dp"
-                    app:srcCompat="@drawable/ic_user" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_10dp"
+                        app:srcCompat="@drawable/ic_user" />
 
                 <TextView
-                    style="@style/TextView.Body.Large"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text='@{String.format("%s %s", user.firstName, user.lastName)}'
-                    android:textColor="@color/text_color_accent"
-                    tools:text="First Last Name" />
+                        style="@style/TextView.Body.Large"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text='@{String.format("%s %s", user.firstName, user.lastName)}'
+                        android:textColor="@color/text_color_accent"
+                        tools:text="First Last Name" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etFirstName"
-                        style="@style/Material.EditText"
-                        android:hint="@string/first_name"
-                        android:inputType="textPersonName"
-                        android:maxLines="1"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstNameChanged(text.toString())}"
-                        android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingRight="5dp"
-                        android:text="@{user.firstName}" />
+                            android:id="@+id/etFirstName"
+                            style="@style/Material.EditText"
+                            android:hint="@string/first_name"
+                            android:inputType="textPersonName"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onFirstNameChanged(text.toString())}"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@{user.firstName}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etLastName"
-                        style="@style/Material.EditText"
-                        android:hint="@string/last_name"
-                        android:inputType="textPersonName"
-                        android:maxLines="1"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onLastNameChanged(text.toString())}"
-                        android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingRight="5dp"
-                        android:text="@{user.lastName}" />
+                            android:id="@+id/etLastName"
+                            style="@style/Material.EditText"
+                            android:hint="@string/last_name"
+                            android:inputType="textPersonName"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onLastNameChanged(text.toString())}"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@{user.lastName}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etEmail"
-                        style="@style/Material.EditText"
-                        android:enabled="false"
-                        android:hint="@string/email"
-                        android:inputType="textEmailAddress"
-                        android:maxLines="1"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onPersonEmailChanged(text.toString())}"
-                        android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingRight="5dp"
-                        android:text="@{user.email}" />
+                            android:id="@+id/etEmail"
+                            style="@style/Material.EditText"
+                            android:enabled="false"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPersonEmailChanged(text.toString())}"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@{user.email}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etMobile"
-                        style="@style/Material.EditText"
-                        android:hint="@string/mobile_number"
-                        android:inputType="phone"
-                        android:maxLines="1"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onPersonMobileChanged(text.toString())}"
-                        android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingRight="5dp"
-                        android:text="@{user.phone}" />
+                            android:id="@+id/etMobile"
+                            style="@style/Material.EditText"
+                            android:hint="@string/mobile_number"
+                            android:inputType="phone"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPersonMobileChanged(text.toString())}"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@{user.phone}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        style="@style/Material.EditText"
-                        android:hint="@string/password"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}"
-                        android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingRight="5dp"
-                        android:text="@{user.password}" />
+                            style="@style/Material.EditText"
+                            android:hint="@string/password"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@{user.password}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:theme="@style/TextInputLayoutAppearance">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etAddress"
-                        style="@style/Material.EditText"
-                        android:hint="@string/address"
-                        android:inputType="textPostalAddress"
-                        android:maxLines="1"
-                        android:onTextChanged="@{(text, start, before, count) -> viewModel.onAddressChanged(text.toString())}"
-                        android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingRight="5dp"
-                        android:text="@{user.address}" />
+                            android:id="@+id/etAddress"
+                            style="@style/Material.EditText"
+                            android:hint="@string/address"
+                            android:inputType="textPostalAddress"
+                            android:maxLines="1"
+                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onAddressChanged(text.toString())}"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@{user.address}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                            android:layout_width="0dp"
+
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etCity"
-                            style="@style/Material.EditText"
-                            android:hint="@string/city"
-                            android:inputType="textCapWords"
-                            android:maxLines="1"
-                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onCityChanged(text.toString())}"
-                            android:paddingStart="5dp"
-                            android:paddingLeft="5dp"
-                            android:paddingEnd="5dp"
-                            android:paddingRight="5dp"
-                            android:text="@{user.city}" />
+                                android:id="@+id/etCity"
+                                style="@style/Material.EditText"
+                                android:hint="@string/city"
+                                android:inputType="textCapWords"
+                                android:maxLines="1"
+                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onCityChanged(text.toString())}"
+                                android:paddingStart="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingEnd="5dp"
+                                android:paddingRight="5dp"
+                                android:text="@{user.city}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:theme="@style/TextInputLayoutAppearance">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etPostcode"
-                            style="@style/Material.EditText"
-                            android:hint="@string/postal_code"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:onTextChanged="@{(text, start, before, count) -> viewModel.onPostCodeChanged(text.toString())}"
-                            android:paddingStart="5dp"
-                            android:paddingLeft="5dp"
-                            android:paddingEnd="5dp"
-                            android:paddingRight="5dp"
-                            android:text="@{user.postalCode}" />
+                                android:id="@+id/etPostcode"
+                                style="@style/Material.EditText"
+                                android:hint="@string/postal_code"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:onTextChanged="@{(text, start, before, count) -> viewModel.onPostCodeChanged(text.toString())}"
+                                android:paddingStart="5dp"
+                                android:paddingLeft="5dp"
+                                android:paddingEnd="5dp"
+                                android:paddingRight="5dp"
+                                android:text="@{user.postalCode}" />
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10dp"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingStart="@dimen/_5dp"
-                        android:paddingEnd="@dimen/_5dp">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/_5dp"
+                            android:paddingEnd="@dimen/_5dp">
 
                         <com.freight.shipper.utils.customviews.MaterialSpinner
-                            android:id="@+id/spinnerCountry"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:ms_alignLabels="true"
-                            app:ms_floatingLabelColor="@color/colorAccent"
-                            app:ms_hint="@string/country"
-                            app:ms_hintColor="@color/gray"
-                            app:ms_multiline="false" />
+                                android:id="@+id/spinnerCountry"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:ms_alignLabels="true"
+                                app:ms_floatingLabelColor="@color/colorAccent"
+                                app:ms_hint="@string/country"
+                                app:ms_hintColor="@color/gray"
+                                app:ms_multiline="false" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:paddingStart="@dimen/_5dp"
-                        android:paddingEnd="@dimen/_5dp">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/_5dp"
+                            android:paddingEnd="@dimen/_5dp">
 
                         <com.freight.shipper.utils.customviews.MaterialSpinner
-                            android:id="@+id/spinnerState"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:ms_alignLabels="true"
-                            app:ms_floatingLabelColor="@color/colorAccent"
-                            app:ms_hint="@string/state"
-                            app:ms_hintColor="@color/gray"
-                            app:ms_multiline="false" />
+                                android:id="@+id/spinnerState"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:ms_alignLabels="true"
+                                app:ms_floatingLabelColor="@color/colorAccent"
+                                app:ms_hint="@string/state"
+                                app:ms_hintColor="@color/gray"
+                                app:ms_multiline="false" />
                     </LinearLayout>
 
 
                 </LinearLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayoutPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:visibility="gone"
-                    app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="@color/colorAccent">
+                        android:id="@+id/textInputLayoutPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:theme="@style/TextInputLayoutAppearance"
+                        android:visibility="gone"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/colorAccent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextPassword"
-                        style="@style/Material.EditText"
-                        android:hint="@string/password"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:paddingStart="5dp"
-                        android:paddingLeft="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingRight="5dp" />
+                            android:id="@+id/editTextPassword"
+                            style="@style/Material.EditText"
+                            android:hint="@string/password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingEnd="5dp"
+                            android:paddingRight="5dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
                 <!--                    android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text.toString())}"-->
 
                 <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_10dp">
-
-                    <Button
-                        android:id="@+id/buttonAddVehicle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:onClick="@{() -> viewModel.updateProfile()}"
-                        android:text="@string/submit"
-                        android:visibility="@{ !viewModel.isLoading ? View.VISIBLE : View.GONE, default=visible}" />
+                        android:layout_marginTop="@dimen/_10dp">
+
+                    <Button
+                            android:id="@+id/buttonAddVehicle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:onClick="@{() -> viewModel.updateProfile()}"
+                            android:text="@string/submit"
+                            android:visibility="@{ !viewModel.isLoading ? View.VISIBLE : View.GONE, default=visible}" />
 
                     <androidx.core.widget.ContentLoadingProgressBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:visibility="@{ viewModel.isLoading ? View.VISIBLE : View.GONE, default=gone}" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:visibility="@{ viewModel.isLoading ? View.VISIBLE : View.GONE, default=gone}" />
                 </FrameLayout>
 
             </LinearLayout>
