@@ -20,13 +20,16 @@
         <item name="android:editTextStyle">@style/Material.EditText</item>
         <item name="editTextStyle">@style/Material.EditText</item>
 
-        <item name="android:buttonStyle">@style/Material.Button</item>
+        <item name="android:buttonStyle">@style/Material.Button.Rounded</item>
 
         <item name="spinnerStyle">@style/Style.Widget.Spinner</item>
         <item name="android:spinnerItemStyle">@style/Style.Widget.SpinnerItem</item>
 
         <item name="alertDialogTheme">@style/Material.AlertDialogTheme</item>
         <item name="buttonBarButtonStyle">@style/Material.Button.Dialog</item>
+
+        <item name="progressBarStyle">@style/ProgressBarStyle</item>
+        <item name="android:progressBarStyle">@style/ProgressBarStyle</item>
 
         <item name="toolbarStyle">@style/Material.Toolbar</item>
         <!--<item name="homeAsUpIndicator">@drawable/ic_back_dark</item>-->
@@ -37,6 +40,10 @@
     <style name="AppTheme" parent="BaseAppTheme" />
 
     <style name="AppTheme.DarkSystemBars" parent="BaseAppTheme" />
+
+    <style name="AppTheme.BlackSystemBars" parent="BaseAppTheme">
+        <item name="colorPrimaryDark">@color/black</item>
+    </style>
 
     <style name="AppTheme.Widget" />
 
@@ -49,13 +56,26 @@
 
     <style name="SplashTheme" parent="BaseSplashTheme" />
 
-    <!-- TextViews -->
-
+    <!--    <style name="ProgressBarStyle">-->
+    <!--        <item name="colorAccent">#FF0000</item>-->
+    <!--        <item name="android:indeterminateDrawable">@drawable/progress</item>-->
+    <!--    </style>-->
     <style name="AppTheme.Widget.TextView.ToolbarTitle" parent="TextView.Body">
         <item name="android:textSize">21sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_gravity">center</item>
     </style>
+    <!--        android:indeterminateDrawable="@drawable/progress"-->
+
+    <!-- TextViews -->
+
+    <style name="ProgressBarStyle" parent="Widget.AppCompat.ProgressBar">
+        <item name="colorAccent">#FF0000</item>
+        <item name="android:progressDrawable">@drawable/progress</item>
+        <item name="android:indeterminateDrawable">@drawable/progress</item>
+    </style>
+    <!--        <item name="android:maxHeight">4dp</item>-->
+    <!--        <item name="android:minHeight">4dp</item>-->
 
     <style name="AppTheme.Widget.TextView.ToolbarSubTitle" parent="AppTheme.Widget.TextView.ToolbarTitle">
         <item name="android:textSize">15sp</item>
@@ -178,6 +198,7 @@
         <item name="tabTextAppearance">@style/Material.TabTextAppearance</item>
         <item name="tabSelectedTextColor">@color/active_tab_title_text_color</item>
         <item name="android:layout_height">@dimen/tab_bar_height</item>
+<!--        <item name="app:tabIndicatorColo">@android:color/white</item>-->
     </style>
 
     <style name="Material.TabTextAppearance" parent="TextAppearance.Design.Tab">
@@ -256,6 +277,10 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="Material.Button.Rounded" parent="Material.Button">
+        <item name="android:background">@drawable/button_bg_rounded_corners</item>
+    </style>
+
     <style name="Material.Button.White" parent="Material.Button">
         <item name="android:textSize">@dimen/button_text_regular</item>
         <item name="android:background">@drawable/button_bg_white_square</item>
@@ -329,7 +354,7 @@
     <!-- endregion -->
 
 
-<!--    <style name="BaseBottomSheetDialog" parent="@style/Theme.MaterialComponents.Light.BottomSheetDialog">-->
+    <!--    <style name="BaseBottomSheetDialog" parent="@style/Theme.MaterialComponents.Light.BottomSheetDialog">-->
     <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

@@ -6,135 +6,134 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
-            type="com.freight.shipper.ui.paymentdetails.PaymentDetailsViewModel" />
+                name="viewModel"
+                type="com.freight.shipper.ui.paymentdetails.PaymentDetailsViewModel" />
     </data>
 
     <LinearLayout
-        android:id="@+id/text_fields"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        android:orientation="vertical">
+            android:id="@+id/text_fields"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            android:orientation="vertical">
 
         <include layout="@layout/toolbar" />
 
 
         <LinearLayout
-            android:id="@+id/linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="vertical"
-            android:padding="@dimen/component_padding">
+                android:id="@+id/linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical"
+                android:padding="@dimen/component_padding">
 
 
             <TextView
-                style="@style/TextView.Heading.M"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/payment_detail" />
+                    style="@style/TextView.Heading.M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/payment_detail" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiAcNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:id="@+id/tiAcNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etAcNumber"
-                    style="@style/Material.EditText"
-                    android:hint="@string/bank_account_number"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:text="@={viewModel.requestModel.accountNumber}" />
+                        android:id="@+id/etAcNumber"
+                        style="@style/Material.EditText"
+                        android:hint="@string/bank_account_number"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:text="@={viewModel.requestModel.accountNumber}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiBankName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:id="@+id/tiBankName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etBankName"
-                    style="@style/Material.EditText"
-                    android:hint="@string/bank_name"
-                    android:inputType="textPersonName"
-                    android:maxLines="1"
-                    android:text="@={viewModel.requestModel.bankName}" />
+                        android:id="@+id/etBankName"
+                        style="@style/Material.EditText"
+                        android:hint="@string/bank_name"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:text="@={viewModel.requestModel.bankName}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiBankAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:id="@+id/tiBankAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etBankAddress"
-                    style="@style/Material.EditText"
-                    android:hint="@string/bank_address"
-                    android:inputType="textPostalAddress"
-                    android:maxLines="1"
-                    android:text="@={viewModel.requestModel.bankAddress}" />
+                        android:id="@+id/etBankAddress"
+                        style="@style/Material.EditText"
+                        android:hint="@string/bank_address"
+                        android:inputType="textPostalAddress"
+                        android:maxLines="1"
+                        android:text="@={viewModel.requestModel.bankAddress}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiWireTransNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:id="@+id/tiWireTransNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etWireTransNumber"
-                    style="@style/Material.EditText"
-                    android:hint="@string/wire_transfer_number"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="@={viewModel.requestModel.wireTransNumber}" />
+                        android:id="@+id/etWireTransNumber"
+                        style="@style/Material.EditText"
+                        android:hint="@string/wire_transfer_number"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={viewModel.requestModel.wireTransNumber}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiCurrency"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:id="@+id/tiCurrency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etCurrency"
-                    style="@style/Material.EditText"
-                    android:hint="@string/currency"
-                    android:inputType="text|textCapCharacters"
-                    android:maxLines="1"
-                    android:text="@={viewModel.requestModel.currency}" />
+                        android:id="@+id/etCurrency"
+                        style="@style/Material.EditText"
+                        android:hint="@string/currency"
+                        android:inputType="text|textCapCharacters"
+                        android:maxLines="1"
+                        android:text="@={viewModel.requestModel.currency}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="25dp">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="25dp">
 
                 <Button
-                    android:id="@+id/buttonRegister"
-                    style="@style/Material.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{() -> viewModel.submitPaymentDetails()}"
-                    android:text="@string/submit"
-                    android:visibility="@{ !viewModel.isLoading ? View.VISIBLE : View.GONE, default=visible}" />
+                        android:id="@+id/buttonRegister"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> viewModel.submitPaymentDetails()}"
+                        android:text="@string/submit"
+                        android:visibility="@{ !viewModel.isLoading ? View.VISIBLE : View.GONE, default=visible}" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:visibility="@{ viewModel.isLoading ? View.VISIBLE : View.GONE, default=gone}" />
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="@{ viewModel.isLoading ? View.VISIBLE : View.GONE, default=gone}" />
             </FrameLayout>
 
         </LinearLayout>

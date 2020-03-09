@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="@color/background"
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context="com.freight.shipper.ui.bookings.assigned.LoadPagerFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical"
+        tools:context="com.freight.shipper.ui.bookings.assigned.LoadPagerFragment">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        style="@style/Material.TabLayout"
-        android:layout_width="match_parent"/>
+            android:id="@+id/tabLayout"
+            style="@style/Material.TabLayout"
+            android:layout_width="match_parent"
+            app:tabIndicatorColor="@color/colorPrimary" />
     <!--android:layout_marginTop="@dimen/activity_vertical_margin"-->
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 </LinearLayout>

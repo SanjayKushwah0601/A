@@ -16,6 +16,8 @@ import com.freight.shipper.ui.bookings.newload.NewLoadFragment
 import com.freight.shipper.ui.home.HomeFragment
 import com.freight.shipper.ui.profile.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.MaterialShapeDrawable.SHADOW_COMPAT_MODE_ALWAYS
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.toolbar.*
 import kotlinx.coroutines.Dispatchers
@@ -51,6 +53,10 @@ class DashboardActivity : AppCompatActivity(),
         setContentView(R.layout.activity_dashboard)
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
+        val background = bottomNavigationView.background
+        if (background is MaterialShapeDrawable) {
+            background.shadowCompatibilityMode = SHADOW_COMPAT_MODE_ALWAYS
+        }
         setupToolbar(toolbar, enableUpButton = false)
         setStartScreen()
         LoadRepository(

@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text='@{String.format("%s %s", user.firstName, user.lastName)}'
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/text_color_accent"
                     tools:text="First Last Name" />
 
                 <com.google.android.material.textfield.TextInputLayout

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#141414</color>
+    <!--<color name="colorPrimary">#141414</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#FA5D52</color>
+    <color name="colorAccent">#FA5D52</color>-->
+
+    <color name="colorPrimary">#FA5D52</color>
+    <color name="colorPrimaryDark">#E4544B</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="text_color_accent">@color/colorPrimary</color>
+    <color name="bottom_bar_background">#EEEEEF</color>
 
     <color name="background">#FFFFFF</color>
     <color name="button_black_disabled">#AAAAAA</color>

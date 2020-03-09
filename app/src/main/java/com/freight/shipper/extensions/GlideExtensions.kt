@@ -1,7 +1,6 @@
 package com.freight.shipper.extensions
 
 import android.graphics.drawable.Drawable
-import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -25,7 +24,17 @@ fun ImageView.setImageDrawableGlide(drawable: Drawable?) {
 fun ImageView.loadCircularImage(str: String?) {
     Glide.with(this)
         .load(str)
-        .apply(RequestOptions.circleCropTransform().placeholder(R.drawable.round_gray).error(R.drawable.round_gray))
+        .apply(RequestOptions.circleCropTransform().placeholder(R.drawable.ic_default_user))
+        .into(this)
+}
+
+@BindingAdapter(value = ["url", "placeholder"], requireAll = false)
+fun ImageView.loadCircularProfile(url: String?, placeholder: Drawable? = null) {
+    val option = if (placeholder == null) RequestOptions.circleCropTransform()
+    else RequestOptions.circleCropTransform().placeholder(placeholder)
+    Glide.with(this)
+        .load(url)
+        .apply(option)
         .into(this)
 }
 

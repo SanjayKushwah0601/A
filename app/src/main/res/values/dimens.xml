@@ -51,8 +51,8 @@
     <!-- endregion-->
 
     <!-- region TabLayout Size-->
-    <dimen name="tab_title_size">16sp</dimen>
-    <dimen name="tab_bar_height">30dp</dimen>
+    <dimen name="tab_title_size">18sp</dimen>
+    <dimen name="tab_bar_height">40dp</dimen>
     <!-- endregion-->
 
     <!-- region EditText Size -->

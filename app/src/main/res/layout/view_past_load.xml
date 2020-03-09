@@ -1,299 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <import type="android.view.View" />
 
         <variable
-            name="pastLoad"
-            type="com.freight.shipper.core.persistence.network.response.PastLoad" />
+                name="pastLoad"
+                type="com.freight.shipper.core.persistence.network.response.PastLoad" />
 
         <variable
-            name="viewholder"
-            type="com.freight.shipper.ui.bookings.assigned.pager.PastLoadViewHolder" />
+                name="viewholder"
+                type="com.freight.shipper.ui.bookings.assigned.pager.PastLoadViewHolder" />
 
         <variable
-            name="isEditing"
-            type="boolean" />
+                name="isEditing"
+                type="boolean" />
 
         <variable
-            name="clickListener"
-            type="com.freight.shipper.ui.bookings.assigned.pager.PastLoadEventListener" />
+                name="clickListener"
+                type="com.freight.shipper.ui.bookings.assigned.pager.PastLoadEventListener" />
 
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_3dp"
-        app:cardElevation="@dimen/_3dp"
-        app:cardUseCompatPadding="true"
-        app:contentPadding="@dimen/_5dp">
-
-        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:cardCornerRadius="@dimen/_3dp"
+            app:cardElevation="@dimen/_3dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="@dimen/_5dp">
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="@dimen/_40dp"
-                android:layout_height="@dimen/_40dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="@dimen/_10dp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                app:loadCircularImage="@{ pastLoad.image }" />
-
-            <TextView
-                android:id="@+id/tvCustomerName"
-                style="@style/TextView.Heading.XS"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5dp"
-                android:layout_toEndOf="@+id/image"
-                android:singleLine="true"
-                android:text="@{pastLoad.finderName}"
-                tools:text="@string/customer_name" />
-
-
-            <TextView
-                android:id="@+id/tvStatus"
-                style="@style/TextView.Body.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/_20dp"
-                android:layout_marginRight="@dimen/_5dp"
-                android:background="@drawable/bg_rounded_outline_accent"
-                android:paddingLeft="@dimen/_10dp"
-                android:paddingRight="@dimen/_10dp"
-                android:singleLine="true"
-                android:text="@{ pastLoad.getLoadStatus() }"
-                tools:text="@string/completed" />
-
-            <TextView
-                android:id="@+id/tvLoadId"
-                style="@style/TextView.Body"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tvCustomerName"
-                android:layout_toEndOf="@+id/image"
-                android:singleLine="true"
-                android:text="@{`Load id: `+ pastLoad.loadsId}"
-                tools:text="@string/customer_name" />
-
-            <View
-                android:id="@+id/divider1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1dp"
-                android:layout_below="@+id/image"
-                android:layout_marginTop="@dimen/_3dp"
-                android:background="@color/section_divider_color" />
-
-            <LinearLayout
+        <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/divider1"
-                android:layout_marginTop="@dimen/_3dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+            <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="@dimen/_40dp"
+                    android:layout_height="@dimen/_40dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/_10dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:placeholder="@{@drawable/ic_default_user}"
+                    app:url="@{pastLoad.image}" />
+
+            <TextView
+                    android:id="@+id/tvCustomerName"
+                    style="@style/TextView.Heading.XS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:layout_toEndOf="@+id/image"
+                    android:singleLine="true"
+                    android:text="@{pastLoad.finderName}"
+                    tools:text="@string/customer_name" />
+
+
+            <TextView
+                    android:id="@+id/tvStatus"
+                    style="@style/TextView.Body.Bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:layout_marginRight="@dimen/_5dp"
+                    android:background="@drawable/bg_rounded_outline_accent"
+                    android:paddingLeft="@dimen/_10dp"
+                    android:paddingRight="@dimen/_10dp"
+                    android:singleLine="true"
+                    android:text="@{ pastLoad.getLoadStatus() }"
+                    tools:text="@string/completed" />
+
+            <TextView
+                    android:id="@+id/tvLoadId"
+                    style="@style/TextView.Body"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvCustomerName"
+                    android:layout_toEndOf="@+id/image"
+                    android:singleLine="true"
+                    android:text="@{`Load id: `+ pastLoad.loadsId}"
+                    tools:text="@string/customer_name" />
+
+            <View
+                    android:id="@+id/divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:layout_below="@+id/image"
+                    android:layout_marginTop="@dimen/_3dp"
+                    android:background="@color/section_divider_color" />
+
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_below="@+id/divider1"
+                    android:layout_marginTop="@dimen/_3dp"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                     <TextView
-                        style="@style/TextView.Heading.XS"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawableLeft="@drawable/square_accent"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:drawableTint="@color/colorAccent"
-                        android:maxLines="1"
-                        android:text='@{String.format("%s, %s, %s", pastLoad.pickCity, pastLoad.pickState, pastLoad.pickCountry)}'
-                        android:textStyle="bold"
-                        tools:text="Pickup City" />
+                            style="@style/TextView.Heading.XS"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableStart="@drawable/square_accent"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:maxLines="1"
+                            android:text='@{String.format("%s, %s, %s", pastLoad.pickCity, pastLoad.pickState, pastLoad.pickCountry)}'
+                            android:textStyle="bold"
+                            tools:text="Pickup City" />
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="end">
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end">
 
                         <TextView
-                            style="@style/TextView.Heading.XS"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawableLeft="@drawable/square_gray"
-                            android:drawablePadding="@dimen/_3dp"
-                            android:drawableTint="@color/button_gray"
-                            android:gravity="end"
-                            android:maxLines="1"
-                            android:text='@{String.format("%s, %s, %s", pastLoad.destCity, pastLoad.destState, pastLoad.destCountry)}'
-                            android:textStyle="bold"
-                            tools:text="Destination City" />
+                                style="@style/TextView.Heading.XS"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/square_gray"
+                                android:drawablePadding="@dimen/_3dp"
+                                android:drawableTint="@color/button_gray"
+                                android:gravity="end"
+                                android:maxLines="1"
+                                android:text='@{String.format("%s, %s, %s", pastLoad.destCity, pastLoad.destState, pastLoad.destCountry)}'
+                                android:textStyle="bold"
+                                tools:text="Destination City" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                     <TextView
-                        style="@style/TextView.Body"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:maxLines="2"
-                        android:text='@{String.format("%s, %s", pastLoad.pickAddress, pastLoad.pickPostcode)}'
-                        tools:text="Pickup Address" />
+                            style="@style/TextView.Body"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:maxLines="2"
+                            android:text='@{String.format("%s, %s", pastLoad.pickAddress, pastLoad.pickPostcode)}'
+                            tools:text="Pickup Address" />
 
                     <TextView
-                        style="@style/TextView.Body"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:text='@{String.format("%s, %s", pastLoad.destAddress, pastLoad.destPostcode)}'
-                        tools:text="Destination Address" />
+                            style="@style/TextView.Body"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:gravity="end"
+                            android:maxLines="2"
+                            android:text='@{String.format("%s, %s", pastLoad.destAddress, pastLoad.destPostcode)}'
+                            tools:text="Destination Address" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                     <TextView
-                        style="@style/TextView.Body.Gray"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:maxLines="2"
-                        android:text='@{String.format("%s, %s", pastLoad.getFormattedPickTime(), pastLoad.getFormattedPickDate())}'
-                        tools:text="10:00 AM, 22 Jul" />
+                            style="@style/TextView.Body.Gray"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:maxLines="2"
+                            android:text='@{String.format("%s, %s", pastLoad.getFormattedPickTime(), pastLoad.getFormattedPickDate())}'
+                            tools:text="10:00 AM, 22 Jul" />
 
                     <TextView
-                        style="@style/TextView.Body.Gray"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:text='@{String.format("%s", pastLoad.getFormattedDestDate())}'
-                        tools:text="10:00 AM, 22 Jul" />
+                            style="@style/TextView.Body.Gray"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:gravity="end"
+                            android:maxLines="2"
+                            android:text='@{String.format("%s", pastLoad.getFormattedDestDate())}'
+                            tools:text="10:00 AM, 22 Jul" />
 
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_3dp"
-                    android:orientation="horizontal">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3dp"
+                        android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView3"
-                        style="@style/TextView.Body.Bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dollar"
-                        android:textColor="@color/colorAccent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                            android:id="@+id/textView3"
+                            style="@style/TextView.Body.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dollar"
+                            android:textColor="@color/text_color_accent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="@dimen/_12dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        app:layout_constraintStart_toEndOf="@+id/textView4"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_help_outline_accent" />
+                            android:id="@+id/imageView"
+                            android:layout_width="@dimen/_12dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            app:layout_constraintStart_toEndOf="@+id/textView4"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_help_outline_accent" />
 
                     <TextView
-                        android:id="@+id/textView4"
-                        style="@style/TextView.Heading.L"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:maxLines="1"
-                        android:text="@{pastLoad.price}"
-                        android:textColor="@color/colorAccent"
-                        app:layout_constraintStart_toEndOf="@+id/textView3"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="122.00" />
+                            android:id="@+id/textView4"
+                            style="@style/TextView.Heading.L"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:maxLines="1"
+                            android:text="@{pastLoad.price}"
+                            android:textColor="@color/text_color_accent"
+                            app:layout_constraintStart_toEndOf="@+id/textView3"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="122.00" />
 
                     <TextView
-                        android:id="@+id/textView2"
-                        style="@style/TextView.Body.Gray"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:text="@string/type_colon"
-                        app:layout_constraintEnd_toStartOf="@+id/textView5"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
-                        app:layout_constraintTop_toTopOf="parent" />
+                            android:id="@+id/textView2"
+                            style="@style/TextView.Body.Gray"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:maxLines="2"
+                            android:text="@string/type_colon"
+                            app:layout_constraintEnd_toStartOf="@+id/textView5"
+                            app:layout_constraintStart_toEndOf="@+id/imageView"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView5"
-                        style="@style/TextView.Body"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:text="@{pastLoad.loadType}"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Electronics" />
+                            android:id="@+id/textView5"
+                            style="@style/TextView.Body"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:gravity="end"
+                            android:maxLines="2"
+                            android:text="@{pastLoad.loadType}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="Electronics" />
 
 
                     <TextView
-                        style="@style/TextView.Body.Gray"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:gravity="end"
-                        android:text="@string/paid_by"
-                        app:layout_constraintEnd_toStartOf="@+id/textView6"
-                        app:layout_constraintStart_toEndOf="@+id/imageView"
-                        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                            style="@style/TextView.Body.Gray"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:gravity="end"
+                            android:text="@string/paid_by"
+                            app:layout_constraintEnd_toStartOf="@+id/textView6"
+                            app:layout_constraintStart_toEndOf="@+id/imageView"
+                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                     <TextView
-                        android:id="@+id/textView6"
-                        style="@style/TextView.Body"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="@dimen/_3dp"
-                        android:gravity="end"
-                        android:maxLines="2"
-                        android:text="@{pastLoad.paidBy}"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView5"
-                        tools:text="Receiver" />
+                            android:id="@+id/textView6"
+                            style="@style/TextView.Body"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawablePadding="@dimen/_3dp"
+                            android:gravity="end"
+                            android:maxLines="2"
+                            android:text="@{pastLoad.paidBy}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView5"
+                            tools:text="Receiver" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>

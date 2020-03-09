@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.freight.shipper">
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.freight.shipper">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -19,16 +19,16 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".FreightApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="m">
+            android:name=".FreightApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true"
+            tools:ignore="GoogleAppIndexingWarning"
+            tools:targetApi="m">
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,15 +38,15 @@
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+                android:name="com.google.android.geo.API_KEY"
+                android:value="@string/google_maps_key" />
         <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="be7430ba2091e8aa72d7b54e95857c9fc956869b" />
+                android:name="io.fabric.ApiKey"
+                android:value="be7430ba2091e8aa72d7b54e95857c9fc956869b" />
 
         <activity
-            android:name=".ui.dashboard.DashboardActivity"
-            android:label="@string/title_activity_dashboard" />
+                android:name=".ui.dashboard.DashboardActivity"
+                android:label="@string/title_activity_dashboard" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -55,86 +55,85 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.authentication.login.LoginActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.authentication.login.LoginActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.authentication.signup.SignupLandingActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustNothing" />
+                android:name=".ui.authentication.signup.SignupLandingActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustNothing" />
         <activity
-            android:name=".ui.authentication.signup.individual.IndividualSignupActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.authentication.signup.individual.IndividualSignupActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.authentication.signup.company.CompanySignupActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.authentication.signup.company.CompanySignupActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.authentication.signup.company.CompanySignupFormTwoActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.authentication.signup.company.CompanySignupFormTwoActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.authentication.forgotpassword.ForgotPasswordActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.authentication.forgotpassword.ForgotPasswordActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.authentication.resetpassword.ResetPasswordActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.authentication.resetpassword.ResetPasswordActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.paymentdetails.PaymentDetailsActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.paymentdetails.PaymentDetailsActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.addvehicle.AddVehicleActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.addvehicle.AddVehicleActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.addshipper.AddShipperActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+                android:name=".ui.addshipper.AddShipperActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".ui.vehiclelist.VehicleListActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+                android:name=".ui.vehiclelist.VehicleListActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.driverlist.DriverListActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+                android:name=".ui.driverlist.DriverListActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.route.pickup.PickupRouteActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+                android:name=".ui.route.pickup.PickupRouteActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.route.destination.DestinationRouteActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+                android:name=".ui.route.destination.DestinationRouteActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.invoice.InvoiceActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-
-
+                android:name=".ui.invoice.InvoiceActivity"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.BlackSystemBars"
+                android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.profile.editprofile.EditProfileActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+                android:name=".ui.profile.editprofile.EditProfileActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden" />
 
         <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.freight.shipper.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="com.freight.shipper.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
             <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths" />
         </provider>
 
         <service
-            android:name=".services.AddVehicleWorkManager"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+                android:name=".services.AddVehicleWorkManager"
+                android:exported="true"
+                android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>

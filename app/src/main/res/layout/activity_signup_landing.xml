@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:id="@+id/text_fields"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/background"
-              android:orientation="vertical">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/text_fields"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
 
     <FrameLayout
@@ -16,10 +16,10 @@
 
         <ImageView
                 android:layout_width="match_parent"
-                app:srcCompat="@drawable/backgraund"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:scaleType="fitEnd"
-                android:layout_height="wrap_content"/>
+                app:srcCompat="@drawable/backgraund" />
 
         <ScrollView
                 android:layout_width="match_parent"
@@ -36,18 +36,18 @@
                 <ImageView
                         android:id="@+id/logo"
                         android:layout_width="wrap_content"
-                        android:src="@drawable/logo"
-                        android:layout_margin="@dimen/component_padding"
+                        android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:layout_height="wrap_content"/>
+                        android:layout_margin="@dimen/component_padding"
+                        android:src="@drawable/logo" />
 
                 <LinearLayout
                         android:id="@+id/linear_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_above="@+id/signUp"
-                        android:animateLayoutChanges="true"
                         android:layout_below="@+id/logo"
+                        android:animateLayoutChanges="true"
                         android:clickable="true"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
@@ -58,19 +58,17 @@
 
                     <Button
                             android:id="@+id/buttonCompany"
-                            style="@style/Material.Button"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="25dp"
-                            android:text="@string/signup_as_a_company"/>
+                            android:text="@string/signup_as_a_company" />
 
                     <Button
                             android:id="@+id/buttonIndividual"
-                            style="@style/Material.Button"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="25dp"
-                            android:text="@string/signup_as_an_individual"/>
+                            android:text="@string/signup_as_an_individual" />
 
                 </LinearLayout>
 
