@@ -6,9 +6,15 @@ import android.graphics.Color
 import android.os.Build
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.freight.shipper.R
+import com.freight.shipper.model.ButtonClickAction
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 /**
@@ -102,4 +108,79 @@ fun Activity.showImageChooser(requestCode: Int) {
     }
 
     startActivityForResult(intent, requestCode)
+}
+
+
+fun Activity.showSingleOptionAlertDialog(
+    @StringRes titleRes: Int? = null,
+    @StringRes messageRes: Int? = null,
+    @StringRes buttonTextRes: Int = R.string.ok,
+    cancelable: Boolean = true,
+    cancelTextRes: Int? = null,
+    dismissListener: (() -> Unit)? = null,
+    buttonClickAction: ((clickAction: ButtonClickAction) -> Unit)? = null
+) {
+    val title = if (titleRes != null) {
+        getString(titleRes)
+    } else {
+        null
+    }
+
+    val message = if (messageRes != null) {
+        getString(messageRes)
+    } else {
+        null
+    }
+
+    showSingleOptionAlertDialog(
+        title,
+        message,
+        buttonTextRes,
+        cancelable,
+        cancelTextRes,
+        dismissListener,
+        buttonClickAction
+    )
+}
+
+fun Activity.showSingleOptionAlertDialog(
+    title: String? = null,
+    message: String? = null,
+    @StringRes buttonTextRes: Int = R.string.ok,
+    cancelable: Boolean = true,
+    cancelTextRes: Int? = null,
+    dismissListener: (() -> Unit)? = null,
+    buttonClickAction: ((clickAction: ButtonClickAction) -> Unit)? = null
+) {
+    if (!isFinishing) {
+        val activity = this
+        GlobalScope.launch(Dispatchers.Main) {
+            val builder = AlertDialog.Builder(activity)
+
+            if (title?.isNotEmpty() == true) {
+                builder.setTitle(title)
+            }
+
+            if (message?.isNotEmpty() == true) {
+                builder.setMessage(message)
+            }
+
+            if (cancelTextRes != null) {
+                builder.setNegativeButton(cancelTextRes) { dialog, _ ->
+                    buttonClickAction?.invoke(ButtonClickAction.NEGATIVE)
+                    dialog.dismiss()
+                }
+            }
+
+            builder.setPositiveButton(buttonTextRes) { dialog, _ ->
+                buttonClickAction?.invoke(ButtonClickAction.POSITIVE)
+                dialog.dismiss()
+            }
+                .setCancelable(cancelable)
+                .setOnDismissListener {
+                    dismissListener?.invoke()
+                }
+                .show()
+        }
+    }
 }

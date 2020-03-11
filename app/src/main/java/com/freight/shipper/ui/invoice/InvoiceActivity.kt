@@ -12,10 +12,13 @@ import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.platform.BaseActivity
 import com.freight.shipper.core.platform.BaseViewModelFactory
 import com.freight.shipper.databinding.ActivityInvoiceBinding
-import com.freight.shipper.extensions.showConfirmationMessage
+import com.freight.shipper.extensions.navigateToDashboard
 import com.freight.shipper.extensions.showErrorMessage
+import com.freight.shipper.extensions.showSingleOptionAlertDialog
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.repository.RouteRepository
+import com.freight.shipper.ui.bookings.assigned.LoadPagerFragment
+import com.freight.shipper.ui.dashboard.DashboardActivity
 import com.freight.shipper.utils.customviews.SignatureView
 import kotlinx.android.synthetic.main.activity_invoice.*
 
@@ -65,8 +68,13 @@ class InvoiceActivity : BaseActivity() {
         })
 
         viewModel.submitInvoiceResponse.observe(this, Observer {
-            showConfirmationMessage(it)
-            // Todo: navigate to another screen
+            // showConfirmationMessage(it)
+            showSingleOptionAlertDialog(
+                R.string.alert_title, R.string.invoice_success_message, cancelable = false
+            ) {
+                // Todo: navigate to another screen
+                navigateToDashboard(DashboardActivity.START_SCREEN_ASSIGNED, LoadPagerFragment.PAST_LOAD)
+            }
         })
     }
 

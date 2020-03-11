@@ -30,6 +30,7 @@ class DashboardActivity : AppCompatActivity(),
     // region - Companion object
     companion object {
         const val EXTRA_START_SCREEN = "start_screen"
+        const val EXTRA_PAGE_NUMBER = "page_number"
         const val START_SCREEN_PROFILE = 0
         const val START_SCREEN_HOME = 1
         const val START_SCREEN_ASSIGNED = 2
@@ -152,6 +153,8 @@ class DashboardActivity : AppCompatActivity(),
             START_SCREEN_ASSIGNED -> {
                 bottomNavigationView.selectedItemId = R.id.navigation_favorite
                 setToolbarTitle(R.string.assiged_load)
+                val pageNum = intent.getIntExtra(EXTRA_PAGE_NUMBER, 0)
+                loadFragment.setPage(pageNum)
                 loadFragment
             }
             START_SCREEN_PROFILE -> {

@@ -48,6 +48,8 @@
     <string name="drop">Drop</string>
     <string name="distance_colon">Distance:</string>
     <string name="eta_colon">ETA: </string>
+    <string name="pickup_address_colon">Pickup Address:</string>
+    <string name="drop_address_colon">Drop Address:</string>
     <string name="pickup_date_star">Pickup Date*</string>
     <string name="drop_date_star">Drop Date*</string>
     <string name="select_your_vehicle_type">Select your vehicle type?</string>
@@ -159,4 +161,8 @@
     <string name="all_fields_mandatory_error">All fields are mandatory.</string>
     <string name="load_accept_success_message">Load accepted successfully</string>
     <string name="error_price_not_valid">Price is not valid</string>
+    <string name="ok">OK</string>
+    <string name="alert_title">Alert!!</string>
+    <string name="invoice_success_message">Invoice submitted successfully. You can check this in Past Load screen.</string>
+    <string name="offer_success_message">Your offer is successfully sent to customer. You can see this Booking in Active Loads once customer accepts your offer.</string>
 </resources>

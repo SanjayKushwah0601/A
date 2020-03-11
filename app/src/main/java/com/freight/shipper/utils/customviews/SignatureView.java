@@ -71,7 +71,7 @@ public class SignatureView extends View {
             output.close();
 
             dialog.dismiss();
-            Toast.makeText(mContent.getContext(), "Save", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(mContent.getContext(), "Save", Toast.LENGTH_SHORT).show();
             return file;
         } catch (Exception e) {
             e.printStackTrace();

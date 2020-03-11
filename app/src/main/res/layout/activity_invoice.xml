@@ -213,7 +213,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/_10dp"
                             android:paddingEnd="@dimen/_10dp"
-                            android:text="@string/address_colon" />
+                            android:text="@string/pickup_address_colon" />
 
                     <TextView
                             style="@style/TextView.Body"
@@ -303,7 +303,7 @@
                             android:layout_height="wrap_content"
                             android:paddingStart="@dimen/_10dp"
                             android:paddingEnd="@dimen/_10dp"
-                            android:text="@string/address_colon" />
+                            android:text="@string/drop_address_colon" />
 
                     <TextView
                             style="@style/TextView.Body"

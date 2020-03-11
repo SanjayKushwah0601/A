@@ -46,9 +46,13 @@ fun Fragment.startLoginActivity() {
     activity?.startLoginActivity()
 }
 
-fun Activity.navigateToDashboard() {
+fun Activity.navigateToDashboard(
+    startScreen: Int = DashboardActivity.START_SCREEN_HOME, pageToBeShow: Int? = null
+) {
     val intent = Intent(this, DashboardActivity::class.java).apply {
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        putExtra(DashboardActivity.EXTRA_START_SCREEN, startScreen)
+        putExtra(DashboardActivity.EXTRA_PAGE_NUMBER, pageToBeShow)
     }
     startActivity(intent)
 }

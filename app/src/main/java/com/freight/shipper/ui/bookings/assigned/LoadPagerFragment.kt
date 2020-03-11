@@ -13,17 +13,24 @@ import com.freight.shipper.ui.bookings.assigned.pager.LoadListFragment
 import com.freight.shipper.ui.bookings.assigned.pager.LoadPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_load_pager.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
 
     companion object {
+        const val ACTIVE_LOAD = 0
+        const val PAST_LOAD = 1
         fun newInstance() = LoadPagerFragment()
     }
 
-    var currentPage: Int = 1
-    lateinit var pagerAdapter: LoadPagerAdapter
+    private var currentPage: Int = ACTIVE_LOAD
+    private var pageToBeShown = ACTIVE_LOAD
+    private lateinit var pagerAdapter: LoadPagerAdapter
 
-    val fragments by lazy {
+    private val fragments by lazy {
         listOf(
             ActiveLoadFragment.newInstance(getString(R.string.active)),
             PastLoadFragment.newInstance(getString(R.string.past))
@@ -33,8 +40,10 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
 
     //    private lateinit var viewModel: LoadPagerViewModel
 //
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_load_pager, container, false)
     }
 
@@ -48,8 +57,11 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
         initPager()
     }
 
-    fun setActiveLoadPage() {
-        viewPager?.currentItem = 1
+    fun setPage(int: Int) {
+        pageToBeShown = when (int) {
+            ACTIVE_LOAD, PAST_LOAD -> int
+            else -> currentPage
+        }
     }
 
     private fun initPager() {
@@ -63,6 +75,10 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
 //        viewPager.currentItem = currentPage
         tabLayout.setupWithViewPager(viewPager)
         tabLayout.tabMode = TabLayout.MODE_FIXED
+        GlobalScope.launch(Dispatchers.Main) {
+            delay(300)
+            viewPager?.currentItem = pageToBeShown
+        }
     }
 
     override fun onPageScrollStateChanged(p0: Int) {}

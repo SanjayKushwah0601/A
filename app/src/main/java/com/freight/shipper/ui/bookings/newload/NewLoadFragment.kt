@@ -19,7 +19,6 @@ import com.freight.shipper.ui.bookings.counterdialog.CounterDialog
 import com.freight.shipper.ui.bookings.filter.BookingFilterBottomSheet
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadAdapter
 import com.freight.shipper.ui.bookings.newload.recyclerview.NewLoadEventListener
-import com.freight.shipper.ui.dashboard.DashboardActivity
 import kotlinx.android.synthetic.main.fragment_new_load_list.*
 import timber.log.Timber
 
@@ -107,7 +106,8 @@ class NewLoadFragment : Fragment(),
             viewModel.isLoading.postValue(false)
             showConfirmationMessage(it)
             viewModel.refreshNewLoad()
-            (activity as DashboardActivity).navigateToActiveLoad()
+            showSingleOptionAlertDialog(R.string.alert_title, R.string.offer_success_message)
+//            (activity as DashboardActivity).navigateToActiveLoad()
         })
         viewModel.isLoading.observe(this, Observer {
             progressBar?.setVisibleIf { it }
@@ -116,8 +116,9 @@ class NewLoadFragment : Fragment(),
             Timber.i("$it")
             showCounterDialog(it, object : CounterDialog.CounterListener {
                 override fun onSuccess() {
-                    // TODO: Navigate to active load screen
-                    (activity as DashboardActivity).navigateToActiveLoad()
+                    showSingleOptionAlertDialog(
+                        R.string.alert_title, R.string.offer_success_message
+                    )
                 }
             })
         })
