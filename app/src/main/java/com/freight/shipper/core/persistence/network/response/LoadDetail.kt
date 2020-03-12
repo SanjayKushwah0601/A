@@ -130,6 +130,10 @@ class LoadDetail {
     var totalOffer: String? = null
     @SerializedName("width")
     var width: String? = null
+    @SerializedName("invoice_signature")
+    var invoiceSignature: String? = null
+    @SerializedName("invoice_document")
+    var invoiceDocument: String? = null
 
 
     fun getFormattedPickTime(): String {

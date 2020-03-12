@@ -188,8 +188,9 @@
         <item name="android:fontFamily">@font/nunito_sans_regular</item>
     </style>
 
-    <style name="TextView.Heading.M.Underline">
+    <style name="TextView.Heading.XS.Underline">
         <item name="android:background">@drawable/underline</item>
+        <item name="android:textColor">@color/link_color</item>
     </style>
     <!-- endregion-->
 

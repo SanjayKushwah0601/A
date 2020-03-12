@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.freight.shipper.core.persistence.network.response.ActiveLoad
 import com.freight.shipper.core.persistence.network.response.NewLoad
+import com.freight.shipper.core.persistence.network.response.PastLoad
 import com.freight.shipper.core.persistence.network.response.User
 import com.freight.shipper.model.IntentExtras
 import com.freight.shipper.model.LoadFilter
@@ -29,6 +30,7 @@ import com.freight.shipper.ui.profile.editprofile.EditProfileActivity
 import com.freight.shipper.ui.route.destination.DestinationRouteActivity
 import com.freight.shipper.ui.route.pickup.PickupRouteActivity
 import com.freight.shipper.ui.vehiclelist.VehicleListActivity
+import com.freight.shipper.ui.viewinvoice.ViewInvoiceActivity
 
 
 /**
@@ -191,4 +193,14 @@ fun Fragment.showLoadFilterBottomSheet(
     val fragment = BookingFilterBottomSheet
         .newInstance(filter, listener)
     fragment.show(fragmentManager!!, "")
+}
+
+fun Activity.navigateToInvoiceActivity(pastLoad: PastLoad) {
+    startActivity(Intent(this, ViewInvoiceActivity::class.java).apply {
+        putExtra(IntentExtras.LOAD, pastLoad)
+    })
+}
+
+fun Fragment.navigateToInvoiceActivity(pastLoad: PastLoad) {
+    activity?.navigateToInvoiceActivity(pastLoad)
 }

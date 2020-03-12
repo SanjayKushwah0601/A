@@ -3,7 +3,7 @@
 
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/text_hint" />
+            <solid android:color="@color/link_color" />
         </shape>
     </item>
 

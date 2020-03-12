@@ -126,7 +126,11 @@ class ActiveLoad(
     @SerializedName("status")
     var status: String? = null,
     @SerializedName("width")
-    var width: String? = null
+    var width: String? = null,
+    @SerializedName("invoice_signature")
+    var invoiceSignature: String? = null,
+    @SerializedName("invoice_document")
+    var invoiceDocument: String? = null
 ) : Parcelable {
     //    val customerImage: String = "http://www.gravatar.com/avatar/?d=identicon"
 //    val pickCity: String = "Pickup City"

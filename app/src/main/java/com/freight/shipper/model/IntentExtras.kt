@@ -11,4 +11,5 @@ object IntentExtras {
     const val ACTIVE_LOAD: String = "active_load"
     const val USER: String = "user"
     const val LOAD_FILTER = "load_filter"
+    const val LOAD = "load"
 }

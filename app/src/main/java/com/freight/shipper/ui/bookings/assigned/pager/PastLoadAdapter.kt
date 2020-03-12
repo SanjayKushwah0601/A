@@ -52,6 +52,5 @@ class PastLoadAdapter : RecyclerView.Adapter<PastLoadViewHolder>() {
 }
 
 interface PastLoadEventListener {
-    fun onWorkClicked(image: PastLoad) {}
-//    fun onDeleteClicked(image: Image, viewHolder: PastLoadViewHolder) {}
+    fun onInvoiceLinkClick(pastLoad: PastLoad)
 }

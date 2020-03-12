@@ -1,9 +1,11 @@
 package com.freight.shipper.core.persistence.network.response
 
+import android.os.Parcelable
 import com.freight.shipper.R
 import com.freight.shipper.model.LoadStatus
 import com.freight.shipper.utils.StringUtil
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -13,6 +15,7 @@ import java.util.*
  * sanjaykushwah0601@gmail.com
  */
 
+@Parcelize
 class PastLoad(
     @SerializedName("address")
     var address: String? = null,
@@ -115,7 +118,7 @@ class PastLoad(
     @SerializedName("refrence_no")
     var refrenceNo: String? = null,
     @SerializedName("registration_no")
-    var registrationNo: Any? = null,
+    var registrationNo: String? = null,
     @SerializedName("shipper_id")
     var shipperId: String? = null,
     @SerializedName("shipper_name")
@@ -127,8 +130,12 @@ class PastLoad(
     @SerializedName("status")
     var status: String? = null,
     @SerializedName("width")
-    var width: String? = null
-) {
+    var width: String? = null,
+    @SerializedName("invoice_signature")
+    var invoiceSignature: String? = null,
+    @SerializedName("invoice_document")
+    var invoiceDocument: String? = null
+) : Parcelable {
     //    val customerImage: String = "http://www.gravatar.com/avatar/?d=identicon"
 //    val pickCity: String = "Pickup City"
 //    val destinationCity: String = "Destination City"
@@ -179,5 +186,13 @@ class PastLoad(
         } else {
             LoadStatus.New_Load.name
         }
+    }
+
+    fun getPriceWithDollar(): String {
+        return "$${price ?: 0}"
+    }
+
+    override fun toString(): String {
+        return "PastLoad(address=$address, city=$city, companyName=$companyName, countryId=$countryId, createdBy=$createdBy, createdDate=$createdDate, deliveryDate=$deliveryDate, destAddress=$destAddress, destCity=$destCity, destCountry=$destCountry, destLatitude=$destLatitude, destLongitude=$destLongitude, destPostcode=$destPostcode, destState=$destState, distance=$distance, email=$email, finderId=$finderId, finderName=$finderName, firstName=$firstName, height=$height, image=$image, insuranceDetail=$insuranceDetail, isDeleted=$isDeleted, lastName=$lastName, length=$length, loadCategoryId=$loadCategoryId, loadDetail=$loadDetail, loadName=$loadName, loadStatusId=$loadStatusId, loadStatusTitle=$loadStatusTitle, loadType=$loadType, loadWeight=$loadWeight, loadsId=$loadsId, phone=$phone, pickAddress=$pickAddress, pickCity=$pickCity, pickCountry=$pickCountry, pickDate=$pickDate, pickLatitude=$pickLatitude, pickLongitude=$pickLongitude, pickPostcode=$pickPostcode, pickState=$pickState, pickTime=$pickTime, postcode=$postcode, price=$price, quantity=$quantity, receiverEmail=$receiverEmail, receiverName=$receiverName, receiverPhone=$receiverPhone, refrenceNo=$refrenceNo, registrationNo=$registrationNo, shipperId=$shipperId, shipperName=$shipperName, shipperPhone=$shipperPhone, state=$state, status=$status, width=$width)"
     }
 }

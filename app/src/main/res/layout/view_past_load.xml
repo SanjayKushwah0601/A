@@ -295,6 +295,22 @@
                             app:layout_constraintTop_toBottomOf="@+id/textView5"
                             tools:text="Receiver" />
 
+                    <TextView
+                            style="@style/TextView.Heading.XS.Underline"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="@dimen/_10dp"
+                            android:layout_weight="1"
+                            android:foreground="?selectableItemBackground"
+                            android:onClick="@{(view) -> clickListener != null ? clickListener.onInvoiceLinkClick(pastLoad) : null }"
+                            android:text="@string/invoice"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView6"
+                            app:manageVisibility="@{ pastLoad.invoiceSignature != null &amp;&amp; pastLoad.invoiceSignature.length() > 0}" />
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 

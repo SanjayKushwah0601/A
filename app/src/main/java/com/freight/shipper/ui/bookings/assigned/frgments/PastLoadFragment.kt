@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.freight.shipper.core.persistence.network.response.PastLoad
+import com.freight.shipper.extensions.navigateToInvoiceActivity
 import com.freight.shipper.ui.bookings.assigned.pager.LoadListFragment
 import com.freight.shipper.ui.bookings.assigned.pager.PastLoadAdapter
 import com.freight.shipper.ui.bookings.assigned.pager.PastLoadEventListener
@@ -55,6 +56,11 @@ class PastLoadFragment : LoadListFragment<PastLoad>(),
         imageRowAdapter.editing = editing
     }
 
+    // region - PastLoadEventListener functions
+    override fun onInvoiceLinkClick(pastLoad: PastLoad) {
+        navigateToInvoiceActivity(pastLoad)
+    }
+    // endregion
     /*override fun onWorkClicked(image: PastLoad) {
 //        val imageIds = imageRowAdapter.imageList?.map { it.id } ?: listOf(image).map { it.id }
 //        navigateToImageDetailScreen(image, null, imageIds, REQUEST_CODE_IMAGE_DETAIL)

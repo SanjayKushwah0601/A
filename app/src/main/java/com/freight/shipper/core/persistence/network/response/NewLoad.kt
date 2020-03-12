@@ -133,7 +133,11 @@ class NewLoad(
     @SerializedName("shipper_offered")
     var shipperOffered: String? = null,
     @SerializedName("shipper_offered_price")
-    var shipperOfferedPrice: String? = null
+    var shipperOfferedPrice: String? = null,
+    @SerializedName("invoice_signature")
+    var invoiceSignature: String? = null,
+    @SerializedName("invoice_document")
+    var invoiceDocument: String? = null
 ) : Parcelable {
     //    val customerImage: String = "http://www.gravatar.com/avatar/?d=identicon"
 //    val pickCity: String = "Pickup City"

@@ -165,4 +165,5 @@
     <string name="alert_title">Alert!!</string>
     <string name="invoice_success_message">Invoice submitted successfully. You can check this in Past Load screen.</string>
     <string name="offer_success_message">Your offer is successfully sent to customer. You can see this Booking in Active Loads once customer accepts your offer.</string>
+    <string name="invoice">Invoice</string>
 </resources>
