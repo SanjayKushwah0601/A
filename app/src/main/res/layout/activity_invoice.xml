@@ -351,13 +351,36 @@
                         android:paddingBottom="@dimen/_5dp"
                         android:text="@string/receiver_signature" />
 
-                <LinearLayout
+                <RelativeLayout
                         android:id="@+id/signatureLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="200dp"
                         android:orientation="vertical">
 
-                </LinearLayout>
+                    <com.rm.freedrawview.FreeDrawView
+                            android:id="@+id/freeDraw"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/light_gray"
+                            app:paintAlpha="255"
+                            app:paintColor="@color/black"
+                            app:paintWidth="1dp"
+                            app:resizeBehaviour="fitXY" />
+
+                    <ImageButton
+                            android:id="@+id/btnUndo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/bg_rounded_outline_accent"
+                            android:padding="8dp"
+                            android:tint="@color/badge_drawable_color"
+                            app:srcCompat="@drawable/ic_undo"
+                            tools:visibility="visible" />
+
+                </RelativeLayout>
 
                 <View
                         android:layout_width="match_parent"
