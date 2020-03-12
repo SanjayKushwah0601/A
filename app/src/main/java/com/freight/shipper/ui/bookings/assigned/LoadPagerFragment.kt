@@ -89,6 +89,7 @@ class LoadPagerFragment : BaseFragment(), ViewPager.OnPageChangeListener {
 //        editing = false
         (pagerAdapter.getItem(currentPage) as LoadListFragment<*>).setEditMode(false)
         currentPage = position
+        pageToBeShown = position
 //        invalidateOptionsMenu()
     }
 }

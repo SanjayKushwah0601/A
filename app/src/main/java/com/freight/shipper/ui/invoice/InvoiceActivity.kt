@@ -32,8 +32,7 @@ class InvoiceActivity : BaseActivity() {
             InvoiceViewModel(
                 intent.getParcelableExtra(IntentExtras.ACTIVE_LOAD) as ActiveLoad,
                 RouteRepository(
-                    FreightApplication.instance.api,
-                    FreightApplication.instance.loginManager
+                    FreightApplication.instance.api, FreightApplication.instance.loginManager
                 )
             )
         }).get(InvoiceViewModel::class.java)
@@ -68,12 +67,12 @@ class InvoiceActivity : BaseActivity() {
         })
 
         viewModel.submitInvoiceResponse.observe(this, Observer {
-            // showConfirmationMessage(it)
             showSingleOptionAlertDialog(
                 R.string.alert_title, R.string.invoice_success_message, cancelable = false
             ) {
-                // Todo: navigate to another screen
-                navigateToDashboard(DashboardActivity.START_SCREEN_ASSIGNED, LoadPagerFragment.PAST_LOAD)
+                navigateToDashboard(
+                    DashboardActivity.START_SCREEN_ASSIGNED, LoadPagerFragment.PAST_LOAD
+                )
             }
         })
     }
