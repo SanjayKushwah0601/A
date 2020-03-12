@@ -15,14 +15,14 @@ import retrofit2.http.POST
  */
 interface LoadService {
 
-    @POST("webservices?param=getLoad&load_type=MAL")
+    @POST("webservices?param=getLoad&load_type=active")
     fun getActiveLoad(): Call<ApiResponse<List<ActiveLoad>>>
 
-    @POST("webservices?param=getLoad&load_type=MLP")
+    @POST("webservices?param=getLoad&load_type=past")
     fun getPastLoad(): Call<ApiResponse<List<PastLoad>>>
 
     @FormUrlEncoded
-    @POST("webservices?param=getLoad")
+    @POST("webservices?param=getLoad&load_type=newload")
     fun getNewLoad(
         @Field("weight_from") weightFrom: Int?,
         @Field("weight_to") weightTo: Int?,
